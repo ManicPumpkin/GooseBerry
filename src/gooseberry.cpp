@@ -30,6 +30,7 @@ int			gb_g_bitsColor	= -1;
 int			gb_g_bitsDepth	= -1;
 int			gb_g_bitsAlpha	= -1;
 bool		gb_g_fullscreen = FALSE;
+bool		gb_g_init		= FALSE;
 bool		gb_g_active		= TRUE;
 bool		gb_g_keys[256];
 
@@ -60,10 +61,15 @@ GOOSEBERRY_API gbResult gbExit()
 //==================================================================
 GOOSEBERRY_API gbResult gbInitialize()
 {
-	gbInitializeLog();
-	gbLog("Initialize GooseBerry");
+	if(!gb_g_init)
+	{
+		gbInitializeLog();
+		gbLog("Initialize GooseBerry");
+	}
+
 	gb_g_openGL		= new gbOpenGL();
 	if(gb_g_openGL->fStartWnd()) return GB_STOP;
 
+	gb_g_init = TRUE;
 	return GB_OK;
 }

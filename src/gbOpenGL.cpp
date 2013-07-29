@@ -130,7 +130,8 @@ VOID gbOpenGL :: fCreateParams()
 gbResult gbOpenGL :: fStartWnd()
 {
 	gbLog("Initialize and create OpenGL window");
-	fRegisterWndClass();
+	if(!gb_g_init) 
+		fRegisterWndClass();
 
 	if(fFullscreenWnd()!=GB_OK) 
 		return GB_STOP;
