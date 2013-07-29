@@ -21,16 +21,37 @@
 	@param	pHeight		heigh of OpenGL window
 **/
 //==================================================================
-LONG WINAPI fWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+LONG WINAPI fWindowProc(HWND pHWND, UINT pMsg, WPARAM pWParam, LPARAM pLParam)
 { 
-    switch(uMsg) 
+    switch(pMsg) 
 	{
 		case WM_CLOSE:
-		PostQuitMessage(0);
-		return 0;
+			DestroyWindow(pHWND);
+			PostQuitMessage(0);
+			return 0;
+			break;
+
+		case WM_ACTIVATE:
+			if(!HIWORD(pWParam))
+				gb_g_active		= TRUE;
+			else
+				gb_g_active		= FALSE;
+
+			return 0;
+			break;
+		
+		case WM_KEYDOWN:
+			gb_g_keys[pWParam]	= TRUE;
+			return 0;
+			break;
+
+		case WM_KEYUP:
+			gb_g_keys[pWParam]	= FALSE;
+			return 0;
+			break;
     }
 
-    return DefWindowProc(hWnd, uMsg, wParam, lParam); 
+    return DefWindowProc(pHWND, pMsg, pWParam, pLParam); 
 } 
 
 //==================================================================
@@ -48,27 +69,10 @@ LONG WINAPI fWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	@param	pWndID		id of OpenGL window
 **/
 //==================================================================
-gbOpenGL :: gbOpenGL(HINSTANCE pHinstance, HWND pHWND, LPCSTR pWndName, LPCSTR pWndTitle, int pWidth, int pHeight, int pX, int pY, int pBitsColor, int pBitsDepth, int pBitsAlpha)
+gbOpenGL :: gbOpenGL(HINSTANCE pHinstance, HWND pHWND, LPCSTR pWndName, LPCSTR pWndTitle, int pWidth, int pHeight, int pX, int pY, int pBitsColor, int pBitsDepth, int pBitsAlpha, bool pFullscreen)
 {
-	mHinstance	= pHinstance;
-	mHWND		= pHWND;
-	mWndName	= pWndName;
-	mWndTitle	= pWndTitle;
-	mWndWidth	= pWidth;
-	mWndHeight	= pHeight;
-	mWndX		= pX;
-	mWndY		= pY;
-	mBitsColor	= pBitsColor;
-	mBitsAlpha	= pBitsAlpha;
-	mBitsDepth	= pBitsDepth;
-
-	gbLog("Initialize and create OpenGL window");
 	//mMdlQueue	= new cMdlQueue();
 	//fCreateParams();
-	fRegisterWndClass();
-	fCreateOpenGLWnd();
-	fEnableOpenGL();
-	fInitializeOpenGL();
 }
 
 //==================================================================
@@ -125,9 +129,15 @@ VOID gbOpenGL :: fCreateParams()
 //==================================================================
 gbResult gbOpenGL :: fStartWnd()
 {
+	gbLog("Initialize and create OpenGL window");
 	fRegisterWndClass();
+
+	if(fFullscreenWnd()!=GB_OK) 
+		return GB_STOP;
+
 	fCreateOpenGLWnd();
 	fEnableOpenGL();
+
 	return GB_OK;
 }
 
@@ -139,10 +149,11 @@ gbResult gbOpenGL :: fStartWnd()
 //==================================================================
 gbResult gbOpenGL :: fExitWnd()
 {
+	gbLog("Close and destroy OpenGL window");
 	wglMakeCurrent(NULL, NULL);
-	ReleaseDC(mHWND, mHDC);
-	wglDeleteContext(mHGLRC);
-	DestroyWindow(mHWND);
+	ReleaseDC(gb_g_HWND, gb_g_HDC);
+	wglDeleteContext(gb_g_HGLRC);
+	DestroyWindow(gb_g_HWND);
 	return GB_OK;
 }
 
@@ -152,25 +163,88 @@ gbResult gbOpenGL :: fExitWnd()
 	@brief	Register window class
 **/
 //==================================================================
-VOID gbOpenGL :: fRegisterWndClass()
+gbResult gbOpenGL :: fRegisterWndClass()
 {
 	gbLog("Register window class", "\t");
-	mHinstance	= GetModuleHandle(NULL);
+	gb_g_hinstance	= GetModuleHandle(NULL);
 
 	WNDCLASS tWndClass		= {};
 	tWndClass.style			= CS_OWNDC;
 	tWndClass.lpfnWndProc	= (WNDPROC)fWindowProc;
 	tWndClass.cbClsExtra	= 0;
 	tWndClass.cbWndExtra	= 0;
-	tWndClass.hInstance		= mHinstance;
+	tWndClass.hInstance		= gb_g_hinstance;
 	tWndClass.hIcon			= LoadIcon(NULL, IDI_WINLOGO);
 	tWndClass.hCursor		= LoadCursor(NULL, IDC_ARROW);
 	tWndClass.hbrBackground	= NULL;
 	tWndClass.lpszMenuName	= NULL;
-	tWndClass.lpszClassName = mWndName;
+	tWndClass.lpszClassName = gb_g_wndName;
 
 	if(!RegisterClass(&tWndClass))
 		throw gbException(ERR_WIN_CLASS_STR, ERR_WIN_CLASS_ID);
+
+	return GB_OK;
+}
+
+//==================================================================
+/**
+	@fn		gbOpenGL :: fFullscreenWnd
+	@brief	Going fullscreen or not
+**/
+//==================================================================
+gbResult gbOpenGL :: fFullscreenWnd()
+{
+	gbLog("Setting up fullscreen/windowed screen", "\t");
+	RECT tWindowRect;				
+	tWindowRect.left	=(long)0;			
+	tWindowRect.right	=(long)gb_g_wndWidth;		
+	tWindowRect.top		=(long)0;			
+	tWindowRect.bottom	=(long)gb_g_wndHeight;		
+
+	if(gb_g_fullscreen)
+	{
+		DEVMODE tDmScreenSettings;
+		memset(&tDmScreenSettings, 0, sizeof(tDmScreenSettings));
+		tDmScreenSettings.dmSize		= sizeof(tDmScreenSettings);
+		tDmScreenSettings.dmPelsWidth	= gb_g_wndWidth;
+		tDmScreenSettings.dmPelsHeight	= gb_g_wndHeight;
+		tDmScreenSettings.dmBitsPerPel	= gb_g_bitsColor;
+		tDmScreenSettings.dmFields		= DM_BITSPERPEL | DM_PELSWIDTH | DM_PELSHEIGHT;
+
+		if(ChangeDisplaySettings(&tDmScreenSettings, CDS_FULLSCREEN)!=DISP_CHANGE_SUCCESSFUL)
+		{
+			if(MessageBox(NULL, "", "", MB_YESNO | MB_ICONEXCLAMATION)==IDYES)
+			{
+				gbLog("Fullscreen not supported. Going back to windowed mode.", "\t\t");
+				gb_g_fullscreen		= FALSE;
+			}
+			else
+			{
+				gbLog("Error occured while during fullscreen", "\t\t");
+				MessageBox(NULL, "", "", MB_OK | MB_ICONSTOP);
+				return GB_STOP;
+			}
+		}
+		else
+			gbLog("Fullscreen mode", "\t\t");
+	}
+	else
+		gbLog("Windowed mode", "\t\t");
+
+	if(gb_g_fullscreen)
+	{
+		mDwExStyle	= WS_EX_APPWINDOW;
+		mDwStyle	= WS_POPUP;
+		ShowCursor(FALSE);
+	}
+	else
+	{
+		mDwExStyle	= WS_EX_APPWINDOW | WS_EX_WINDOWEDGE;
+		mDwStyle	= WS_OVERLAPPEDWINDOW;
+	}
+
+	AdjustWindowRectEx(&tWindowRect, mDwStyle, FALSE, mDwExStyle);
+	return GB_OK;
 }
 
 //==================================================================
@@ -179,16 +253,18 @@ VOID gbOpenGL :: fRegisterWndClass()
 	@brief	Create new OpenGL window
 **/
 //==================================================================
-VOID gbOpenGL :: fCreateOpenGLWnd()
+gbResult gbOpenGL :: fCreateOpenGLWnd()
 {
 	gbLog("Create window", "\t");
-	mHWND	= CreateWindow( mWndName, mWndTitle, 
-		WS_HSCROLL | WS_VSCROLL | WS_OVERLAPPEDWINDOW,
-		mWndX, mWndY, mWndWidth, mWndHeight, 
-		NULL, NULL, mHinstance, NULL);
+	gb_g_HWND	= CreateWindowEx( mDwExStyle, gb_g_wndName, gb_g_wndTitle, 
+		mDwStyle | WS_HSCROLL | WS_VSCROLL | WS_OVERLAPPEDWINDOW,
+		gb_g_wndX, gb_g_wndY, gb_g_wndWidth, gb_g_wndHeight, 
+		NULL, NULL, gb_g_hinstance, NULL );
 
-	if(mHWND == NULL)
+	if(gb_g_HWND == NULL)
 		throw gbException(ERR_WIN_WND_STR, ERR_WIN_WND_ID);
+
+	return GB_OK;
 }
 
 //==================================================================
@@ -197,10 +273,10 @@ VOID gbOpenGL :: fCreateOpenGLWnd()
 	@brief	Enables OpenGL for current window
 **/
 //==================================================================
-VOID gbOpenGL :: fEnableOpenGL()
+gbResult gbOpenGL :: fEnableOpenGL()
 {
 	gbLog("Enable OpenGL for window", "\t");
-	mHDC	= GetDC((HWND)mHWND);
+	gb_g_HDC	= GetDC((HWND)gb_g_HWND);
 	
 	PIXELFORMATDESCRIPTOR tPfd;
 	ZeroMemory(&tPfd, sizeof(PIXELFORMATDESCRIPTOR));
@@ -208,23 +284,25 @@ VOID gbOpenGL :: fEnableOpenGL()
 	tPfd.nVersion	= 1;
 	tPfd.dwFlags	= PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER;
 	tPfd.iPixelType	= PFD_TYPE_RGBA;
-	tPfd.cColorBits = mBitsColor;
-	tPfd.cDepthBits = mBitsDepth;
-	tPfd.cAlphaBits	= mBitsAlpha;
+	tPfd.cColorBits = gb_g_bitsColor;
+	tPfd.cDepthBits = gb_g_bitsDepth;
+	tPfd.cAlphaBits	= gb_g_bitsAlpha;
 	tPfd.iLayerType = PFD_MAIN_PLANE;
 	
-	int tFormat		= ChoosePixelFormat(mHDC, &tPfd);
-	if(!SetPixelFormat(mHDC, tFormat, &tPfd))
+	int tFormat		= ChoosePixelFormat(gb_g_HDC, &tPfd);
+	if(!SetPixelFormat(gb_g_HDC, tFormat, &tPfd))
 		throw gbException(ERR_GL_SPF_STR, ERR_GL_SPF_ID);
 
-	if(!(mHGLRC = wglCreateContext(mHDC)))
+	if(!(gb_g_HGLRC = wglCreateContext(gb_g_HDC)))
 		throw gbException(ERR_GL_HRC_STR, ERR_GL_HRC_ID);
 	
-	if(!wglMakeCurrent(mHDC, mHGLRC))
+	if(!wglMakeCurrent(gb_g_HDC, gb_g_HGLRC))
 		throw gbException(ERR_GL_HDRC_STR, ERR_GL_HDRC_ID);
 
-	DescribePixelFormat(mHDC, tFormat, sizeof(PIXELFORMATDESCRIPTOR), &tPfd);
-	ReleaseDC(mHWND, mHDC);
+	DescribePixelFormat(gb_g_HDC, tFormat, sizeof(PIXELFORMATDESCRIPTOR), &tPfd);
+	ReleaseDC(gb_g_HWND, gb_g_HDC);
+
+	return GB_OK;
 }
 
 //==================================================================

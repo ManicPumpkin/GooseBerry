@@ -58,19 +58,22 @@ using namespace std;
 //==================================================================
 //	GLOBALS
 //==================================================================
-extern HINSTANCE	gb_g_hinstance;
-extern HWND			gb_g_HWND;
-extern HDC			gb_g_HDC;
-extern HGLRC		gb_g_HGLRC;
-extern LPCSTR		gb_g_wndTitle;
-extern LPCSTR		gb_g_wndName;
-extern int			gb_g_wndWidth;
-extern int			gb_g_wndHeight;
-extern int			gb_g_wndX;
-extern int			gb_g_wndY;
-extern int			gb_g_bitsColor;
-extern int			gb_g_bitsDepth;
-extern int			gb_g_bitsAlpha;
+GOOSEBERRY_API extern HINSTANCE		gb_g_hinstance;
+GOOSEBERRY_API extern HWND			gb_g_HWND;
+GOOSEBERRY_API extern HDC			gb_g_HDC;
+GOOSEBERRY_API extern HGLRC			gb_g_HGLRC;
+GOOSEBERRY_API extern LPCSTR		gb_g_wndTitle;
+GOOSEBERRY_API extern LPCSTR		gb_g_wndName;
+GOOSEBERRY_API extern int			gb_g_wndWidth;
+GOOSEBERRY_API extern int			gb_g_wndHeight;
+GOOSEBERRY_API extern int			gb_g_wndX;
+GOOSEBERRY_API extern int			gb_g_wndY;
+GOOSEBERRY_API extern int			gb_g_bitsColor;
+GOOSEBERRY_API extern int			gb_g_bitsDepth;
+GOOSEBERRY_API extern int			gb_g_bitsAlpha;
+GOOSEBERRY_API extern bool			gb_g_fullscreen;
+GOOSEBERRY_API extern bool			gb_g_active;
+GOOSEBERRY_API extern bool			gb_g_keys[256];
 
 //==================================================================
 //	ENUM & STRUCTS
@@ -78,16 +81,14 @@ extern int			gb_g_bitsAlpha;
 enum gbResult
 {
 	GB_OK			= 0,
-	GB_ERROR		= 1
+	GB_ERROR		= 1,
+	GB_STOP			= 2
 };
 
 //==================================================================
 //	FUNCTIONS
 //==================================================================
-GOOSEBERRY_API gbResult gbInitialize(HINSTANCE * pHinstance, HWND * pHWND, LPCSTR pWndTitle,
-										LPCSTR pWndName, int pWndWidth, int pWndHeight,
-										int pWndX, int pWndY, int pBitsColor, 
-										int pBitsDepth, int pBitsAlpha);
+GOOSEBERRY_API gbResult gbInitialize();
 GOOSEBERRY_API gbResult gbExit();
 
 //==================================================================

@@ -29,6 +29,9 @@ int			gb_g_wndY		= -1;
 int			gb_g_bitsColor	= -1;
 int			gb_g_bitsDepth	= -1;
 int			gb_g_bitsAlpha	= -1;
+bool		gb_g_fullscreen = FALSE;
+bool		gb_g_active		= TRUE;
+bool		gb_g_keys[256];
 
 gbOpenGL *	gb_g_openGL		= NULL;
 
@@ -41,7 +44,10 @@ gbOpenGL *	gb_g_openGL		= NULL;
 GOOSEBERRY_API gbResult gbExit()
 {
 	if(gb_g_openGL)	
+	{
+		gb_g_openGL->fExitWnd();
 		delete gb_g_openGL;
+	}
 
 	return GB_OK;
 }
@@ -52,28 +58,12 @@ GOOSEBERRY_API gbResult gbExit()
 	@brief	Initialize the game engine
 **/
 //==================================================================
-GOOSEBERRY_API gbResult gbInitialize(HINSTANCE * pHinstance, HWND * pHWND, LPCSTR pWndTitle, LPCSTR pWndName, int pWndWidth, int pWndHeight, int pWndX, int pWndY, int pBitsColor, int pBitsDepth, int pBitsAlpha)
+GOOSEBERRY_API gbResult gbInitialize()
 {
-	gb_g_hinstance		= *pHinstance;
-	gb_g_HWND			= *pHWND;
-	gb_g_wndTitle		= pWndTitle;
-	gb_g_wndName		= pWndName;
-	gb_g_wndWidth		= pWndWidth;
-	gb_g_wndHeight		= pWndHeight;
-	gb_g_wndX			= pWndX;
-	gb_g_wndY			= pWndY;
-	gb_g_bitsColor		= pBitsColor;
-	gb_g_bitsDepth		= pBitsDepth;
-	gb_g_bitsAlpha		= pBitsAlpha;
 	gbInitializeLog();
-	
-	gbLog("Initialize GlooseBerry");
-	gb_g_openGL = new gbOpenGL(gb_g_hinstance, gb_g_HWND, gb_g_wndName, gb_g_wndTitle, 
-		gb_g_wndWidth, gb_g_wndHeight, gb_g_wndX, gb_g_wndY,
-		gb_g_bitsColor, gb_g_bitsDepth, gb_g_bitsAlpha);
-
-	//gb_g_openGL->fStartWnd(&gb_g_HWND);
-	*pHWND	= gb_g_openGL->fGetHWND();
+	gbLog("Initialize GooseBerry");
+	gb_g_openGL		= new gbOpenGL();
+	if(gb_g_openGL->fStartWnd()) return GB_STOP;
 
 	return GB_OK;
 }
