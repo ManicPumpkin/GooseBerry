@@ -69,8 +69,9 @@ LONG WINAPI fWindowProc(HWND pHWND, UINT pMsg, WPARAM pWParam, LPARAM pLParam)
 	@param	pWndID		id of OpenGL window
 **/
 //==================================================================
-gbOpenGL :: gbOpenGL(HINSTANCE pHinstance, HWND pHWND, LPCSTR pWndName, LPCSTR pWndTitle, int pWidth, int pHeight, int pX, int pY, int pBitsColor, int pBitsDepth, int pBitsAlpha, bool pFullscreen)
+gbOpenGL :: gbOpenGL()
 {
+	mInit	= FALSE;
 	//mMdlQueue	= new cMdlQueue();
 	//fCreateParams();
 }
@@ -90,55 +91,34 @@ gbOpenGL :: ~gbOpenGL()
 //	Functions
 //==================================================================
 /**
-	@fn		gbOpenGL :: fCreateParams
-	@brief	Creates parameter of OpenGL window, like window position 
-			or window size
-	@param	pParentForm	form where the OpenGL window is rooted in
-**/
-//==================================================================
-VOID gbOpenGL :: fCreateParams()
-{
-	/*
-	gbLog("Set parameters for OpenGL window", "\t");
-	CreateParams^ tCParam	= gcnew CreateParams;
-	tCParam->X		= mX;
-	tCParam->Y		= mY;
-	tCParam->Height	= mHeight;
-	tCParam->Width	= mWidth;
-	tCParam->Parent	= pParentForm->Handle;
-	tCParam->Style	= WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN;
-	this->CreateHandle(tCParam);
-
-	mHDC	= GetDC((HWND)this);
-	if(mHDC)
-	{
-		fEnableOpenGL();
-		//fOnResize(mWidth, mHeight);
-		fInitializeOpenGL();
-	}
-	else
-		throw gbException(ERR_GL_HWND_STR, ERR_GL_HWND_ID);
-	*/
-}
-
-//==================================================================
-/**
 	@fn		gbOpenGL :: fStartWnd
 	@brief	Starts this window
 **/
 //==================================================================
 gbResult gbOpenGL :: fStartWnd()
 {
-	gbLog("Initialize and create OpenGL window");
-	if(!gb_g_init) 
-		fRegisterWndClass();
+	try
+	{
+		GB_LINFO("Initialize and create OpenGL window");
+		if(!mInit) 
+			fRegisterWndClass();
 
-	if(fFullscreenWnd()!=GB_OK) 
+		if(fFullscreenWnd()!=GB_OK) 
+			return GB_STOP;
+
+		fCreateOpenGLWnd();
+		fEnableOpenGL();
+	}
+	catch(const gbException &tException)
+	{
+		string tStr = tException.fGetStr(); string tID = tException.fGetId();
+		GB_LEXCEPTION(tStr, tID);
+		GB_MSGBOXERR(tException.fGetStr(), tException.fGetId());
+		gbStopLog();
 		return GB_STOP;
+	}
 
-	fCreateOpenGLWnd();
-	fEnableOpenGL();
-
+	mInit	= TRUE;
 	return GB_OK;
 }
 
@@ -150,7 +130,7 @@ gbResult gbOpenGL :: fStartWnd()
 //==================================================================
 gbResult gbOpenGL :: fExitWnd()
 {
-	gbLog("Close and destroy OpenGL window");
+	GB_LINFO("Close and destroy OpenGL window");
 	wglMakeCurrent(NULL, NULL);
 	ReleaseDC(gb_g_HWND, gb_g_HDC);
 	wglDeleteContext(gb_g_HGLRC);
@@ -166,7 +146,7 @@ gbResult gbOpenGL :: fExitWnd()
 //==================================================================
 gbResult gbOpenGL :: fRegisterWndClass()
 {
-	gbLog("Register window class", "\t");
+	GB_LINFO("Register window class");
 	gb_g_hinstance	= GetModuleHandle(NULL);
 
 	WNDCLASS tWndClass		= {};
@@ -195,7 +175,7 @@ gbResult gbOpenGL :: fRegisterWndClass()
 //==================================================================
 gbResult gbOpenGL :: fFullscreenWnd()
 {
-	gbLog("Setting up fullscreen/windowed screen", "\t");
+	GB_LINFO("Setting up fullscreen/windowed screen");
 	RECT tWindowRect;				
 	tWindowRect.left	=(long)0;			
 	tWindowRect.right	=(long)gb_g_wndWidth;		
@@ -216,21 +196,21 @@ gbResult gbOpenGL :: fFullscreenWnd()
 		{
 			if(MessageBox(NULL, "", "", MB_YESNO | MB_ICONEXCLAMATION)==IDYES)
 			{
-				gbLog("Fullscreen not supported. Going back to windowed mode.", "\t\t");
+				GB_LINFO("Fullscreen not supported. Going back to windowed mode.");
 				gb_g_fullscreen		= FALSE;
 			}
 			else
 			{
-				gbLog("Error occured while during fullscreen", "\t\t");
+				GB_LERROR("Error occured while during fullscreen");
 				MessageBox(NULL, "", "", MB_OK | MB_ICONSTOP);
 				return GB_STOP;
 			}
 		}
 		else
-			gbLog("Fullscreen mode", "\t\t");
+			GB_LINFO("Fullscreen mode");
 	}
 	else
-		gbLog("Windowed mode", "\t\t");
+		GB_LINFO("Windowed mode");
 
 	if(gb_g_fullscreen)
 	{
@@ -256,7 +236,7 @@ gbResult gbOpenGL :: fFullscreenWnd()
 //==================================================================
 gbResult gbOpenGL :: fCreateOpenGLWnd()
 {
-	gbLog("Create window", "\t");
+	GB_LINFO("Create window");
 	gb_g_HWND	= CreateWindowEx( mDwExStyle, gb_g_wndName, gb_g_wndTitle, 
 		mDwStyle | WS_HSCROLL | WS_VSCROLL | WS_OVERLAPPEDWINDOW,
 		gb_g_wndX, gb_g_wndY, gb_g_wndWidth, gb_g_wndHeight, 
@@ -276,7 +256,7 @@ gbResult gbOpenGL :: fCreateOpenGLWnd()
 //==================================================================
 gbResult gbOpenGL :: fEnableOpenGL()
 {
-	gbLog("Enable OpenGL for window", "\t");
+	GB_LINFO("Enable OpenGL for window");
 	gb_g_HDC	= GetDC((HWND)gb_g_HWND);
 	
 	PIXELFORMATDESCRIPTOR tPfd;
@@ -314,7 +294,7 @@ gbResult gbOpenGL :: fEnableOpenGL()
 //==================================================================
 VOID gbOpenGL :: fInitializeOpenGL()
 {
-	gbLog("Initialize OpenGL", "\t");
+	GB_LINFO("Initialize OpenGL");
 	glLoadIdentity();
 	glEnable(GL_DEPTH_TEST);
 }
@@ -329,20 +309,5 @@ VOID gbOpenGL :: fInitializeOpenGL()
 //==================================================================
 VOID gbOpenGL :: fOnResize(int pWidth, int pHeight)
 {
-	/*
-	gbLog("Set (re-)size window properties and view options", "\t");
-	if(pWidth <= 0 || pHeight <= 0)
-		throw gbException(ERR_GL_VP_STR, ERR_GL_VP_ID);
 
-	gbLog("Set viewport", "\t\t");
-	glViewport(0, 0, pWidth, pHeight);
-
-	gbLog("Set persperctive", "\t\t");
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	gluPerspective(WND_FOV, (GLfloat)pWidth/(GLfloat)pHeight, WND_NEAR_DIST, WND_FAR_DIST);
-
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	*/
 }

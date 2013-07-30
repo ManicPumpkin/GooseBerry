@@ -18,18 +18,20 @@
 #include "gooseberry.h"
 
 //==================================================================
-//	Class
-//==================================================================
-/**
-	@class	gbLog
-	@brief	The log class writes errors, warnings and other messages 
-			into a file
-**/
+//	Functions
 //==================================================================
 GOOSEBERRY_API gbResult	gbInitializeLog();
 GOOSEBERRY_API gbResult	gbStopLog();
-GOOSEBERRY_API gbResult	gbLogProgramData(std::ofstream & pFileStream);
 GOOSEBERRY_API gbResult	gbLog(std::string pMsg);
 GOOSEBERRY_API gbResult	gbLog(std::string pMsg, std::string pSpace);
 GOOSEBERRY_API std::string	gbCurrentTime();
 GOOSEBERRY_API std::string	gbCurrentDate();
+
+//==================================================================
+//	Inline functions
+//==================================================================
+inline GOOSEBERRY_API VOID GB_LINFO(string pMsg)					{ gbLog("<td class=\"log_info\">" + pMsg + "</td>\n"); }
+inline GOOSEBERRY_API VOID GB_LWARNING(string pMsg)					{ gbLog("<td class=\"log_warning\">" + pMsg + "</td>\n"); }
+inline GOOSEBERRY_API VOID GB_LERROR(string pMsg)					{ gbLog("<td class=\"log_error\">" + pMsg + "</td>\n");  }
+inline GOOSEBERRY_API VOID GB_LEXCEPTION(string pMsg, string pID)	{ gbLog("<td class=\"log_exception\">" + pMsg + "<" + pID + "></td>\n"); }
+inline GOOSEBERRY_API VOID GB_MSGBOXERR(LPCSTR pMsg, LPCSTR pID)	{ MessageBox(NULL, pMsg, pID, MB_OK | MB_ICONERROR); }

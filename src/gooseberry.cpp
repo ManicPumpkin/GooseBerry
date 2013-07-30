@@ -34,7 +34,7 @@ bool		gb_g_init		= FALSE;
 bool		gb_g_active		= TRUE;
 bool		gb_g_keys[256];
 
-gbOpenGL *	gb_g_openGL		= NULL;
+//gbOpenGL *	gb_g_openGL		= NULL;
 
 //==================================================================
 /**
@@ -44,12 +44,7 @@ gbOpenGL *	gb_g_openGL		= NULL;
 //==================================================================
 GOOSEBERRY_API gbResult gbExit()
 {
-	if(gb_g_openGL)	
-	{
-		gb_g_openGL->fExitWnd();
-		delete gb_g_openGL;
-	}
-
+	gbStopLog();
 	return GB_OK;
 }
 
@@ -64,11 +59,8 @@ GOOSEBERRY_API gbResult gbInitialize()
 	if(!gb_g_init)
 	{
 		gbInitializeLog();
-		gbLog("Initialize GooseBerry");
+		GB_LINFO("Initialize GooseBerry");
 	}
-
-	gb_g_openGL		= new gbOpenGL();
-	if(gb_g_openGL->fStartWnd()) return GB_STOP;
 
 	gb_g_init = TRUE;
 	return GB_OK;

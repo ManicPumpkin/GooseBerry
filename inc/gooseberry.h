@@ -49,11 +49,11 @@ using namespace std;
 //==================================================================
 //	DEFINES
 //==================================================================
-#define DEBUG_MODE		TRUE
-#define LOG_ONCE		FALSE
-#define LOG_FILE		"logfile.txt"
-#define LOG_PATH		".\\out\\"
-#define LOG_FILEPATH	LOG_PATH LOG_FILE
+#define DEBUG_MODE					TRUE
+#define LOG_ONCE					FALSE
+#define LOG_FILE					"logfile.html"
+#define LOG_PATH					".\\log\\"
+#define LOG_FILEPATH				LOG_PATH LOG_FILE
 
 //==================================================================
 //	GLOBALS

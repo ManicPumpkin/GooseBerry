@@ -24,6 +24,13 @@
 //==================================================================
 GOOSEBERRY_API gbResult gbStopLog()
 {
+	std::ofstream tFileStream;
+	tFileStream.open(LOG_FILEPATH, std::fstream::in | std::fstream::app);
+	
+	if(tFileStream.is_open())
+		tFileStream << "</table></html></head>\n";
+
+	tFileStream.close();
 	return GB_OK;
 }
 
@@ -41,7 +48,7 @@ GOOSEBERRY_API gbResult gbLog(std::string pMsg)
 	tFileStream.open(LOG_FILEPATH, std::fstream::in | std::fstream::app);
 
 	if(tFileStream.is_open())
-		tFileStream << gbCurrentDate() << " " << gbCurrentTime() << "\t> " << pMsg << "\n";
+		tFileStream << "<tr><th>" << gbCurrentTime() << "</th>" << pMsg;
 	
 	tFileStream.close();
 	return GB_OK;
@@ -62,7 +69,7 @@ GOOSEBERRY_API gbResult gbLog(std::string pMsg, std::string pSpace)
 	tFileStream.open(LOG_FILEPATH, std::fstream::in | std::fstream::app);
 
 	if(tFileStream.is_open())
-		tFileStream << gbCurrentDate() << " " << gbCurrentTime() << pSpace << "\t> " << pMsg << "\n";
+		tFileStream << " " << gbCurrentTime() << pSpace << "\t> " << pMsg << "\n";
 	
 	tFileStream.close();
 	return GB_OK;
@@ -83,36 +90,30 @@ GOOSEBERRY_API gbResult gbInitializeLog()
 	
 	if(tFileStream.is_open())
 	{
-		tFileStream << "**************************************************************************************************\n\n";
-		tFileStream << " " << gb_g_wndTitle << " - Logfile\n";
-		tFileStream << " ------------------------------------------------------------------------------------------------\n";
-		if(DEBUG_MODE)	gbLogProgramData(tFileStream);
-		tFileStream << " Time\t\t\t: " << gbCurrentTime() << "\n";
-		tFileStream << " Date\t\t\t: " << gbCurrentDate() << "\n\n";
-		tFileStream << "**************************************************************************************************\n\n";
+		tFileStream << "<html><head>\n";
+		tFileStream << "<title>" << gb_g_wndTitle << "-Log</title>\n";
+		tFileStream << "<link rel=\"stylesheet\" href=\"logfile.css\">\n";
+		tFileStream << "</head><body>\n";
+		tFileStream << "<hr class=\"divide_double\" />\n";
+		tFileStream << "<p id=\"header\">"<< gb_g_wndTitle <<" - Logfile</p>\n";
+		tFileStream << "<hr class=\"divide_simple\" />\n\n";
+		tFileStream << "<table id=\"game_info\">\n";
+		tFileStream << "<tr><th>window class name</th><td>:</td><td>"<< gb_g_wndName <<"</td></tr>\n";
+		tFileStream << "<tr><th>window name</th><td>:</td><td>"<< gb_g_wndTitle <<"</td></tr>\n";
+		tFileStream << "<tr><th>color</th><td>:</td><td>"<< gb_g_bitsColor <<"</td></tr>\n";
+		tFileStream << "<tr><th>depth</th><td>:</td><td>"<< gb_g_bitsDepth <<"</td></tr>\n";
+		tFileStream << "<tr><th>alpha</th><td>:</td><td>"<< gb_g_bitsAlpha <<"</td></tr>\n";
+		tFileStream << "</table>\n";
+		tFileStream << "<hr class=\"divide_simple\" />\n\n";
+		tFileStream << "<table id=\"game_date\">\n";
+		tFileStream << "<tr><th>time</th><td>:</td><td>"<< gbCurrentTime() <<"</td></tr>\n";
+		tFileStream << "<tr><th>date</th><td>:</td><td>"<< gbCurrentDate() <<"</td></tr>\n";
+		tFileStream << "</table>\n";
+		tFileStream << "<hr class=\"divide_double\" />\n";
+		tFileStream << "<table id=\"game_log\">\n";
 	}
 
 	tFileStream.close();
-	return GB_OK;
-}
-
-//==================================================================
-/**
-		@fn		gbLogProgramData(std::ofstream & pFileStream)
-		@brief	Logs program data if debug mode is true
-		@return	VOID
-**/
-//==================================================================
-GOOSEBERRY_API gbResult gbLogProgramData(std::ofstream & pFileStream)
-{
-	pFileStream << " Window class name\t: " << gb_g_wndName << "\n";
-	pFileStream << " Window name\t\t: " << gb_g_wndTitle << "\n";
-	pFileStream << " Window size\t\t: " << gb_g_wndWidth << "x" << gb_g_wndHeight << " Pixel\n";
-	pFileStream << " Color\t\t\t: " << gb_g_bitsColor << "bits\n";
-	pFileStream << " Depth\t\t\t: " << gb_g_bitsDepth << "bits\n";
-	pFileStream << " Alpha\t\t\t: " << gb_g_bitsAlpha << "bits\n";
-	pFileStream << " ------------------------------------------------------------------------------------------------\n";
-
 	return GB_OK;
 }
 
