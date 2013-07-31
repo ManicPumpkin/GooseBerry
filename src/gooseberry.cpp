@@ -65,3 +65,63 @@ GOOSEBERRY_API gbResult gbInitialize()
 	gb_g_init = TRUE;
 	return GB_OK;
 }
+
+//==================================================================
+/**
+		@fn		gbExtractName(std::string pFile)
+		@param	pFile	name of file to extract
+		@brief	Extracts object name from file name
+		@return std::string tName
+**/
+//==================================================================
+std::string gbExtractName(std::string pFile)
+{
+	int tStartSubStr	= 0;
+	int tEndSubStr		= 0;
+
+	if(	strncmp("./", pFile.c_str(), 2) == 0 || strncmp("/", pFile.c_str(), 1) == 0)
+		tStartSubStr	= pFile.find_last_of("/") + 1;
+
+	tEndSubStr			= pFile.find_last_of(".");
+	return pFile.substr(tStartSubStr, tEndSubStr - tStartSubStr);
+}
+
+//==================================================================
+/**
+		@fn		gbExtractPath(std::string pFile)
+		@param	pFile	name of file to extract
+		@brief	Extracts path of file string
+		@return std::string tPath
+**/
+//==================================================================
+std::string gbExtractPath(std::string pFile)
+{
+	int tEndSubStr		= 0;
+
+	if(	strncmp("./", pFile.c_str(), 2) == 0 || strncmp("/", pFile.c_str(), 1) == 0)
+		tEndSubStr		= pFile.find_last_of("/") + 1;
+
+	return pFile.substr(0, tEndSubStr);
+}
+
+//==================================================================
+/**
+	@fn		gbSplitString
+	@brief	Split string into sub string
+	@param	pStr		std::string to split
+	@param	pToken		vector of tokens (sub strings)
+	@param	pSeperator	delemiter
+**/
+//==================================================================
+VOID gbSplitString(const string& pStr, vector<string>& pToken, const string& pSeperator)
+{
+	string::size_type tLastPos	= pStr.find_first_not_of(pSeperator, 0);
+	string::size_type tPos		= pStr.find_first_of(pSeperator, tLastPos);
+
+	while(string::npos != tPos || string::npos != tLastPos)
+	{
+		pToken.push_back(pStr.substr(tLastPos, tPos - tLastPos));
+		tLastPos	= pStr.find_first_not_of(pSeperator, tPos);
+		tPos		= pStr.find_first_of(pSeperator, tLastPos);
+	}	
+}

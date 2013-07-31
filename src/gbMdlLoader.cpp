@@ -1,19 +1,17 @@
 /**
-	@file	cMdlLoader.cpp
+	@file	gbMdlLoader.cpp
 	@brief	This file includes all functions of cMdlLoader 
 			class
 	@author	drubner
-	@date	Created 2012-08-15
+	@date	Created 2013-07-31
 **/
 //==================================================================
 //	Include
 //==================================================================
-#include "hLibraries.h"
-#include "hGlobal.h"
-//==================================================================
-#include "cMdl.h"
-#include "cMdlLoader.h"
-#include "cMatLoader.h"
+#include "gooseberry.h"
+#include "gbMdl.h"
+#include "gbMdlLoader.h"
+
 //==================================================================
 //	Functions
 //==================================================================
@@ -22,9 +20,9 @@
 		@brief	Fuction to load and *.obj file
 **/
 //==================================================================
-cMdl cMdlLoader::fLoadObj(std::string pFile, bool pIsQuad)
+gbMdl gbMdlLoader::fLoadObj(std::string pFile, bool pIsQuad)
 {
-	cMdl tModel;
+	gbMdl tModel;
 
 	if(pIsQuad)
 		tModel.mIsTriangle	= FALSE;
@@ -34,11 +32,11 @@ cMdl cMdlLoader::fLoadObj(std::string pFile, bool pIsQuad)
 
 	if(tFileStream.is_open())
 	{
-		cGlobal::gLog("Count properties of object file: " + pFile, "\t\t");
+		GB_LINFO("Count properties of object file: " + pFile);
 	
 		tModel.mObjFile			= pFile;
-		tModel.mObjName			= cGlobal::gExtractName(pFile);
-		tModel.mMatPath			= cGlobal::gExtractPath(pFile);
+		tModel.mObjName			= gbExtractName(pFile); //cGlobal::gExtractName(pFile);
+		tModel.mMatPath			= gbExtractName(pFile); //cGlobal::gExtractPath(pFile);
 
 		std::string tBuffer, tTemp, tArr[4];
 		while(!tFileStream.eof())
@@ -59,16 +57,16 @@ cMdl cMdlLoader::fLoadObj(std::string pFile, bool pIsQuad)
 
 		tFileStream.close();
 
-		tModel.mFaces		= new grFace[tModel.mNumFaces];
-		tModel.mVertices	= new grVertex[tModel.mNumVertices];
-		tModel.mNormals		= new grNormal[tModel.mNumNormals];
-		tModel.mTexCoords	= new grTexCoord[tModel.mNumTexCoords];
+		tModel.mFaces		= new gb_g_face[tModel.mNumFaces];
+		tModel.mVertices	= new gb_g_vertex[tModel.mNumVertices];
+		tModel.mNormals		= new gb_g_normal[tModel.mNumNormals];
+		tModel.mTexCoords	= new gb_g_texCoord[tModel.mNumTexCoords];
 
 		tFileStream.open(pFile);
 		tFileStream.clear();
 		if(tFileStream.is_open())
 		{
-			cGlobal::gLog("Parse object file: " + pFile, "\t\t");
+			GB_LINFO("Parse object file: " + pFile);
 			
 			char * tToken	= "/";
 			bool tHasMat	= false;
@@ -125,20 +123,20 @@ cMdl cMdlLoader::fLoadObj(std::string pFile, bool pIsQuad)
 
 					tLine >> tTemp >> tArr[0] >> tArr[1] >> tArr[2] >> tArr[3];
 					std::vector<std::string> tStrings;
-					cGlobal::gSplitString(tArr[0], tStrings, tToken);
+					gbSplitString(tArr[0], tStrings, tToken);
 
 					tModel.mFaces[tF].vertex[0]		= atoi(tStrings[0].c_str());
 					tModel.mFaces[tF].texcoord[0]	= atoi(tStrings[1].c_str());
 					tModel.mFaces[tF].normal[0]		= atoi(tStrings[2].c_str());
 
 					tStrings.clear();
-					cGlobal::gSplitString(tArr[1], tStrings, tToken);
+					gbSplitString(tArr[1], tStrings, tToken);
 					tModel.mFaces[tF].vertex[1]		= atoi(tStrings[0].c_str());
 					tModel.mFaces[tF].texcoord[1]	= atoi(tStrings[1].c_str());
 					tModel.mFaces[tF].normal[1]		= atoi(tStrings[2].c_str());
 
 					tStrings.clear();
-					cGlobal::gSplitString(tArr[2], tStrings, tToken);
+					gbSplitString(tArr[2], tStrings, tToken);
 					tModel.mFaces[tF].vertex[2]		= atoi(tStrings[0].c_str());
 					tModel.mFaces[tF].texcoord[2]	= atoi(tStrings[1].c_str());
 					tModel.mFaces[tF].normal[2]		= atoi(tStrings[2].c_str());
@@ -150,7 +148,7 @@ cMdl cMdlLoader::fLoadObj(std::string pFile, bool pIsQuad)
 						tModel.mIsTriangle	= FALSE;
 						
 						tStrings.clear();
-						cGlobal::gSplitString(tArr[3], tStrings, tToken);
+						gbSplitString(tArr[3], tStrings, tToken);
 						tModel.mFaces[tF].vertex[3]		= atoi(tStrings[0].c_str());
 						tModel.mFaces[tF].texcoord[3]	= atoi(tStrings[1].c_str());
 						tModel.mFaces[tF].normal[3]		= atoi(tStrings[2].c_str());
@@ -162,12 +160,13 @@ cMdl cMdlLoader::fLoadObj(std::string pFile, bool pIsQuad)
 
 			tFileStream.close();
 
+			/*
 			if(tHasMat)
 			{
-				cMatLoader tMatLoader;
+				gbMatLoader tMatLoader;
 				tModel.mMaterial = tMatLoader.fLoadMat(tModel.mMatPath + tModel.mMtllib);
 			}
-
+			*/
 			/*
 			glGenBuffers(1, &tModel.mVertexID);
 			glBindBuffer(GL_ARRAY_BUFFER, tModel.mVertexID);
@@ -179,10 +178,10 @@ cMdl cMdlLoader::fLoadObj(std::string pFile, bool pIsQuad)
 			*/
 		}
 		else // \todo include define error str and id
-			cGlobal::gLog("Error while counting properties of file: " + pFile);
+			GB_LERROR("Error while counting properties of file: " + pFile);
 	}
 	else // \todo include define error str and id
-		cGlobal::gLog("Error while open file: " + pFile);
+		GB_LERROR("Error while open file: " + pFile);
 
 	return tModel;
 }

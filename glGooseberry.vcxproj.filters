@@ -51,6 +51,12 @@
     <ClCompile Include="src\gooseberry.cpp">
       <Filter>Quelldateien\base</Filter>
     </ClCompile>
+    <ClCompile Include="src\gbMdl.cpp">
+      <Filter>Quelldateien\mdl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gbMdlLoader.cpp">
+      <Filter>Quelldateien\mdl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\gbDefines.h">
@@ -70,6 +76,12 @@
     </ClInclude>
     <ClInclude Include="inc\gooseberry.h">
       <Filter>Headerdateien\base</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\gbMdl.h">
+      <Filter>Headerdateien\mdl</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\gbMdlLoader.h">
+      <Filter>Headerdateien\mdl</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

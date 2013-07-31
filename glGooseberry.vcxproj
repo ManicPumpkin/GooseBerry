@@ -13,6 +13,8 @@
   <ItemGroup>
     <ClCompile Include="src\gbException.cpp" />
     <ClCompile Include="src\gbLog.cpp" />
+    <ClCompile Include="src\gbMdl.cpp" />
+    <ClCompile Include="src\gbMdlLoader.cpp" />
     <ClCompile Include="src\gbOpenGL.cpp" />
     <ClCompile Include="src\gooseberry.cpp" />
   </ItemGroup>
@@ -21,6 +23,8 @@
     <ClInclude Include="inc\gbErrors.h" />
     <ClInclude Include="inc\gbException.h" />
     <ClInclude Include="inc\gbLog.h" />
+    <ClInclude Include="inc\gbMdl.h" />
+    <ClInclude Include="inc\gbMdlLoader.h" />
     <ClInclude Include="inc\gbOpenGL.h" />
     <ClInclude Include="inc\gooseberry.h" />
   </ItemGroup>
@@ -64,7 +68,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_WINDLL;%(PreprocessorDefinitions);GOOSEBERRY_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDLL;%(PreprocessorDefinitions);GOOSEBERRY_EXPORTS;STL_EXPORTS</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

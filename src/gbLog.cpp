@@ -56,27 +56,6 @@ GOOSEBERRY_API gbResult gbLog(std::string pMsg)
 
 //==================================================================
 /**
-		@fn		gbLog()
-		@brief	Log a message into the mFile file
-		@param	pMsg	Message to log
-		@param  pSpace	Space in log file 
-		@return	VOID
-**/
-//==================================================================
-GOOSEBERRY_API gbResult gbLog(std::string pMsg, std::string pSpace)
-{
-	std::ofstream tFileStream;
-	tFileStream.open(LOG_FILEPATH, std::fstream::in | std::fstream::app);
-
-	if(tFileStream.is_open())
-		tFileStream << " " << gbCurrentTime() << pSpace << "\t> " << pMsg << "\n";
-	
-	tFileStream.close();
-	return GB_OK;
-}
-
-//==================================================================
-/**
 		@fn		gbInitializeLog()
 		@brief	Makes log file ready for logging operations
 		@return	VOID
@@ -126,17 +105,16 @@ GOOSEBERRY_API gbResult gbInitializeLog()
 //==================================================================
 GOOSEBERRY_API std::string gbCurrentTime()
 {
-	time_t tRawTime;
-	struct tm tTimeInfo;
+	time_t		tRawTime;
+	struct tm	tTimeInfo;
+	char		tTimeBuffer[16]	= "HH:MM:SS";
 
 	time(&tRawTime);
 	localtime_s(&tTimeInfo, &tRawTime);
-	
-	std::stringstream tSStream;
-	tSStream << tTimeInfo.tm_hour << ":" << tTimeInfo.tm_min << ":"
-		<< tTimeInfo.tm_sec;
+	strftime(tTimeBuffer, sizeof(tTimeBuffer), "%H:%M:%S", &tTimeInfo);
 
-	return tSStream.str();
+	//return tSStream.str();
+	return tTimeBuffer;
 }
 
 //==================================================================

@@ -1,16 +1,17 @@
 /**
-	@file	cMdlLoader.h
+	@file	gbMdlLoader.h
 	@brief	Includes class of model object loader
 	@author	drubner
-	@date	2012-11-24
+	@date	2013-07-31
 **/
 //==================================================================
-#ifndef CMDLLOADER_H
-#define CMDLLOADER_H
+#pragma once
+
 //==================================================================
 //	INCLUDE
 //==================================================================
-#include "cMdl.h"
+#include "gbMdl.h"
+
 //==================================================================
 //	CLASS
 //==================================================================
@@ -19,12 +20,12 @@
 		@brief	Loads an model object out of file
 **/
 //==================================================================
-public class cMdlLoader 
+class GOOSEBERRY_API gbMdlLoader 
 {
 	public:
 		//	Variables
 		//	Functions
-		cMdl	fLoadObj(std::string pFile, bool pIsQuad = FALSE);
+		gbMdl	fLoadObj(std::string pFile, bool pIsQuad = FALSE);
 
 	private:
 		//	Variables
@@ -32,6 +33,3 @@ public class cMdlLoader
 
 	protected:
 };
-//==================================================================
-#endif CMDLLOADER_H
-//==================================================================

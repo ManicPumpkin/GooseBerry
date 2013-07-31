@@ -92,6 +92,10 @@ enum gbResult
 GOOSEBERRY_API gbResult gbInitialize();
 GOOSEBERRY_API gbResult gbExit();
 
+std::string gbExtractName(std::string pFile);
+std::string gbExtractPath(std::string pFile);
+VOID		gbSplitString(const string& pStr, vector<string>& pToken, const string& pSeperator);
+
 //==================================================================
 //	INCLUDE HEADER OF ENGINE
 //==================================================================

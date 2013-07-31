@@ -1,14 +1,15 @@
 //==================================================================
 /**
-		@file	cMdl.cpp
+		@file	gbMdl.cpp
 		@brief	This file includes all functions of cMdl class
 		@author	drubner
-		@date	2012-08-20
+		@date	2013-07-31
 **/
 //==================================================================
 //	Include
 //==================================================================
-#include "cMdl.h"
+#include "gbMdl.h"
+
 //==================================================================
 //	Functions
 //==================================================================
@@ -17,7 +18,7 @@
 		@brief	Standard constructor
 **/
 //==================================================================
-cMdl::cMdl()
+gbMdl::gbMdl()
 {
 	mNumVertices	= 0;
 	mNumNormals		= 0;
@@ -37,7 +38,7 @@ cMdl::cMdl()
 				Deep copy an cMdl object with another.
 **/
 //==================================================================
-cMdl::cMdl(const cMdl& tRHS)
+gbMdl::gbMdl(const gbMdl& tRHS)
 {
 	this->mObjName		= tRHS.mObjName;
 	this->mObjFile		= tRHS.mObjFile;
@@ -48,12 +49,12 @@ cMdl::cMdl(const cMdl& tRHS)
 	this->mNumVertices	= tRHS.mNumVertices;
 	this->mNumNormals	= tRHS.mNumNormals;
 	this->mNumTexCoords	= tRHS.mNumTexCoords;
-	this->mMaterial		= tRHS.mMaterial;
+	//this->mMaterial		= tRHS.mMaterial;
 
-	mFaces		= new grFace[mNumFaces];
-	mVertices	= new grVertex[mNumVertices];
-	mNormals	= new grNormal[mNumNormals];
-	mTexCoords	= new grTexCoord[mNumTexCoords];
+	mFaces		= new gb_g_face[mNumFaces];
+	mVertices	= new gb_g_vertex[mNumVertices];
+	mNormals	= new gb_g_normal[mNumNormals];
+	mTexCoords	= new gb_g_texCoord[mNumTexCoords];
 
 	for(unsigned int tI = 0; tI < mNumFaces; tI++)
 	{
@@ -86,7 +87,7 @@ cMdl::cMdl(const cMdl& tRHS)
 	}
 }
 //==================================================================
-cMdl::~cMdl()
+gbMdl::~gbMdl()
 {
 	fFreeMdl();
 }
@@ -97,7 +98,7 @@ cMdl::~cMdl()
 		@return	VOID
 **/
 //==================================================================
-VOID cMdl::fFreeMdl()
+VOID gbMdl::fFreeMdl()
 {
 	if(mFaces)		delete[] mFaces;
 	if(mVertices)	delete[] mVertices;
@@ -118,8 +119,9 @@ VOID cMdl::fFreeMdl()
 				with its normals and vertices.
 **/
 //==================================================================
-VOID cMdl::fDraw()
+VOID gbMdl::fDraw()
 {
+	/*
 	glDisable(GL_COLOR_MATERIAL);
 	if(mMaterial.mHasAmbient)
 		glMaterialfv(GL_FRONT, GL_AMBIENT, mMaterial.mAmbient);
@@ -135,6 +137,7 @@ VOID cMdl::fDraw()
 
 	if(mMaterial.mShininess >= 0)
 		glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, mMaterial.mShininess);
+	*/
 
 	glBegin(GL_TRIANGLES);
 	for(unsigned int i = 0; i < this->mNumFaces; i++)
