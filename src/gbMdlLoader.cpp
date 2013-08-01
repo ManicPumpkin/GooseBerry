@@ -178,10 +178,10 @@ gbMdl gbMdlLoader::fLoadObj(std::string pFile, bool pIsQuad)
 			*/
 		}
 		else // \todo include define error str and id
-			GB_LERROR("Error while counting properties of file: " + pFile);
+			GB_LERROR("Error while counting properties of file: " + pFile, "gbMdlLoader Error");
 	}
 	else // \todo include define error str and id
-		GB_LERROR("Error while open file: " + pFile);
+		GB_LERROR("Error while open file: " + pFile, "gbMdlLoader Error");
 
 	return tModel;
 }

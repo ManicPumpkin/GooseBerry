@@ -34,7 +34,88 @@ bool		gb_g_init		= FALSE;
 bool		gb_g_active		= TRUE;
 bool		gb_g_keys[256];
 
-//gbOpenGL *	gb_g_openGL		= NULL;
+//==================================================================
+/**
+	@fn		fInitialize
+	@brief	Initialize the game engine
+**/
+//==================================================================
+GOOSEBERRY_API gbResult gbInitialize()
+{
+	if(!gb_g_init)
+	{
+		gbInitializeLog();
+		GB_LINFO("GooseBerry initialized");
+	}
+
+	gb_g_init = TRUE;
+	return GB_OK;
+}
+
+//==================================================================
+/**
+	@fn		fInitialize
+	@brief	Initialize the game engine
+**/
+//==================================================================
+GOOSEBERRY_API gbResult gbMessageLoop()
+{
+	MSG			tMSG;
+	LONGLONG	tStartTime;
+	LONGLONG	tEndTime;
+	LONGLONG	tInitTime;
+	DOUBLE		tTime;
+	BOOL		tQuit	= FALSE;
+
+	GB_LINFO("Enter message loop");
+	QueryPerformanceCounter((LARGE_INTEGER*)(&tInitTime));
+	ZeroMemory(&tMSG, sizeof(tMSG));
+
+
+	while(!tQuit)
+	{
+		QueryPerformanceCounter((LARGE_INTEGER*)(&tStartTime));
+
+		while(PeekMessage(&tMSG, NULL, 0, 0, PM_REMOVE))
+		{
+			TranslateMessage(&tMSG);
+			DispatchMessage(&tMSG);
+
+			if(tMSG.message == WM_QUIT)
+				tQuit = TRUE;
+		}
+
+		if(gb_g_active)	
+		{
+			if(gb_g_keys[VK_ESCAPE])
+				tQuit	= TRUE;
+			else
+			{
+				// Draw
+				SwapBuffers(gb_g_HDC);
+			}
+		}
+
+		if(gb_g_keys[VK_F1])
+		{
+			gb_g_keys[VK_F1]	= FALSE;
+			gb_g_fullscreen	    = !gb_g_fullscreen;
+			gbExit();
+
+			if(gbInitialize()!=GB_OK)
+				throw gbException(ERR_WIN_FS_STR, ERR_WIN_FS_ID);
+		}
+
+		QueryPerformanceCounter((LARGE_INTEGER*)(&tEndTime));
+		if(tEndTime == tStartTime) 
+			tTime	= 0.0001;
+		else
+			tTime	= (tEndTime - tStartTime) / tInitTime;
+	}
+
+	GB_LINFO("Exit message loop");
+	return GB_OK;
+}
 
 //==================================================================
 /**
@@ -44,25 +125,8 @@ bool		gb_g_keys[256];
 //==================================================================
 GOOSEBERRY_API gbResult gbExit()
 {
+	GB_LINFO("Gooseberry stopped");
 	gbStopLog();
-	return GB_OK;
-}
-
-//==================================================================
-/**
-	@fn		gooseberry :: fInitialize
-	@brief	Initialize the game engine
-**/
-//==================================================================
-GOOSEBERRY_API gbResult gbInitialize()
-{
-	if(!gb_g_init)
-	{
-		gbInitializeLog();
-		GB_LINFO("Initialize GooseBerry");
-	}
-
-	gb_g_init = TRUE;
 	return GB_OK;
 }
 

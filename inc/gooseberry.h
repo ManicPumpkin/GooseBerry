@@ -90,6 +90,7 @@ enum gbResult
 //	FUNCTIONS
 //==================================================================
 GOOSEBERRY_API gbResult gbInitialize();
+GOOSEBERRY_API gbResult gbMessageLoop();
 GOOSEBERRY_API gbResult gbExit();
 
 std::string gbExtractName(std::string pFile);

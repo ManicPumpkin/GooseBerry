@@ -72,8 +72,6 @@ LONG WINAPI fWindowProc(HWND pHWND, UINT pMsg, WPARAM pWParam, LPARAM pLParam)
 gbOpenGL :: gbOpenGL()
 {
 	mInit	= FALSE;
-	//mMdlQueue	= new cMdlQueue();
-	//fCreateParams();
 }
 
 //==================================================================
@@ -103,18 +101,14 @@ gbResult gbOpenGL :: fStartWnd()
 		if(!mInit) 
 			fRegisterWndClass();
 
-		if(fFullscreenWnd()!=GB_OK) 
-			return GB_STOP;
-
+		fFullscreenWnd();
 		fCreateOpenGLWnd();
 		fEnableOpenGL();
 	}
 	catch(const gbException &tException)
 	{
-		string tStr = tException.fGetStr(); string tID = tException.fGetId();
-		GB_LEXCEPTION(tStr, tID);
+		GB_LERROR(tException.fGetStr(), tException.fGetId());
 		GB_MSGBOXERR(tException.fGetStr(), tException.fGetId());
-		gbStopLog();
 		return GB_STOP;
 	}
 
@@ -175,7 +169,7 @@ gbResult gbOpenGL :: fRegisterWndClass()
 //==================================================================
 gbResult gbOpenGL :: fFullscreenWnd()
 {
-	GB_LINFO("Setting up fullscreen/windowed screen");
+	GB_LINFO("Setting up screen mode");
 	RECT tWindowRect;				
 	tWindowRect.left	=(long)0;			
 	tWindowRect.right	=(long)gb_g_wndWidth;		
@@ -194,17 +188,13 @@ gbResult gbOpenGL :: fFullscreenWnd()
 
 		if(ChangeDisplaySettings(&tDmScreenSettings, CDS_FULLSCREEN)!=DISP_CHANGE_SUCCESSFUL)
 		{
-			if(MessageBox(NULL, "", "", MB_YESNO | MB_ICONEXCLAMATION)==IDYES)
+			if(MessageBox(NULL, ERR_GL_FS_STR, ERR_GL_FS_ID, MB_YESNO | MB_ICONEXCLAMATION)==IDYES)
 			{
-				GB_LINFO("Fullscreen not supported. Going back to windowed mode.");
+				GB_LWARNING("Fullscreen not supported. Going back to windowed mode.");
 				gb_g_fullscreen		= FALSE;
 			}
 			else
-			{
-				GB_LERROR("Error occured while during fullscreen");
-				MessageBox(NULL, "", "", MB_OK | MB_ICONSTOP);
-				return GB_STOP;
-			}
+				throw gbException(ERR_GL_FSEX_STR, ERR_GL_FSEX_ID);
 		}
 		else
 			GB_LINFO("Fullscreen mode");
