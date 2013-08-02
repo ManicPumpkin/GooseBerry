@@ -59,14 +59,14 @@ GOOSEBERRY_API gbResult gbInitialize()
 	@brief	Initialize the game engine
 **/
 //==================================================================
-GOOSEBERRY_API gbResult gbMessageLoop()
+GOOSEBERRY_API gbResult gbMessageLoop( gbResult (* pRender)(float) )
 {
 	MSG			tMSG;
-	LONGLONG	tStartTime;
-	LONGLONG	tEndTime;
-	LONGLONG	tInitTime;
-	DOUBLE		tTime;
-	BOOL		tQuit	= FALSE;
+	LONGLONG	tStartTime	= 0.0f;
+	LONGLONG	tEndTime	= 0.0f;
+	LONGLONG	tInitTime	= 0.0f;
+	DOUBLE		tTime		= 0.0f;
+	BOOL		tQuit		= FALSE;
 
 	GB_LDEBUG("Enter message loop");
 	QueryPerformanceCounter((LARGE_INTEGER*)(&tInitTime));
@@ -92,7 +92,7 @@ GOOSEBERRY_API gbResult gbMessageLoop()
 				tQuit	= TRUE;
 			else
 			{
-				// Draw
+				pRender((float)tTime);
 				SwapBuffers(gb_g_HDC);
 			}
 		}
