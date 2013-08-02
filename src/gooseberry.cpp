@@ -31,6 +31,7 @@ int			gb_g_bitsDepth	= -1;
 int			gb_g_bitsAlpha	= -1;
 bool		gb_g_fullscreen = FALSE;
 bool		gb_g_init		= FALSE;
+bool		gb_g_debug		= FALSE;
 bool		gb_g_active		= TRUE;
 bool		gb_g_keys[256];
 
@@ -45,7 +46,7 @@ GOOSEBERRY_API gbResult gbInitialize()
 	if(!gb_g_init)
 	{
 		gbInitializeLog();
-		GB_LINFO("GooseBerry initialized");
+		GB_LDEBUG("GooseBerry initialized");
 	}
 
 	gb_g_init = TRUE;
@@ -67,7 +68,7 @@ GOOSEBERRY_API gbResult gbMessageLoop()
 	DOUBLE		tTime;
 	BOOL		tQuit	= FALSE;
 
-	GB_LINFO("Enter message loop");
+	GB_LDEBUG("Enter message loop");
 	QueryPerformanceCounter((LARGE_INTEGER*)(&tInitTime));
 	ZeroMemory(&tMSG, sizeof(tMSG));
 
@@ -113,7 +114,7 @@ GOOSEBERRY_API gbResult gbMessageLoop()
 			tTime	= (tEndTime - tStartTime) / tInitTime;
 	}
 
-	GB_LINFO("Exit message loop");
+	GB_LDEBUG("Exit message loop");
 	return GB_OK;
 }
 
@@ -125,7 +126,7 @@ GOOSEBERRY_API gbResult gbMessageLoop()
 //==================================================================
 GOOSEBERRY_API gbResult gbExit()
 {
-	GB_LINFO("Gooseberry stopped");
+	GB_LDEBUG("Gooseberry stopped");
 	gbStopLog();
 	return GB_OK;
 }

@@ -71,6 +71,7 @@ LONG WINAPI fWindowProc(HWND pHWND, UINT pMsg, WPARAM pWParam, LPARAM pLParam)
 //==================================================================
 gbOpenGL :: gbOpenGL()
 {
+	GB_LINFO("OpenGL");
 	mInit	= FALSE;
 }
 
@@ -97,7 +98,7 @@ gbResult gbOpenGL :: fStartWnd()
 {
 	try
 	{
-		GB_LINFO("Initialize and create OpenGL window");
+		GB_LDEBUG("Initialize and create OpenGL window");
 		if(!mInit) 
 			fRegisterWndClass();
 
@@ -124,7 +125,7 @@ gbResult gbOpenGL :: fStartWnd()
 //==================================================================
 gbResult gbOpenGL :: fExitWnd()
 {
-	GB_LINFO("Close and destroy OpenGL window");
+	GB_LDEBUG("Close and destroy OpenGL window");
 	wglMakeCurrent(NULL, NULL);
 	ReleaseDC(gb_g_HWND, gb_g_HDC);
 	wglDeleteContext(gb_g_HGLRC);
@@ -140,7 +141,7 @@ gbResult gbOpenGL :: fExitWnd()
 //==================================================================
 gbResult gbOpenGL :: fRegisterWndClass()
 {
-	GB_LINFO("Register window class");
+	GB_LDEBUG("Register window class");
 	gb_g_hinstance	= GetModuleHandle(NULL);
 
 	WNDCLASS tWndClass		= {};
@@ -169,7 +170,7 @@ gbResult gbOpenGL :: fRegisterWndClass()
 //==================================================================
 gbResult gbOpenGL :: fFullscreenWnd()
 {
-	GB_LINFO("Setting up screen mode");
+	GB_LDEBUG("Setting up screen mode");
 	RECT tWindowRect;				
 	tWindowRect.left	=(long)0;			
 	tWindowRect.right	=(long)gb_g_wndWidth;		
@@ -226,7 +227,7 @@ gbResult gbOpenGL :: fFullscreenWnd()
 //==================================================================
 gbResult gbOpenGL :: fCreateOpenGLWnd()
 {
-	GB_LINFO("Create window");
+	GB_LDEBUG("Create window");
 	gb_g_HWND	= CreateWindowEx( mDwExStyle, gb_g_wndName, gb_g_wndTitle, 
 		mDwStyle | WS_HSCROLL | WS_VSCROLL | WS_OVERLAPPEDWINDOW,
 		gb_g_wndX, gb_g_wndY, gb_g_wndWidth, gb_g_wndHeight, 
@@ -246,7 +247,7 @@ gbResult gbOpenGL :: fCreateOpenGLWnd()
 //==================================================================
 gbResult gbOpenGL :: fEnableOpenGL()
 {
-	GB_LINFO("Enable OpenGL for window");
+	GB_LDEBUG("Enable OpenGL for window");
 	gb_g_HDC	= GetDC((HWND)gb_g_HWND);
 	
 	PIXELFORMATDESCRIPTOR tPfd;
@@ -284,7 +285,7 @@ gbResult gbOpenGL :: fEnableOpenGL()
 //==================================================================
 VOID gbOpenGL :: fInitializeOpenGL()
 {
-	GB_LINFO("Initialize OpenGL");
+	GB_LDEBUG("Initialize OpenGL");
 	glLoadIdentity();
 	glEnable(GL_DEPTH_TEST);
 }

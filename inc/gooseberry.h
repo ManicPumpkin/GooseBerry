@@ -73,6 +73,7 @@ GOOSEBERRY_API extern int			gb_g_bitsDepth;
 GOOSEBERRY_API extern int			gb_g_bitsAlpha;
 GOOSEBERRY_API extern bool			gb_g_fullscreen;
 GOOSEBERRY_API extern bool			gb_g_active;
+GOOSEBERRY_API extern bool			gb_g_debug;
 GOOSEBERRY_API extern bool			gb_g_init;
 GOOSEBERRY_API extern bool			gb_g_keys[256];
 
