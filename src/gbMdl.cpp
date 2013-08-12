@@ -1,7 +1,7 @@
 //==================================================================
 /**
 		@file	gbMdl.cpp
-		@brief	This file includes all functions of cMdl class
+		@brief	This file includes all functions of gbMdl class
 		@author	drubner
 		@date	2013-07-31
 **/
@@ -14,7 +14,7 @@
 //	Functions
 //==================================================================
 /**
-		@fn		cMdl::cMdl()
+		@fn		gbMdl::gbMdl()
 		@brief	Standard constructor
 **/
 //==================================================================
@@ -32,10 +32,10 @@ gbMdl::gbMdl()
 }
 //==================================================================
 /**
-		@fn		cMdl::cMdl(const cMdl& tRHS)
+		@fn		gbMdl::gbMdl(const gbMdl& tRHS)
 		@brief	copy constructor for deep copy
 
-				Deep copy an cMdl object with another.
+				Deep copy an gbMdl object with another.
 **/
 //==================================================================
 gbMdl::gbMdl(const gbMdl& tRHS)
@@ -93,7 +93,7 @@ gbMdl::~gbMdl()
 }
 //==================================================================
 /**
-		@fn		cMdl::fFreeMdl()
+		@fn		gbMdl::fFreeMdl()
 		@brief	Frees space of pointer arrays and set it to NULL
 		@return	VOID
 **/
@@ -112,7 +112,7 @@ VOID gbMdl::fFreeMdl()
 }
 //==================================================================
 /**
-		@fn		cMdl::fDraw()
+		@fn		gbMdl::fDraw()
 		@brief	Draw object and material
 
 				Initialize different materials and draw the triangle
@@ -159,8 +159,8 @@ VOID gbMdl::fDraw()
 			glTexCoord2f(	this->mTexCoords[this->mFaces[i].texcoord[j] - 1].u,
 							this->mTexCoords[this->mFaces[i].texcoord[j] - 1].v		);
 			*/
-			//cGlobal::gLog("face: " + cGlobal::gNumToStr<int>(i) + " vertex x:" + cGlobal::gNumToStr<float>(this->mVertices[this->mFaces[i].vertex[j] - 1].x) + " vertex y " + cGlobal::gNumToStr<float>(this->mVertices[this->mFaces[i].vertex[j] - 1].y) + " vertex z " + cGlobal::gNumToStr<float>(this->mVertices[this->mFaces[i].vertex[j] - 1].z));
-			//cGlobal::gLog("normal: " + cGlobal::gNumToStr<int>(i) + " normal x:" + cGlobal::gNumToStr<float>(this->mNormals[this->mFaces[i].normal[j] - 1].x) + " normal y " + cGlobal::gNumToStr<float>(this->mNormals[this->mFaces[i].normal[j] - 1].y) + " normal z " + cGlobal::gNumToStr<float>(this->mNormals[this->mFaces[i].normal[j] - 1].z));
+			//GB_LINFO("face: " + cGlobal::gNumToStr<int>(i) + " vertex x:" + cGlobal::gNumToStr<float>(this->mVertices[this->mFaces[i].vertex[j] - 1].x) + " vertex y " + cGlobal::gNumToStr<float>(this->mVertices[this->mFaces[i].vertex[j] - 1].y) + " vertex z " + cGlobal::gNumToStr<float>(this->mVertices[this->mFaces[i].vertex[j] - 1].z));
+			//GB_LINFO("normal: " + cGlobal::gNumToStr<int>(i) + " normal x:" + cGlobal::gNumToStr<float>(this->mNormals[this->mFaces[i].normal[j] - 1].x) + " normal y " + cGlobal::gNumToStr<float>(this->mNormals[this->mFaces[i].normal[j] - 1].y) + " normal z " + cGlobal::gNumToStr<float>(this->mNormals[this->mFaces[i].normal[j] - 1].z));
 		}
 	}
 	glEnd();

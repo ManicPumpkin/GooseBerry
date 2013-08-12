@@ -50,6 +50,7 @@ using namespace std;
 //	DEFINES
 //==================================================================
 #define DEBUG_MODE					TRUE
+#define ONLY_COMPILE				TRUE
 #define LOG_ONCE					FALSE
 #define LOG_FILE					"logfile.html"
 #define LOG_PATH					".\\log\\"
@@ -58,24 +59,24 @@ using namespace std;
 //==================================================================
 //	GLOBALS
 //==================================================================
-GOOSEBERRY_API extern HINSTANCE		gb_g_hinstance;
-GOOSEBERRY_API extern HWND			gb_g_HWND;
-GOOSEBERRY_API extern HDC			gb_g_HDC;
-GOOSEBERRY_API extern HGLRC			gb_g_HGLRC;
-GOOSEBERRY_API extern LPCSTR		gb_g_wndTitle;
-GOOSEBERRY_API extern LPCSTR		gb_g_wndName;
-GOOSEBERRY_API extern int			gb_g_wndWidth;
-GOOSEBERRY_API extern int			gb_g_wndHeight;
-GOOSEBERRY_API extern int			gb_g_wndX;
-GOOSEBERRY_API extern int			gb_g_wndY;
-GOOSEBERRY_API extern int			gb_g_bitsColor;
-GOOSEBERRY_API extern int			gb_g_bitsDepth;
-GOOSEBERRY_API extern int			gb_g_bitsAlpha;
-GOOSEBERRY_API extern bool			gb_g_fullscreen;
-GOOSEBERRY_API extern bool			gb_g_active;
-GOOSEBERRY_API extern bool			gb_g_debug;
-GOOSEBERRY_API extern bool			gb_g_init;
-GOOSEBERRY_API extern bool			gb_g_keys[256];
+GOOSEBERRY_API extern HINSTANCE		gb_g_hinstance;		//!< instance of program
+GOOSEBERRY_API extern HWND			gb_g_HWND;			//!< handle to window
+GOOSEBERRY_API extern HDC			gb_g_HDC;			//!< device context
+GOOSEBERRY_API extern HGLRC			gb_g_HGLRC;			//!< 
+GOOSEBERRY_API extern LPCSTR		gb_g_wndTitle;		//!< title of window
+GOOSEBERRY_API extern LPCSTR		gb_g_wndName;		//!< name of window
+GOOSEBERRY_API extern int			gb_g_wndWidth;		//!< window width
+GOOSEBERRY_API extern int			gb_g_wndHeight;		//!< window height
+GOOSEBERRY_API extern int			gb_g_wndX;			//!< window x
+GOOSEBERRY_API extern int			gb_g_wndY;			//!< window y
+GOOSEBERRY_API extern int			gb_g_bitsColor;		//!< color bits
+GOOSEBERRY_API extern int			gb_g_bitsDepth;		//!< color depth
+GOOSEBERRY_API extern int			gb_g_bitsAlpha;		//!< color alpha
+GOOSEBERRY_API extern bool			gb_g_fullscreen;	//!< window runs in fullscreen
+GOOSEBERRY_API extern bool			gb_g_active;		//!< window is active
+GOOSEBERRY_API extern bool			gb_g_debug;			//!< show debug messages in log file
+GOOSEBERRY_API extern bool			gb_g_init;			//!< gooseberry engine initialized
+GOOSEBERRY_API extern bool			gb_g_keys[256];		//!< all keys
 
 //==================================================================
 //	ENUM & STRUCTS
@@ -105,3 +106,6 @@ VOID		gbSplitString(const string& pStr, vector<string>& pToken, const string& pS
 #include "gbErrors.h"
 #include "gbLog.h"
 #include "gbOpenGL.h"
+#include "gbMdl.h"
+#include "gbMdlLoader.h"
+#include "gbMdlQueue.h"

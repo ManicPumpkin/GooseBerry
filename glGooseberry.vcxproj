@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\gbMdlQueue.cpp" />
     <ClCompile Include="src\gbException.cpp" />
     <ClCompile Include="src\gbLog.cpp" />
     <ClCompile Include="src\gbMdl.cpp" />
@@ -19,6 +20,7 @@
     <ClCompile Include="src\gooseberry.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="inc\gbMdlQueue.h" />
     <ClInclude Include="inc\gbDefines.h" />
     <ClInclude Include="inc\gbErrors.h" />
     <ClInclude Include="inc\gbException.h" />

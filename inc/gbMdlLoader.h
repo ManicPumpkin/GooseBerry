@@ -10,13 +10,18 @@
 //==================================================================
 //	INCLUDE
 //==================================================================
-#include "gbMdl.h"
+#include "gooseberry.h"
+
+//==================================================================
+//	PREDEFINITION
+//==================================================================
+class gbMdl;
 
 //==================================================================
 //	CLASS
 //==================================================================
 /**
-		@class	cMdlLoader
+		@class	gbMdlLoader
 		@brief	Loads an model object out of file
 **/
 //==================================================================
@@ -25,7 +30,7 @@ class GOOSEBERRY_API gbMdlLoader
 	public:
 		//	Variables
 		//	Functions
-		gbMdl	fLoadObj(std::string pFile, bool pIsQuad = FALSE);
+		gbMdl fLoadObj(std::string pFile, bool pIsQuad = FALSE);
 
 	private:
 		//	Variables

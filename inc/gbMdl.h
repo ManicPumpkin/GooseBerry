@@ -49,7 +49,7 @@ struct gb_g_face					//! Face struct
 //	Class
 //==================================================================
 /**
-	@class	cMdl
+	@class	gbMdl
 	@brief	Contains information about object/model files
 **/
 //==================================================================

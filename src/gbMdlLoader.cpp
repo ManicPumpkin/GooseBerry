@@ -1,6 +1,6 @@
 /**
 	@file	gbMdlLoader.cpp
-	@brief	This file includes all functions of cMdlLoader 
+	@brief	This file includes all functions of gbMdlLoader 
 			class
 	@author	drubner
 	@date	Created 2013-07-31
@@ -8,15 +8,15 @@
 //==================================================================
 //	Include
 //==================================================================
-#include "gooseberry.h"
-#include "gbMdl.h"
+//#include "gooseberry.h"
 #include "gbMdlLoader.h"
+//#include "gbMdl.h"
 
 //==================================================================
 //	Functions
 //==================================================================
 /**
-		@fn		cMdlLoader::fLoadObj(std::string pFile)
+		@fn		gbMdlLoader::fLoadObj(std::string pFile)
 		@brief	Fuction to load and *.obj file
 **/
 //==================================================================
@@ -35,8 +35,8 @@ gbMdl gbMdlLoader::fLoadObj(std::string pFile, bool pIsQuad)
 		GB_LINFO("Count properties of object file: " + pFile);
 	
 		tModel.mObjFile			= pFile;
-		tModel.mObjName			= gbExtractName(pFile); //cGlobal::gExtractName(pFile);
-		tModel.mMatPath			= gbExtractName(pFile); //cGlobal::gExtractPath(pFile);
+		tModel.mObjName			= gbExtractName(pFile); 
+		tModel.mMatPath			= gbExtractName(pFile);
 
 		std::string tBuffer, tTemp, tArr[4];
 		while(!tFileStream.eof())
@@ -175,7 +175,7 @@ gbMdl gbMdlLoader::fLoadObj(std::string pFile, bool pIsQuad)
 			glGenBuffers(1, &tModel.mIndexID);
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, tModel.mIndexID);
 			glBufferData(GL_ELEMENT_ARRAY_BUFFER, tModel.mNumFaces * sizeof(grFace), tModel.mFaces, GL_STATIC_DRAW);
-			*/
+			*/ 
 		}
 		else // \todo include define error str and id
 			GB_LERROR("Error while counting properties of file: " + pFile, "gbMdlLoader Error");

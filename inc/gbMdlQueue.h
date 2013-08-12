@@ -1,40 +1,40 @@
 /**
-	@file	cMdlQueue.h
-	@brief	Includes cMdlQueue class
+	@file	gbMdlQueue.h
+	@brief	Includes gbMdlQueue class
 	@author	drubner
 	@date	2012-11-26
 **/
 //==================================================================
-#ifndef CMDLQUEUE_H
-#define CMDLQUEUE_H
+#pragma once
+
 //==================================================================
 //	INCLUDE
 //==================================================================
-#include "hLibraries.h"
-//==================================================================
-#include "cMdl.h"
+#include "gooseberry.h"
+
 //==================================================================
 //	CLASS
 //==================================================================
 /**
-		@class	cMdlQueue
+		@class	gbMdlQueue
 		@brief	Implements queue to store model objects
 **/
 //==================================================================
-public class cMdlQueue 
+class GOOSEBERRY_API gbMdlQueue 
 {
 	public:
 		//	Variables
-		std::vector<cMdl> mModelQueue;		//!< model queue
+		std::vector<gbMdl> mModelQueue;		//!< model queue
 		
 		//	(De-)Constructor
-		cMdlQueue();
+		gbMdlQueue();
 
 		//	Functions
-		VOID fAddModel(cMdl pModel);					
+		VOID fAddModel(gbMdl pModel);					
 		BOOL fRemoveModelByName(std::string pMdlName);	
 		BOOL fRemoveModelByFile(std::string pFileName);	
-		cMdl* fGetMdlByID(int pID);
+		gbResult fGetMdlCpyByID(int pID, gbMdl * pMdl);
+		gbResult fGetMdlCpyByName(std::string pMdlName, gbMdl * pMdl);
 
 		//	Get & Set
 		int fGetSize() { return mModelQueue.size(); }
@@ -45,6 +45,3 @@ public class cMdlQueue
 
 	protected:
 };
-//==================================================================
-#endif CMDLQUEUE_H
-//==================================================================

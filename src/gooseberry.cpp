@@ -16,23 +16,23 @@
 //==================================================================
 //	Variables
 //==================================================================
-HINSTANCE	gb_g_hinstance	= NULL;
-HWND		gb_g_HWND		= NULL;
-HDC			gb_g_HDC		= NULL;
-HGLRC		gb_g_HGLRC		= NULL;
-LPCSTR		gb_g_wndTitle	= "";
-LPCSTR		gb_g_wndName	= "";
-int			gb_g_wndWidth	= -1;
-int			gb_g_wndHeight  = -1;
-int			gb_g_wndX		= -1;
-int			gb_g_wndY		= -1;
-int			gb_g_bitsColor	= -1;
-int			gb_g_bitsDepth	= -1;
-int			gb_g_bitsAlpha	= -1;
-bool		gb_g_fullscreen = FALSE;
-bool		gb_g_init		= FALSE;
-bool		gb_g_debug		= FALSE;
-bool		gb_g_active		= TRUE;
+HINSTANCE	gb_g_hinstance		= NULL;
+HWND		gb_g_HWND			= NULL;
+HDC			gb_g_HDC			= NULL;
+HGLRC		gb_g_HGLRC			= NULL;
+LPCSTR		gb_g_wndTitle		= "";
+LPCSTR		gb_g_wndName		= "";
+int			gb_g_wndWidth		= -1;
+int			gb_g_wndHeight		= -1;
+int			gb_g_wndX			= -1;
+int			gb_g_wndY			= -1;
+int			gb_g_bitsColor		= -1;
+int			gb_g_bitsDepth		= -1;
+int			gb_g_bitsAlpha		= -1;
+bool		gb_g_fullscreen		= FALSE;
+bool		gb_g_init			= FALSE;
+bool		gb_g_debug			= FALSE;
+bool		gb_g_active			= TRUE;
 bool		gb_g_keys[256];
 
 //==================================================================
@@ -72,7 +72,6 @@ GOOSEBERRY_API gbResult gbMessageLoop( gbResult (* pRender)(float) )
 	QueryPerformanceCounter((LARGE_INTEGER*)(&tInitTime));
 	ZeroMemory(&tMSG, sizeof(tMSG));
 
-
 	while(!tQuit)
 	{
 		QueryPerformanceCounter((LARGE_INTEGER*)(&tStartTime));
@@ -106,6 +105,9 @@ GOOSEBERRY_API gbResult gbMessageLoop( gbResult (* pRender)(float) )
 			if(gbInitialize()!=GB_OK)
 				throw gbException(ERR_WIN_FS_STR, ERR_WIN_FS_ID);
 		}
+
+		if(ONLY_COMPILE)
+			tQuit = TRUE;
 
 		QueryPerformanceCounter((LARGE_INTEGER*)(&tEndTime));
 		if(tEndTime == tStartTime) 

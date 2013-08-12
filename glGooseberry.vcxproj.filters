@@ -57,6 +57,9 @@
     <ClCompile Include="src\gbMdlLoader.cpp">
       <Filter>Quelldateien\mdl</Filter>
     </ClCompile>
+    <ClCompile Include="src\gbMdlQueue.cpp">
+      <Filter>Quelldateien\mdl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\gbDefines.h">
@@ -81,6 +84,9 @@
       <Filter>Headerdateien\mdl</Filter>
     </ClInclude>
     <ClInclude Include="inc\gbMdlLoader.h">
+      <Filter>Headerdateien\mdl</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\gbMdlQueue.h">
       <Filter>Headerdateien\mdl</Filter>
     </ClInclude>
   </ItemGroup>
