@@ -90,10 +90,15 @@ BOOL gbMdlQueue :: fRemoveModelByFile(std::string pFileName)
 		@return	gbMdl* pointer to model
 **/
 //==================================================================
-gbResult gbMdlQueue :: fGetMdlCpyByID(int pID, gbMdl * pMdl)
+gbResult gbMdlQueue :: fGetMdlCpyByID(gbMdl * pMdl, unsigned int pID)
 {
-	pMdl	= &mModelQueue[pID];
-	return GB_OK;
+	if(pID < mModelQueue.size())
+	{
+		*pMdl	= mModelQueue[pID];
+		return GB_OK;
+	}
+
+	return GB_ERROR;
 }
 //==================================================================
 /**
@@ -103,13 +108,13 @@ gbResult gbMdlQueue :: fGetMdlCpyByID(int pID, gbMdl * pMdl)
 		@return	gbMdl* pointer to model
 **/
 //==================================================================
-gbResult gbMdlQueue :: fGetMdlCpyByName(std::string pMdlName, gbMdl * pMdl)
+gbResult gbMdlQueue :: fGetMdlCpyByName(gbMdl * pMdl, std::string pMdlName)
 {
-	for(gbMdl tMdl : mModelQueue)
+	for(unsigned int i = 0; i < mModelQueue.size(); i++)
 	{
-		if(tMdl.mObjName == pMdlName)
+		if(mModelQueue[i].mObjName == pMdlName)
 		{
-			pMdl = &tMdl;
+			*pMdl = mModelQueue[i];
 			return GB_OK;
 		}
 	}

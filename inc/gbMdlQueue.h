@@ -33,8 +33,8 @@ class GOOSEBERRY_API gbMdlQueue
 		VOID fAddModel(gbMdl pModel);					
 		BOOL fRemoveModelByName(std::string pMdlName);	
 		BOOL fRemoveModelByFile(std::string pFileName);	
-		gbResult fGetMdlCpyByID(int pID, gbMdl * pMdl);
-		gbResult fGetMdlCpyByName(std::string pMdlName, gbMdl * pMdl);
+		gbResult fGetMdlCpyByID(gbMdl * pMdl, unsigned int pID);
+		gbResult fGetMdlCpyByName(gbMdl * pMdl, std::string pMdlName);
 
 		//	Get & Set
 		int fGetSize() { return mModelQueue.size(); }

@@ -9,6 +9,10 @@
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="WorldGen|Win32">
+      <Configuration>WorldGen</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\gbMdlQueue.cpp" />
@@ -16,10 +20,14 @@
     <ClCompile Include="src\gbLog.cpp" />
     <ClCompile Include="src\gbMdl.cpp" />
     <ClCompile Include="src\gbMdlLoader.cpp" />
+    <ClCompile Include="src\gbObj.cpp" />
     <ClCompile Include="src\gbOpenGL.cpp" />
+    <ClCompile Include="src\gbVector3f.cpp" />
     <ClCompile Include="src\gooseberry.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="inc\gbArray.h" />
+    <ClInclude Include="inc\gbConvert.h" />
     <ClInclude Include="inc\gbMdlQueue.h" />
     <ClInclude Include="inc\gbDefines.h" />
     <ClInclude Include="inc\gbErrors.h" />
@@ -27,7 +35,9 @@
     <ClInclude Include="inc\gbLog.h" />
     <ClInclude Include="inc\gbMdl.h" />
     <ClInclude Include="inc\gbMdlLoader.h" />
+    <ClInclude Include="inc\gbObj.h" />
     <ClInclude Include="inc\gbOpenGL.h" />
+    <ClInclude Include="inc\gbVector3f.h" />
     <ClInclude Include="inc\gooseberry.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -36,6 +46,12 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='WorldGen|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v110</PlatformToolset>
@@ -54,6 +70,9 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='WorldGen|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
@@ -62,11 +81,25 @@
     <IncludePath>extern\glut-3.7.6;inc\;$(IncludePath)</IncludePath>
     <LibraryPath>extern\glut-3.7.6;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='WorldGen|Win32'">
+    <IncludePath>extern\glut-3.7.6;inc\;$(IncludePath)</IncludePath>
+    <LibraryPath>extern\glut-3.7.6;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>img\mdl;inc\img;inc\help;inc\base;$(IncludePath)</IncludePath>
     <LibraryPath>extern\glut-3.7.6;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_WINDLL;%(PreprocessorDefinitions);GOOSEBERRY_EXPORTS;STL_EXPORTS</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='WorldGen|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>

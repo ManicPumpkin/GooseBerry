@@ -31,13 +31,12 @@ int			gb_g_bitsDepth		= -1;
 int			gb_g_bitsAlpha		= -1;
 bool		gb_g_fullscreen		= FALSE;
 bool		gb_g_init			= FALSE;
-bool		gb_g_debug			= FALSE;
 bool		gb_g_active			= TRUE;
 bool		gb_g_keys[256];
 
 //==================================================================
 /**
-	@fn		fInitialize
+	@fn		gbInitialize
 	@brief	Initialize the game engine
 **/
 //==================================================================
@@ -55,8 +54,8 @@ GOOSEBERRY_API gbResult gbInitialize()
 
 //==================================================================
 /**
-	@fn		fInitialize
-	@brief	Initialize the game engine
+	@fn		gbMessageLoop
+	@brief	Enter message loop
 **/
 //==================================================================
 GOOSEBERRY_API gbResult gbMessageLoop( gbResult (* pRender)(float) )
@@ -131,6 +130,21 @@ GOOSEBERRY_API gbResult gbExit()
 	GB_LDEBUG("Gooseberry stopped");
 	gbStopLog();
 	return GB_OK;
+}
+
+//==================================================================
+/**
+		@fn		gbIntToString(int pInt);
+		@param	pInt	int to convert
+		@brief	Converts int to string
+		@return std::string tString
+**/
+//==================================================================
+std::string gbIntToStr(int pInt)
+{
+	ostringstream tConvert;
+	tConvert << pInt;
+	return tConvert.str();
 }
 
 //==================================================================

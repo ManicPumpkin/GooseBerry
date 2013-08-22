@@ -150,7 +150,8 @@ VOID gbMdl::fDraw()
 				this->mNormals[this->mFaces[i].normal[j] - 1].y, 
 				this->mNormals[this->mFaces[i].normal[j] - 1].z
 			);
-			glVertex3f(
+			glVertex3f
+			(
 				this->mVertices[this->mFaces[i].vertex[j] - 1].x, 
 				this->mVertices[this->mFaces[i].vertex[j] - 1].y, 
 				this->mVertices[this->mFaces[i].vertex[j] - 1].z
@@ -159,8 +160,9 @@ VOID gbMdl::fDraw()
 			glTexCoord2f(	this->mTexCoords[this->mFaces[i].texcoord[j] - 1].u,
 							this->mTexCoords[this->mFaces[i].texcoord[j] - 1].v		);
 			*/
-			//GB_LINFO("face: " + cGlobal::gNumToStr<int>(i) + " vertex x:" + cGlobal::gNumToStr<float>(this->mVertices[this->mFaces[i].vertex[j] - 1].x) + " vertex y " + cGlobal::gNumToStr<float>(this->mVertices[this->mFaces[i].vertex[j] - 1].y) + " vertex z " + cGlobal::gNumToStr<float>(this->mVertices[this->mFaces[i].vertex[j] - 1].z));
-			//GB_LINFO("normal: " + cGlobal::gNumToStr<int>(i) + " normal x:" + cGlobal::gNumToStr<float>(this->mNormals[this->mFaces[i].normal[j] - 1].x) + " normal y " + cGlobal::gNumToStr<float>(this->mNormals[this->mFaces[i].normal[j] - 1].y) + " normal z " + cGlobal::gNumToStr<float>(this->mNormals[this->mFaces[i].normal[j] - 1].z));
+
+			//GB_LDEBUG("face: " + gbNumToStr<int>(i) + " vertex x:" + gbNumToStr<float>(this->mVertices[this->mFaces[i].vertex[j] - 1].x) + " vertex y " + gbNumToStr<float>(this->mVertices[this->mFaces[i].vertex[j] - 1].y) + " vertex z " + gbNumToStr<float>(this->mVertices[this->mFaces[i].vertex[j] - 1].z));
+			//GB_LDEBUG("normal: " + gbNumToStr<int>(i) + " normal x:" + gbNumToStr<float>(this->mNormals[this->mFaces[i].normal[j] - 1].x) + " normal y " + gbNumToStr<float>(this->mNormals[this->mFaces[i].normal[j] - 1].y) + " normal z " + gbNumToStr<float>(this->mNormals[this->mFaces[i].normal[j] - 1].z));
 		}
 	}
 	glEnd();

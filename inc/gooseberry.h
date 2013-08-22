@@ -20,7 +20,7 @@
 #pragma comment(lib, "glu32.lib")
 
 //==================================================================
-//	Include
+//	INCLUDE
 //==================================================================
 #include <Windows.h>
 #include <iostream>
@@ -45,16 +45,15 @@ using namespace std;
 //	FORWARD DECLARATIONS
 //==================================================================
 
-
 //==================================================================
 //	DEFINES
 //==================================================================
-#define DEBUG_MODE					TRUE
-#define ONLY_COMPILE				TRUE
-#define LOG_ONCE					FALSE
-#define LOG_FILE					"logfile.html"
-#define LOG_PATH					".\\log\\"
-#define LOG_FILEPATH				LOG_PATH LOG_FILE
+#define DEBUG_MODE				TRUE
+#define ONLY_COMPILE			FALSE
+#define LOG_ONCE				FALSE
+#define LOG_FILE				"logfile.html"
+#define LOG_PATH				".\\log\\"
+#define LOG_FILEPATH			LOG_PATH LOG_FILE
 
 //==================================================================
 //	GLOBALS
@@ -74,7 +73,6 @@ GOOSEBERRY_API extern int			gb_g_bitsDepth;		//!< color depth
 GOOSEBERRY_API extern int			gb_g_bitsAlpha;		//!< color alpha
 GOOSEBERRY_API extern bool			gb_g_fullscreen;	//!< window runs in fullscreen
 GOOSEBERRY_API extern bool			gb_g_active;		//!< window is active
-GOOSEBERRY_API extern bool			gb_g_debug;			//!< show debug messages in log file
 GOOSEBERRY_API extern bool			gb_g_init;			//!< gooseberry engine initialized
 GOOSEBERRY_API extern bool			gb_g_keys[256];		//!< all keys
 
@@ -88,8 +86,15 @@ enum gbResult
 	GB_STOP			= 2
 };
 
+struct gbColor
+{
+	int RED,
+		GREEN,
+		BLUE;
+};
+
 //==================================================================
-//	FUNCTIONS
+//	FUNCTION DECLARATION
 //==================================================================
 GOOSEBERRY_API gbResult gbInitialize();
 GOOSEBERRY_API gbResult gbMessageLoop(gbResult (*typRender)(float));
@@ -105,6 +110,9 @@ VOID		gbSplitString(const string& pStr, vector<string>& pToken, const string& pS
 #include "gbException.h"
 #include "gbErrors.h"
 #include "gbLog.h"
+#include "gbArray.h"
+#include "gbConvert.h"
+#include "gbVector3f.h"
 #include "gbOpenGL.h"
 #include "gbMdl.h"
 #include "gbMdlLoader.h"

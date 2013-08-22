@@ -30,7 +30,7 @@ GOOSEBERRY_API std::string	gbCurrentDate();
 //==================================================================
 //	Inline functions
 //==================================================================
-inline GOOSEBERRY_API VOID GB_LDEBUG(string pMsg)					{ if(gb_g_debug) gbLog("<td class=\"log_debug\">" + pMsg + "</td>\n"); }
+inline GOOSEBERRY_API VOID GB_LDEBUG(string pMsg)					{ if(DEBUG_MODE) gbLog("<td class=\"log_debug\">" + pMsg + "</td>\n"); }
 inline GOOSEBERRY_API VOID GB_LINFO(string pMsg)					{ gbLog("<td class=\"log_info\">" + pMsg + "</td>\n"); }
 inline GOOSEBERRY_API VOID GB_LWARNING(string pMsg)					{ gbLog("<td class=\"log_warning\">" + pMsg + "</td>\n"); }
 inline GOOSEBERRY_API VOID GB_LERROR(string pMsg, string pID)		{ gbLog("<td class=\"log_error\">" + pMsg + "<" + pID + "></td>\n"); }

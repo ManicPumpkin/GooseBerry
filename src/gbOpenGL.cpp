@@ -105,6 +105,8 @@ gbResult gbOpenGL :: fStartWnd()
 		fFullscreenWnd();
 		fCreateOpenGLWnd();
 		fEnableOpenGL();
+		fInitializeOpenGL();
+		fResizeOpenGLWnd(gb_g_wndWidth, gb_g_wndHeight);
 	}
 	catch(const gbException &tException)
 	{
@@ -172,10 +174,10 @@ gbResult gbOpenGL :: fFullscreenWnd()
 {
 	GB_LDEBUG("Setting up screen mode");
 	RECT tWindowRect;				
-	tWindowRect.left	=(long)0;			
-	tWindowRect.right	=(long)gb_g_wndWidth;		
-	tWindowRect.top		=(long)0;			
-	tWindowRect.bottom	=(long)gb_g_wndHeight;		
+	tWindowRect.left	= (long)0;			
+	tWindowRect.right	= (long)gb_g_wndWidth;		
+	tWindowRect.top		= (long)0;			
+	tWindowRect.bottom	= (long)gb_g_wndHeight;		
 
 	if(gb_g_fullscreen)
 	{
@@ -198,10 +200,10 @@ gbResult gbOpenGL :: fFullscreenWnd()
 				throw gbException(ERR_GL_FSEX_STR, ERR_GL_FSEX_ID);
 		}
 		else
-			GB_LINFO("Fullscreen mode");
+			GB_LDEBUG("Fullscreen mode");
 	}
 	else
-		GB_LINFO("Windowed mode");
+		GB_LDEBUG("Windowed mode");
 
 	if(gb_g_fullscreen)
 	{
@@ -287,18 +289,49 @@ VOID gbOpenGL :: fInitializeOpenGL()
 {
 	GB_LDEBUG("Initialize OpenGL");
 	glLoadIdentity();
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClearDepth(1.0f);
 	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LEQUAL);
+	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 }
 
 //==================================================================
 /**
-	@fn		gbOpenGL :: fOnResize
+	@fn		gbOpenGL :: fResizeOpenGLWnd
 	@brief	Called if window is resized
 	@param	pWidth		width of OpenGL window
 	@param	pHeight		heigh of OpenGL window
 **/
 //==================================================================
-VOID gbOpenGL :: fOnResize(int pWidth, int pHeight)
+gbResult gbOpenGL :: fResizeOpenGLWnd(int pWidth, int pHeight)
 {
+	if(pHeight == 0)
+		pHeight = 1;
 
+	glViewport(0, 0, pWidth, pHeight);
+
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluPerspective(45.0f, (GLfloat)pWidth / (GLfloat)pHeight, 0.1f, 100.0f);
+
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	return GB_OK;
+}
+
+gbResult gbOpenGL :: fDrawSimpleLine(gbVector3f pStart, gbVector3f pEnd)
+{
+	glBegin(GL_LINES);
+	glVertex3f(pStart.mX, pStart.mY, pStart.mZ);
+	glVertex3f(pEnd.mX, pEnd.mY, pEnd.mZ);
+	glEnd();
+}
+
+gbResult gbOpenGL :: fDrawSimpleLine(gbColor pColor, gbVector3f pStart, gbVector3f pEnd)
+{
+	glBegin(GL_LINES);
+	glVertex3f(pStart.mX, pStart.mY, pStart.mZ);
+	glVertex3f(pEnd.mX, pEnd.mY, pEnd.mZ);
+	glEnd();
 }
