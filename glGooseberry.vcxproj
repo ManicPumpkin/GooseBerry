@@ -15,6 +15,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\gbColor.cpp" />
     <ClCompile Include="src\gbMdlQueue.cpp" />
     <ClCompile Include="src\gbException.cpp" />
     <ClCompile Include="src\gbLog.cpp" />
@@ -22,11 +23,12 @@
     <ClCompile Include="src\gbMdlLoader.cpp" />
     <ClCompile Include="src\gbObj.cpp" />
     <ClCompile Include="src\gbOpenGL.cpp" />
-    <ClCompile Include="src\gbVector3f.cpp" />
+    <ClCompile Include="src\gbVector3d.cpp" />
     <ClCompile Include="src\gooseberry.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\gbArray.h" />
+    <ClInclude Include="inc\gbColor.h" />
     <ClInclude Include="inc\gbConvert.h" />
     <ClInclude Include="inc\gbMdlQueue.h" />
     <ClInclude Include="inc\gbDefines.h" />
@@ -37,8 +39,10 @@
     <ClInclude Include="inc\gbMdlLoader.h" />
     <ClInclude Include="inc\gbObj.h" />
     <ClInclude Include="inc\gbOpenGL.h" />
-    <ClInclude Include="inc\gbVector3f.h" />
+    <ClInclude Include="inc\gbVector2d.h" />
+    <ClInclude Include="inc\gbVector3d.h" />
     <ClInclude Include="inc\gooseberry.h" />
+    <ClInclude Include="src\gbVector2d.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B48CAD44-A997-4021-B570-51EF87757F24}</ProjectGuid>

@@ -75,8 +75,11 @@
     <ClCompile Include="src\gbObj.cpp">
       <Filter>Quelldateien\obj</Filter>
     </ClCompile>
-    <ClCompile Include="src\gbVector3f.cpp">
+    <ClCompile Include="src\gbVector3d.cpp">
       <Filter>Quelldateien\math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gbColor.cpp">
+      <Filter>Quelldateien\help</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -116,8 +119,17 @@
     <ClInclude Include="inc\gbObj.h">
       <Filter>Headerdateien\obj</Filter>
     </ClInclude>
-    <ClInclude Include="inc\gbVector3f.h">
+    <ClInclude Include="inc\gbVector3d.h">
       <Filter>Headerdateien\math</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\gbVector2d.h">
+      <Filter>Headerdateien\math</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gbVector2d.cpp">
+      <Filter>Quelldateien\math</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\gbColor.h">
+      <Filter>Headerdateien\help</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

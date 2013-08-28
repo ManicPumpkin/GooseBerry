@@ -1,8 +1,8 @@
 /**
-	@file	gbVector3f.h
-	@brief	Includes gbVector3f class
+	@file	gbVector2d.h
+	@brief	Includes gbVector2d class
 	@author	drubner
-	@date	2013-08-22
+	@date	2013-08-26
 **/
 //==================================================================
 //	PRAGMA
@@ -15,45 +15,46 @@
 #include "gooseberry.h"
 
 //==================================================================
-//	Structs
-//==================================================================
-struct gb_g_position				//! Position struct with coordinates
-{
-	float	x,						//!< x-coordinate
-			y,						//!< y-coordinate
-			z;						//!< z-coordinate
-};	
-
-//==================================================================
 //	CLASS
 //==================================================================
 /**
-		@class	gbVector3f
+		@class	gbVector2d
 		@brief	Implements all rendering, initialization and resize
 				methods for OpenGL, also variables, getter and 
 				setter methods
 **/
 //==================================================================
-class GOOSEBERRY_API gbVector3f 
+class GOOSEBERRY_API gbVector2d
 {
 	public:
 		//  Variables
+		union
+		{
+			struct
+			{
+				float mX, mY;
+			};
+
+			struct
+			{
+				float mU, mV;
+			};
+
+			float mCoords[2];
+		};
 
 		//	(De-)Constructor
-		gbVector3f();
-		gbVector3f(gb_g_position pPosition);
-		gbVector3f(float pX, float pY, float pZ);
-		~gbVector3f();
+		gbVector2d();
+		gbVector2d(float * pCoords);
+		gbVector2d(float pX, float pY);
+		~gbVector2d();
 
 		//	Operators
-		gbVector3f operator+(const gbVector3f& pRight);
-		gbVector3f operator-(const gbVector3f& pRight);
-		gbVector3f operator*(const gbVector3f& pRight);
-		gbVector3f operator/(const gbVector3f& pRight);
+		gbVector2d operator+(const gbVector2d& pRight);
+		gbVector2d operator-(const gbVector2d& pRight);
+		gbVector2d operator*(const gbVector2d& pRight);
+		gbVector2d operator/(const gbVector2d& pRight);
 				
 	private:
-		//	Variables
-		gb_g_position	mPosition;
-
 	protected:
 };

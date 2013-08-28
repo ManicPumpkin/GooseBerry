@@ -1,6 +1,6 @@
 /**
-	@file	gbVector3f.cpp
-	@brief	Includes all gbVector3f class methods
+	@file	gbVector3d.cpp
+	@brief	Includes all gbVector3d class methods
 	@author	drubner
 	@date	2013-08-22
 **/
@@ -12,121 +12,121 @@
 //==================================================================
 //	INCLUDE
 //==================================================================
-#include "gbVector3f.h"
+#include "gbVector3d.h"
 
 //==================================================================
 /**
-	@fn		gbVector3f :: ~gbVector3f()
+	@fn		gbVector3d :: ~gbVector3d()
 	@brief	Deconstructor
 **/
 //==================================================================
-gbVector3f :: ~gbVector3f()
+gbVector3d :: ~gbVector3d()
 {
 }
 
 //==================================================================
 /**
-	@fn		gbObj :: gbObj()
+	@fn		gbVector3d :: gbVector3d()
 	@brief	Standardconstructor
 **/
 //==================================================================
-gbVector3f :: gbVector3f()
+gbVector3d :: gbVector3d()
 {
-	mPosition.x		= 0;
-	mPosition.y		= 0;
-	mPosition.z		= 0;
+	mX		= 0;
+	mY		= 0;
+	mZ		= 0;
 }
 
 //==================================================================
 /**
-	@fn		gbObj :: ~gbObj()
+	@fn		gbVector3d :: gbVector3d(float * pCoords)
 	@brief	Extended Constructor
 	@param	pPosition position of the object
 **/
 //==================================================================
-gbVector3f :: gbVector3f(gb_g_position pPosition)
+gbVector3d :: gbVector3d(float * pCoords)
 {
-	mPosition.x		= pPosition.x;
-	mPosition.y		= pPosition.y;
-	mPosition.z		= pPosition.z;
+	mX		= pCoords[0];
+	mY		= pCoords[1];
+	mZ		= pCoords[2];
 }
 
 //==================================================================
 /**
-	@fn		gbObj :: ~gbObj()
+	@fn		gbVector3d :: gbVector3d(float pX, float pY, float pZ)
 	@brief	Extended Constructor
 	@param	pX	x position of the object
 	@param	pY	y position of the object
 	@param	pZ	z position of the object
 **/
 //==================================================================
-gbVector3f :: gbVector3f(float pX, float pY, float pZ)
+gbVector3d :: gbVector3d(float pX, float pY, float pZ)
 {
-	mPosition.x		= pX;
-	mPosition.y		= pY;
-	mPosition.z		= pZ;
+	mX		= pX;
+	mY		= pY;
+	mZ		= pZ;
 }
 
 //==================================================================
 /**
-	@fn		gbVector3f :: operator+(const gbVector3f& pRight)
+	@fn		gbVector3d :: operator+(const gbVector3d& pRight)
 	@brief	Overload operator +
 	@param	pRight	right vector
 **/
 //==================================================================
-gbVector3f gbVector3f :: operator+(const gbVector3f& pRight)
+gbVector3d gbVector3d :: operator+(const gbVector3d& pRight)
 {
-	gbVector3f tResult;
-	tResult.mPosition.x		= this->mPosition.x + pRight.mPosition.x;
-	tResult.mPosition.y		= this->mPosition.y + pRight.mPosition.y;
-	tResult.mPosition.z		= this->mPosition.z + pRight.mPosition.z;
+	gbVector3d tResult;
+	tResult.mX		= this->mX + pRight.mX;
+	tResult.mY		= this->mY + pRight.mY;
+	tResult.mZ		= this->mZ + pRight.mZ;
 	return tResult;
 }
 
 //==================================================================
 /**
-	@fn		gbVector3f :: operator-(const gbVector3f& pRight)
+	@fn		gbVector3d :: operator-(const gbVector3d& pRight)
 	@brief	Overload operator -
 	@param	pRight	right vector
 **/
 //==================================================================
-gbVector3f gbVector3f :: operator-(const gbVector3f& pRight)
+gbVector3d gbVector3d :: operator-(const gbVector3d& pRight)
 {
-	gbVector3f tResult;
-	tResult.mPosition.x		= this->mPosition.x - pRight.mPosition.x;
-	tResult.mPosition.y		= this->mPosition.y - pRight.mPosition.y;
-	tResult.mPosition.z		= this->mPosition.z - pRight.mPosition.z;
+	gbVector3d tResult;
+	tResult.mX		= this->mX - pRight.mX;
+	tResult.mY		= this->mY - pRight.mY;
+	tResult.mZ		= this->mZ - pRight.mZ;
 	return tResult;
 }
 
 //==================================================================
 /**
-	@fn		gbVector3f :: operator*(const gbVector3f& pRight)
+	@fn		gbVector3d :: operator*(const gbVector3d& pRight)
 	@brief	Overload operator *
 	@param	pRight	right vector
 **/
 //==================================================================
-gbVector3f gbVector3f :: operator*(const gbVector3f& pRight)
+gbVector3d gbVector3d :: operator*(const gbVector3d& pRight)
 {
-	gbVector3f tResult;
-	tResult.mPosition.x		= this->mPosition.x * pRight.mPosition.x;
-	tResult.mPosition.y		= this->mPosition.y * pRight.mPosition.y;
-	tResult.mPosition.z		= this->mPosition.z * pRight.mPosition.z;
+	gbVector3d tResult;
+	tResult.mX		= this->mX * pRight.mX;
+	tResult.mY		= this->mY * pRight.mY;
+	tResult.mZ		= this->mZ * pRight.mZ;
 	return tResult;
 }
 
 //==================================================================
 /**
-	@fn		gbVector3f :: operator/(const gbVector3f& pRight)
+	@fn		gbVector3d :: operator/(const gbVector3d& pRight)
 	@brief	Overload operator /
 	@param	pRight	right vector
 **/
 //==================================================================
-gbVector3f gbVector3f :: operator/(const gbVector3f& pRight)
+gbVector3d gbVector3d :: operator/(const gbVector3d& pRight)
 {
-	gbVector3f tResult;
-	tResult.mPosition.x		= (pRight.mPosition.x != 0) ? this->mPosition.x / pRight.mPosition.x : 0;
-	tResult.mPosition.y		= (pRight.mPosition.y != 0) ? this->mPosition.y / pRight.mPosition.y : 0;
-	tResult.mPosition.z		= (pRight.mPosition.z != 0) ? this->mPosition.z / pRight.mPosition.z : 0;
+	gbVector3d tResult;
+	tResult.mX		= (pRight.mX != 0) ? this->mX / pRight.mX : 0;
+	tResult.mY		= (pRight.mY != 0) ? this->mY / pRight.mY : 0;
+	tResult.mZ		= (pRight.mZ != 0) ? this->mZ / pRight.mZ : 0;
 	return tResult;
 }

@@ -31,8 +31,8 @@ class GOOSEBERRY_API gbObj
 	protected:
 	private:
 		//	Variables
-		gbMdl			mMdl;
-		gb_g_position	mPosition;
+		gbMdl		mMdl;
+		gbVector3d	mPosition;
 
 		//	Functions
 		
@@ -41,10 +41,6 @@ class GOOSEBERRY_API gbObj
 		//	(De-)Constructor & Copy
 		~gbObj();
 		gbObj();
-		gbObj(gb_g_position pPosition);
+		gbObj(gbVector3d pPosition);
 		gbObj(float pX, float pY, float pZ);
-
-		//	Functions
-		//	Get
-		//	Set
 };

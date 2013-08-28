@@ -15,8 +15,10 @@
 #include "gooseberry.h"
 
 //==================================================================
-//	NAMESPACES
+//	FORWARD DEFINITION
 //==================================================================
+class gbVector3d;
+class gbColor;
 
 //==================================================================
 //	CLASS
@@ -49,8 +51,8 @@ class GOOSEBERRY_API gbOpenGL
 		gbResult fEnableOpenGL();
 		gbResult fResizeOpenGLWnd(int pWidth, int pHeight);
 		//VOID fDrawBitmapText(char *, float, float, float);
-		gbResult fDrawSimpleLine(gbVector3f pStart, gbVector3f pEnd);
-		gbResult fDrawSimpleLine(gbColor pColor, gbVector3f pStart, gbVector3f pEnd);
+		gbResult fDrawSimpleLine(gbVector3d pStart, gbVector3d pEnd);
+		gbResult fDrawSimpleLine(gbColor pColor, gbVector3d pStart, gbVector3d pEnd);
 				
 	private:
 		//	Variables

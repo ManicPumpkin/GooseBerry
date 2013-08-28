@@ -320,18 +320,40 @@ gbResult gbOpenGL :: fResizeOpenGLWnd(int pWidth, int pHeight)
 	return GB_OK;
 }
 
-gbResult gbOpenGL :: fDrawSimpleLine(gbVector3f pStart, gbVector3f pEnd)
+//==================================================================
+/**
+	@fn		gbOpenGL :: fDrawSimpleLine(gbVector3d pStart, gbVector3d pEnd)
+	@brief	Draw a simple line with vectors
+	@param	pStart		start vector
+	@param	pEnd		end vector
+**/
+//==================================================================
+gbResult gbOpenGL :: fDrawSimpleLine(gbVector3d pStart, gbVector3d pEnd)
 {
 	glBegin(GL_LINES);
 	glVertex3f(pStart.mX, pStart.mY, pStart.mZ);
 	glVertex3f(pEnd.mX, pEnd.mY, pEnd.mZ);
 	glEnd();
+
+	return GB_OK;
 }
 
-gbResult gbOpenGL :: fDrawSimpleLine(gbColor pColor, gbVector3f pStart, gbVector3f pEnd)
+//==================================================================
+/**
+	@fn		gbOpenGL :: fDrawSimpleLine(gbColor pColor, gbVector3d pStart, gbVector3d pEnd)
+	@brief	Draw a simple line with vectors in a specific color
+	@param	pStart		start vector
+	@param	pEnd		end vector
+	@param	pColor		color
+**/
+//==================================================================
+gbResult gbOpenGL :: fDrawSimpleLine(gbColor pColor, gbVector3d pStart, gbVector3d pEnd)
 {
 	glBegin(GL_LINES);
+	glColor3f(pColor.mRed, pColor.mGreen, pColor.mBlue);
 	glVertex3f(pStart.mX, pStart.mY, pStart.mZ);
 	glVertex3f(pEnd.mX, pEnd.mY, pEnd.mZ);
 	glEnd();
+
+	return GB_OK;
 }

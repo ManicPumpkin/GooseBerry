@@ -83,14 +83,8 @@ enum gbResult
 {
 	GB_OK			= 0,
 	GB_ERROR		= 1,
-	GB_STOP			= 2
-};
-
-struct gbColor
-{
-	int RED,
-		GREEN,
-		BLUE;
+	GB_STOP			= 2,
+	GB_NOTFOUND		= 3
 };
 
 //==================================================================
@@ -112,7 +106,9 @@ VOID		gbSplitString(const string& pStr, vector<string>& pToken, const string& pS
 #include "gbLog.h"
 #include "gbArray.h"
 #include "gbConvert.h"
-#include "gbVector3f.h"
+#include "gbVector3d.h"
+#include "gbVector2d.h"
+#include "gbColor.h"
 #include "gbOpenGL.h"
 #include "gbMdl.h"
 #include "gbMdlLoader.h"

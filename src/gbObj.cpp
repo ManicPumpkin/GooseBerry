@@ -30,9 +30,9 @@ gbObj :: ~gbObj()
 //==================================================================
 gbObj :: gbObj()
 {
-	mPosition.x		= 0;
-	mPosition.y		= 0;
-	mPosition.z		= 0;
+	mPosition.mX	= 0;
+	mPosition.mY	= 0;
+	mPosition.mZ	= 0;
 }
 
 //==================================================================
@@ -42,11 +42,11 @@ gbObj :: gbObj()
 	@param	pPosition position of the object
 **/
 //==================================================================
-gbObj :: gbObj(gb_g_position pPosition)
+gbObj :: gbObj(gbVector3d pPosition)
 {
-	mPosition.x		= pPosition.x;
-	mPosition.y		= pPosition.y;
-	mPosition.z		= pPosition.z;
+	mPosition.mX		= pPosition.mX;
+	mPosition.mY		= pPosition.mY;
+	mPosition.mZ		= pPosition.mZ;
 }
 
 //==================================================================
@@ -60,7 +60,7 @@ gbObj :: gbObj(gb_g_position pPosition)
 //==================================================================
 gbObj :: gbObj(float pX, float pY, float pZ)
 {
-	mPosition.x		= pX;
-	mPosition.y		= pY;
-	mPosition.z		= pZ;
+	mPosition.mX		= pX;
+	mPosition.mY		= pY;
+	mPosition.mZ		= pZ;
 }
