@@ -81,6 +81,12 @@
     <ClCompile Include="src\gbColor.cpp">
       <Filter>Quelldateien\help</Filter>
     </ClCompile>
+    <ClCompile Include="src\gbMatrix.cpp">
+      <Filter>Quelldateien\math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gbVector2d.cpp">
+      <Filter>Quelldateien\math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\gbDefines.h">
@@ -125,11 +131,11 @@
     <ClInclude Include="inc\gbVector2d.h">
       <Filter>Headerdateien\math</Filter>
     </ClInclude>
-    <ClInclude Include="src\gbVector2d.cpp">
-      <Filter>Quelldateien\math</Filter>
-    </ClInclude>
     <ClInclude Include="inc\gbColor.h">
       <Filter>Headerdateien\help</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\gbMatrix.h">
+      <Filter>Headerdateien\math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
