@@ -108,6 +108,25 @@ GOOSEBERRY_API gbMatrix gbMatrixRotation (const gbVector3d pVector)
 
 //==================================================================
 /**
+	@fn		gbMatrixAxis (const gbVector3d pAxisX, const gbVector3d pAxisY, const gbVector3d pAxisZ);
+	@brief	Returns a axis matrix of all axis given by tree 
+			axis vectors
+	@param  pAxisX	x axis vector
+	@param  pAxisY	y axis vector
+	@param  pAxisZ	z axis vector
+	@return gbMatrix
+**/
+//==================================================================
+GOOSEBERRY_API gbMatrix gbMatrixAxis (const gbVector3d pAxisX, const gbVector3d pAxisY, const gbVector3d pAxisZ)
+{
+	return gbMatrix(	pAxisX.mX, pAxisX.mY, pAxisX.mZ, 0.0f,
+						pAxisY.mX, pAxisY.mY, pAxisY.mZ, 0.0f,
+						pAxisZ.mX, pAxisZ.mY, pAxisZ.mZ, 0.0f,
+						0.0f, 0.0f, 0.0f, 1.0f					);
+}
+
+//==================================================================
+/**
 	@fn		gbMatrixTranslation (const float pX, const float pY, const float pZ)	
 	@brief	Matrix translation by float values
 	@param  pX	translation value for x axis
@@ -219,6 +238,22 @@ GOOSEBERRY_API gbMatrix gbMatrixIdentity()
 						0.0f, 1.0f, 0.0f, 0.0f,
 						0.0f, 0.0f, 1.0f, 0.0f,
 						0.0f, 0.0f, 0.0f, 1.0f	);
+}
+
+//==================================================================
+/**
+	@fn		gbMatrixTranspose (const gbMatrix & pMatrix)
+	@brief	Transpose a given matrix
+	@param	pMatrix	matrix to transpose
+	@return gbMatrix
+**/
+//==================================================================
+GOOSEBERRY_API gbMatrix gbMatrixTranspose (const gbMatrix & pMatrix)
+{
+	return gbMatrix(	pMatrix.m11, pMatrix.m21, pMatrix.m31, pMatrix.m41,
+						pMatrix.m12, pMatrix.m22, pMatrix.m32, pMatrix.m42,
+						pMatrix.m13, pMatrix.m23, pMatrix.m33, pMatrix.m43,
+						pMatrix.m14, pMatrix.m24, pMatrix.m34, pMatrix.m44	);
 }
 
 //==================================================================

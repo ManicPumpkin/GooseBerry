@@ -45,6 +45,7 @@ class GOOSEBERRY_API gbVector3d
 
 		//	(De-)Constructor
 		gbVector3d();
+		gbVector3d(float pCoord);
 		gbVector3d(float * pCoords);
 		gbVector3d(float pX, float pY, float pZ);
 		~gbVector3d();

@@ -32,9 +32,20 @@ class GOOSEBERRY_API gbObj
 	private:
 		//	Variables
 		gbMdl		mMdl;
+		gbVector3d	mAxisX;
+		gbVector3d	mAxisY;
+		gbVector3d	mAxisZ;
 		gbVector3d	mPosition;
+		gbVector3d	mScale;
+		gbVector3d	mRotation;
+		gbVector3d	mVelocity;
+		gbMatrix	mMatrix;
+		gbMatrix	mInvMatrix;
 
 		//	Functions
+		VOID fReset();
+		VOID fUpdate();
+		VOID fMove(const float pTime);
 		
 	public:
 		//	Variables

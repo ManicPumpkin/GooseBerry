@@ -32,16 +32,26 @@ gbVector3d :: ~gbVector3d()
 //==================================================================
 gbVector3d :: gbVector3d()
 {
-	mX		= 0;
-	mY		= 0;
-	mZ		= 0;
+	mX = mY = mZ = 0;
+}
+
+//==================================================================
+/**
+	@fn		gbVector3d :: gbVector3d(float pCoord)
+	@brief	Extended Constructor
+	@param	pCoord	x, y and z position of the object
+**/
+//==================================================================
+gbVector3d :: gbVector3d(float pCoord)
+{
+	mX = mY = mZ = pCoord;
 }
 
 //==================================================================
 /**
 	@fn		gbVector3d :: gbVector3d(float * pCoords)
 	@brief	Extended Constructor
-	@param	pPosition position of the object
+	@param	pCoords	position of the object
 **/
 //==================================================================
 gbVector3d :: gbVector3d(float * pCoords)

@@ -29,6 +29,7 @@ GOOSEBERRY_API gbMatrix gbMatrixRotationZ	(const float pValue);
 GOOSEBERRY_API gbMatrix gbMatrixRotation	(const float pX, const float pY, const float pZ);
 GOOSEBERRY_API gbMatrix gbMatrixRotation	(const float * pRotation3D);
 GOOSEBERRY_API gbMatrix gbMatrixRotation	(const gbVector3d pVector);
+GOOSEBERRY_API gbMatrix gbMatrixAxis		(const gbVector3d pAxisX, const gbVector3d pAxisY, const gbVector3d pAxisZ);
 GOOSEBERRY_API gbMatrix gbMatrixTranslation (const float pX, const float pY, const float pZ);
 GOOSEBERRY_API gbMatrix gbMatrixTranslation (const float * pTranslation3D);
 GOOSEBERRY_API gbMatrix gbMatrixTranslation (const gbVector3d pVector);
@@ -36,6 +37,7 @@ GOOSEBERRY_API gbMatrix gbMatrixScale		(const float pX, const float pY, const fl
 GOOSEBERRY_API gbMatrix gbMatrixScale		(const float * pScale3D);
 GOOSEBERRY_API gbMatrix gbMatrixScale		(const gbVector3d pVector);
 GOOSEBERRY_API gbMatrix gbMatrixIdentity	();
+GOOSEBERRY_API gbMatrix gbMatrixTranspose	(const gbMatrix & pMatrix);
 GOOSEBERRY_API gbMatrix gbMatrixInvert		(const gbMatrix & pMatrix);
 GOOSEBERRY_API float	gbMatrixDeterminant (const gbMatrix & pMatrix);
 

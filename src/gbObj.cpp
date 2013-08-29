@@ -64,3 +64,52 @@ gbObj :: gbObj(float pX, float pY, float pZ)
 	mPosition.mY		= pY;
 	mPosition.mZ		= pZ;
 }
+
+//==================================================================
+/**
+	@fn		gbObj :: fReset()
+	@brief	Reset the object
+**/
+//==================================================================
+VOID gbObj :: fReset()
+{
+	mAxisX		= gbVector3d(1.0f, 0.0f, 0.0f);
+	mAxisY		= gbVector3d(0.0f, 1.0f, 0.0f);
+	mAxisZ		= gbVector3d(0.0f, 0.0f, 1.0f);
+	mPosition	= gbVector3d(0.0f);
+	mVelocity	= gbVector3d(0.0f);
+	mRotation	= gbVector3d(0.0f);
+	mScale		= gbVector3d(1.0f);
+
+	fUpdate();
+}
+
+//==================================================================
+/**
+	@fn		gbObj :: fUpdate()
+	@brief	Update the object and its translation matrix
+**/
+//==================================================================
+VOID gbObj :: fUpdate()
+{
+	mMatrix		=	gbMatrixScale(mScale) *
+					gbMatrixAxis(mAxisX, mAxisY, mAxisZ) *
+					gbMatrixTranslation(mPosition);
+	mInvMatrix	=	gbMatrixInvert(mMatrix);
+}
+
+//==================================================================
+/**
+	@fn		gbObj :: fMove(const float pTime)
+	@brief	Move an object by passed time
+	@param	pTime	time passed
+**/
+//==================================================================
+VOID gbObj :: fMove(const float pTime)
+{
+	//	\todo Bewegen
+	//	\todo Rotieren
+	//	\todo Reibung
+
+	fUpdate();
+}

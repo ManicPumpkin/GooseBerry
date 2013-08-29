@@ -32,8 +32,7 @@ gbVector2d :: ~gbVector2d()
 //==================================================================
 gbVector2d :: gbVector2d()
 {
-	mX		= 0;
-	mY		= 0;
+	mX = mY = 0;
 }
 
 //==================================================================
@@ -47,6 +46,19 @@ gbVector2d :: gbVector2d(float * pCoords)
 {
 	mX		= pCoords[0];
 	mY		= pCoords[1];
+}
+
+
+//==================================================================
+/**
+	@fn		gbVector2d :: gbVector2d(float pCoord)
+	@brief	Extended Constructor
+	@param	pCoord	x and y position of the object
+**/
+//==================================================================
+gbVector2d :: gbVector2d(float pCoord)
+{
+	mX = mY = pCoord;
 }
 
 //==================================================================
