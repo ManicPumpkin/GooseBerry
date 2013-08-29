@@ -13,97 +13,97 @@
 //	Functions
 //==================================================================
 /**
-	@fn		gbMatrixRotationX (const float pValue)
+	@fn		gbMatrixRotationX (const float pAngle)
 	@brief	Matrix rotation along the x axis
-	@param  pValue	rotation value
+	@param  pAngle	rotation angle
 	@return gbMatrix
 **/
 //==================================================================
-GOOSEBERRY_API gbMatrix gbMatrixRotationX (const float pValue)
+GOOSEBERRY_API gbMatrix gbMatrixRotationX (const float pAngle)
 {
 	return gbMatrix(	1.0f, 0.0f, 0.0f, 0.0f,
-						0.0f, cosf(pValue), sinf(pValue), 0.0f,
-						0.0f, -sinf(pValue), cosf(pValue), 0.0f,
+						0.0f, cosf(pAngle), sinf(pAngle), 0.0f,
+						0.0f, -sinf(pAngle), cosf(pAngle), 0.0f,
 						0.0f, 0.0f, 0.0f, 1.0f						);
 }
 
 //==================================================================
 /**
-	@fn		gbMatrixRotationY (const float pValue)
+	@fn		gbMatrixRotationY (const float pAngle)
 	@brief	Matrix rotation along the y axis
-	@param  pValue	rotation value
+	@param  pAngle	rotation angle
 	@return gbMatrix
 **/
 //==================================================================
-GOOSEBERRY_API gbMatrix gbMatrixRotationY (const float pValue)
+GOOSEBERRY_API gbMatrix gbMatrixRotationY (const float pAngle)
 {
-	return gbMatrix(	cosf(pValue), 0.0f, sinf(pValue), 0.0f,
+	return gbMatrix(	cosf(pAngle), 0.0f, sinf(pAngle), 0.0f,
 						0.0f, 1.0f, 0.0f, 0.0f,
-						-sinf(pValue), 0.0f, cosf(pValue), 0.0f,
+						-sinf(pAngle), 0.0f, cosf(pAngle), 0.0f,
 						0.0f, 0.0f, 0.0f, 1.0f						);
 }
 
 //==================================================================
 /**
-	@fn		gbMatrixRotationZ (const float pValue)
+	@fn		gbMatrixRotationZ (const float pAngle)
 	@brief	Matrix rotation along the z axis
-	@param  pValue	rotation value
+	@param  pAngle	rotation angle
 	@return gbMatrix
 **/
 //==================================================================
-GOOSEBERRY_API gbMatrix gbMatrixRotationZ (const float pValue)
+GOOSEBERRY_API gbMatrix gbMatrixRotationZ (const float pAngle)
 {
-	return gbMatrix(	cosf(pValue), sinf(pValue), 0.0f, 0.0f,
-						-sinf(pValue), cosf(pValue), 0.0f, 0.0f,
+	return gbMatrix(	cosf(pAngle), sinf(pAngle), 0.0f, 0.0f,
+						-sinf(pAngle), cosf(pAngle), 0.0f, 0.0f,
 						0.0f, 0.0f, 1.0f, 0.0f,
 						0.0f, 0.0f, 0.0f, 1.0f						);
 }
 
 //==================================================================
 /**
-	@fn		gbMatrixRotation (const float pX, const float pY, const float pZ)
+	@fn		gbMatrixRotation (const float pAngleX, const float pAngleY, const float pAngleZ)
 	@brief	Matrix rotation by float values
-	@param  pX	rotation value for x axis
-	@param  pY	rotation value for y axis
-	@param  pZ	rotation value for z axis
+	@param  pX	rotation angle for x axis
+	@param  pY	rotation angle for y axis
+	@param  pZ	rotation angle for z axis
 	@return gbMatrix
 **/
 //==================================================================
-GOOSEBERRY_API gbMatrix gbMatrixRotation (const float pX, const float pY, const float pZ)
+GOOSEBERRY_API gbMatrix gbMatrixRotation (const float pAngleX, const float pAngleY, const float pAngleZ)
 {
-	return	gbMatrixRotationX(pX) *
-			gbMatrixRotationY(pY) *
-			gbMatrixRotationZ(pZ);
+	return	gbMatrixRotationX(pAngleX) *
+			gbMatrixRotationY(pAngleY) *
+			gbMatrixRotationZ(pAngleZ);
 }
 
 //==================================================================
 /**
-	@fn		gbMatrixRotation (const float * pRotation3D)
-	@brief	Matrix rotation by tree dimension float array
-	@param  pRotation3D	rotation array for x, y and z axis
+	@fn		gbMatrixRotation (const float * pRotationAngle3D)
+	@brief	Matrix rotation by tree dimension float angle array
+	@param  pRotation3D	rotation angle array for x, y and z axis
 	@return gbMatrix
 **/
 //==================================================================
-GOOSEBERRY_API gbMatrix gbMatrixRotation (const float * pRotation3D)
+GOOSEBERRY_API gbMatrix gbMatrixRotation (const float * pRotationAngle3D)
 {
-	return	gbMatrixRotationX(pRotation3D[0]) *
-			gbMatrixRotationY(pRotation3D[1]) *
-			gbMatrixRotationZ(pRotation3D[2]);
+	return	gbMatrixRotationX(pRotationAngle3D[0]) *
+			gbMatrixRotationY(pRotationAngle3D[1]) *
+			gbMatrixRotationZ(pRotationAngle3D[2]);
 }
 
 //==================================================================
 /**
-	@fn		gbMatrixRotation (const gbVector3d pVector)
-	@brief	Matrix rotation by vector
-	@param  pVector	rotation vector for x, y and z axis
+	@fn		gbMatrixRotation (const gbVector3d pAngleVector)
+	@brief	Matrix rotation by angle vector
+	@param  pVector	rotation angle vector for x, y and z axis
 	@return gbMatrix
 **/
 //==================================================================
-GOOSEBERRY_API gbMatrix gbMatrixRotation (const gbVector3d pVector)
+GOOSEBERRY_API gbMatrix gbMatrixRotation (const gbVector3d pAngleVector)
 {
-	return	gbMatrixRotationX(pVector.mX) *
-			gbMatrixRotationY(pVector.mY) *
-			gbMatrixRotationZ(pVector.mZ);
+	return	gbMatrixRotationX(pAngleVector.mX) *
+			gbMatrixRotationY(pAngleVector.mY) *
+			gbMatrixRotationZ(pAngleVector.mZ);
 }
 
 //==================================================================

@@ -23,12 +23,12 @@ class gbVector3d;
 //==================================================================
 //	FUNCTION DECLARATION
 //==================================================================
-GOOSEBERRY_API gbMatrix gbMatrixRotationX	(const float pValue);
-GOOSEBERRY_API gbMatrix gbMatrixRotationY	(const float pValue);
-GOOSEBERRY_API gbMatrix gbMatrixRotationZ	(const float pValue);
-GOOSEBERRY_API gbMatrix gbMatrixRotation	(const float pX, const float pY, const float pZ);
-GOOSEBERRY_API gbMatrix gbMatrixRotation	(const float * pRotation3D);
-GOOSEBERRY_API gbMatrix gbMatrixRotation	(const gbVector3d pVector);
+GOOSEBERRY_API gbMatrix gbMatrixRotationX	(const float pAngle);
+GOOSEBERRY_API gbMatrix gbMatrixRotationY	(const float pAngle);
+GOOSEBERRY_API gbMatrix gbMatrixRotationZ	(const float pAngle);
+GOOSEBERRY_API gbMatrix gbMatrixRotation	(const float pAngleX, const float pAngleY, const float pAngleZ);
+GOOSEBERRY_API gbMatrix gbMatrixRotation	(const float * pRotationAngle3D);
+GOOSEBERRY_API gbMatrix gbMatrixRotation	(const gbVector3d pAngleVector);
 GOOSEBERRY_API gbMatrix gbMatrixAxis		(const gbVector3d pAxisX, const gbVector3d pAxisY, const gbVector3d pAxisZ);
 GOOSEBERRY_API gbMatrix gbMatrixTranslation (const float pX, const float pY, const float pZ);
 GOOSEBERRY_API gbMatrix gbMatrixTranslation (const float * pTranslation3D);
