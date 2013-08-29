@@ -1,8 +1,26 @@
 /**
-	@file	glooseberry.cpp
-	@brief	Includes all glooseberry class methods
+	@file	gooseberry.cpp
+	@brief	Includes main programm
 	@author	drubner
 	@date	2013-07-16
+
+	\mainpage GooseBerry Game Engine Project
+
+	This project is developed for games and provides all useful
+	classes, like matrix, vector or object classes, they are 
+	necessary to build a playable game with full functionality. 
+	Gooseberry is based on OpenGL and is used in the "Cube" game 
+	project and its little sister the world generator project 
+	"WorldGen".
+
+	\section Description
+	Game Engine based on OpenGL
+
+	\section Autors
+	-	RUBNER,		Danny
+
+	Copyright 2013. All rights reserved by 
+	Rubner, Danny.
 **/
 //==================================================================
 //	Include

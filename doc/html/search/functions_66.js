@@ -13,9 +13,12 @@ var searchData=
   ['finitializeopengl',['fInitializeOpenGL',['../classgb_open_g_l.html#af35340c630a2808bb954825a3a93ea1f',1,'gbOpenGL']]],
   ['floadmat',['fLoadMat',['../classc_mat_loader.html#afb6b91f74c4cf7b6baa0dfaedcd14eda',1,'cMatLoader']]],
   ['floadobj',['fLoadObj',['../classgb_mdl_loader.html#af712a887555d291b8957a9996dfd49b6',1,'gbMdlLoader']]],
+  ['fmove',['fMove',['../classgb_obj.html#a17ec46c7c0804000fc2bae95b04ed266',1,'gbObj']]],
   ['fregisterwndclass',['fRegisterWndClass',['../classgb_open_g_l.html#acb96d1a7592d93ce4f5297359cb21feb',1,'gbOpenGL']]],
   ['fremovemodelbyfile',['fRemoveModelByFile',['../classgb_mdl_queue.html#a584009d5bc7e0e6b68607477adab5701',1,'gbMdlQueue']]],
   ['fremovemodelbyname',['fRemoveModelByName',['../classgb_mdl_queue.html#a2d4cc1486de49f86c8c7cd8ff8ce3a02',1,'gbMdlQueue']]],
+  ['freset',['fReset',['../classgb_obj.html#a88e4b6cf8074e6d574b7b449f9d70cd7',1,'gbObj']]],
   ['fresizeopenglwnd',['fResizeOpenGLWnd',['../classgb_open_g_l.html#a72e520624a540a9eadf7bd7203e79de2',1,'gbOpenGL']]],
-  ['fstartwnd',['fStartWnd',['../classgb_open_g_l.html#a58ebea86b4d67bd0ac19aff383d1cdad',1,'gbOpenGL']]]
+  ['fstartwnd',['fStartWnd',['../classgb_open_g_l.html#a58ebea86b4d67bd0ac19aff383d1cdad',1,'gbOpenGL']]],
+  ['fupdate',['fUpdate',['../classgb_obj.html#a20c9c951a226cd2c4af01900d67fd6b5',1,'gbObj']]]
 ];

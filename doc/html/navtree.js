@@ -5,6 +5,7 @@ var NAVTREE =
       [ "Description", "index.html#Description", null ],
       [ "Autors", "index.html#Autors", null ]
     ] ],
+    [ "glGooseberry", "md__r_e_a_d_m_e.html", null ],
     [ "Classes", null, [
       [ "Class List", "annotated.html", "annotated" ],
       [ "Class Index", "classes.html", null ],
@@ -29,7 +30,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"gb_log_8h.html#af29bfcc4077505bc9cdc1fba9386fcf8"
+"gb_log_8cpp.html#ad0681b7fb95e48eb69348ca57cae3e8a"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -1,6 +1,7 @@
 var classgb_vector2d =
 [
     [ "gbVector2d", "classgb_vector2d.html#a3d1fbc5826c7c1772ded4ef6c073f3c2", null ],
+    [ "gbVector2d", "classgb_vector2d.html#aa39cc2f5dd3458d3836ef7656f34d6ab", null ],
     [ "gbVector2d", "classgb_vector2d.html#a2b055970f008fcb730e72dcc1b022372", null ],
     [ "gbVector2d", "classgb_vector2d.html#a3cf591b1d4d1257112652884deec7e2e", null ],
     [ "~gbVector2d", "classgb_vector2d.html#ad087f0ed068f3a45705e88c953e996f3", null ],

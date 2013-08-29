@@ -45,6 +45,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -132,6 +133,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a403c176288eb678966c56670580d7709"><td class="memItemLeft" align="right" valign="top">GOOSEBERRY_API <a class="el" href="classgb_matrix.html">gbMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gb_matrix_8cpp.html#a403c176288eb678966c56670580d7709">gbMatrixRotation</a> (const <a class="el" href="classgb_vector3d.html">gbVector3d</a> pVector)</td></tr>
 <tr class="memdesc:a403c176288eb678966c56670580d7709"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matrix rotation by vector.  <a href="#a403c176288eb678966c56670580d7709">More...</a><br/></td></tr>
 <tr class="separator:a403c176288eb678966c56670580d7709"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcc76d682a8821d2bf139911ec3c7a42"><td class="memItemLeft" align="right" valign="top">GOOSEBERRY_API <a class="el" href="classgb_matrix.html">gbMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gb_matrix_8cpp.html#abcc76d682a8821d2bf139911ec3c7a42">gbMatrixAxis</a> (const <a class="el" href="classgb_vector3d.html">gbVector3d</a> pAxisX, const <a class="el" href="classgb_vector3d.html">gbVector3d</a> pAxisY, const <a class="el" href="classgb_vector3d.html">gbVector3d</a> pAxisZ)</td></tr>
+<tr class="memdesc:abcc76d682a8821d2bf139911ec3c7a42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a axis matrix of all axis given by tree axis vectors.  <a href="#abcc76d682a8821d2bf139911ec3c7a42">More...</a><br/></td></tr>
+<tr class="separator:abcc76d682a8821d2bf139911ec3c7a42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5993d9abb99b2aa91ffd85874c1aead2"><td class="memItemLeft" align="right" valign="top">GOOSEBERRY_API <a class="el" href="classgb_matrix.html">gbMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gb_matrix_8cpp.html#a5993d9abb99b2aa91ffd85874c1aead2">gbMatrixTranslation</a> (const float pX, const float pY, const float pZ)</td></tr>
 <tr class="memdesc:a5993d9abb99b2aa91ffd85874c1aead2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matrix translation by float values.  <a href="#a5993d9abb99b2aa91ffd85874c1aead2">More...</a><br/></td></tr>
 <tr class="separator:a5993d9abb99b2aa91ffd85874c1aead2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -153,6 +157,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ab49c88c6aa07f8e9e9d36b62952556d3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab49c88c6aa07f8e9e9d36b62952556d3"></a>
 GOOSEBERRY_API <a class="el" href="classgb_matrix.html">gbMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><b>gbMatrixIdentity</b> ()</td></tr>
 <tr class="separator:ab49c88c6aa07f8e9e9d36b62952556d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af30ee479c675182a079e7510cbcc4b70"><td class="memItemLeft" align="right" valign="top">GOOSEBERRY_API <a class="el" href="classgb_matrix.html">gbMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gb_matrix_8cpp.html#af30ee479c675182a079e7510cbcc4b70">gbMatrixTranspose</a> (const <a class="el" href="classgb_matrix.html">gbMatrix</a> &amp;pMatrix)</td></tr>
+<tr class="memdesc:af30ee479c675182a079e7510cbcc4b70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transpose a given matrix.  <a href="#af30ee479c675182a079e7510cbcc4b70">More...</a><br/></td></tr>
+<tr class="separator:af30ee479c675182a079e7510cbcc4b70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c55873be12ba1dd98317e5a3edcd72b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1c55873be12ba1dd98317e5a3edcd72b"></a>
 GOOSEBERRY_API <a class="el" href="classgb_matrix.html">gbMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><b>gbMatrixInvert</b> (const <a class="el" href="classgb_matrix.html">gbMatrix</a> &amp;pMatrix)</td></tr>
 <tr class="separator:a1c55873be12ba1dd98317e5a3edcd72b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -165,6 +172,49 @@ GOOSEBERRY_API <a class="el" href="classgb_matrix.html">gbMatrix</a>&#160;</td><
 <dl class="section author"><dt>Author</dt><dd>drubner </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2013-08-28 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="abcc76d682a8821d2bf139911ec3c7a42"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GOOSEBERRY_API <a class="el" href="classgb_matrix.html">gbMatrix</a> gbMatrixAxis </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgb_vector3d.html">gbVector3d</a>&#160;</td>
+          <td class="paramname"><em>pAxisX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classgb_vector3d.html">gbVector3d</a>&#160;</td>
+          <td class="paramname"><em>pAxisY</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classgb_vector3d.html">gbVector3d</a>&#160;</td>
+          <td class="paramname"><em>pAxisZ</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns a axis matrix of all axis given by tree axis vectors. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pAxisX</td><td>x axis vector </td></tr>
+    <tr><td class="paramname">pAxisY</td><td>y axis vector </td></tr>
+    <tr><td class="paramname">pAxisZ</td><td>z axis vector </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classgb_matrix.html" title="Class for matrix operations. ">gbMatrix</a> </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="af4b80c92825e634383bdee6f2231156c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -555,13 +605,38 @@ GOOSEBERRY_API <a class="el" href="classgb_matrix.html">gbMatrix</a>&#160;</td><
 
 </div>
 </div>
+<a class="anchor" id="af30ee479c675182a079e7510cbcc4b70"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GOOSEBERRY_API <a class="el" href="classgb_matrix.html">gbMatrix</a> gbMatrixTranspose </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgb_matrix.html">gbMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>pMatrix</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Transpose a given matrix. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pMatrix</td><td>matrix to transpose </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classgb_matrix.html" title="Class for matrix operations. ">gbMatrix</a> </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="gb_matrix_8cpp.html">gbMatrix.cpp</a></li>
-    <li class="footer">Generated on Wed Aug 28 2013 23:52:58 for glGooseberry by
+    <li class="footer">Generated on Thu Aug 29 2013 13:48:15 for glGooseberry by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

@@ -1,6 +1,7 @@
 var classgb_vector3d =
 [
     [ "gbVector3d", "classgb_vector3d.html#ae0cfe15f459c697d0c2a3d0d50fdd8a0", null ],
+    [ "gbVector3d", "classgb_vector3d.html#a9a237aa6fdbf70c18ce477ad92e7a953", null ],
     [ "gbVector3d", "classgb_vector3d.html#ada29b70c6a4b29bac25feb3cb956de29", null ],
     [ "gbVector3d", "classgb_vector3d.html#a11448495a68bd31588b150ae062118a8", null ],
     [ "~gbVector3d", "classgb_vector3d.html#a77d04daeabf1049c1c383180ce47597f", null ],

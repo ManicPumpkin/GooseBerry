@@ -1,5 +1,6 @@
 var gb_matrix_8cpp =
 [
+    [ "gbMatrixAxis", "gb_matrix_8cpp.html#abcc76d682a8821d2bf139911ec3c7a42", null ],
     [ "gbMatrixDeterminant", "gb_matrix_8cpp.html#af4b80c92825e634383bdee6f2231156c", null ],
     [ "gbMatrixIdentity", "gb_matrix_8cpp.html#ab49c88c6aa07f8e9e9d36b62952556d3", null ],
     [ "gbMatrixInvert", "gb_matrix_8cpp.html#a1c55873be12ba1dd98317e5a3edcd72b", null ],
@@ -14,5 +15,6 @@ var gb_matrix_8cpp =
     [ "gbMatrixScale", "gb_matrix_8cpp.html#ade03e3d6237ff9bf98b87c50f6faef7d", null ],
     [ "gbMatrixTranslation", "gb_matrix_8cpp.html#a5993d9abb99b2aa91ffd85874c1aead2", null ],
     [ "gbMatrixTranslation", "gb_matrix_8cpp.html#adfbf19559d951f0109530b5d80c5f5d9", null ],
-    [ "gbMatrixTranslation", "gb_matrix_8cpp.html#a7f162b2ff65f6fd11092a03535b5500a", null ]
+    [ "gbMatrixTranslation", "gb_matrix_8cpp.html#a7f162b2ff65f6fd11092a03535b5500a", null ],
+    [ "gbMatrixTranspose", "gb_matrix_8cpp.html#af30ee479c675182a079e7510cbcc4b70", null ]
 ];
