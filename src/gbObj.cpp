@@ -37,7 +37,7 @@ gbObj :: gbObj()
 
 //==================================================================
 /**
-	@fn		gbObj :: ~gbObj()
+	@fn		gbObj :: gbObj(gbVector3d pPosition)
 	@brief	Extended Constructor
 	@param	pPosition position of the object
 **/
@@ -51,7 +51,7 @@ gbObj :: gbObj(gbVector3d pPosition)
 
 //==================================================================
 /**
-	@fn		gbObj :: ~gbObj()
+	@fn		gbObj :: gbObj(float pX, float pY, float pZ)
 	@brief	Extended Constructor
 	@param	pX	x position of the object
 	@param	pY	y position of the object

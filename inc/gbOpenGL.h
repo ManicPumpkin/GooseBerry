@@ -56,9 +56,9 @@ class GOOSEBERRY_API gbOpenGL
 				
 	private:
 		//	Variables
-		DWORD	mDwExStyle;
-		DWORD	mDwStyle;
-		bool	mInit;
+		DWORD	mDwExStyle;		//!<	extended style of window
+		DWORD	mDwStyle;		//!<	style of window
+		bool	mInit;			//!<	if OpenGL is initialized
 
 	protected:
 };

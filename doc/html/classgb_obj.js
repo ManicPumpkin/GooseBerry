@@ -12,7 +12,7 @@ var classgb_obj =
     [ "mAxisZ", "classgb_obj.html#ac06b082af39044b44b3537f07baef2e5", null ],
     [ "mInvMatrix", "classgb_obj.html#a749500de9a1d0a8b12c663f15fb86ae1", null ],
     [ "mMatrix", "classgb_obj.html#aace216005d853452321150df0d39d563", null ],
-    [ "mMdl", "classgb_obj.html#a59706a08b4602d4eb1fef18d25df26c6", null ],
+    [ "mMdl", "classgb_obj.html#ae1a53391488608f55d6cca8d8d8dac94", null ],
     [ "mPosition", "classgb_obj.html#a3cec966edb4be882bd992f9c23485d02", null ],
     [ "mRotation", "classgb_obj.html#a9e05e8c3591e8c90deb288150882ebb5", null ],
     [ "mScale", "classgb_obj.html#a231187883d3c26c426a99b3277c00c33", null ],

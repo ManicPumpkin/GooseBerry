@@ -47,6 +47,12 @@ class gbMat
 
 		//	(De-)Constructor
 		gbMat():mShininess(-1),mHasAmbient(false),mHasDiffuse(false),mHasSpecular(false), mHasEmissive(false){};
+		
+		/**
+			@fn		gbMat(string pFile)
+			@brief	Extended constructor
+			@param	pFile		file name and path
+		**/
 		gbMat(string pFile):mShininess(-1),mHasAmbient(false),mHasDiffuse(false),mHasSpecular(false), mHasEmissive(false)
 		{
 			this->mMatName	= gbExtractName(pFile);

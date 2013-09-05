@@ -2,7 +2,7 @@ var searchData=
 [
   ['opengl',['OpenGL',['../class_open_g_l.html',1,'']]],
   ['operator_21_3d',['operator!=',['../classgb_matrix.html#aee3a411553f4d79e0a389826669e17f6',1,'gbMatrix']]],
-  ['operator_2a',['operator*',['../classgb_matrix.html#aed62ba717498f41a69339317fbe9eb74',1,'gbMatrix::operator*()'],['../classgb_vector2d.html#aabbc580223eff66bba807b2ab21ee3b6',1,'gbVector2d::operator*()'],['../classgb_vector3d.html#af7ee02356357e4449ff632511635ebc0',1,'gbVector3d::operator*()']]],
+  ['operator_2a',['operator*',['../classgb_matrix.html#acdd8657abc1b4503d75c91b83313c45c',1,'gbMatrix::operator*(const gbMatrix &amp;pRight)'],['../classgb_matrix.html#aead620c04dceba7fc3b61dcfcae77db9',1,'gbMatrix::operator*(const float pValue)'],['../classgb_vector2d.html#aabbc580223eff66bba807b2ab21ee3b6',1,'gbVector2d::operator*()'],['../classgb_vector3d.html#af7ee02356357e4449ff632511635ebc0',1,'gbVector3d::operator*()']]],
   ['operator_2a_3d',['operator*=',['../classgb_matrix.html#aeb8b67fb11a77a5ade7b6659b16932f3',1,'gbMatrix::operator*=(const gbMatrix &amp;pRight)'],['../classgb_matrix.html#aa1c0ebac25ab673422e963e3bfa6e7fc',1,'gbMatrix::operator*=(const float pValue)']]],
   ['operator_2b',['operator+',['../classgb_matrix.html#a2cb61edb1de3c1aa316abd44c91f8f39',1,'gbMatrix::operator+()'],['../classgb_vector2d.html#ab8c691a780feab6faf42561125896e0a',1,'gbVector2d::operator+()'],['../classgb_vector3d.html#a654d3a2906ba78dd71eea25204a7bf66',1,'gbVector3d::operator+()']]],
   ['operator_2b_3d',['operator+=',['../classgb_matrix.html#a78308b7740b33c673b7b5bd127ab18e0',1,'gbMatrix']]],

@@ -37,6 +37,11 @@ class GOOSEBERRY_API gbMshQueue
 		gbResult fGetMdlCpyByName(gbMsh * pMdl, std::string pMdlName);
 
 		//	Get & Set
+		/**
+			@fn		fGetSize()
+			@brief	get size
+			@return	int		size of model queue
+		**/
 		int fGetSize() { return mModelQueue.size(); }
 
 	private:

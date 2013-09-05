@@ -86,8 +86,9 @@ BOOL gbMshQueue :: fRemoveModelByFile(std::string pFileName)
 /**
 		@fn		gbMshQueue :: fGetMdlCpyByID(int pID)
 		@brief	Returns gbResult
-		@param	pID	model id
-		@return	gbMsh* pointer to model
+		@param	pMdl	mesh of object, call by reference
+		@param	pID		model id
+		@return	gbResult	gb_ok or gb_error
 **/
 //==================================================================
 gbResult gbMshQueue :: fGetMdlCpyByID(gbMsh * pMdl, unsigned int pID)
@@ -104,7 +105,8 @@ gbResult gbMshQueue :: fGetMdlCpyByID(gbMsh * pMdl, unsigned int pID)
 /**
 		@fn		gbMshQueue :: fGetMdlCpyByName(std::string pMdlName)
 		@brief	Returns gbResult
-		@param	pMdlName model name
+		@param	pMdl		mesh of object, call by reference
+		@param	pMdlName	name of model
 		@return	gbMsh* pointer to model
 **/
 //==================================================================

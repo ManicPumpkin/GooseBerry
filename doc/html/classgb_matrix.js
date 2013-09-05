@@ -5,7 +5,7 @@ var classgb_matrix =
     [ "gbMatrix", "classgb_matrix.html#a296d20e2fb242b21d2cbb8399ca4ff5d", null ],
     [ "~gbMatrix", "classgb_matrix.html#a3e3fe980f56a8278fee4d6c360887bbd", null ],
     [ "operator!=", "classgb_matrix.html#aee3a411553f4d79e0a389826669e17f6", null ],
-    [ "operator*", "classgb_matrix.html#aed62ba717498f41a69339317fbe9eb74", null ],
+    [ "operator*", "classgb_matrix.html#acdd8657abc1b4503d75c91b83313c45c", null ],
     [ "operator*", "classgb_matrix.html#aead620c04dceba7fc3b61dcfcae77db9", null ],
     [ "operator*=", "classgb_matrix.html#aeb8b67fb11a77a5ade7b6659b16932f3", null ],
     [ "operator*=", "classgb_matrix.html#aa1c0ebac25ab673422e963e3bfa6e7fc", null ],

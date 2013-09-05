@@ -39,7 +39,7 @@ gbVector2d :: gbVector2d()
 /**
 	@fn		gbVector2d :: gbVector2d(float * pCoords)
 	@brief	Extended Constructor
-	@param	pPosition position of the object
+	@param	pCoords	coordinates of the object
 **/
 //==================================================================
 gbVector2d :: gbVector2d(float * pCoords)

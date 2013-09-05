@@ -310,7 +310,7 @@ GOOSEBERRY_API float gbMatrixDeterminant (const gbMatrix & pMatrix)
 //	Class Functions
 //==================================================================
 /**
-	@fn		cWorldEle :: cWorldEle()
+	@fn		gbMatrix :: gbMatrix()
 	@brief	Standardconstructor, sets all values to zero
 **/
 //==================================================================
@@ -322,7 +322,7 @@ gbMatrix :: gbMatrix()
 
 //==================================================================
 /**
-	@fn		gbMatrix(float * p1DimArray)
+	@fn		gbMatrix :: gbMatrix(float * p1DimArray)
 	@brief	Extended constructor, sets all values to values of a
 			given array
 	@param	float * p1DimArray
@@ -336,9 +336,25 @@ gbMatrix :: gbMatrix(float * p1DimArray)
 
 //==================================================================
 /**
-	@fn		gbMatrix(...)
+	@fn		gbMatrix :: gbMatrix(float p11, float p12, float p13, float p14, float p21, float p22, float p23, float p24,
+				float p31, float p32, float p33, float p34, float p41, float p42, float p43, float p44)
 	@brief	Extended constructor, sets all values to given values
-	@param	p11 ... p44
+	@param	p11	member row 1 col 1
+	@param	p12	member row 1 col 2
+	@param	p13	member row 1 col 3
+	@param	p14 member row 1 col 4
+	@param	p21	member row 2 col 1
+	@param	p22	member row 2 col 2
+	@param	p23	member row 2 col 3
+	@param	p24 member row 2 col 4
+	@param	p31	member row 3 col 1
+	@param	p32	member row 3 col 2
+	@param	p33	member row 3 col 3
+	@param	p34 member row 3 col 4
+	@param	p41	member row 4 col 1
+	@param	p42	member row 4 col 2
+	@param	p43	member row 4 col 3
+	@param	p44 member row 4 col 4
 **/
 //==================================================================
 gbMatrix :: gbMatrix(float p11, float p12, float p13, float p14, float p21, float p22, float p23, float p24,
@@ -397,9 +413,9 @@ gbMatrix gbMatrix :: operator*(const gbMatrix & pRight)
 
 //==================================================================
 /**
-	@fn		gbMatrix :: operator*(const gbMatrix & pRight)
+	@fn		gbMatrix :: operator*(const float pValue)
 	@brief	Overload operator *
-	@param	pRight	Matrix of right side
+	@param	pValue	value to multiply
 	@return gbMatrix
 **/
 //==================================================================
@@ -428,7 +444,7 @@ gbMatrix gbMatrix :: operator/(const gbMatrix & pRight)
 /**
 	@fn		gbMatrix :: operator/(const float pValue)
 	@brief	Overload operator /
-	@param	pRight	Matrix of right side
+	@param	pValue	value to divide
 	@return gbMatrix
 **/
 //==================================================================
@@ -504,7 +520,7 @@ gbMatrix gbMatrix :: operator*=(const gbMatrix & pRight)
 /**
 	@fn		gbMatrix :: operator*=(const float pValue)
 	@brief	Overload operator *=
-	@param	pRight	Matrix of right side
+	@param	pValue	value to multiply
 	@return gbMatrix
 **/
 //==================================================================
@@ -533,7 +549,7 @@ gbMatrix gbMatrix :: operator/=(const gbMatrix & pRight)
 /**
 	@fn		gbMatrix :: operator/=(const float pValue)
 	@brief	Overload operator /=
-	@param	pRight	Matrix of right side
+	@param	pValue	value to divide
 	@return gbMatrix
 **/
 //==================================================================
