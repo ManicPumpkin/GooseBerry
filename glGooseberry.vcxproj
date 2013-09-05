@@ -23,11 +23,13 @@
     <ClCompile Include="src\gbMshLoader.cpp" />
     <ClCompile Include="src\gbObj.cpp" />
     <ClCompile Include="src\gbOpenGL.cpp" />
+    <ClCompile Include="src\gbTex.cpp" />
     <ClCompile Include="src\gbVector2d.cpp" />
     <ClCompile Include="src\gbVector3d.cpp" />
     <ClCompile Include="src\gooseberry.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="inc\gbMat.h" />
     <ClInclude Include="inc\gbArray.h" />
     <ClInclude Include="inc\gbColor.h" />
     <ClInclude Include="inc\gbConvert.h" />
@@ -41,6 +43,8 @@
     <ClInclude Include="inc\gbMshLoader.h" />
     <ClInclude Include="inc\gbObj.h" />
     <ClInclude Include="inc\gbOpenGL.h" />
+    <ClInclude Include="inc\gbQueue.h" />
+    <ClInclude Include="inc\gbTex.h" />
     <ClInclude Include="inc\gbVector2d.h" />
     <ClInclude Include="inc\gbVector3d.h" />
     <ClInclude Include="inc\gooseberry.h" />
