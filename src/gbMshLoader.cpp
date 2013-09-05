@@ -1,6 +1,6 @@
 /**
-	@file	gbMdlLoader.cpp
-	@brief	This file includes all functions of gbMdlLoader 
+	@file	gbMshLoader.cpp
+	@brief	This file includes all functions of gbMshLoader 
 			class
 	@author	drubner
 	@date	Created 2013-07-31
@@ -9,20 +9,20 @@
 //	Include
 //==================================================================
 //#include "gooseberry.h"
-#include "gbMdlLoader.h"
-//#include "gbMdl.h"
+#include "gbMshLoader.h"
+//#include "gbMsh.h"
 
 //==================================================================
 //	Functions
 //==================================================================
 /**
-		@fn		gbMdlLoader::fLoadObj(std::string pFile)
+		@fn		gbMshLoader::fLoadObj(std::string pFile)
 		@brief	Fuction to load and *.obj file
 **/
 //==================================================================
-gbMdl gbMdlLoader::fLoadObj(std::string pFile, bool pIsQuad)
+gbMsh gbMshLoader::fLoadObj(std::string pFile, bool pIsQuad)
 {
-	gbMdl tModel;
+	gbMsh tModel;
 
 	if(pIsQuad)
 		tModel.mIsTriangle	= FALSE;
@@ -178,10 +178,10 @@ gbMdl gbMdlLoader::fLoadObj(std::string pFile, bool pIsQuad)
 			*/ 
 		}
 		else // \todo include define error str and id
-			GB_LERROR("Error while counting properties of file: " + pFile, "gbMdlLoader Error");
+			GB_LERROR("Error while counting properties of file: " + pFile, "gbMshLoader Error");
 	}
 	else // \todo include define error str and id
-		GB_LERROR("Error while open file: " + pFile, "gbMdlLoader Error");
+		GB_LERROR("Error while open file: " + pFile, "gbMshLoader Error");
 
 	return tModel;
 }

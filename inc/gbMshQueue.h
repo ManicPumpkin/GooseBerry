@@ -1,6 +1,6 @@
 /**
-	@file	gbMdlQueue.h
-	@brief	Includes gbMdlQueue class
+	@file	gbMshQueue.h
+	@brief	Includes gbMshQueue class
 	@author	drubner
 	@date	2012-11-26
 **/
@@ -16,25 +16,25 @@
 //	CLASS
 //==================================================================
 /**
-		@class	gbMdlQueue
+		@class	gbMshQueue
 		@brief	Implements queue to store model objects
 **/
 //==================================================================
-class GOOSEBERRY_API gbMdlQueue 
+class GOOSEBERRY_API gbMshQueue 
 {
 	public:
 		//	Variables
-		std::vector<gbMdl> mModelQueue;		//!< model queue
+		std::vector<gbMsh> mModelQueue;		//!< model queue
 		
 		//	(De-)Constructor
-		gbMdlQueue();
+		gbMshQueue();
 
 		//	Functions
-		VOID fAddModel(gbMdl pModel);					
+		VOID fAddModel(gbMsh pModel);					
 		BOOL fRemoveModelByName(std::string pMdlName);	
 		BOOL fRemoveModelByFile(std::string pFileName);	
-		gbResult fGetMdlCpyByID(gbMdl * pMdl, unsigned int pID);
-		gbResult fGetMdlCpyByName(gbMdl * pMdl, std::string pMdlName);
+		gbResult fGetMdlCpyByID(gbMsh * pMdl, unsigned int pID);
+		gbResult fGetMdlCpyByName(gbMsh * pMdl, std::string pMdlName);
 
 		//	Get & Set
 		int fGetSize() { return mModelQueue.size(); }

@@ -31,7 +31,7 @@ class GOOSEBERRY_API gbObj
 	protected:
 	private:
 		//	Variables
-		gbMdl		mMdl;
+		gbMsh		mMdl;
 		gbVector3d	mAxisX;
 		gbVector3d	mAxisY;
 		gbVector3d	mAxisZ;

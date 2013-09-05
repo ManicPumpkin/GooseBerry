@@ -1,23 +1,23 @@
 /**
-	@file	gbMdlQueue.cpp
-	@brief	All functions of gbMdlQueue class
+	@file	gbMshQueue.cpp
+	@brief	All functions of gbMshQueue class
 	@author	drubner
 	@date	2012-11-26
 **/
 //==================================================================
 //	Include
 //==================================================================
-#include "gbMdlQueue.h"
+#include "gbMshQueue.h"
 
 //==================================================================
 //	(De-)Constructor
 //==================================================================
 /**
-		@fn		gbMdlQueue :: gbMdlQueue
+		@fn		gbMshQueue :: gbMshQueue
 		@brief	Constructor which logs queue initialization
 **/
 //==================================================================
-gbMdlQueue :: gbMdlQueue()
+gbMshQueue :: gbMshQueue()
 {
 	GB_LINFO("Model queue initialized");
 }
@@ -25,26 +25,26 @@ gbMdlQueue :: gbMdlQueue()
 //	Functions
 //==================================================================
 /**
-		@fn		gbMdlQueue :: fAddModel
+		@fn		gbMshQueue :: fAddModel
 		@brief	Add model to model queue
 		@param	pModel	model object
 		@return	VOID
 **/
 //==================================================================
-VOID gbMdlQueue :: fAddModel(gbMdl pModel)
+VOID gbMshQueue :: fAddModel(gbMsh pModel)
 {
 	GB_LINFO("Model \"" +  pModel.mObjName + "\" added to queue");
 	mModelQueue.push_back(pModel);
 }
 //==================================================================				
 /**
-		@fn		gbMdlQueue :: fRemoveModelByName
+		@fn		gbMshQueue :: fRemoveModelByName
 		@brief	Remove model from model queue by name
 		@param	pMdlName	name of model object
 		@return	boolean value of success/failure
 **/
 //==================================================================
-BOOL gbMdlQueue :: fRemoveModelByName(std::string pMdlName)
+BOOL gbMshQueue :: fRemoveModelByName(std::string pMdlName)
 {
 	for(int i = 0; i < this->fGetSize(); i++)
 	{
@@ -56,18 +56,18 @@ BOOL gbMdlQueue :: fRemoveModelByName(std::string pMdlName)
 		}
 	}
 
-	GB_LERROR("Error: Could not find model by name: " + pMdlName, "gbMdlQueue Error");
+	GB_LERROR("Error: Could not find model by name: " + pMdlName, "gbMshQueue Error");
 	return FALSE;
 }
 //==================================================================
 /**
-		@fn		gbMdlQueue :: fRemoveModelByFile
+		@fn		gbMshQueue :: fRemoveModelByFile
 		@brief	Remove model from model queue by file name
 		@param	pFileName	file name of model object
 		@return	boolean value of success/failure
 **/
 //==================================================================
-BOOL gbMdlQueue :: fRemoveModelByFile(std::string pFileName)
+BOOL gbMshQueue :: fRemoveModelByFile(std::string pFileName)
 {
 	for(int i = 0; i < this->fGetSize(); i++)
 	{
@@ -79,18 +79,18 @@ BOOL gbMdlQueue :: fRemoveModelByFile(std::string pFileName)
 		}
 	}
 	
-	GB_LERROR("Error: Could not find model by file name: " + pFileName, "gbMdlQueue Error");
+	GB_LERROR("Error: Could not find model by file name: " + pFileName, "gbMshQueue Error");
 	return FALSE;
 }
 //==================================================================
 /**
-		@fn		gbMdlQueue :: fGetMdlCpyByID(int pID)
+		@fn		gbMshQueue :: fGetMdlCpyByID(int pID)
 		@brief	Returns gbResult
 		@param	pID	model id
-		@return	gbMdl* pointer to model
+		@return	gbMsh* pointer to model
 **/
 //==================================================================
-gbResult gbMdlQueue :: fGetMdlCpyByID(gbMdl * pMdl, unsigned int pID)
+gbResult gbMshQueue :: fGetMdlCpyByID(gbMsh * pMdl, unsigned int pID)
 {
 	if(pID < mModelQueue.size())
 	{
@@ -102,13 +102,13 @@ gbResult gbMdlQueue :: fGetMdlCpyByID(gbMdl * pMdl, unsigned int pID)
 }
 //==================================================================
 /**
-		@fn		gbMdlQueue :: fGetMdlCpyByName(std::string pMdlName)
+		@fn		gbMshQueue :: fGetMdlCpyByName(std::string pMdlName)
 		@brief	Returns gbResult
 		@param	pMdlName model name
-		@return	gbMdl* pointer to model
+		@return	gbMsh* pointer to model
 **/
 //==================================================================
-gbResult gbMdlQueue :: fGetMdlCpyByName(gbMdl * pMdl, std::string pMdlName)
+gbResult gbMshQueue :: fGetMdlCpyByName(gbMsh * pMdl, std::string pMdlName)
 {
 	for(unsigned int i = 0; i < mModelQueue.size(); i++)
 	{

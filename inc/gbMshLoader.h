@@ -1,5 +1,5 @@
 /**
-	@file	gbMdlLoader.h
+	@file	gbMshLoader.h
 	@brief	Includes class of model object loader
 	@author	drubner
 	@date	2013-07-31
@@ -15,22 +15,22 @@
 //==================================================================
 //	PREDEFINITION
 //==================================================================
-class gbMdl;
+class gbMsh;
 
 //==================================================================
 //	CLASS
 //==================================================================
 /**
-		@class	gbMdlLoader
+		@class	gbMshLoader
 		@brief	Loads an model object out of file
 **/
 //==================================================================
-class GOOSEBERRY_API gbMdlLoader 
+class GOOSEBERRY_API gbMshLoader 
 {
 	public:
 		//	Variables
 		//	Functions
-		gbMdl fLoadObj(std::string pFile, bool pIsQuad = FALSE);
+		gbMsh fLoadObj(std::string pFile, bool pIsQuad = FALSE);
 
 	private:
 		//	Variables

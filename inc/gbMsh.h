@@ -1,8 +1,8 @@
 //==================================================================
 /**
-	@file	gbMdl.h
+	@file	gbMsh.h
 	@brief	This file includes the object which been loaded from
-			gbMdlLoader
+			gbMshLoader
 
 	Includes the model class. Contains all variables needed to
 	hold loaded information of object/model files.
@@ -49,11 +49,11 @@ struct gb_g_face					//! Face struct
 //	Class
 //==================================================================
 /**
-	@class	gbMdl
+	@class	gbMsh
 	@brief	Contains information about object/model files
 **/
 //==================================================================
-class GOOSEBERRY_API gbMdl
+class GOOSEBERRY_API gbMsh
 {
 	protected:
 	private:
@@ -83,9 +83,9 @@ class GOOSEBERRY_API gbMdl
 		gb_g_texCoord *	mTexCoords;		//!< list of texture coordiantes
 
 		//	(De-)Constructor & Copy
-		~gbMdl();
-		gbMdl();
-		gbMdl(const gbMdl& tRHS);
+		~gbMsh();
+		gbMsh();
+		gbMsh(const gbMsh& tRHS);
 
 		//	Functions
 		VOID fDraw();

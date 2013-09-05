@@ -1,24 +1,24 @@
 //==================================================================
 /**
-		@file	gbMdl.cpp
-		@brief	This file includes all functions of gbMdl class
+		@file	gbMsh.cpp
+		@brief	This file includes all functions of gbMsh class
 		@author	drubner
 		@date	2013-07-31
 **/
 //==================================================================
 //	Include
 //==================================================================
-#include "gbMdl.h"
+#include "gbMsh.h"
 
 //==================================================================
 //	Functions
 //==================================================================
 /**
-		@fn		gbMdl::gbMdl()
+		@fn		gbMsh::gbMsh()
 		@brief	Standard constructor
 **/
 //==================================================================
-gbMdl::gbMdl()
+gbMsh::gbMsh()
 {
 	mNumVertices	= 0;
 	mNumNormals		= 0;
@@ -32,13 +32,13 @@ gbMdl::gbMdl()
 }
 //==================================================================
 /**
-		@fn		gbMdl::gbMdl(const gbMdl& tRHS)
+		@fn		gbMsh::gbMsh(const gbMsh& tRHS)
 		@brief	copy constructor for deep copy
 
-				Deep copy an gbMdl object with another.
+				Deep copy an gbMsh object with another.
 **/
 //==================================================================
-gbMdl::gbMdl(const gbMdl& tRHS)
+gbMsh::gbMsh(const gbMsh& tRHS)
 {
 	this->mObjName		= tRHS.mObjName;
 	this->mObjFile		= tRHS.mObjFile;
@@ -87,18 +87,18 @@ gbMdl::gbMdl(const gbMdl& tRHS)
 	}
 }
 //==================================================================
-gbMdl::~gbMdl()
+gbMsh::~gbMsh()
 {
 	fFreeMdl();
 }
 //==================================================================
 /**
-		@fn		gbMdl::fFreeMdl()
+		@fn		gbMsh::fFreeMdl()
 		@brief	Frees space of pointer arrays and set it to NULL
 		@return	VOID
 **/
 //==================================================================
-VOID gbMdl::fFreeMdl()
+VOID gbMsh::fFreeMdl()
 {
 	if(mFaces)		delete[] mFaces;
 	if(mVertices)	delete[] mVertices;
@@ -112,14 +112,14 @@ VOID gbMdl::fFreeMdl()
 }
 //==================================================================
 /**
-		@fn		gbMdl::fDraw()
+		@fn		gbMsh::fDraw()
 		@brief	Draw object and material
 
 				Initialize different materials and draw the triangle
 				with its normals and vertices.
 **/
 //==================================================================
-VOID gbMdl::fDraw()
+VOID gbMsh::fDraw()
 {
 	/*
 	glDisable(GL_COLOR_MATERIAL);

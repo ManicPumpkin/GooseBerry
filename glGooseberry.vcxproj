@@ -17,11 +17,10 @@
   <ItemGroup>
     <ClCompile Include="src\gbColor.cpp" />
     <ClCompile Include="src\gbMatrix.cpp" />
-    <ClCompile Include="src\gbMdlQueue.cpp" />
-    <ClCompile Include="src\gbException.cpp" />
+    <ClCompile Include="src\gbMshQueue.cpp" />
     <ClCompile Include="src\gbLog.cpp" />
-    <ClCompile Include="src\gbMdl.cpp" />
-    <ClCompile Include="src\gbMdlLoader.cpp" />
+    <ClCompile Include="src\gbMsh.cpp" />
+    <ClCompile Include="src\gbMshLoader.cpp" />
     <ClCompile Include="src\gbObj.cpp" />
     <ClCompile Include="src\gbOpenGL.cpp" />
     <ClCompile Include="src\gbVector2d.cpp" />
@@ -33,13 +32,13 @@
     <ClInclude Include="inc\gbColor.h" />
     <ClInclude Include="inc\gbConvert.h" />
     <ClInclude Include="inc\gbMatrix.h" />
-    <ClInclude Include="inc\gbMdlQueue.h" />
+    <ClInclude Include="inc\gbMshQueue.h" />
     <ClInclude Include="inc\gbDefines.h" />
     <ClInclude Include="inc\gbErrors.h" />
     <ClInclude Include="inc\gbException.h" />
     <ClInclude Include="inc\gbLog.h" />
-    <ClInclude Include="inc\gbMdl.h" />
-    <ClInclude Include="inc\gbMdlLoader.h" />
+    <ClInclude Include="inc\gbMsh.h" />
+    <ClInclude Include="inc\gbMshLoader.h" />
     <ClInclude Include="inc\gbObj.h" />
     <ClInclude Include="inc\gbOpenGL.h" />
     <ClInclude Include="inc\gbVector2d.h" />
