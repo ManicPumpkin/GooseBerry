@@ -111,6 +111,8 @@ VOID		gbSplitString(const string& pStr, vector<string>& pToken, const string& pS
 #include "gbVector2d.h"
 #include "gbColor.h"
 #include "gbOpenGL.h"
+#include "gbMat.h"
+#include "gbTex.h"
 #include "gbMsh.h"
 #include "gbMshLoader.h"
 #include "gbMshQueue.h"

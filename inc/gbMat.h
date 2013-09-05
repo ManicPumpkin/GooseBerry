@@ -1,27 +1,27 @@
 //==================================================================
 /**
-	@file	cMat.h
-	@brief	This file includes the cMat class
+	@file	gbMat.h
+	@brief	This file includes the gbMat class
 	@author	drubner
 	@date	2012-12-02
 **/
 //==================================================================
-#ifndef CMAT_H
-#define CMAT_H
+#pragma once
+
 //==================================================================
 //	Includes
 //==================================================================
-#include "hLibraries.h"
-#include "hGlobal.h"
+#include "gooseberry.h"
+
 //==================================================================
 //	Class
 //==================================================================
 /**
-	@class	cMat
+	@class	gbMat
 	@brief	Contains information about material files
 **/
 //==================================================================
-class cMat
+class gbMat
 {
 	protected:
 
@@ -46,13 +46,10 @@ class cMat
 		bool	mHasEmissive;	//!< flag for emissive material
 
 		//	(De-)Constructor
-		cMat():mShininess(-1),mHasAmbient(false),mHasDiffuse(false),mHasSpecular(false), mHasEmissive(false){};
-		cMat(string pFile):mShininess(-1),mHasAmbient(false),mHasDiffuse(false),mHasSpecular(false), mHasEmissive(false)
+		gbMat():mShininess(-1),mHasAmbient(false),mHasDiffuse(false),mHasSpecular(false), mHasEmissive(false){};
+		gbMat(string pFile):mShininess(-1),mHasAmbient(false),mHasDiffuse(false),mHasSpecular(false), mHasEmissive(false)
 		{
-			this->mMatName	= cGlobal::gExtractName(pFile);
-			this->mMatPath	= cGlobal::gExtractPath(pFile);
+			this->mMatName	= gbExtractName(pFile);
+			this->mMatPath	= gbExtractPath(pFile);
 		}
 };
-//==================================================================
-#endif CMAT_H
-//==================================================================

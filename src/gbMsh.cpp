@@ -15,7 +15,7 @@
 //==================================================================
 /**
 		@fn		gbMsh::gbMsh()
-		@brief	Standard constructor
+		@brief	Standardconstructor
 **/
 //==================================================================
 gbMsh::gbMsh()
@@ -30,6 +30,7 @@ gbMsh::gbMsh()
 	mNormals		= NULL;
 	mTexCoords		= NULL;
 }
+
 //==================================================================
 /**
 		@fn		gbMsh::gbMsh(const gbMsh& tRHS)
@@ -86,11 +87,18 @@ gbMsh::gbMsh(const gbMsh& tRHS)
 		mTexCoords[tI].v	= tRHS.mTexCoords[tI].v;
 	}
 }
+
+//==================================================================
+/**
+		@fn		gbMsh :: ~gbMsh
+		@brief	Deconstructor calls fFreeMdl method
+**/
 //==================================================================
 gbMsh::~gbMsh()
 {
 	fFreeMdl();
 }
+
 //==================================================================
 /**
 		@fn		gbMsh::fFreeMdl()
@@ -110,6 +118,7 @@ VOID gbMsh::fFreeMdl()
 	mNormals		= NULL;
 	mTexCoords		= NULL;
 }
+
 //==================================================================
 /**
 		@fn		gbMsh::fDraw()
@@ -122,6 +131,7 @@ VOID gbMsh::fFreeMdl()
 VOID gbMsh::fDraw()
 {
 	/*
+	\todo Enable Material
 	glDisable(GL_COLOR_MATERIAL);
 	if(mMaterial.mHasAmbient)
 		glMaterialfv(GL_FRONT, GL_AMBIENT, mMaterial.mAmbient);
@@ -157,12 +167,10 @@ VOID gbMsh::fDraw()
 				this->mVertices[this->mFaces[i].vertex[j] - 1].z
 			);
 			/*
+			\todo Enable Texture
 			glTexCoord2f(	this->mTexCoords[this->mFaces[i].texcoord[j] - 1].u,
 							this->mTexCoords[this->mFaces[i].texcoord[j] - 1].v		);
 			*/
-
-			//GB_LDEBUG("face: " + gbNumToStr<int>(i) + " vertex x:" + gbNumToStr<float>(this->mVertices[this->mFaces[i].vertex[j] - 1].x) + " vertex y " + gbNumToStr<float>(this->mVertices[this->mFaces[i].vertex[j] - 1].y) + " vertex z " + gbNumToStr<float>(this->mVertices[this->mFaces[i].vertex[j] - 1].z));
-			//GB_LDEBUG("normal: " + gbNumToStr<int>(i) + " normal x:" + gbNumToStr<float>(this->mNormals[this->mFaces[i].normal[j] - 1].x) + " normal y " + gbNumToStr<float>(this->mNormals[this->mFaces[i].normal[j] - 1].y) + " normal z " + gbNumToStr<float>(this->mNormals[this->mFaces[i].normal[j] - 1].z));
 		}
 	}
 	glEnd();

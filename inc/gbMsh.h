@@ -18,7 +18,7 @@
 //	Includes
 //==================================================================
 #include "gooseberry.h"
-//#include "cMat.h"
+//#include "gbMat.h"
 
 //==================================================================
 //	Structs
@@ -68,7 +68,7 @@ class GOOSEBERRY_API gbMsh
 		std::string		mMatPath;		//!< material file path
 		std::string		mMtllib;		//!< material lib to use
 		std::string		mUsemtl;		//!< material to use
-		//cMat 			mMaterial;		//!< material
+		gbMat 			mMaterial;		//!< material
 
 		bool			mIsTriangle;	//!< if object is made of triangles, else quads 
 

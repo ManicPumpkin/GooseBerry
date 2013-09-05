@@ -31,16 +31,16 @@ class GOOSEBERRY_API gbObj
 	protected:
 	private:
 		//	Variables
-		gbMsh		mMdl;
-		gbVector3d	mAxisX;
-		gbVector3d	mAxisY;
-		gbVector3d	mAxisZ;
-		gbVector3d	mPosition;
-		gbVector3d	mScale;
-		gbVector3d	mRotation;
-		gbVector3d	mVelocity;
-		gbMatrix	mMatrix;
-		gbMatrix	mInvMatrix;
+		gbMsh		mMdl;		//!< model of object
+		gbVector3d	mAxisX;		//!< x axis
+		gbVector3d	mAxisY;		//!< y axis
+		gbVector3d	mAxisZ;		//!< z axis
+		gbVector3d	mPosition;	//!< position
+		gbVector3d	mScale;		//!< scaling
+		gbVector3d	mRotation;	//!< rotation
+		gbVector3d	mVelocity;	//!< velocity
+		gbMatrix	mMatrix;	//!< transform matrix
+		gbMatrix	mInvMatrix;	//!< inverse transform matrix
 
 		//	Functions
 		VOID fReset();
