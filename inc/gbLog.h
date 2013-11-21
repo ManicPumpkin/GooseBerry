@@ -13,22 +13,27 @@
 #pragma once 
 
 //==================================================================
-//	Include
+//	INCLUDE
 //==================================================================
 #include "gooseberry.h"
 
 //==================================================================
-//	Functions
+//	NAMESPACE
 //==================================================================
-GOOSEBERRY_API gbResult	gbInitializeLog();
-GOOSEBERRY_API gbResult	gbStopLog();
-GOOSEBERRY_API gbResult	gbLog(std::string pMsg);
-GOOSEBERRY_API gbResult	gbLog(std::string pMsg, std::string pSpace);
-GOOSEBERRY_API std::string	gbCurrentTime();
-GOOSEBERRY_API std::string	gbCurrentDate();
+using namespace gbGlobal;
 
 //==================================================================
-//	Inline functions
+//	FUNCTION
+//==================================================================
+GOOSEBERRY_API gbGlobal::gbResult	gbInitializeLog();
+GOOSEBERRY_API gbGlobal::gbResult	gbStopLog();
+GOOSEBERRY_API gbGlobal::gbResult	gbLog(std::string pMsg);
+GOOSEBERRY_API gbGlobal::gbResult	gbLog(std::string pMsg, std::string pSpace);
+GOOSEBERRY_API std::string			gbCurrentTime();
+GOOSEBERRY_API std::string			gbCurrentDate();
+
+//==================================================================
+//	INLINE
 //==================================================================
 inline GOOSEBERRY_API VOID GB_LDEBUG(string pMsg)					{ if(DEBUG_MODE) gbLog("<td class=\"log_debug\">" + pMsg + "</td>\n"); }
 inline GOOSEBERRY_API VOID GB_LINFO(string pMsg)					{ gbLog("<td class=\"log_info\">" + pMsg + "</td>\n"); }

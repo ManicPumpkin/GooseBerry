@@ -55,7 +55,7 @@ class gbMat
 		**/
 		gbMat(string pFile):mShininess(-1),mHasAmbient(false),mHasDiffuse(false),mHasSpecular(false), mHasEmissive(false)
 		{
-			this->mMatName	= gbExtractName(pFile);
-			this->mMatPath	= gbExtractPath(pFile);
+			this->mMatName	= gbGlobal::gbExtractName(pFile);
+			this->mMatPath	= gbGlobal::gbExtractPath(pFile);
 		}
 };

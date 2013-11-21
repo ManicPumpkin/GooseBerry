@@ -23,34 +23,35 @@
 	Rubner, Danny.
 **/
 //==================================================================
-//	Include
+//	INCLUDE
 //==================================================================
 #include "gooseberry.h"
 
 //==================================================================
-//	Namespace
+//	NAMESPACE
 //==================================================================
+using namespace gbGlobal;
 
 //==================================================================
-//	Variables
+//	VARIABLES
 //==================================================================
-HINSTANCE	gb_g_hinstance		= NULL;
-HWND		gb_g_HWND			= NULL;
-HDC			gb_g_HDC			= NULL;
-HGLRC		gb_g_HGLRC			= NULL;
-LPCSTR		gb_g_wndTitle		= "";
-LPCSTR		gb_g_wndName		= "";
-int			gb_g_wndWidth		= -1;
-int			gb_g_wndHeight		= -1;
-int			gb_g_wndX			= -1;
-int			gb_g_wndY			= -1;
-int			gb_g_bitsColor		= -1;
-int			gb_g_bitsDepth		= -1;
-int			gb_g_bitsAlpha		= -1;
-bool		gb_g_fullscreen		= FALSE;
-bool		gb_g_init			= FALSE;
-bool		gb_g_active			= TRUE;
-bool		gb_g_keys[256];
+HINSTANCE	gbGlobal::gb_g_hinstance = NULL;
+HWND		gbGlobal::gb_g_HWND = NULL;
+HDC			gbGlobal::gb_g_HDC = NULL;
+HGLRC		gbGlobal::gb_g_HGLRC = NULL;
+LPCSTR		gbGlobal::gb_g_wndTitle = "";
+LPCSTR		gbGlobal::gb_g_wndName = "";
+int			gbGlobal::gb_g_wndWidth = -1;
+int			gbGlobal::gb_g_wndHeight = -1;
+int			gbGlobal::gb_g_wndX = -1;
+int			gbGlobal::gb_g_wndY = -1;
+int			gbGlobal::gb_g_bitsColor = -1;
+int			gbGlobal::gb_g_bitsDepth = -1;
+int			gbGlobal::gb_g_bitsAlpha = -1;
+bool		gbGlobal::gb_g_fullscreen = FALSE;
+bool		gbGlobal::gb_g_init = FALSE;
+bool		gbGlobal::gb_g_active = TRUE;
+bool		gbGlobal::gb_g_keys[256];
 
 //==================================================================
 /**
@@ -58,7 +59,7 @@ bool		gb_g_keys[256];
 	@brief	Initialize the game engine
 **/
 //==================================================================
-GOOSEBERRY_API gbResult gbInitialize()
+GOOSEBERRY_API gbResult gbGlobal::gbInitialize()
 {
 	if(!gb_g_init)
 	{
@@ -76,7 +77,7 @@ GOOSEBERRY_API gbResult gbInitialize()
 	@brief	Enter message loop
 **/
 //==================================================================
-GOOSEBERRY_API gbResult gbMessageLoop( gbResult (* pRender)(float) )
+GOOSEBERRY_API gbResult gbGlobal::gbMessageLoop(gbResult(*pRender)(float))
 {
 	MSG			tMSG;
 	LONGLONG	tStartTime	= 0.0f;
@@ -117,9 +118,9 @@ GOOSEBERRY_API gbResult gbMessageLoop( gbResult (* pRender)(float) )
 		{
 			gb_g_keys[VK_F1]	= FALSE;
 			gb_g_fullscreen	    = !gb_g_fullscreen;
-			gbExit();
+			gbGlobal::gbExit();
 
-			if(gbInitialize()!=GB_OK)
+			if (gbGlobal::gbInitialize() != GB_OK)
 				throw gbException(ERR_WIN_FS_STR, ERR_WIN_FS_ID);
 		}
 
@@ -143,7 +144,7 @@ GOOSEBERRY_API gbResult gbMessageLoop( gbResult (* pRender)(float) )
 	@brief	Deconstructor
 **/
 //==================================================================
-GOOSEBERRY_API gbResult gbExit()
+GOOSEBERRY_API gbResult gbGlobal::gbExit()
 {
 	GB_LDEBUG("Gooseberry stopped");
 	gbStopLog();
@@ -158,7 +159,7 @@ GOOSEBERRY_API gbResult gbExit()
 		@return std::string tString
 **/
 //==================================================================
-std::string gbIntToStr(int pInt)
+std::string gbGlobal::gbIntToStr(int pInt)
 {
 	ostringstream tConvert;
 	tConvert << pInt;
@@ -173,7 +174,7 @@ std::string gbIntToStr(int pInt)
 		@return std::string tName
 **/
 //==================================================================
-std::string gbExtractName(std::string pFile)
+std::string gbGlobal::gbExtractName(std::string pFile)
 {
 	int tStartSubStr	= 0;
 	int tEndSubStr		= 0;
@@ -193,7 +194,7 @@ std::string gbExtractName(std::string pFile)
 		@return std::string tPath
 **/
 //==================================================================
-std::string gbExtractPath(std::string pFile)
+std::string gbGlobal::gbExtractPath(std::string pFile)
 {
 	int tEndSubStr		= 0;
 
@@ -212,7 +213,7 @@ std::string gbExtractPath(std::string pFile)
 	@param	pSeperator	delemiter
 **/
 //==================================================================
-VOID gbSplitString(const string& pStr, vector<string>& pToken, const string& pSeperator)
+VOID gbGlobal::gbSplitString(const string& pStr, vector<string>& pToken, const string& pSeperator)
 {
 	string::size_type tLastPos	= pStr.find_first_not_of(pSeperator, 0);
 	string::size_type tPos		= pStr.find_first_of(pSeperator, tLastPos);

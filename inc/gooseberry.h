@@ -56,12 +56,18 @@ using namespace std;
 #define LOG_FILEPATH			LOG_PATH LOG_FILE
 
 //==================================================================
+//	GLOBAL NAMESPACE START
+//==================================================================
+namespace gbGlobal
+{
+
+//==================================================================
 //	GLOBALS
 //==================================================================
 GOOSEBERRY_API extern HINSTANCE		gb_g_hinstance;		//!< instance of program
 GOOSEBERRY_API extern HWND			gb_g_HWND;			//!< handle to window
 GOOSEBERRY_API extern HDC			gb_g_HDC;			//!< device context
-GOOSEBERRY_API extern HGLRC			gb_g_HGLRC;			//!< 
+GOOSEBERRY_API extern HGLRC			gb_g_HGLRC;			//!< render context
 GOOSEBERRY_API extern LPCSTR		gb_g_wndTitle;		//!< title of window
 GOOSEBERRY_API extern LPCSTR		gb_g_wndName;		//!< name of window
 GOOSEBERRY_API extern int			gb_g_wndWidth;		//!< window width
@@ -96,7 +102,13 @@ GOOSEBERRY_API gbResult gbExit();
 
 std::string gbExtractName(std::string pFile);
 std::string gbExtractPath(std::string pFile);
+std::string gbIntToStr(int pInt);
 VOID		gbSplitString(const string& pStr, vector<string>& pToken, const string& pSeperator);
+
+//==================================================================
+//	GLOBAL NAMESPACE END
+//==================================================================
+}
 
 //==================================================================
 //	INCLUDE HEADER OF ENGINE
