@@ -1,62 +1,62 @@
 /**
-	@file	gbColor.cpp
-	@brief	Implements gbColor methods
+	@file	Color.cpp
+	@brief	Implements Color methods
 	@author	drubner
 	@date	2013-08-28
 **/
 //==================================================================
 //	Include
 //==================================================================
-#include "gbColor.h"
+#include "Color.h"
 
 //==================================================================
 /**
-	@fn		gbColor :: gbColor()
+	@fn		Color :: Color()
 	@brief	Standardconstructor
 **/
 //==================================================================
-gbColor :: gbColor()
+Color :: Color()
 {
 }
 
 //==================================================================
 /**
-	@fn		gbColor(float pR, float pG, float pB)
+	@fn		Color(float r, float g, float b)
 	@brief	Enhanced constructor
 **/
 //==================================================================
-gbColor :: gbColor(float pR, float pG, float pB)
+Color :: Color(float r, float g, float b)
 {
-	mR	= pR;
-	mG	= pG;
-	mB	= pB;
-	mA	= 1.0f;
+	this->r	= r;
+	this->g	= g;
+	this->b	= b;
+	this->a	= 1.0f;
 }
 
 //==================================================================
 /**
-	@fn		gbColor(float pR, float pG, float pB, float pA)
+	@fn		Color(float r, float g, float b, float a)
 	@brief	Enhanced constructor
 **/
 //==================================================================
-gbColor :: gbColor(float pR, float pG, float pB, float pA)
+Color :: Color(float r, float g, float b, float a)
 {
-	mR	= pR;
-	mG	= pG;
-	mB	= pB;
-	mA	= pA;
+	this->r	= r;
+	this->g	= g;
+	this->b	= b;
+	this->a	= a;
 }
 
 //==================================================================
 /**
-	@fn		gbColor :: gbColor(float * pColors)
+	@fn		Color :: Color(float * pColors)
 	@brief	Enhanced constructor
 **/
 //==================================================================
-gbColor :: gbColor(float * pColors)
+Color :: Color(float * pColors)
 {
-	mR	= pColors[0];
-	mG	= pColors[1];
-	mB	= pColors[2];
-	mA	= pColors[3];
+	this->r	= pColors[0];
+	this->g	= pColors[1];
+	this->b	= pColors[2];
+	this->a	= pColors[3];
 }

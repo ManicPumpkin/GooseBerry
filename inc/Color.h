@@ -1,8 +1,8 @@
 /**
-	@file	gbVector3d.h
-	@brief	Includes gbVector3d class
+	@file	Color.h
+	@brief	Includes Color class
 	@author	drubner
-	@date	2013-08-26
+	@date	2013-08-28
 **/
 //==================================================================
 //	PRAGMA
@@ -12,19 +12,19 @@
 //==================================================================
 //	INCLUDE
 //==================================================================
-#include "gooseberry.h"
+#include "GooseBerry.h"
 
 //==================================================================
 //	CLASS
 //==================================================================
 /**
-		@class	gbVector3d
+		@class	Color
 		@brief	Implements all rendering, initialization and resize
 				methods for OpenGL, also variables, getter and 
 				setter methods
 **/
 //==================================================================
-class GOOSEBERRY_API gbVector3d
+class GOOSEBERRY_API Color
 {
 	public:
 		//  Variables
@@ -32,29 +32,23 @@ class GOOSEBERRY_API gbVector3d
 		{
 			struct
 			{
-				float mX, mY, mZ;
+				float r, g, b, a;
 			};
 
 			struct
 			{
-				float mU, mV, mW;
+				float red, green, blue, alpha;
 			};
 
-			float mCoords[3];
+			float colors[4];
 		};
 
 		//	(De-)Constructor
-		gbVector3d();
-		gbVector3d(float pCoord);
-		gbVector3d(float * pCoords);
-		gbVector3d(float pX, float pY, float pZ);
-		~gbVector3d();
-
-		//	Operators
-		gbVector3d operator+(const gbVector3d& pRight);
-		gbVector3d operator-(const gbVector3d& pRight);
-		gbVector3d operator*(const gbVector3d& pRight);
-		gbVector3d operator/(const gbVector3d& pRight);
+		Color();
+		Color(float r, float g, float b);
+		Color(float r, float g, float b, float a);
+		Color(float * colors);
+		~Color(){}
 				
 	private:
 	protected:

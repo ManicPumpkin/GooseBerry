@@ -1,13 +1,13 @@
 /**
-	@file	hErrors.h
+	@file	Errors.h
 	@brief	Includes all error messages and ids for window and 
 			OpenGL
 	@author	drubner
 	@date	2012-11-10
 **/
 //==================================================================
-#ifndef CERRORS_H
-#define CERRORS_H
+#ifndef ERRORS_H
+#define ERRORS_H
 
 //==================================================================
 //	Windows Errors
@@ -72,5 +72,5 @@
 #define ERR_G_EXIT_ID		"Error 0x0000101"
 
 //==================================================================
-#endif CERRORS_H
+#endif ERRORS_H
 //==================================================================

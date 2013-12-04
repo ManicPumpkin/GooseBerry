@@ -1,6 +1,6 @@
 /**
-	@file	glooseberry.h
-	@brief	Includes glooseberry class
+	@file	GooseBerry.h
+	@brief	Includes gooseberry class
 	@author	drubner
 	@date	2013-07-16
 **/
@@ -64,23 +64,23 @@ namespace gbGlobal
 //==================================================================
 //	GLOBALS
 //==================================================================
-GOOSEBERRY_API extern HINSTANCE		gb_g_hinstance;		//!< instance of program
-GOOSEBERRY_API extern HWND			gb_g_HWND;			//!< handle to window
-GOOSEBERRY_API extern HDC			gb_g_HDC;			//!< device context
-GOOSEBERRY_API extern HGLRC			gb_g_HGLRC;			//!< render context
-GOOSEBERRY_API extern LPCSTR		gb_g_wndTitle;		//!< title of window
-GOOSEBERRY_API extern LPCSTR		gb_g_wndName;		//!< name of window
-GOOSEBERRY_API extern int			gb_g_wndWidth;		//!< window width
-GOOSEBERRY_API extern int			gb_g_wndHeight;		//!< window height
-GOOSEBERRY_API extern int			gb_g_wndX;			//!< window x
-GOOSEBERRY_API extern int			gb_g_wndY;			//!< window y
-GOOSEBERRY_API extern int			gb_g_bitsColor;		//!< color bits
-GOOSEBERRY_API extern int			gb_g_bitsDepth;		//!< color depth
-GOOSEBERRY_API extern int			gb_g_bitsAlpha;		//!< color alpha
-GOOSEBERRY_API extern bool			gb_g_fullscreen;	//!< window runs in fullscreen
-GOOSEBERRY_API extern bool			gb_g_active;		//!< window is active
-GOOSEBERRY_API extern bool			gb_g_init;			//!< gooseberry engine initialized
-GOOSEBERRY_API extern bool			gb_g_keys[256];		//!< all keys
+GOOSEBERRY_API extern HINSTANCE		g_hinstance;	//!< instance of program
+GOOSEBERRY_API extern HWND			g_HWND;			//!< handle to window
+GOOSEBERRY_API extern HDC			g_HDC;			//!< device context
+GOOSEBERRY_API extern HGLRC			g_HGLRC;		//!< render context
+GOOSEBERRY_API extern LPCSTR		g_wndTitle;		//!< title of window
+GOOSEBERRY_API extern LPCSTR		g_wndName;		//!< name of window
+GOOSEBERRY_API extern int			g_wndWidth;		//!< window width
+GOOSEBERRY_API extern int			g_wndHeight;	//!< window height
+GOOSEBERRY_API extern int			g_wndX;			//!< window x
+GOOSEBERRY_API extern int			g_wndY;			//!< window y
+GOOSEBERRY_API extern int			g_bitsColor;	//!< color bits
+GOOSEBERRY_API extern int			g_bitsDepth;	//!< color depth
+GOOSEBERRY_API extern int			g_bitsAlpha;	//!< color alpha
+GOOSEBERRY_API extern bool			g_fullscreen;	//!< window runs in fullscreen
+GOOSEBERRY_API extern bool			g_active;		//!< window is active
+GOOSEBERRY_API extern bool			g_init;			//!< gooseberry engine initialized
+GOOSEBERRY_API extern bool			g_keys[256];	//!< all keys
 
 //==================================================================
 //	ENUM & STRUCTS
@@ -96,14 +96,14 @@ enum gbResult
 //==================================================================
 //	FUNCTION DECLARATION
 //==================================================================
-GOOSEBERRY_API gbResult gbInitialize();
-GOOSEBERRY_API gbResult gbMessageLoop(gbResult (*typRender)(float));
-GOOSEBERRY_API gbResult gbExit();
+GOOSEBERRY_API gbResult Initialize();
+GOOSEBERRY_API gbResult MessageLoop(gbResult (*typ_render)(float));
+GOOSEBERRY_API gbResult Exit();
 
-std::string gbExtractName(std::string pFile);
-std::string gbExtractPath(std::string pFile);
-std::string gbIntToStr(int pInt);
-VOID		gbSplitString(const string& pStr, vector<string>& pToken, const string& pSeperator);
+std::string ExtractName(std::string file);
+std::string ExtractPath(std::string file);
+std::string IntToStr(int value);
+VOID		SplitString(const string& str, vector<string>& token, const string& seperator);
 
 //==================================================================
 //	GLOBAL NAMESPACE END
@@ -113,18 +113,18 @@ VOID		gbSplitString(const string& pStr, vector<string>& pToken, const string& pS
 //==================================================================
 //	INCLUDE HEADER OF ENGINE
 //==================================================================
-#include "gbException.h"
-#include "gbErrors.h"
-#include "gbLog.h"
-#include "gbConvert.h"
-#include "gbArray.h"
-#include "gbMatrix.h"
-#include "gbVector3d.h"
-#include "gbVector2d.h"
-#include "gbColor.h"
-#include "gbOpenGL.h"
-#include "gbMat.h"
-#include "gbTex.h"
-#include "gbMsh.h"
-#include "gbMshLoader.h"
-#include "gbMshQueue.h"
+#include "Exception.h"
+#include "Errors.h"
+#include "Log.h"
+#include "Convert.h"
+#include "Array.h"
+#include "Matrix.h"
+#include "Vector3d.h"
+#include "Vector2d.h"
+#include "Color.h"
+#include "OpenGL.h"
+//#include "gbMat.h"
+//#include "gbTex.h"
+//#include "gbMsh.h"
+//#include "gbMshLoader.h"
+//#include "gbMshQueue.h"

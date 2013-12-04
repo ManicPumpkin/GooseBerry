@@ -11,7 +11,7 @@
 //==================================================================
 //	Includes
 //==================================================================
-#include "gooseberry.h"
+#include "GooseBerry.h"
 
 //==================================================================
 //	Class
@@ -55,7 +55,7 @@ class gbMat
 		**/
 		gbMat(string pFile):mShininess(-1),mHasAmbient(false),mHasDiffuse(false),mHasSpecular(false), mHasEmissive(false)
 		{
-			this->mMatName	= gbGlobal::gbExtractName(pFile);
-			this->mMatPath	= gbGlobal::gbExtractPath(pFile);
+			this->mMatName	= gbGlobal::ExtractName(pFile);
+			this->mMatPath	= gbGlobal::ExtractPath(pFile);
 		}
 };

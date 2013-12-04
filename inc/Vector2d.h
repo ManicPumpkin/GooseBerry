@@ -1,8 +1,8 @@
 /**
-	@file	gbColor.h
-	@brief	Includes gbColor class
+	@file	Vector2d.h
+	@brief	Includes Vector2d class
 	@author	drubner
-	@date	2013-08-28
+	@date	2013-08-26
 **/
 //==================================================================
 //	PRAGMA
@@ -12,19 +12,19 @@
 //==================================================================
 //	INCLUDE
 //==================================================================
-#include "gooseberry.h"
+#include "GooseBerry.h"
 
 //==================================================================
 //	CLASS
 //==================================================================
 /**
-		@class	gbColor
+		@class	Vector2d
 		@brief	Implements all rendering, initialization and resize
 				methods for OpenGL, also variables, getter and 
 				setter methods
 **/
 //==================================================================
-class GOOSEBERRY_API gbColor
+class GOOSEBERRY_API Vector2d
 {
 	public:
 		//  Variables
@@ -32,23 +32,29 @@ class GOOSEBERRY_API gbColor
 		{
 			struct
 			{
-				float mR, mG, mB, mA;
+				float x_, y_;
 			};
 
 			struct
 			{
-				float mRed, mGreen, mBlue, mAlpha;
+				float u_, v_;
 			};
 
-			float mColors[4];
+			float coords_[2];
 		};
 
 		//	(De-)Constructor
-		gbColor();
-		gbColor(float pR, float pG, float pB);
-		gbColor(float pR, float pG, float pB, float pA);
-		gbColor(float * pColors);
-		~gbColor(){}
+		Vector2d();
+		Vector2d(float coord);
+		Vector2d(float * coords);
+		Vector2d(float x, float y);
+		~Vector2d();
+
+		//	Operators
+		Vector2d operator+(const Vector2d& right);
+		Vector2d operator-(const Vector2d& right);
+		Vector2d operator*(const Vector2d& right);
+		Vector2d operator/(const Vector2d& right);
 				
 	private:
 	protected:

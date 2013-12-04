@@ -16,7 +16,7 @@
 //==================================================================
 //	Includes
 //==================================================================
-#include "gooseberry.h"
+#include "GooseBerry.h"
 
 //==================================================================
 //	Class
@@ -32,15 +32,15 @@ class GOOSEBERRY_API gbObj
 	private:
 		//	Variables
 		gbMsh		mMdl;		//!< model of object
-		gbVector3d	mAxisX;		//!< x axis
-		gbVector3d	mAxisY;		//!< y axis
-		gbVector3d	mAxisZ;		//!< z axis
-		gbVector3d	mPosition;	//!< position
-		gbVector3d	mScale;		//!< scaling
-		gbVector3d	mRotation;	//!< rotation
-		gbVector3d	mVelocity;	//!< velocity
-		gbMatrix	mMatrix;	//!< transform matrix
-		gbMatrix	mInvMatrix;	//!< inverse transform matrix
+		Vector3d	mAxisX;		//!< x axis
+		Vector3d	mAxisY;		//!< y axis
+		Vector3d	mAxisZ;		//!< z axis
+		Vector3d	mPosition;	//!< position
+		Vector3d	mScale;		//!< scaling
+		Vector3d	mRotation;	//!< rotation
+		Vector3d	v_elocity;	//!< velocity
+		Matrix	mMatrix;	//!< transform matrix
+		Matrix	mInvMatrix;	//!< inverse transform matrix
 
 		//	Functions
 		VOID fReset();
@@ -49,9 +49,9 @@ class GOOSEBERRY_API gbObj
 		
 	public:
 		//	Variables
-		//	(De-)Constructor & Copy
+		//	(De-)Constructor & Coy
 		~gbObj();
 		gbObj();
-		gbObj(gbVector3d pPosition);
-		gbObj(float pX, float pY, float pZ);
+		gbObj(Vector3d pPosition);
+		gbObj(float x, float y, float z);
 };

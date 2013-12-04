@@ -1,5 +1,5 @@
 /**
-	@file	gbConvert.h
+	@file	Convert.h
 	@brief	Includes all global conversation functions
 	@author	drubner
 	@date	2013-08-22
@@ -10,35 +10,35 @@
 //==================================================================
 // INCLUDE
 //==================================================================
-#include "gooseberry.h"
+#include "GooseBerry.h"
 
 //==================================================================
 /**
-	@class	std::string gbNumToStr(T pNumber)
+	@class	std::string NumToStr(T number)
 	@brief	Converts a number into a string
-	@return std::string tConvert.str()
+	@return std::string convert.str()
 **/
 //==================================================================
 template <typename T>
-std::string gbNumToStr(T pNumber)
+std::string NumToStr(T number)
 {
-	ostringstream tConvert;
-	tConvert << pNumber;
-	return tConvert.str();
+	ostringstream convert;
+	convert << number;
+	return convert.str();
 }
 
 //==================================================================
 /**
-	@class	<T> gbStrToInt(std::string pStr)
+	@class	<T> StrToInt(std::string str)
 	@brief	Converts a string into a number
-	@return <T> tResult
+	@return <T> result
 **/
 //==================================================================
 template <typename T>
-T gbStrToInt(std::string pStr)
+T StrToInt(std::string str)
 {
-	T tResult;
-	if(!(istringstream(pStr) >> tResult))
-		tResult = 0;
-	return tResult;
+	T result;
+	if(!(istringstream(str) >> result))
+		result = 0;
+	return result;
 }

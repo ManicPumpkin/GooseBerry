@@ -30,39 +30,39 @@ gbObj :: ~gbObj()
 //==================================================================
 gbObj :: gbObj()
 {
-	mPosition.mX	= 0;
-	mPosition.mY	= 0;
-	mPosition.mZ	= 0;
+	mPosition.x_	= 0;
+	mPosition.y_	= 0;
+	mPosition.z_	= 0;
 }
 
 //==================================================================
 /**
-	@fn		gbObj :: gbObj(gbVector3d pPosition)
+	@fn		gbObj :: gbObj(Vector3d pPosition)
 	@brief	Extended Constructor
 	@param	pPosition position of the object
 **/
 //==================================================================
-gbObj :: gbObj(gbVector3d pPosition)
+gbObj :: gbObj(Vector3d pPosition)
 {
-	mPosition.mX		= pPosition.mX;
-	mPosition.mY		= pPosition.mY;
-	mPosition.mZ		= pPosition.mZ;
+	mPosition.x_		= pPosition.x_;
+	mPosition.y_		= pPosition.y_;
+	mPosition.z_		= pPosition.z_;
 }
 
 //==================================================================
 /**
-	@fn		gbObj :: gbObj(float pX, float pY, float pZ)
+	@fn		gbObj :: gbObj(float x, float y, float z)
 	@brief	Extended Constructor
-	@param	pX	x position of the object
-	@param	pY	y position of the object
-	@param	pZ	z position of the object
+	@param	x	x position of the object
+	@param	y	y position of the object
+	@param	z	z position of the object
 **/
 //==================================================================
-gbObj :: gbObj(float pX, float pY, float pZ)
+gbObj :: gbObj(float x, float y, float z)
 {
-	mPosition.mX		= pX;
-	mPosition.mY		= pY;
-	mPosition.mZ		= pZ;
+	mPosition.x_		= x;
+	mPosition.y_		= y;
+	mPosition.z_		= z;
 }
 
 //==================================================================
@@ -73,13 +73,13 @@ gbObj :: gbObj(float pX, float pY, float pZ)
 //==================================================================
 VOID gbObj :: fReset()
 {
-	mAxisX		= gbVector3d(1.0f, 0.0f, 0.0f);
-	mAxisY		= gbVector3d(0.0f, 1.0f, 0.0f);
-	mAxisZ		= gbVector3d(0.0f, 0.0f, 1.0f);
-	mPosition	= gbVector3d(0.0f);
-	mVelocity	= gbVector3d(0.0f);
-	mRotation	= gbVector3d(0.0f);
-	mScale		= gbVector3d(1.0f);
+	mAxisX		= Vector3d(1.0f, 0.0f, 0.0f);
+	mAxisY		= Vector3d(0.0f, 1.0f, 0.0f);
+	mAxisZ		= Vector3d(0.0f, 0.0f, 1.0f);
+	mPosition	= Vector3d(0.0f);
+	v_elocity	= Vector3d(0.0f);
+	mRotation	= Vector3d(0.0f);
+	mScale		= Vector3d(1.0f);
 
 	fUpdate();
 }
@@ -92,10 +92,10 @@ VOID gbObj :: fReset()
 //==================================================================
 VOID gbObj :: fUpdate()
 {
-	mMatrix		=	gbMatrixScale(mScale) *
-					gbMatrixAxis(mAxisX, mAxisY, mAxisZ) *
-					gbMatrixTranslation(mPosition);
-	mInvMatrix	=	gbMatrixInvert(mMatrix);
+	mMatrix		=	MatrixScale(mScale) *
+					MatrixAxis(mAxisX, mAxisY, mAxisZ) *
+					MatrixTranslation(mPosition);
+	mInvMatrix	=	MatrixInvert(mMatrix);
 }
 
 //==================================================================

@@ -38,64 +38,64 @@ VOID gbMshQueue :: fAddModel(gbMsh pModel)
 }
 //==================================================================				
 /**
-		@fn		gbMshQueue :: fRemoveModelByName
+		@fn		gbMshQueue :: RemoveModelByName
 		@brief	Remove model from model queue by name
-		@param	pMdlName	name of model object
+		@param	model_name	name of model object
 		@return	boolean value of success/failure
 **/
 //==================================================================
-BOOL gbMshQueue :: fRemoveModelByName(std::string pMdlName)
+BOOL gbMshQueue :: RemoveModelByName(std::string model_name)
 {
-	for(int i = 0; i < this->fGetSize(); i++)
+	for(int i = 0; i < this->GetSize(); i++)
 	{
-		if(mModelQueue[i].mObjName == pMdlName)
+		if(mModelQueue[i].mObjName == model_name)
 		{
 			mModelQueue.erase(mModelQueue.begin() + (i - 1));
-			GB_LINFO("Model removed by name: " + pMdlName);
+			GB_LINFO("Model removed by name: " + model_name);
 			return TRUE;
 		}
 	}
 
-	GB_LERROR("Error: Could not find model by name: " + pMdlName, "gbMshQueue Error");
+	GB_LERROR("Error: Could not find model by name: " + model_name, "gbMshQueue Error");
 	return FALSE;
 }
 //==================================================================
 /**
-		@fn		gbMshQueue :: fRemoveModelByFile
+		@fn		gbMshQueue :: RemoveModelByFile
 		@brief	Remove model from model queue by file name
-		@param	pFileName	file name of model object
+		@param	file_name	file name of model object
 		@return	boolean value of success/failure
 **/
 //==================================================================
-BOOL gbMshQueue :: fRemoveModelByFile(std::string pFileName)
+BOOL gbMshQueue :: RemoveModelByFile(std::string file_name)
 {
-	for(int i = 0; i < this->fGetSize(); i++)
+	for(int i = 0; i < this->GetSize(); i++)
 	{
-		if(mModelQueue[i].mObjFile == pFileName)
+		if(mModelQueue[i].mObjFile == file_name)
 		{
 			mModelQueue.erase(mModelQueue.begin() + (i - 1));
-			GB_LINFO("Model removed by file name: " + pFileName);
+			GB_LINFO("Model removed by file name: " + file_name);
 			return TRUE;
 		}
 	}
 	
-	GB_LERROR("Error: Could not find model by file name: " + pFileName, "gbMshQueue Error");
+	GB_LERROR("Error: Could not find model by file name: " + file_name, "gbMshQueue Error");
 	return FALSE;
 }
 //==================================================================
 /**
-		@fn		gbMshQueue :: fGetMdlCpyByID(int pID)
+		@fn		gbMshQueue :: GetMdlCyByID(int id)
 		@brief	Returns gbResult
-		@param	pMdl	mesh of object, call by reference
-		@param	pID		model id
+		@param	mdl	mesh of object, call by reference
+		@param	id		model id
 		@return	gbResult	gb_ok or gb_error
 **/
 //==================================================================
-gbResult gbMshQueue :: fGetMdlCpyByID(gbMsh * pMdl, unsigned int pID)
+gbResult gbMshQueue :: GetMdlCyByID(gbMsh * mdl, unsigned int id)
 {
-	if(pID < mModelQueue.size())
+	if(id < mModelQueue.size())
 	{
-		*pMdl	= mModelQueue[pID];
+		*mdl	= mModelQueue[id];
 		return GB_OK;
 	}
 
@@ -103,20 +103,20 @@ gbResult gbMshQueue :: fGetMdlCpyByID(gbMsh * pMdl, unsigned int pID)
 }
 //==================================================================
 /**
-		@fn		gbMshQueue :: fGetMdlCpyByName(std::string pMdlName)
+		@fn		gbMshQueue :: GetMdlCyByName(std::string model_name)
 		@brief	Returns gbResult
-		@param	pMdl		mesh of object, call by reference
-		@param	pMdlName	name of model
+		@param	mdl		mesh of object, call by reference
+		@param	model_name	name of model
 		@return	gbMsh* pointer to model
 **/
 //==================================================================
-gbResult gbMshQueue :: fGetMdlCpyByName(gbMsh * pMdl, std::string pMdlName)
+gbResult gbMshQueue :: GetMdlCyByName(gbMsh * mdl, std::string model_name)
 {
 	for(unsigned int i = 0; i < mModelQueue.size(); i++)
 	{
-		if(mModelQueue[i].mObjName == pMdlName)
+		if(mModelQueue[i].mObjName == model_name)
 		{
-			*pMdl = mModelQueue[i];
+			*mdl = mModelQueue[i];
 			return GB_OK;
 		}
 	}

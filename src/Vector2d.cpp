@@ -1,6 +1,6 @@
 /**
-	@file	gbVector2d.cpp
-	@brief	Includes all gbVector2d class methods
+	@file	Vector2d.cpp
+	@brief	Includes all Vector2d class methods
 	@author	drubner
 	@date	2013-08-22
 **/
@@ -12,125 +12,125 @@
 //==================================================================
 //	INCLUDE
 //==================================================================
-#include "gbVector2d.h"
+#include "Vector2d.h"
 
 //==================================================================
 /**
-	@fn		gbVector2d :: ~gbVector2d()
+	@fn		Vector2d :: ~Vector2d()
 	@brief	Deconstructor
 **/
 //==================================================================
-gbVector2d :: ~gbVector2d()
+Vector2d :: ~Vector2d()
 {
 }
 
 //==================================================================
 /**
-	@fn		gbVector2d :: gbVector2d()
+	@fn		Vector2d :: Vector2d()
 	@brief	Standardconstructor
 **/
 //==================================================================
-gbVector2d :: gbVector2d()
+Vector2d :: Vector2d()
 {
-	mX = mY = 0;
+	x_ = y_ = 0;
 }
 
 //==================================================================
 /**
-	@fn		gbVector2d :: gbVector2d(float * pCoords)
+	@fn		Vector2d :: Vector2d(float * coords)
 	@brief	Extended Constructor
-	@param	pCoords	coordinates of the object
+	@param	coords	coordinates of the object
 **/
 //==================================================================
-gbVector2d :: gbVector2d(float * pCoords)
+Vector2d :: Vector2d(float * coords)
 {
-	mX		= pCoords[0];
-	mY		= pCoords[1];
+	x_		= coords[0];
+	y_		= coords[1];
 }
 
 
 //==================================================================
 /**
-	@fn		gbVector2d :: gbVector2d(float pCoord)
+	@fn		Vector2d :: Vector2d(float coord)
 	@brief	Extended Constructor
-	@param	pCoord	x and y position of the object
+	@param	coord	x and y position of the object
 **/
 //==================================================================
-gbVector2d :: gbVector2d(float pCoord)
+Vector2d :: Vector2d(float coord)
 {
-	mX = mY = pCoord;
+	x_ = y_ = coord;
 }
 
 //==================================================================
 /**
-	@fn		gbVector2d :: gbVector2d(float pX, float pY)
+	@fn		Vector2d :: Vector2d(float x, float y)
 	@brief	Extended Constructor
-	@param	pX	x position of the object
-	@param	pY	y position of the object
+	@param	x	x position of the object
+	@param	y	y position of the object
 **/
 //==================================================================
-gbVector2d :: gbVector2d(float pX, float pY)
+Vector2d :: Vector2d(float x, float y)
 {
-	mX		= pX;
-	mY		= pY;
+	x_		= x;
+	y_		= y;
 }
 
 //==================================================================
 /**
-	@fn		gbVector2d :: operator+(const gbVector2d& pRight)
+	@fn		Vector2d :: operator+(const Vector2d& right)
 	@brief	Overload operator +
-	@param	pRight	right vector
+	@param	right	right vector
 **/
 //==================================================================
-gbVector2d gbVector2d :: operator+(const gbVector2d& pRight)
+Vector2d Vector2d :: operator+(const Vector2d& right)
 {
-	gbVector2d tResult;
-	tResult.mX		= this->mX + pRight.mX;
-	tResult.mY		= this->mY + pRight.mY;
-	return tResult;
+	Vector2d result;
+	result.x_		= this->x_ + right.x_;
+	result.y_		= this->y_ + right.y_;
+	return result;
 }
 
 //==================================================================
 /**
-	@fn		gbVector2d :: operator-(const gbVector2d& pRight)
+	@fn		Vector2d :: operator-(const Vector2d& right)
 	@brief	Overload operator -
-	@param	pRight	right vector
+	@param	right	right vector
 **/
 //==================================================================
-gbVector2d gbVector2d :: operator-(const gbVector2d& pRight)
+Vector2d Vector2d :: operator-(const Vector2d& right)
 {
-	gbVector2d tResult;
-	tResult.mX		= this->mX - pRight.mX;
-	tResult.mY		= this->mY - pRight.mY;
-	return tResult;
+	Vector2d result;
+	result.x_		= this->x_ - right.x_;
+	result.y_		= this->y_ - right.y_;
+	return result;
 }
 
 //==================================================================
 /**
-	@fn		gbVector2d :: operator*(const gbVector2d& pRight)
+	@fn		Vector2d :: operator*(const Vector2d& right)
 	@brief	Overload operator *
-	@param	pRight	right vector
+	@param	right	right vector
 **/
 //==================================================================
-gbVector2d gbVector2d :: operator*(const gbVector2d& pRight)
+Vector2d Vector2d :: operator*(const Vector2d& right)
 {
-	gbVector2d tResult;
-	tResult.mX		= this->mX * pRight.mX;
-	tResult.mY		= this->mY * pRight.mY;
-	return tResult;
+	Vector2d result;
+	result.x_		= this->x_ * right.x_;
+	result.y_		= this->y_ * right.y_;
+	return result;
 }
 
 //==================================================================
 /**
-	@fn		gbVector2d :: operator/(const gbVector2d& pRight)
+	@fn		Vector2d :: operator/(const Vector2d& right)
 	@brief	Overload operator /
-	@param	pRight	right vector
+	@param	right	right vector
 **/
 //==================================================================
-gbVector2d gbVector2d :: operator/(const gbVector2d& pRight)
+Vector2d Vector2d :: operator/(const Vector2d& right)
 {
-	gbVector2d tResult;
-	tResult.mX		= (pRight.mX != 0) ? this->mX / pRight.mX : 0;
-	tResult.mY		= (pRight.mY != 0) ? this->mY / pRight.mY : 0;
-	return tResult;
+	Vector2d result;
+	result.x_		= (right.x_ != 0) ? this->x_ / right.x_ : 0;
+	result.y_		= (right.y_ != 0) ? this->y_ / right.y_ : 0;
+	return result;
 }

@@ -1,6 +1,6 @@
 /**
-	@file	gbQueue.h
-	@brief	Includes gbQueue class
+	@file	Queue.h
+	@brief	Includes Queue class
 	@author	drubner
 	@date	2013-09-05
 **/
@@ -15,44 +15,44 @@ using namespace gbGlobal;
 //==================================================================
 //	INCLUDE
 //==================================================================
-#include "gooseberry.h"
+#include "GooseBerry.h"
 
 //==================================================================
 //	CLASS
 //==================================================================
 /**
-		@class	gbQueue
+		@class	Queue
 		@brief	Implements queue to store model objects
 **/
 //==================================================================
 template <typename T>
-class GOOSEBERRY_API gbQueue 
+class GOOSEBERRY_API Queue 
 {
 	public:
 		//	Variables
-		std::vector<T> mQueue;		//!< model queue
+		std::vector<T> queue_;		//!< model queue
 		
 		//	(De-)Constructor
-		gbQueue();
+		Queue();
 
 		//	Functions
-		gbResult fAddMember(T pMember);			
-		gbResult fRemoveMemberById(int pID);
-		gbResult fGetMbrById(T * pMbr, unsigned int pId);
+		gbResult AddMember(T member);			
+		gbResult RemoveMemberById(int id);
+		gbResult GetMbrById(T * member, unsigned int id);
 
 		/*
-		BOOL fRemoveModelByName(std::string pMdlName);	
-		BOOL fRemoveModelByFile(std::string pFileName);	
-		gbResult fGetMdlCpyByID(gbMsh * pMdl, unsigned int pID);
-		gbResult fGetMdlCpyByName(gbMsh * pMdl, std::string pMdlName);
+		BOOL RemoveModelByName(std::string model_name);	
+		BOOL RemoveModelByFile(std::string file_name);	
+		gbResult GetMdlCyByID(gbMsh * mdl, unsigned int id);
+		gbResult GetMdlCyByName(gbMsh * mdl, std::string model_name);
 		*/
 		//	Get & Set
 		/**
-			@fn		fGetSize()
+			@fn		GetSize()
 			@brief	get size
 			@return	int		size of model queue
 		**/
-		int fGetSize() { return mQueue.size(); }
+		int GetSize() { return queue_.size(); }
 
 	private:
 		//	Variables
@@ -65,64 +65,64 @@ class GOOSEBERRY_API gbQueue
 //	Functions
 //==================================================================
 /**
-	@fn		gbQueue :: gbQueue()
+	@fn		Queue :: Queue()
 	@brief	Standardconstructor
 **/
 //==================================================================
 template <typename T>
-gbQueue<T> :: gbQueue()
+Queue<T> :: Queue()
 {
-	mQueue	= new std::vector<T>();
+	queue_	= new std::vector<T>();
 }
 
 //==================================================================
 /**
-	@fn		gbQueue :: fAddMember(T pMember);		
+	@fn		Queue :: AddMember(T member);		
 	@brief	Add a new member
-	@param	pMember		member to add
+	@param	member		member to add
 	@return gbResult	GB_OK
 **/
 //==================================================================
 template <typename T>
-gbResult gbQueue<T> :: fAddMember(T pMember)
+gbResult Queue<T> :: AddMember(T member)
 {
-	mQueue.push_back(pMember);
+	queue_.push_back(member);
 	return GB_OK;
 }
 
 //==================================================================
 /**
-	@fn		gbQueue :: fRemoveMemberById(int pID);
+	@fn		Queue :: RemoveMemberById(int id);
 	@brief	remove member by id
-	@param	pId	id of member to remove
+	@param	id	id of member to remove
 	@return gbResult	GB_OK or GB_NOTFOUND
 **/
 //==================================================================
 template <typename T>
-gbResult gbQueue<T> :: fRemoveMemberById(int pId)
+gbResult Queue<T> :: RemoveMemberById(int id)
 {
-	if(pId > mQueue.size())
+	if(id > queue_.size())
 		return GB_NOTFOUND;
 
-	mQueue.erase(mQueue.begin() + pId);
+	queue_.erase(queue_.begin() + id);
 	return GB_OK;
 }
 
 //==================================================================
 /**
-	@fn		gbQueue :: fGetMbrById(T * pMbr, unsigned int pId);
+	@fn		Queue :: GetMbrById(T * member, unsigned int id);
 	@brief	Get member by id
-	@param	pMbr		member object, call by reference
-	@param	pId			id of member to return
+	@param	member		member object, call by reference
+	@param	id			id of member to return
 	@return	gbResult	GB_OK or GB_NOTFOUND
 **/
 //==================================================================
 template <typename T>
-gbResult gbQueue<T> :: fGetMbrById(T * pMbr, unsigned int pId)
+gbResult Queue<T> :: GetMbrById(T * member, unsigned int id)
 {
-	if(pId > mQueue.size())
+	if(id > queue_.size())
 		return GB_NOTFOUND;
 
-	pMbr	= mQueue[pId];
+	member	= queue_[id];
 	return GB_OK;
 }

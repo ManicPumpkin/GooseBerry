@@ -1,5 +1,5 @@
 /**
-	@file	gbDefines.h
+	@file	Defines.h
 	@brief	Includes all programm macros
 	@author	drubner
 	@date	2013-07-16

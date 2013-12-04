@@ -20,13 +20,13 @@
 //==================================================================
 gbMsh::gbMsh()
 {
-	mNumVertices	= 0;
+	mNuv_ertices	= 0;
 	mNumNormals		= 0;
 	mNumTexCoords	= 0;
 	mNumFaces		= 0;
 	mIsTriangle		= TRUE;
 	mFaces			= NULL;
-	mVertices		= NULL;
+	v_ertices		= NULL;
 	mNormals		= NULL;
 	mTexCoords		= NULL;
 }
@@ -34,9 +34,9 @@ gbMsh::gbMsh()
 //==================================================================
 /**
 		@fn		gbMsh::gbMsh(const gbMsh& tRHS)
-		@brief	copy constructor for deep copy
+		@brief	coy constructor for deep coy
 
-				Deep copy an gbMsh object with another.
+				Deep coy an gbMsh object with another.
 **/
 //==================================================================
 gbMsh::gbMsh(const gbMsh& tRHS)
@@ -44,16 +44,16 @@ gbMsh::gbMsh(const gbMsh& tRHS)
 	this->mObjName		= tRHS.mObjName;
 	this->mObjFile		= tRHS.mObjFile;
 	this->mMtllib		= tRHS.mMtllib;
-	this->mUsemtl		= tRHS.mUsemtl;
+	this->u_semtl		= tRHS.u_semtl;
 	this->mIsTriangle	= tRHS.mIsTriangle;
 	this->mNumFaces		= tRHS.mNumFaces;
-	this->mNumVertices	= tRHS.mNumVertices;
+	this->mNuv_ertices	= tRHS.mNuv_ertices;
 	this->mNumNormals	= tRHS.mNumNormals;
 	this->mNumTexCoords	= tRHS.mNumTexCoords;
 	//this->mMaterial		= tRHS.mMaterial;
 
 	mFaces		= new gb_g_face[mNumFaces];
-	mVertices	= new gb_g_vertex[mNumVertices];
+	v_ertices	= new gb_g_vertex[mNuv_ertices];
 	mNormals	= new gb_g_normal[mNumNormals];
 	mTexCoords	= new gb_g_texCoord[mNumTexCoords];
 
@@ -67,11 +67,11 @@ gbMsh::gbMsh(const gbMsh& tRHS)
 		}
 	}
 
-	for(unsigned int tI = 0; tI < mNumVertices; tI++)
+	for(unsigned int tI = 0; tI < mNuv_ertices; tI++)
 	{
-		mVertices[tI].x	= tRHS.mVertices[tI].x;
-		mVertices[tI].y	= tRHS.mVertices[tI].y;
-		mVertices[tI].z	= tRHS.mVertices[tI].z;
+		v_ertices[tI].x	= tRHS.v_ertices[tI].x;
+		v_ertices[tI].y	= tRHS.v_ertices[tI].y;
+		v_ertices[tI].z	= tRHS.v_ertices[tI].z;
 	}
 
 	for(unsigned int tI = 0; tI < mNumNormals; tI++)
@@ -109,12 +109,12 @@ gbMsh::~gbMsh()
 VOID gbMsh::fFreeMdl()
 {
 	if(mFaces)		delete[] mFaces;
-	if(mVertices)	delete[] mVertices;
+	if(v_ertices)	delete[] v_ertices;
 	if(mNormals)	delete[] mNormals;
 	if(mTexCoords)	delete[] mTexCoords;
 
 	mFaces			= NULL;
-	mVertices		= NULL;
+	v_ertices		= NULL;
 	mNormals		= NULL;
 	mTexCoords		= NULL;
 }
@@ -162,9 +162,9 @@ VOID gbMsh::fDraw()
 			);
 			glVertex3f
 			(
-				this->mVertices[this->mFaces[i].vertex[j] - 1].x, 
-				this->mVertices[this->mFaces[i].vertex[j] - 1].y, 
-				this->mVertices[this->mFaces[i].vertex[j] - 1].z
+				this->v_ertices[this->mFaces[i].vertex[j] - 1].x, 
+				this->v_ertices[this->mFaces[i].vertex[j] - 1].y, 
+				this->v_ertices[this->mFaces[i].vertex[j] - 1].z
 			);
 			/*
 			\todo Enable Texture

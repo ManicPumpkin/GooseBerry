@@ -17,7 +17,7 @@
 //==================================================================
 //	Includes
 //==================================================================
-#include "gooseberry.h"
+#include "GooseBerry.h"
 //#include "gbMat.h"
 
 //==================================================================
@@ -67,22 +67,22 @@ class GOOSEBERRY_API gbMsh
 		std::string		mObjFile;		//!< object file
 		std::string		mMatPath;		//!< material file path
 		std::string		mMtllib;		//!< material lib to use
-		std::string		mUsemtl;		//!< material to use
+		std::string		u_semtl;		//!< material to use
 		gbMat 			mMaterial;		//!< material
 
 		bool			mIsTriangle;	//!< if object is made of triangles, else quads 
 
 		unsigned int	mNumFaces,		//!< number of faces
-						mNumVertices,	//!< number of vertices
+						mNuv_ertices,	//!< number of vertices
 						mNumNormals,	//!< number of normals
 						mNumTexCoords;	//!< number of texture coordinates
 		
 		gb_g_face *		mFaces;			//!< list of faces
-		gb_g_vertex *	mVertices;		//!< list of vetices
+		gb_g_vertex *	v_ertices;		//!< list of vetices
 		gb_g_normal *	mNormals;		//!< list of normals
 		gb_g_texCoord *	mTexCoords;		//!< list of texture coordiantes
 
-		//	(De-)Constructor & Copy
+		//	(De-)Constructor & Coy
 		~gbMsh();
 		gbMsh();
 		gbMsh(const gbMsh& tRHS);

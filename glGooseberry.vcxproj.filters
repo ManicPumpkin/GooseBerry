@@ -45,29 +45,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\gbLog.cpp">
-      <Filter>Quelldateien\help</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gbOpenGL.cpp">
-      <Filter>Quelldateien\base</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gooseberry.cpp">
-      <Filter>Quelldateien\base</Filter>
-    </ClCompile>
     <ClCompile Include="src\gbObj.cpp">
       <Filter>Quelldateien\obj</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gbVector3d.cpp">
-      <Filter>Quelldateien\math</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gbColor.cpp">
-      <Filter>Quelldateien\help</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gbMatrix.cpp">
-      <Filter>Quelldateien\math</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gbVector2d.cpp">
-      <Filter>Quelldateien\math</Filter>
     </ClCompile>
     <ClCompile Include="src\gbMsh.cpp">
       <Filter>Quelldateien\msh</Filter>
@@ -81,46 +60,31 @@
     <ClCompile Include="src\gbTex.cpp">
       <Filter>Quelldateien\msh</Filter>
     </ClCompile>
+    <ClCompile Include="src\Color.cpp">
+      <Filter>Quelldateien\help</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Log.cpp">
+      <Filter>Quelldateien\help</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OpenGL.cpp">
+      <Filter>Quelldateien\base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GooseBerry.cpp">
+      <Filter>Quelldateien\base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Matrix.cpp">
+      <Filter>Quelldateien\math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vector2d.cpp">
+      <Filter>Quelldateien\math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vector3d.cpp">
+      <Filter>Quelldateien\math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="inc\gbDefines.h">
-      <Filter>Headerdateien\help</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\gbErrors.h">
-      <Filter>Headerdateien\help</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\gbException.h">
-      <Filter>Headerdateien\help</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\gbLog.h">
-      <Filter>Headerdateien\help</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\gbOpenGL.h">
-      <Filter>Headerdateien\base</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\gooseberry.h">
-      <Filter>Headerdateien\base</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\gbArray.h">
-      <Filter>Headerdateien\help</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\gbConvert.h">
-      <Filter>Headerdateien\help</Filter>
-    </ClInclude>
     <ClInclude Include="inc\gbObj.h">
       <Filter>Headerdateien\obj</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\gbVector3d.h">
-      <Filter>Headerdateien\math</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\gbVector2d.h">
-      <Filter>Headerdateien\math</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\gbColor.h">
-      <Filter>Headerdateien\help</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\gbMatrix.h">
-      <Filter>Headerdateien\math</Filter>
     </ClInclude>
     <ClInclude Include="inc\gbMsh.h">
       <Filter>Headerdateien\msh</Filter>
@@ -137,8 +101,44 @@
     <ClInclude Include="inc\gbMat.h">
       <Filter>Headerdateien\msh</Filter>
     </ClInclude>
-    <ClInclude Include="inc\gbQueue.h">
+    <ClInclude Include="inc\Color.h">
       <Filter>Headerdateien\help</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Log.h">
+      <Filter>Headerdateien\help</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\OpenGL.h">
+      <Filter>Headerdateien\base</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\GooseBerry.h">
+      <Filter>Headerdateien\base</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Array.h">
+      <Filter>Headerdateien\help</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Convert.h">
+      <Filter>Headerdateien\help</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Defines.h">
+      <Filter>Headerdateien\help</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Errors.h">
+      <Filter>Headerdateien\help</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Exception.h">
+      <Filter>Headerdateien\help</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Queue.h">
+      <Filter>Headerdateien\help</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Matrix.h">
+      <Filter>Headerdateien\math</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Vector2d.h">
+      <Filter>Headerdateien\math</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Vector3d.h">
+      <Filter>Headerdateien\math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

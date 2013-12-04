@@ -1,6 +1,6 @@
 /**
-	@file	gbVector2d.h
-	@brief	Includes gbVector2d class
+	@file	Vector3d.h
+	@brief	Includes Vector3d class
 	@author	drubner
 	@date	2013-08-26
 **/
@@ -12,19 +12,19 @@
 //==================================================================
 //	INCLUDE
 //==================================================================
-#include "gooseberry.h"
+#include "GooseBerry.h"
 
 //==================================================================
 //	CLASS
 //==================================================================
 /**
-		@class	gbVector2d
+		@class	Vector3d
 		@brief	Implements all rendering, initialization and resize
 				methods for OpenGL, also variables, getter and 
 				setter methods
 **/
 //==================================================================
-class GOOSEBERRY_API gbVector2d
+class GOOSEBERRY_API Vector3d
 {
 	public:
 		//  Variables
@@ -32,29 +32,29 @@ class GOOSEBERRY_API gbVector2d
 		{
 			struct
 			{
-				float mX, mY;
+				float x_, y_, z_;
 			};
 
 			struct
 			{
-				float mU, mV;
+				float u_, v_, w_;
 			};
 
-			float mCoords[2];
+			float coords_[3];
 		};
 
 		//	(De-)Constructor
-		gbVector2d();
-		gbVector2d(float pCoord);
-		gbVector2d(float * pCoords);
-		gbVector2d(float pX, float pY);
-		~gbVector2d();
+		Vector3d();
+		Vector3d(float coord);
+		Vector3d(float * coords);
+		Vector3d(float x, float y, float z);
+		~Vector3d();
 
 		//	Operators
-		gbVector2d operator+(const gbVector2d& pRight);
-		gbVector2d operator-(const gbVector2d& pRight);
-		gbVector2d operator*(const gbVector2d& pRight);
-		gbVector2d operator/(const gbVector2d& pRight);
+		Vector3d operator+(const Vector3d& right);
+		Vector3d operator-(const Vector3d& right);
+		Vector3d operator*(const Vector3d& right);
+		Vector3d operator/(const Vector3d& right);
 				
 	private:
 	protected:

@@ -8,7 +8,7 @@
 //==================================================================
 //	Include
 //==================================================================
-//#include "gooseberry.h"
+//#include "GooseBerry.h"
 #include "gbMshLoader.h"
 //#include "gbMsh.h"
 
@@ -35,8 +35,8 @@ gbMsh gbMshLoader::fLoadObj(std::string pFile, bool pIsQuad)
 		GB_LINFO("Count properties of object file: " + pFile);
 	
 		tModel.mObjFile			= pFile;
-		tModel.mObjName			= gbExtractName(pFile); 
-		tModel.mMatPath			= gbExtractName(pFile);
+		tModel.mObjName			= ExtractName(pFile); 
+		tModel.mMatPath			= ExtractName(pFile);
 
 		std::string tBuffer, tTemp, tArr[4];
 		while(!tFileStream.eof())
@@ -46,7 +46,7 @@ gbMsh gbMshLoader::fLoadObj(std::string pFile, bool pIsQuad)
 			std::istringstream tLine(tBuffer);
 
 			if(strncmp("v ", tBuffer.c_str(), 2) == 0)
-				tModel.mNumVertices++;
+				tModel.mNuv_ertices++;
 			else if(strncmp("vt ", tBuffer.c_str(), 3) == 0)
 				tModel.mNumTexCoords++;
 			else if(strncmp("vn ", tBuffer.c_str(), 3) == 0)
@@ -58,7 +58,7 @@ gbMsh gbMshLoader::fLoadObj(std::string pFile, bool pIsQuad)
 		tFileStream.close();
 
 		tModel.mFaces		= new gb_g_face[tModel.mNumFaces];
-		tModel.mVertices	= new gb_g_vertex[tModel.mNumVertices];
+		tModel.v_ertices	= new gb_g_vertex[tModel.mNuv_ertices];
 		tModel.mNormals		= new gb_g_normal[tModel.mNumNormals];
 		tModel.mTexCoords	= new gb_g_texCoord[tModel.mNumTexCoords];
 
@@ -87,15 +87,15 @@ gbMsh gbMshLoader::fLoadObj(std::string pFile, bool pIsQuad)
 				else if(strncmp("usemtl ", tBuffer.c_str(), 7) == 0)
 				{
 					tLine >> tTemp >> tArr[0];
-					tModel.mUsemtl	= tArr[0];
+					tModel.u_semtl	= tArr[0];
 					continue;
 				}
 				else if(strncmp("v ", tBuffer.c_str(), 2) == 0)
 				{
 					tLine >> tTemp >> tArr[0] >> tArr[1] >> tArr[2];
-					tModel.mVertices[tV].x	= (float)atof(tArr[0].c_str());
-					tModel.mVertices[tV].y	= (float)atof(tArr[1].c_str());
-					tModel.mVertices[tV].z	= (float)atof(tArr[2].c_str());
+					tModel.v_ertices[tV].x	= (float)atof(tArr[0].c_str());
+					tModel.v_ertices[tV].y	= (float)atof(tArr[1].c_str());
+					tModel.v_ertices[tV].z	= (float)atof(tArr[2].c_str());
 					tV++;
 					continue;
 				}
@@ -123,20 +123,20 @@ gbMsh gbMshLoader::fLoadObj(std::string pFile, bool pIsQuad)
 
 					tLine >> tTemp >> tArr[0] >> tArr[1] >> tArr[2] >> tArr[3];
 					std::vector<std::string> tStrings;
-					gbSplitString(tArr[0], tStrings, tToken);
+					SplitString(tArr[0], tStrings, tToken);
 
 					tModel.mFaces[tF].vertex[0]		= atoi(tStrings[0].c_str());
 					tModel.mFaces[tF].texcoord[0]	= atoi(tStrings[1].c_str());
 					tModel.mFaces[tF].normal[0]		= atoi(tStrings[2].c_str());
 
 					tStrings.clear();
-					gbSplitString(tArr[1], tStrings, tToken);
+					SplitString(tArr[1], tStrings, tToken);
 					tModel.mFaces[tF].vertex[1]		= atoi(tStrings[0].c_str());
 					tModel.mFaces[tF].texcoord[1]	= atoi(tStrings[1].c_str());
 					tModel.mFaces[tF].normal[1]		= atoi(tStrings[2].c_str());
 
 					tStrings.clear();
-					gbSplitString(tArr[2], tStrings, tToken);
+					SplitString(tArr[2], tStrings, tToken);
 					tModel.mFaces[tF].vertex[2]		= atoi(tStrings[0].c_str());
 					tModel.mFaces[tF].texcoord[2]	= atoi(tStrings[1].c_str());
 					tModel.mFaces[tF].normal[2]		= atoi(tStrings[2].c_str());
@@ -148,7 +148,7 @@ gbMsh gbMshLoader::fLoadObj(std::string pFile, bool pIsQuad)
 						tModel.mIsTriangle	= FALSE;
 						
 						tStrings.clear();
-						gbSplitString(tArr[3], tStrings, tToken);
+						SplitString(tArr[3], tStrings, tToken);
 						tModel.mFaces[tF].vertex[3]		= atoi(tStrings[0].c_str());
 						tModel.mFaces[tF].texcoord[3]	= atoi(tStrings[1].c_str());
 						tModel.mFaces[tF].normal[3]		= atoi(tStrings[2].c_str());
@@ -168,9 +168,9 @@ gbMsh gbMshLoader::fLoadObj(std::string pFile, bool pIsQuad)
 			}
 			*/
 			/*
-			glGenBuffers(1, &tModel.mVertexID);
-			glBindBuffer(GL_ARRAY_BUFFER, tModel.mVertexID);
-			glBufferData(GL_ARRAY_BUFFER, tModel.mNumVertices * sizeof(grVertex), tModel.mVertices, GL_STATIC_DRAW);
+			glGenBuffers(1, &tModel.v_ertexID);
+			glBindBuffer(GL_ARRAY_BUFFER, tModel.v_ertexID);
+			glBufferData(GL_ARRAY_BUFFER, tModel.mNuv_ertices * sizeof(grVertex), tModel.v_ertices, GL_STATIC_DRAW);
 
 			glGenBuffers(1, &tModel.mIndexID);
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, tModel.mIndexID);

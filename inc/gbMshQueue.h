@@ -10,7 +10,7 @@
 //==================================================================
 //	INCLUDE
 //==================================================================
-#include "gooseberry.h"
+#include "GooseBerry.h"
 
 //==================================================================
 //	CLASS
@@ -31,18 +31,18 @@ class GOOSEBERRY_API gbMshQueue
 
 		//	Functions
 		VOID fAddModel(gbMsh pModel);					
-		BOOL fRemoveModelByName(std::string pMdlName);	
-		BOOL fRemoveModelByFile(std::string pFileName);	
-		gbResult fGetMdlCpyByID(gbMsh * pMdl, unsigned int pID);
-		gbResult fGetMdlCpyByName(gbMsh * pMdl, std::string pMdlName);
+		BOOL RemoveModelByName(std::string model_name);	
+		BOOL RemoveModelByFile(std::string file_name);	
+		gbResult GetMdlCyByID(gbMsh * mdl, unsigned int id);
+		gbResult GetMdlCyByName(gbMsh * mdl, std::string model_name);
 
 		//	Get & Set
 		/**
-			@fn		fGetSize()
+			@fn		GetSize()
 			@brief	get size
 			@return	int		size of model queue
 		**/
-		int fGetSize() { return mModelQueue.size(); }
+		int GetSize() { return mModelQueue.size(); }
 
 	private:
 		//	Variables

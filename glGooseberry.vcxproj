@@ -15,39 +15,39 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\gbColor.cpp" />
-    <ClCompile Include="src\gbMatrix.cpp" />
+    <ClCompile Include="src\Color.cpp" />
+    <ClCompile Include="src\Matrix.cpp" />
     <ClCompile Include="src\gbMshQueue.cpp" />
-    <ClCompile Include="src\gbLog.cpp" />
+    <ClCompile Include="src\Log.cpp" />
     <ClCompile Include="src\gbMsh.cpp" />
     <ClCompile Include="src\gbMshLoader.cpp" />
     <ClCompile Include="src\gbObj.cpp" />
-    <ClCompile Include="src\gbOpenGL.cpp" />
+    <ClCompile Include="src\OpenGL.cpp" />
     <ClCompile Include="src\gbTex.cpp" />
-    <ClCompile Include="src\gbVector2d.cpp" />
-    <ClCompile Include="src\gbVector3d.cpp" />
-    <ClCompile Include="src\gooseberry.cpp" />
+    <ClCompile Include="src\Vector2d.cpp" />
+    <ClCompile Include="src\Vector3d.cpp" />
+    <ClCompile Include="src\GooseBerry.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\gbMat.h" />
-    <ClInclude Include="inc\gbArray.h" />
-    <ClInclude Include="inc\gbColor.h" />
-    <ClInclude Include="inc\gbConvert.h" />
-    <ClInclude Include="inc\gbMatrix.h" />
+    <ClInclude Include="inc\Array.h" />
+    <ClInclude Include="inc\Color.h" />
+    <ClInclude Include="inc\Convert.h" />
+    <ClInclude Include="inc\Matrix.h" />
     <ClInclude Include="inc\gbMshQueue.h" />
-    <ClInclude Include="inc\gbDefines.h" />
-    <ClInclude Include="inc\gbErrors.h" />
-    <ClInclude Include="inc\gbException.h" />
-    <ClInclude Include="inc\gbLog.h" />
+    <ClInclude Include="inc\Defines.h" />
+    <ClInclude Include="inc\Errors.h" />
+    <ClInclude Include="inc\Exception.h" />
+    <ClInclude Include="inc\Log.h" />
     <ClInclude Include="inc\gbMsh.h" />
     <ClInclude Include="inc\gbMshLoader.h" />
     <ClInclude Include="inc\gbObj.h" />
-    <ClInclude Include="inc\gbOpenGL.h" />
-    <ClInclude Include="inc\gbQueue.h" />
+    <ClInclude Include="inc\OpenGL.h" />
+    <ClInclude Include="inc\Queue.h" />
     <ClInclude Include="inc\gbTex.h" />
-    <ClInclude Include="inc\gbVector2d.h" />
-    <ClInclude Include="inc\gbVector3d.h" />
-    <ClInclude Include="inc\gooseberry.h" />
+    <ClInclude Include="inc\Vector2d.h" />
+    <ClInclude Include="inc\Vector3d.h" />
+    <ClInclude Include="inc\GooseBerry.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B48CAD44-A997-4021-B570-51EF87757F24}</ProjectGuid>

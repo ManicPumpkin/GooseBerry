@@ -1,5 +1,5 @@
 /**
-	@file	gbArray.h
+	@file	Array.h
 	@brief	Includes all common pragmas, includes and namespaces
 	@author	drubner
 	@date	2013-08-20
@@ -10,7 +10,7 @@
 //==================================================================
 // INCLUDE
 //==================================================================
-#include "gooseberry.h"
+#include "GooseBerry.h"
 
 //==================================================================
 // FORWARD DECLARATION
@@ -18,95 +18,95 @@
 
 //==================================================================
 /**
-	@class	gbArray
+	@class	Array
 	@brief	Contains information about object/model files
 **/
 //==================================================================
 template <typename T>
-class gbArray
+class Array
 {
 	protected:
 	private:
 		//	Variables
-		T * mArray;
-		int mRows, mCols;
+		T * array_;
+		int rows_, cols_;
 		
 	public:
-		//	(De-)Constructor & Copy
-		gbArray(int pRows, int pCols);
-		~gbArray();
+		//	(De-)Constructor & Coy
+		Array(int rows, int cols);
+		~Array();
 
 		//	Operators
-		const T& operator[](int pIndex) const;
-		T & operator[](int pIndex);
-		T& operator= (T const& tRHS);
+		const T& operator[](int index) const;
+		T & operator[](int index);
+		T& operator= (T const& rhs);
 };
 
 //==================================================================
 //	Functions
 //==================================================================
 /**
-	@fn		gbArray :: gbArray(int pRows, int pCols)
+	@fn		Array :: Array(int rows, int cols)
 	@brief	Constructor
 **/
 //==================================================================
 template <typename T>
-gbArray<T> :: gbArray(int pRows, int pCols)
+Array<T> :: Array(int rows, int cols)
 {
-	this->mRows		= pRows;
-	this->mCols		= pCols;
-	this->mArray	= new T[pRows * pCols];
+	this->rows_		= rows;
+	this->cols_		= cols;
+	this->array_	= new T[rows * cols];
 }
 
 //==================================================================
 /**
-	@fn		gbArray :: ~gbArray()
+	@fn		Array :: ~Array()
 	@brief	Deonstructor
 **/
 //==================================================================
 template <typename T>
-gbArray<T> :: ~gbArray()
+Array<T> :: ~Array()
 {
-	if(mArray)
-		delete [] mArray;
+	if(array_)
+		delete [] array_;
 }
 
 //==================================================================
 /**
-	@fn		gbArray :: operator[](int pRow)
+	@fn		Array :: operator[](int row)
 	@brief	operator[] overloading
 **/
 //==================================================================
 template <typename T>
-T & gbArray<T> :: operator[](int pRow)
+T & Array<T> :: operator[](int row)
 {
-	return mArray[pRow * mCols];
+	return array_[row * cols_];
 }
 
 //==================================================================
 /**
-	@fn		gbArray :: operator[](int pRow)
+	@fn		Array :: operator[](int row)
 	@brief	operator[] overloading
 **/
 //==================================================================
 template <typename T>
-const T & gbArray<T> :: operator[](int pRow) const
+const T & Array<T> :: operator[](int row) const
 {
-	return mArray[pRow * mCols];
+	return array_[row * cols_];
 }
 
 //==================================================================
 /**
-	@fn		gbArray<T> :: operator= (T const& tRHS)
+	@fn		Array<T> :: operator= (T const& rhs)
 	@brief	operator= overloading
 **/
 //==================================================================
 template <typename T>
-T& gbArray<T> :: operator= (T const& tRHS)
+T& Array<T> :: operator= (T const& rhs)
 {
-	this->mRows	= tRHS->mRows;
-	this->mCols	= tRHS->mCols;
+	this->rows_	= rhs->rows_;
+	this->cols_	= rhs->cols_;
 
-	for(int i = 0; i < (this->mRows * this->mCols); i++)
-		this->mArray[i]		= tRHS->mArray[i];
+	for(int i = 0; i < (this->rows_ * this->cols_); i++)
+		this->array_[i]		= rhs->array_[i];
 }

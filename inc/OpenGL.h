@@ -1,5 +1,5 @@
 /**
-	@file	openGL.h
+	@file	OpenGL.h
 	@brief	Includes OpenGL class
 	@author	drubner
 	@date	2013-07-06
@@ -17,13 +17,13 @@ using namespace gbGlobal;
 //==================================================================
 //	INCLUDE
 //==================================================================
-#include "gooseberry.h"
+#include "GooseBerry.h"
 
 //==================================================================
 //	FORWARD DEFINITION
 //==================================================================
-class gbVector3d;
-class gbColor;
+class Vector3d;
+class Color;
 
 //==================================================================
 //	CLASS
@@ -35,35 +35,35 @@ class gbColor;
 				setter methods
 **/
 //==================================================================
-class GOOSEBERRY_API gbOpenGL 
+class GOOSEBERRY_API OpenGL 
 {
 	public:
 		//  Variables
 
 		//	(De-)Constructor
-		gbOpenGL();
-		~gbOpenGL();
+		OpenGL();
+		~OpenGL();
 
 		//	Functions
-		VOID fInitializeOpenGL();
-		//VOID fInitializeScene();
-		//VOID fRenderScene();
-		gbResult fStartWnd();
-		gbResult fExitWnd();
-		gbResult fRegisterWndClass();
-		gbResult fFullscreenWnd();
-		gbResult fCreateOpenGLWnd();
-		gbResult fEnableOpenGL();
-		gbResult fResizeOpenGLWnd(int pWidth, int pHeight);
-		//VOID fDrawBitmapText(char *, float, float, float);
-		gbResult fDrawSimpleLine(gbVector3d pStart, gbVector3d pEnd);
-		gbResult fDrawSimpleLine(gbColor pColor, gbVector3d pStart, gbVector3d pEnd);
+		VOID InitializeOpenGL();
+		//VOID InitializeScene();
+		//VOID RenderScene();
+		gbResult StartWnd();
+		gbResult ExitWnd();
+		gbResult RegisterWndClass();
+		gbResult FullscreenWnd();
+		gbResult CreateOpenGLWnd();
+		gbResult EnableOpenGL();
+		gbResult ResizeOpenGLWnd(int wnd_width, int wnd_height);
+		//VOID DrawBitmapText(char *, float, float, float);
+		gbResult DrawSimpleLine(Vector3d start_vec, Vector3d end_vec);
+		gbResult DrawSimpleLine(Color color, Vector3d start_vec, Vector3d end_vec);
 				
 	private:
 		//	Variables
-		DWORD	mDwExStyle;		//!<	extended style of window
-		DWORD	mDwStyle;		//!<	style of window
-		bool	mInit;			//!<	if OpenGL is initialized
+		DWORD	dw_ex_style_;		//!<	extended style of window
+		DWORD	dw_style_;			//!<	style of window
+		bool	initialize_;		//!<	if OpenGL is initialized
 
 	protected:
 };

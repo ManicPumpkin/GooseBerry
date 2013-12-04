@@ -1,5 +1,5 @@
 /**
-	@file	gooseberry.cpp
+	@file	GooseBerry.cpp
 	@brief	Includes main programm
 	@author	drubner
 	@date	2013-07-16
@@ -19,13 +19,13 @@
 	\section Autors
 	-	RUBNER,		Danny
 
-	Copyright 2013. All rights reserved by 
+	Coyright 2013. All rights reserved by 
 	Rubner, Danny.
 **/
 //==================================================================
 //	INCLUDE
 //==================================================================
-#include "gooseberry.h"
+#include "GooseBerry.h"
 
 //==================================================================
 //	NAMESPACE
@@ -35,103 +35,103 @@ using namespace gbGlobal;
 //==================================================================
 //	VARIABLES
 //==================================================================
-HINSTANCE	gbGlobal::gb_g_hinstance = NULL;
-HWND		gbGlobal::gb_g_HWND = NULL;
-HDC			gbGlobal::gb_g_HDC = NULL;
-HGLRC		gbGlobal::gb_g_HGLRC = NULL;
-LPCSTR		gbGlobal::gb_g_wndTitle = "";
-LPCSTR		gbGlobal::gb_g_wndName = "";
-int			gbGlobal::gb_g_wndWidth = -1;
-int			gbGlobal::gb_g_wndHeight = -1;
-int			gbGlobal::gb_g_wndX = -1;
-int			gbGlobal::gb_g_wndY = -1;
-int			gbGlobal::gb_g_bitsColor = -1;
-int			gbGlobal::gb_g_bitsDepth = -1;
-int			gbGlobal::gb_g_bitsAlpha = -1;
-bool		gbGlobal::gb_g_fullscreen = FALSE;
-bool		gbGlobal::gb_g_init = FALSE;
-bool		gbGlobal::gb_g_active = TRUE;
-bool		gbGlobal::gb_g_keys[256];
+HINSTANCE	gbGlobal::g_hinstance = NULL;
+HWND		gbGlobal::g_HWND = NULL;
+HDC			gbGlobal::g_HDC = NULL;
+HGLRC		gbGlobal::g_HGLRC = NULL;
+LPCSTR		gbGlobal::g_wndTitle = "";
+LPCSTR		gbGlobal::g_wndName = "";
+int			gbGlobal::g_wndWidth = -1;
+int			gbGlobal::g_wndHeight = -1;
+int			gbGlobal::g_wndX = -1;
+int			gbGlobal::g_wndY = -1;
+int			gbGlobal::g_bitsColor = -1;
+int			gbGlobal::g_bitsDepth = -1;
+int			gbGlobal::g_bitsAlpha = -1;
+bool		gbGlobal::g_fullscreen = FALSE;
+bool		gbGlobal::g_init = FALSE;
+bool		gbGlobal::g_active = TRUE;
+bool		gbGlobal::g_keys[256];
 
 //==================================================================
 /**
-	@fn		gbInitialize
+	@fn		Initialize
 	@brief	Initialize the game engine
 **/
 //==================================================================
-GOOSEBERRY_API gbResult gbGlobal::gbInitialize()
+GOOSEBERRY_API gbResult gbGlobal::Initialize()
 {
-	if(!gb_g_init)
+	if(!g_init)
 	{
-		gbInitializeLog();
+		InitializeLog();
 		GB_LDEBUG("GooseBerry initialized");
 	}
 
-	gb_g_init = TRUE;
+	g_init = TRUE;
 	return GB_OK;
 }
 
 //==================================================================
 /**
-	@fn		gbMessageLoop
+	@fn		MessageLoop
 	@brief	Enter message loop
 **/
 //==================================================================
-GOOSEBERRY_API gbResult gbGlobal::gbMessageLoop(gbResult(*pRender)(float))
+GOOSEBERRY_API gbResult gbGlobal::MessageLoop(gbResult(*pRender)(float))
 {
-	MSG			tMSG;
-	LONGLONG	tStartTime	= 0.0f;
-	LONGLONG	tEndTime	= 0.0f;
-	LONGLONG	tInitTime	= 0.0f;
-	DOUBLE		tTime		= 0.0f;
-	BOOL		tQuit		= FALSE;
+	MSG			msg;
+	LONGLONG	start_time	= 0.0f;
+	LONGLONG	end_time	= 0.0f;
+	LONGLONG	init_time	= 0.0f;
+	DOUBLE		time		= 0.0f;
+	BOOL		quit		= FALSE;
 
 	GB_LDEBUG("Enter message loop");
-	QueryPerformanceCounter((LARGE_INTEGER*)(&tInitTime));
-	ZeroMemory(&tMSG, sizeof(tMSG));
+	QueryPerformanceCounter((LARGE_INTEGER*)(&init_time));
+	ZeroMemory(&msg, sizeof(msg));
 
-	while(!tQuit)
+	while(!quit)
 	{
-		QueryPerformanceCounter((LARGE_INTEGER*)(&tStartTime));
+		QueryPerformanceCounter((LARGE_INTEGER*)(&start_time));
 
-		while(PeekMessage(&tMSG, NULL, 0, 0, PM_REMOVE))
+		while(PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 		{
-			TranslateMessage(&tMSG);
-			DispatchMessage(&tMSG);
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
 
-			if(tMSG.message == WM_QUIT)
-				tQuit = TRUE;
+			if(msg.message == WM_QUIT)
+				quit = TRUE;
 		}
 
-		if(gb_g_active)	
+		if(g_active)	
 		{
-			if(gb_g_keys[VK_ESCAPE])
-				tQuit	= TRUE;
+			if(g_keys[VK_ESCAPE])
+				quit	= TRUE;
 			else
 			{
-				pRender((float)tTime);
-				SwapBuffers(gb_g_HDC);
+				pRender((float)time);
+				SwapBuffers(g_HDC);
 			}
 		}
 
-		if(gb_g_keys[VK_F1])
+		if(g_keys[VK_F1])
 		{
-			gb_g_keys[VK_F1]	= FALSE;
-			gb_g_fullscreen	    = !gb_g_fullscreen;
-			gbGlobal::gbExit();
+			g_keys[VK_F1]	= FALSE;
+			g_fullscreen	    = !g_fullscreen;
+			gbGlobal::Exit();
 
-			if (gbGlobal::gbInitialize() != GB_OK)
+			if (gbGlobal::Initialize() != GB_OK)
 				throw gbException(ERR_WIN_FS_STR, ERR_WIN_FS_ID);
 		}
 
 		if(ONLY_COMPILE)
-			tQuit = TRUE;
+			quit = TRUE;
 
-		QueryPerformanceCounter((LARGE_INTEGER*)(&tEndTime));
-		if(tEndTime == tStartTime) 
-			tTime	= 0.0001;
+		QueryPerformanceCounter((LARGE_INTEGER*)(&end_time));
+		if(end_time == start_time) 
+			time	= 0.0001;
 		else
-			tTime	= (tEndTime - tStartTime) / tInitTime;
+			time	= (end_time - start_time) / init_time;
 	}
 
 	GB_LDEBUG("Exit message loop");
@@ -144,84 +144,84 @@ GOOSEBERRY_API gbResult gbGlobal::gbMessageLoop(gbResult(*pRender)(float))
 	@brief	Deconstructor
 **/
 //==================================================================
-GOOSEBERRY_API gbResult gbGlobal::gbExit()
+GOOSEBERRY_API gbResult gbGlobal::Exit()
 {
 	GB_LDEBUG("Gooseberry stopped");
-	gbStopLog();
+	StopLog();
 	return GB_OK;
 }
 
 //==================================================================
 /**
-		@fn		gbIntToString(int pInt);
-		@param	pInt	int to convert
+		@fn		IntToString(int value);
+		@param	value	int to convert
 		@brief	Converts int to string
 		@return std::string tString
 **/
 //==================================================================
-std::string gbGlobal::gbIntToStr(int pInt)
+std::string gbGlobal::IntToStr(int value)
 {
-	ostringstream tConvert;
-	tConvert << pInt;
-	return tConvert.str();
+	ostringstream convert;
+	convert << value;
+	return convert.str();
 }
 
 //==================================================================
 /**
-		@fn		gbExtractName(std::string pFile)
-		@param	pFile	name of file to extract
+		@fn		ExtractName(std::string file)
+		@param	file	name of file to extract
 		@brief	Extracts object name from file name
 		@return std::string tName
 **/
 //==================================================================
-std::string gbGlobal::gbExtractName(std::string pFile)
+std::string gbGlobal::ExtractName(std::string file)
 {
-	int tStartSubStr	= 0;
-	int tEndSubStr		= 0;
+	int start_sub_str	= 0;
+	int end_sub_str		= 0;
 
-	if(	strncmp("./", pFile.c_str(), 2) == 0 || strncmp("/", pFile.c_str(), 1) == 0)
-		tStartSubStr	= pFile.find_last_of("/") + 1;
+	if(	strncmp("./", file.c_str(), 2) == 0 || strncmp("/", file.c_str(), 1) == 0)
+		start_sub_str	= file.find_last_of("/") + 1;
 
-	tEndSubStr			= pFile.find_last_of(".");
-	return pFile.substr(tStartSubStr, tEndSubStr - tStartSubStr);
+	end_sub_str			= file.find_last_of(".");
+	return file.substr(start_sub_str, end_sub_str - start_sub_str);
 }
 
 //==================================================================
 /**
-		@fn		gbExtractPath(std::string pFile)
-		@param	pFile	name of file to extract
+		@fn		ExtractPath(std::string file)
+		@param	file	name of file to extract
 		@brief	Extracts path of file string
 		@return std::string tPath
 **/
 //==================================================================
-std::string gbGlobal::gbExtractPath(std::string pFile)
+std::string gbGlobal::ExtractPath(std::string file)
 {
-	int tEndSubStr		= 0;
+	int end_sub_str		= 0;
 
-	if(	strncmp("./", pFile.c_str(), 2) == 0 || strncmp("/", pFile.c_str(), 1) == 0)
-		tEndSubStr		= pFile.find_last_of("/") + 1;
+	if(	strncmp("./", file.c_str(), 2) == 0 || strncmp("/", file.c_str(), 1) == 0)
+		end_sub_str		= file.find_last_of("/") + 1;
 
-	return pFile.substr(0, tEndSubStr);
+	return file.substr(0, end_sub_str);
 }
 
 //==================================================================
 /**
-	@fn		gbSplitString
+	@fn		SplitString
 	@brief	Split string into sub string
-	@param	pStr		std::string to split
-	@param	pToken		vector of tokens (sub strings)
-	@param	pSeperator	delemiter
+	@param	str		std::string to split
+	@param	token		vector of tokens (sub strings)
+	@param	seperator	delemiter
 **/
 //==================================================================
-VOID gbGlobal::gbSplitString(const string& pStr, vector<string>& pToken, const string& pSeperator)
+VOID gbGlobal::SplitString(const string& str, vector<string>& token, const string& seperator)
 {
-	string::size_type tLastPos	= pStr.find_first_not_of(pSeperator, 0);
-	string::size_type tPos		= pStr.find_first_of(pSeperator, tLastPos);
+	string::size_type last_pos	= str.find_first_not_of(seperator, 0);
+	string::size_type pos		= str.find_first_of(seperator, last_pos);
 
-	while(string::npos != tPos || string::npos != tLastPos)
+	while(string::npos != pos || string::npos != last_pos)
 	{
-		pToken.push_back(pStr.substr(tLastPos, tPos - tLastPos));
-		tLastPos	= pStr.find_first_not_of(pSeperator, tPos);
-		tPos		= pStr.find_first_of(pSeperator, tLastPos);
+		token.push_back(str.substr(last_pos, pos - last_pos));
+		last_pos	= str.find_first_not_of(seperator, pos);
+		pos		= str.find_first_of(seperator, last_pos);
 	}	
 }

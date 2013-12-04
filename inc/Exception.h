@@ -1,6 +1,6 @@
 /**
-	@file	gbException.h
-	@brief	Includes cException class
+	@file	Exception.h
+	@brief	Includes Exception class
 	@author	drubner
 	@date	2012-11-10
 **/
@@ -10,7 +10,7 @@
 //==================================================================
 //	Include
 //==================================================================
-#include "gooseberry.h"
+#include "GooseBerry.h"
 
 //==================================================================
 //	Defines
@@ -21,29 +21,29 @@
 //	Class
 //==================================================================
 /**
-		@class	gbException
+		@class	Exception
 		@brief	Includes exception handling methods and variables
 **/
 //==================================================================
-class gbException : public std::exception
+class Exception : public std::exception
 {
 	protected:
 	private:
 		//	Variables
-		std::string mMessage;		//!<	exception message
-		std::string mId;			//!<	exception id
+		std::string msg_;	//!<	exception message
+		std::string id_;	//!<	exception id
 
 	public:
 		//	(De-)Constructor
-		gbException(const std::string& pStrMessage, const std::string& pStrId)
+		Exception(const std::string& str_msg, const std::string& str_id)
 		{
-			mMessage	= pStrMessage;
-			mId			= pStrId;
+			msg_	= str_msg;
+			id_		= str_id;
 		}
 
-		virtual ~gbException() {}
+		virtual ~Exception() {}
 
 		//	Functions
-		const char* fGetStr() const { return mMessage.c_str();	}
-		const char* fGetId() const	{ return mId.c_str();		}
+		const char* GetStr() const	{ return msg_.c_str();	}
+		const char* GetId() const	{ return id_.c_str();	}
 };
