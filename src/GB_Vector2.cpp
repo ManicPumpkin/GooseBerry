@@ -1,6 +1,6 @@
 /**
-	@file	Vector3d.cpp
-	@brief	Includes all Vector3d class methods
+	@file	GB_Vector2.cpp
+	@brief	Includes all GB_Vector2 class methods
 	@author	drubner
 	@date	2013-08-22
 **/
@@ -12,131 +12,125 @@
 //==================================================================
 //	INCLUDE
 //==================================================================
-#include "Vector3d.h"
+#include "GB_Vector2.h"
 
 //==================================================================
 /**
-	@fn		Vector3d :: ~Vector3d()
+	@fn		GB_Vector2 :: ~GB_Vector2()
 	@brief	Deconstructor
 **/
 //==================================================================
-Vector3d :: ~Vector3d()
+GB_Vector2 :: ~GB_Vector2()
 {
 }
 
 //==================================================================
 /**
-	@fn		Vector3d :: Vector3d()
+	@fn		GB_Vector2 :: GB_Vector2()
 	@brief	Standardconstructor
 **/
 //==================================================================
-Vector3d :: Vector3d()
+GB_Vector2 :: GB_Vector2()
 {
-	x_ = y_ = z_ = 0;
+	x_ = y_ = 0;
 }
 
 //==================================================================
 /**
-	@fn		Vector3d :: Vector3d(float coord)
+	@fn		GB_Vector2 :: GB_Vector2(float * coords)
 	@brief	Extended Constructor
-	@param	coord	x, y and z position of the object
+	@param	coords	coordinates of the GB_Object
 **/
 //==================================================================
-Vector3d :: Vector3d(float coord)
-{
-	x_ = y_ = z_ = coord;
-}
-
-//==================================================================
-/**
-	@fn		Vector3d :: Vector3d(float * coords)
-	@brief	Extended Constructor
-	@param	coords	position of the object
-**/
-//==================================================================
-Vector3d :: Vector3d(float * coords)
+GB_Vector2 :: GB_Vector2(float * coords)
 {
 	x_		= coords[0];
 	y_		= coords[1];
-	z_		= coords[2];
+}
+
+
+//==================================================================
+/**
+	@fn		GB_Vector2 :: GB_Vector2(float coord)
+	@brief	Extended Constructor
+	@param	coord	x and y position of the GB_Object
+**/
+//==================================================================
+GB_Vector2 :: GB_Vector2(float coord)
+{
+	x_ = y_ = coord;
 }
 
 //==================================================================
 /**
-	@fn		Vector3d :: Vector3d(float x, float y, float z)
+	@fn		GB_Vector2 :: GB_Vector2(float x, float y)
 	@brief	Extended Constructor
-	@param	x	x position of the object
-	@param	y	y position of the object
-	@param	z	z position of the object
+	@param	x	x position of the GB_Object
+	@param	y	y position of the GB_Object
 **/
 //==================================================================
-Vector3d :: Vector3d(float x, float y, float z)
+GB_Vector2 :: GB_Vector2(float x, float y)
 {
 	x_		= x;
 	y_		= y;
-	z_		= z;
 }
 
 //==================================================================
 /**
-	@fn		Vector3d :: operator+(const Vector3d& right)
+	@fn		GB_Vector2 :: operator+(const GB_Vector2& right)
 	@brief	Overload operator +
 	@param	right	right vector
 **/
 //==================================================================
-Vector3d Vector3d :: operator+(const Vector3d& right)
+GB_Vector2 GB_Vector2 :: operator+(const GB_Vector2& right)
 {
-	Vector3d result;
+	GB_Vector2 result;
 	result.x_		= this->x_ + right.x_;
 	result.y_		= this->y_ + right.y_;
-	result.z_		= this->z_ + right.z_;
 	return result;
 }
 
 //==================================================================
 /**
-	@fn		Vector3d :: operator-(const Vector3d& right)
+	@fn		GB_Vector2 :: operator-(const GB_Vector2& right)
 	@brief	Overload operator -
 	@param	right	right vector
 **/
 //==================================================================
-Vector3d Vector3d :: operator-(const Vector3d& right)
+GB_Vector2 GB_Vector2 :: operator-(const GB_Vector2& right)
 {
-	Vector3d result;
+	GB_Vector2 result;
 	result.x_		= this->x_ - right.x_;
 	result.y_		= this->y_ - right.y_;
-	result.z_		= this->z_ - right.z_;
 	return result;
 }
 
 //==================================================================
 /**
-	@fn		Vector3d :: operator*(const Vector3d& right)
+	@fn		GB_Vector2 :: operator*(const GB_Vector2& right)
 	@brief	Overload operator *
 	@param	right	right vector
 **/
 //==================================================================
-Vector3d Vector3d :: operator*(const Vector3d& right)
+GB_Vector2 GB_Vector2 :: operator*(const GB_Vector2& right)
 {
-	Vector3d result;
+	GB_Vector2 result;
 	result.x_		= this->x_ * right.x_;
 	result.y_		= this->y_ * right.y_;
-	result.z_		= this->z_ * right.z_;
 	return result;
 }
 
 //==================================================================
 /**
-	@fn		Vector3d :: operator/(const Vector3d& right)
+	@fn		GB_Vector2 :: operator/(const GB_Vector2& right)
 	@brief	Overload operator /
 	@param	right	right vector
 **/
 //==================================================================
-Vector3d Vector3d :: operator/(const Vector3d& right)
+GB_Vector2 GB_Vector2 :: operator/(const GB_Vector2& right)
 {
-	Vector3d result;
+	GB_Vector2 result;
 	result.x_		= (right.x_ != 0) ? this->x_ / right.x_ : 0;
 	result.y_		= (right.y_ != 0) ? this->y_ / right.y_ : 0;
-	result.z_		= (right.z_ != 0) ? this->z_ / right.z_ : 0;
 	return result;
 }

@@ -1,5 +1,5 @@
 /**
-	@file	Array.h
+	@file	GB_Array.h
 	@brief	Includes all common pragmas, includes and namespaces
 	@author	drubner
 	@date	2013-08-20
@@ -18,23 +18,23 @@
 
 //==================================================================
 /**
-	@class	Array
-	@brief	Contains information about object/model files
+	@class	GB_Array
+	@brief	Contains information about GB_Object/model files
 **/
 //==================================================================
 template <typename T>
-class Array
+class GB_Array
 {
 	protected:
 	private:
 		//	Variables
-		T * array_;
+		T * GB_Array_;
 		int rows_, cols_;
 		
 	public:
 		//	(De-)Constructor & Coy
-		Array(int rows, int cols);
-		~Array();
+		GB_Array(int rows, int cols);
+		~GB_Array();
 
 		//	Operators
 		const T& operator[](int index) const;
@@ -46,67 +46,67 @@ class Array
 //	Functions
 //==================================================================
 /**
-	@fn		Array :: Array(int rows, int cols)
+	@fn		GB_Array :: GB_Array(int rows, int cols)
 	@brief	Constructor
 **/
 //==================================================================
 template <typename T>
-Array<T> :: Array(int rows, int cols)
+GB_Array<T> :: GB_Array(int rows, int cols)
 {
 	this->rows_		= rows;
 	this->cols_		= cols;
-	this->array_	= new T[rows * cols];
+	this->GB_Array_	= new T[rows * cols];
 }
 
 //==================================================================
 /**
-	@fn		Array :: ~Array()
+	@fn		GB_Array :: ~GB_Array()
 	@brief	Deonstructor
 **/
 //==================================================================
 template <typename T>
-Array<T> :: ~Array()
+GB_Array<T> :: ~GB_Array()
 {
-	if(array_)
-		delete [] array_;
+	if(GB_Array_)
+		delete [] GB_Array_;
 }
 
 //==================================================================
 /**
-	@fn		Array :: operator[](int row)
+	@fn		GB_Array :: operator[](int row)
 	@brief	operator[] overloading
 **/
 //==================================================================
 template <typename T>
-T & Array<T> :: operator[](int row)
+T & GB_Array<T> :: operator[](int row)
 {
-	return array_[row * cols_];
+	return GB_Array_[row * cols_];
 }
 
 //==================================================================
 /**
-	@fn		Array :: operator[](int row)
+	@fn		GB_Array :: operator[](int row)
 	@brief	operator[] overloading
 **/
 //==================================================================
 template <typename T>
-const T & Array<T> :: operator[](int row) const
+const T & GB_Array<T> :: operator[](int row) const
 {
-	return array_[row * cols_];
+	return GB_Array_[row * cols_];
 }
 
 //==================================================================
 /**
-	@fn		Array<T> :: operator= (T const& rhs)
+	@fn		GB_Array<T> :: operator= (T const& rhs)
 	@brief	operator= overloading
 **/
 //==================================================================
 template <typename T>
-T& Array<T> :: operator= (T const& rhs)
+T& GB_Array<T> :: operator= (T const& rhs)
 {
 	this->rows_	= rhs->rows_;
 	this->cols_	= rhs->cols_;
 
 	for(int i = 0; i < (this->rows_ * this->cols_); i++)
-		this->array_[i]		= rhs->array_[i];
+		this->GB_Array_[i]		= rhs->GB_Array_[i];
 }

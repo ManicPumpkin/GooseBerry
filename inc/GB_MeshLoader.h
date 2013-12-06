@@ -1,6 +1,6 @@
 /**
-	@file	gbMshLoader.h
-	@brief	Includes class of model object loader
+	@file	GB_MeshLoader.h
+	@brief	Includes class of model GB_Object loader
 	@author	drubner
 	@date	2013-07-31
 **/
@@ -13,24 +13,24 @@
 #include "GooseBerry.h"
 
 //==================================================================
-//	PREDEFINITION
+//	CLASS PREDEFINITION
 //==================================================================
-class gbMsh;
+class GB_Mesh;
 
 //==================================================================
 //	CLASS
 //==================================================================
 /**
-		@class	gbMshLoader
-		@brief	Loads an model object out of file
+		@class	GB_MeshLoader
+		@brief	Loads an model GB_Object out of file
 **/
 //==================================================================
-class GOOSEBERRY_API gbMshLoader 
+class GOOSEBERRY_API GB_MeshLoader 
 {
 	public:
 		//	Variables
 		//	Functions
-		gbMsh fLoadObj(std::string pFile, bool pIsQuad = FALSE);
+		GB_Mesh LoadObj(std::string file, bool is_quad = FALSE);
 
 	private:
 		//	Variables

@@ -1,57 +1,61 @@
 //==================================================================
 /**
-		@file	Log.cpp
-		@brief	This file includes all functions of cLog class
+		@file	GB_Log.cpp
+		@brief	This file includes all functions of cGB_Log class
 		@author	drubner
 		@date	Created 2012-08-14
 **/
 //==================================================================
-//	Include
+//	INCLUDE
 //==================================================================
 #include <sstream>
 #include <time.h>
 
-#include "Log.h"
+#include "GB_Log.h"
 
 //==================================================================
-//	Functions
+//	NAMEPSACE
+//==================================================================
+
+//==================================================================
+//	FUNCTIONS
 //==================================================================
 /**
 		@fn		gbStopLog()
 		@brief	Stop logging
-		@return	gbResult
+		@return	GB_Enum::gbResult
 **/
 //==================================================================
-GOOSEBERRY_API gbResult StopLog()
+GOOSEBERRY_API GB_Enum::gbResult StopLog()
 {
 	std::ofstream file_stream;
-	file_stream.open(LOG_FILEPATH, std::fstream::in | std::fstream::app);
+	file_stream.open(GB_Log_FILEPATH, std::fstream::in | std::fstream::app);
 	
 	if(file_stream.is_open())
 		file_stream << "</table></html></head>\n";
 
 	file_stream.close();
-	return GB_OK;
+	return GB_Enum::GB_OK;
 }
 
 //==================================================================
 /**
-		@fn		Log()
+		@fn		Log(std::string msg)
 		@brief	Log a message into the mFile file
 		@param	msg	Message to log
 		@return	VOID
 **/
 //==================================================================
-GOOSEBERRY_API gbResult Log(std::string msg)
+GOOSEBERRY_API GB_Enum::gbResult Log(std::string msg)
 {
 	std::ofstream file_stream;
-	file_stream.open(LOG_FILEPATH, std::fstream::in | std::fstream::app);
+	file_stream.open(GB_Log_FILEPATH, std::fstream::in | std::fstream::app);
 
 	if(file_stream.is_open())
 		file_stream << "<tr><th>" << CurrentTime() << "</th>" << msg;
 	
 	file_stream.close();
-	return GB_OK;
+	return GB_Enum::GB_OK;
 }
 
 //==================================================================
@@ -61,46 +65,46 @@ GOOSEBERRY_API gbResult Log(std::string msg)
 		@return	VOID
 **/
 //==================================================================
-GOOSEBERRY_API gbResult InitializeLog()
+GOOSEBERRY_API GB_Enum::gbResult InitializeLog()
 {
 	std::ofstream file_stream;
-	CreateDirectory(LOG_PATH, NULL);
-	file_stream.open(LOG_FILEPATH, std::fstream::trunc);
+	CreateDirectory(GB_Log_PATH, NULL);
+	file_stream.open(GB_Log_FILEPATH, std::fstream::trunc);
 	
 	if(file_stream.is_open())
 	{
 		file_stream << "<html><head>\n";
-		file_stream << "<title>" << g_wndTitle << "-Log</title>\n";
-		file_stream << "<link rel=\"stylesheet\" href=\"logfile.css\">\n";
+		file_stream << "<title>" << GB_Var::g_wnd_title << "-GB_Log</title>\n";
+		file_stream << "<link rel=\"stylesheet\" href=\"GB_Logfile.css\">\n";
 		file_stream << "</head><body>\n";
 		file_stream << "<hr class=\"divide_double\" />\n";
-		file_stream << "<p id=\"header\">"<< g_wndTitle <<" - Logfile</p>\n";
+		file_stream << "<p id=\"header\">"<< GB_Var::g_wnd_title <<" - GB_Logfile</p>\n";
 		file_stream << "<hr class=\"divide_simple\" />\n\n";
 		file_stream << "<table id=\"game_info\">\n";
-		file_stream << "<tr><th>window class name</th><td>:</td><td>"<< g_wndName <<"</td></tr>\n";
-		file_stream << "<tr><th>window name</th><td>:</td><td>"<< g_wndTitle <<"</td></tr>\n";
-		file_stream << "<tr><th>color</th><td>:</td><td>"<< g_bitsColor <<"</td></tr>\n";
-		file_stream << "<tr><th>depth</th><td>:</td><td>"<< g_bitsDepth <<"</td></tr>\n";
-		file_stream << "<tr><th>alpha</th><td>:</td><td>"<< g_bitsAlpha <<"</td></tr>\n";
+		file_stream << "<tr><th>window class name</th><td>:</td><td>"<< GB_Var::g_wnd_name <<"</td></tr>\n";
+		file_stream << "<tr><th>window name</th><td>:</td><td>"<< GB_Var::g_wnd_title <<"</td></tr>\n";
+		file_stream << "<tr><th>color</th><td>:</td><td>"<< GB_Var::g_bits_color <<"</td></tr>\n";
+		file_stream << "<tr><th>depth</th><td>:</td><td>"<< GB_Var::g_bits_depth <<"</td></tr>\n";
+		file_stream << "<tr><th>alpha</th><td>:</td><td>"<< GB_Var::g_bits_alpha <<"</td></tr>\n";
 		file_stream << "</table>\n";
 		file_stream << "<hr class=\"divide_simple\" />\n\n";
 		file_stream << "<table id=\"game_date\">\n";
-		file_stream << "<tr><th>time</th><td>:</td><td>"<< CurrentTime() <<"</td></tr>\n";
-		file_stream << "<tr><th>date</th><td>:</td><td>"<< CurrentDate() <<"</td></tr>\n";
+		file_stream << "<tr><th>time</th><td>:</td><td>" << CurrentTime() << "</td></tr>\n";
+		file_stream << "<tr><th>date</th><td>:</td><td>" << CurrentDate() << "</td></tr>\n";
 		file_stream << "</table>\n";
 		file_stream << "<hr class=\"divide_double\" />\n";
-		file_stream << "<table id=\"game_log\">\n";
+		file_stream << "<table id=\"game_GB_Log\">\n";
 	}
 
 	file_stream.close();
-	return GB_OK;
+	return GB_Enum::GB_OK;
 }
 
 //==================================================================
 /**
-		@fn		CurrentTime()
+		@fn		CurrenTime()
 		@brief	Create timestamp of time
-		@return	std::string tTime
+		@return	std::string time
 **/
 //==================================================================
 GOOSEBERRY_API std::string CurrentTime()
@@ -119,7 +123,7 @@ GOOSEBERRY_API std::string CurrentTime()
 
 //==================================================================
 /**
-		@fn		Log::fCurrentDate()
+		@fn		CurrentDate()
 		@brief	Create timestamp of date
 		@return	std::string tDate
 **/

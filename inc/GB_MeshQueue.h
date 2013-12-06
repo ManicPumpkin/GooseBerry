@@ -1,6 +1,6 @@
 /**
-	@file	gbMshQueue.h
-	@brief	Includes gbMshQueue class
+	@file	GB_MeshQueue.h
+	@brief	Includes GB_MeshQueue class
 	@author	drubner
 	@date	2012-11-26
 **/
@@ -13,28 +13,32 @@
 #include "GooseBerry.h"
 
 //==================================================================
+//	NAMESPACE
+//==================================================================
+
+//==================================================================
 //	CLASS
 //==================================================================
 /**
-		@class	gbMshQueue
-		@brief	Implements queue to store model objects
+		@class	GB_MeshQueue
+		@brief	Implements queue to store model GB_Objects
 **/
 //==================================================================
-class GOOSEBERRY_API gbMshQueue 
+class GOOSEBERRY_API GB_MeshQueue 
 {
 	public:
 		//	Variables
-		std::vector<gbMsh> mModelQueue;		//!< model queue
+		std::vector<GB_Mesh> model_queue_;		//!< model queue
 		
 		//	(De-)Constructor
-		gbMshQueue();
+		GB_MeshQueue();
 
 		//	Functions
-		VOID fAddModel(gbMsh pModel);					
+		VOID AddModel(GB_Mesh model);
 		BOOL RemoveModelByName(std::string model_name);	
 		BOOL RemoveModelByFile(std::string file_name);	
-		gbResult GetMdlCyByID(gbMsh * mdl, unsigned int id);
-		gbResult GetMdlCyByName(gbMsh * mdl, std::string model_name);
+		GB_Enum::gbResult GetMdlCyByID(GB_Mesh * mdl, unsigned int id);
+		GB_Enum::gbResult GetMdlCyByName(GB_Mesh * mdl, std::string model_name);
 
 		//	Get & Set
 		/**
@@ -42,7 +46,7 @@ class GOOSEBERRY_API gbMshQueue
 			@brief	get size
 			@return	int		size of model queue
 		**/
-		int GetSize() { return mModelQueue.size(); }
+		int GetSize() { return model_queue_.size(); }
 
 	private:
 		//	Variables

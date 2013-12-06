@@ -15,43 +15,42 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Color.cpp" />
-    <ClCompile Include="src\Matrix.cpp" />
-    <ClCompile Include="src\gbMshQueue.cpp" />
-    <ClCompile Include="src\Log.cpp" />
-    <ClCompile Include="src\gbMsh.cpp" />
-    <ClCompile Include="src\gbMshLoader.cpp" />
-    <ClCompile Include="src\gbObj.cpp" />
-    <ClCompile Include="src\OpenGL.cpp" />
-    <ClCompile Include="src\gbTex.cpp" />
-    <ClCompile Include="src\Vector2d.cpp" />
-    <ClCompile Include="src\Vector3d.cpp" />
+    <ClCompile Include="src\GB_Color.cpp" />
+    <ClCompile Include="src\GB_Log.cpp" />
+    <ClCompile Include="src\GB_Matrix.cpp" />
+    <ClCompile Include="src\GB_Mesh.cpp" />
+    <ClCompile Include="src\GB_MeshLoader.cpp" />
+    <ClCompile Include="src\GB_MeshQueue.cpp" />
+    <ClCompile Include="src\GB_OpenGL.cpp" />
+    <ClCompile Include="src\GB_Tex.cpp" />
+    <ClCompile Include="src\GB_Vector2.cpp" />
+    <ClCompile Include="src\GB_Vector3.cpp" />
     <ClCompile Include="src\GooseBerry.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="inc\gbMat.h" />
-    <ClInclude Include="inc\Array.h" />
-    <ClInclude Include="inc\Color.h" />
-    <ClInclude Include="inc\Convert.h" />
-    <ClInclude Include="inc\Matrix.h" />
-    <ClInclude Include="inc\gbMshQueue.h" />
-    <ClInclude Include="inc\Defines.h" />
-    <ClInclude Include="inc\Errors.h" />
-    <ClInclude Include="inc\Exception.h" />
-    <ClInclude Include="inc\Log.h" />
-    <ClInclude Include="inc\gbMsh.h" />
-    <ClInclude Include="inc\gbMshLoader.h" />
-    <ClInclude Include="inc\gbObj.h" />
-    <ClInclude Include="inc\OpenGL.h" />
-    <ClInclude Include="inc\Queue.h" />
-    <ClInclude Include="inc\gbTex.h" />
-    <ClInclude Include="inc\Vector2d.h" />
-    <ClInclude Include="inc\Vector3d.h" />
+    <ClInclude Include="inc\GB_Array.h" />
+    <ClInclude Include="inc\GB_Color.h" />
+    <ClInclude Include="inc\GB_Convert.h" />
+    <ClInclude Include="inc\GB_Defines.h" />
+    <ClInclude Include="inc\GB_Errors.h" />
+    <ClInclude Include="inc\GB_Exception.h" />
+    <ClInclude Include="inc\GB_Log.h" />
+    <ClInclude Include="inc\GB_Material.h" />
+    <ClInclude Include="inc\GB_Matrix.h" />
+    <ClInclude Include="inc\GB_Mesh.h" />
+    <ClInclude Include="inc\GB_MeshLoader.h" />
+    <ClInclude Include="inc\GB_MeshQueue.h" />
+    <ClInclude Include="inc\GB_OpenGL.h" />
+    <ClInclude Include="inc\GB_Queue.h" />
+    <ClInclude Include="inc\GB_Tex.h" />
+    <ClInclude Include="inc\GB_Vector2.h" />
+    <ClInclude Include="inc\GB_Vector3.h" />
     <ClInclude Include="inc\GooseBerry.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B48CAD44-A997-4021-B570-51EF87757F24}</ProjectGuid>
     <RootNamespace>glGooseberry</RootNamespace>
+    <ProjectName>GooseBerry</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

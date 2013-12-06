@@ -1,9 +1,9 @@
 //==================================================================
 /**
-	@file	Log.h
-	@brief	This file includes the log class
+	@file	GB_Log.h
+	@brief	This file includes the GB_Log class
 
-	The log class writes errors, warnings and other messages into
+	The GB_Log class writes GB_Errors, warnings and other messages into
 	a file.
 
 	@author	drubner
@@ -20,22 +20,20 @@
 //==================================================================
 //	NAMESPACE
 //==================================================================
-using namespace gbGlobal;
 
 //==================================================================
 //	FUNCTION
 //==================================================================
-GOOSEBERRY_API gbGlobal::gbResult	InitializeLog();
-GOOSEBERRY_API gbGlobal::gbResult	StopLog();
-GOOSEBERRY_API gbGlobal::gbResult	Log(std::string msg);
-GOOSEBERRY_API gbGlobal::gbResult	Log(std::string msg, std::string space);
+GOOSEBERRY_API GB_Enum::gbResult	InitializeLog();
+GOOSEBERRY_API GB_Enum::gbResult	StopLog();
+GOOSEBERRY_API GB_Enum::gbResult	Log(std::string msg);
 GOOSEBERRY_API std::string			CurrentTime();
 GOOSEBERRY_API std::string			CurrentDate();
 
 //==================================================================
 //	INLINE
 //==================================================================
-inline GOOSEBERRY_API VOID GB_LDEBUG(string msg)				{ if(DEBUG_MODE) Log("<td class=\"log_debug\">" + msg + "</td>\n"); }
+inline GOOSEBERRY_API VOID GB_LDEBUG(string msg)				{ if (DEBUG_MODE) Log("<td class=\"log_debug\">" + msg + "</td>\n"); }
 inline GOOSEBERRY_API VOID GB_LINFO(string msg)					{ Log("<td class=\"log_info\">" + msg + "</td>\n"); }
 inline GOOSEBERRY_API VOID GB_LWARNING(string msg)				{ Log("<td class=\"log_warning\">" + msg + "</td>\n"); }
 inline GOOSEBERRY_API VOID GB_LERROR(string msg, string id)		{ Log("<td class=\"log_error\">" + msg + "<" + id + "></td>\n"); }

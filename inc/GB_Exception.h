@@ -1,6 +1,6 @@
 /**
-	@file	Exception.h
-	@brief	Includes Exception class
+	@file	GB_Exception.h
+	@brief	Includes GB_Exception class
 	@author	drubner
 	@date	2012-11-10
 **/
@@ -15,33 +15,33 @@
 //==================================================================
 //	Defines
 //==================================================================
-#define GB_EXCEPTION_ICON { MB_OK | GB_ERROR }
+#define GB_GB_Exception_ICON { MB_OK | GB_ERROR }
 
 //==================================================================
 //	Class
 //==================================================================
 /**
-		@class	Exception
-		@brief	Includes exception handling methods and variables
+		@class	GB_Exception
+		@brief	Includes GB_Exception handling methods and variables
 **/
 //==================================================================
-class Exception : public std::exception
+class GB_Exception : public std::exception
 {
 	protected:
 	private:
 		//	Variables
-		std::string msg_;	//!<	exception message
-		std::string id_;	//!<	exception id
+		std::string msg_;	//!<	GB_Exception message
+		std::string id_;	//!<	GB_Exception id
 
 	public:
 		//	(De-)Constructor
-		Exception(const std::string& str_msg, const std::string& str_id)
+		GB_Exception(const std::string& str_msg, const std::string& str_id)
 		{
 			msg_	= str_msg;
 			id_		= str_id;
 		}
 
-		virtual ~Exception() {}
+		virtual ~GB_Exception() {}
 
 		//	Functions
 		const char* GetStr() const	{ return msg_.c_str();	}

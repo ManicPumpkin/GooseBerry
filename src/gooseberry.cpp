@@ -7,14 +7,14 @@
 	\mainpage GooseBerry Game Engine Project
 
 	This project is developed for games and provides all useful
-	classes, like matrix, vector or object classes, they are 
+	classes, like GB_Matrix , vector or GB_Object classes, they are 
 	necessary to build a playable game with full functionality. 
-	Gooseberry is based on OpenGL and is used in the "Cube" game 
-	project and its little sister the world generator project 
+	Gooseberry is based on GB_OpenGL and is used in the "Cube" game 
+	project and its litle sister the world generator project 
 	"WorldGen".
 
 	\section Description
-	Game Engine based on OpenGL
+	Game Engine based on GB_OpenGL
 
 	\section Autors
 	-	RUBNER,		Danny
@@ -30,28 +30,28 @@
 //==================================================================
 //	NAMESPACE
 //==================================================================
-using namespace gbGlobal;
+using namespace GB_Enum;
 
 //==================================================================
 //	VARIABLES
 //==================================================================
-HINSTANCE	gbGlobal::g_hinstance = NULL;
-HWND		gbGlobal::g_HWND = NULL;
-HDC			gbGlobal::g_HDC = NULL;
-HGLRC		gbGlobal::g_HGLRC = NULL;
-LPCSTR		gbGlobal::g_wndTitle = "";
-LPCSTR		gbGlobal::g_wndName = "";
-int			gbGlobal::g_wndWidth = -1;
-int			gbGlobal::g_wndHeight = -1;
-int			gbGlobal::g_wndX = -1;
-int			gbGlobal::g_wndY = -1;
-int			gbGlobal::g_bitsColor = -1;
-int			gbGlobal::g_bitsDepth = -1;
-int			gbGlobal::g_bitsAlpha = -1;
-bool		gbGlobal::g_fullscreen = FALSE;
-bool		gbGlobal::g_init = FALSE;
-bool		gbGlobal::g_active = TRUE;
-bool		gbGlobal::g_keys[256];
+HINSTANCE	GB_Var::g_hinstance = NULL;
+HWND		GB_Var::g_HWND = NULL;
+HDC			GB_Var::g_HDC = NULL;
+HGLRC		GB_Var::g_HGLRC = NULL;
+LPCSTR		GB_Var::g_wnd_title = "";
+LPCSTR		GB_Var::g_wnd_name = "";
+int			GB_Var::g_wnd_width = -1;
+int			GB_Var::g_wnd_height = -1;
+int			GB_Var::g_wnd_x = -1;
+int			GB_Var::g_wnd_y = -1;
+int			GB_Var::g_bits_color = -1;
+int			GB_Var::g_bits_depth = -1;
+int			GB_Var::g_bits_alpha = -1;
+bool		GB_Var::g_fullscreen = FALSE;
+bool		GB_Var::g_initialized = FALSE;
+bool		GB_Var::g_active = TRUE;
+bool		GB_Var::g_keys[256];
 
 //==================================================================
 /**
@@ -59,15 +59,15 @@ bool		gbGlobal::g_keys[256];
 	@brief	Initialize the game engine
 **/
 //==================================================================
-GOOSEBERRY_API gbResult gbGlobal::Initialize()
+GOOSEBERRY_API GB_Enum::gbResult GB_Func::Initialize()
 {
-	if(!g_init)
+	if(!GB_Var::g_initialized)
 	{
 		InitializeLog();
 		GB_LDEBUG("GooseBerry initialized");
 	}
 
-	g_init = TRUE;
+	GB_Var::g_initialized = TRUE;
 	return GB_OK;
 }
 
@@ -77,7 +77,7 @@ GOOSEBERRY_API gbResult gbGlobal::Initialize()
 	@brief	Enter message loop
 **/
 //==================================================================
-GOOSEBERRY_API gbResult gbGlobal::MessageLoop(gbResult(*pRender)(float))
+GOOSEBERRY_API GB_Enum::gbResult MessageLoop(GB_Enum::gbResult(*pRender)(float))
 {
 	MSG			msg;
 	LONGLONG	start_time	= 0.0f;
@@ -103,25 +103,25 @@ GOOSEBERRY_API gbResult gbGlobal::MessageLoop(gbResult(*pRender)(float))
 				quit = TRUE;
 		}
 
-		if(g_active)	
+		if(GB_Var::g_active)	
 		{
-			if(g_keys[VK_ESCAPE])
+			if(GB_Var::g_keys[VK_ESCAPE])
 				quit	= TRUE;
 			else
 			{
 				pRender((float)time);
-				SwapBuffers(g_HDC);
+				SwapBuffers(GB_Var::g_HDC);
 			}
 		}
 
-		if(g_keys[VK_F1])
+		if(GB_Var::g_keys[VK_F1])
 		{
-			g_keys[VK_F1]	= FALSE;
-			g_fullscreen	    = !g_fullscreen;
-			gbGlobal::Exit();
+			GB_Var::g_keys[VK_F1]	= FALSE;
+			GB_Var::g_fullscreen	    = !GB_Var::g_fullscreen;
+			GB_Func::Exit();
 
-			if (gbGlobal::Initialize() != GB_OK)
-				throw gbException(ERR_WIN_FS_STR, ERR_WIN_FS_ID);
+			if (GB_Func::Initialize() != GB_OK)
+				throw GB_Exception(ERR_WIN_FS_STR, ERR_WIN_FS_ID);
 		}
 
 		if(ONLY_COMPILE)
@@ -144,7 +144,7 @@ GOOSEBERRY_API gbResult gbGlobal::MessageLoop(gbResult(*pRender)(float))
 	@brief	Deconstructor
 **/
 //==================================================================
-GOOSEBERRY_API gbResult gbGlobal::Exit()
+GOOSEBERRY_API GB_Enum::gbResult GB_Func::Exit()
 {
 	GB_LDEBUG("Gooseberry stopped");
 	StopLog();
@@ -153,28 +153,28 @@ GOOSEBERRY_API gbResult gbGlobal::Exit()
 
 //==================================================================
 /**
-		@fn		IntToString(int value);
-		@param	value	int to convert
-		@brief	Converts int to string
+		@fn		IntToStr(int value);
+		@param	value	int to GB_Convert
+		@brief	GB_Converts int to string
 		@return std::string tString
 **/
 //==================================================================
-std::string gbGlobal::IntToStr(int value)
+std::string IntToStr(int value)
 {
-	ostringstream convert;
-	convert << value;
-	return convert.str();
+	ostringstream GB_Convert;
+	GB_Convert << value;
+	return GB_Convert.str();
 }
 
 //==================================================================
 /**
 		@fn		ExtractName(std::string file)
 		@param	file	name of file to extract
-		@brief	Extracts object name from file name
+		@brief	Extracts GB_Object name from file name
 		@return std::string tName
 **/
 //==================================================================
-std::string gbGlobal::ExtractName(std::string file)
+std::string GB_Func::ExtractName(std::string file)
 {
 	int start_sub_str	= 0;
 	int end_sub_str		= 0;
@@ -194,7 +194,7 @@ std::string gbGlobal::ExtractName(std::string file)
 		@return std::string tPath
 **/
 //==================================================================
-std::string gbGlobal::ExtractPath(std::string file)
+std::string GB_Func::ExtractPath(std::string file)
 {
 	int end_sub_str		= 0;
 
@@ -213,7 +213,7 @@ std::string gbGlobal::ExtractPath(std::string file)
 	@param	seperator	delemiter
 **/
 //==================================================================
-VOID gbGlobal::SplitString(const string& str, vector<string>& token, const string& seperator)
+VOID GB_Func::SplitString(const string& str, vector<string>& token, const string& seperator)
 {
 	string::size_type last_pos	= str.find_first_not_of(seperator, 0);
 	string::size_type pos		= str.find_first_of(seperator, last_pos);

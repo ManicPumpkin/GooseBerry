@@ -10,7 +10,7 @@
 //==================================================================
 //	NAMESPACE
 //==================================================================
-using namespace gbGlobal;
+using namespace GooseBerry;
 
 //==================================================================
 //	INCLUDE
@@ -22,7 +22,7 @@ using namespace gbGlobal;
 //==================================================================
 /**
 		@class	Queue
-		@brief	Implements queue to store model objects
+		@brief	Implements queue to store model GB_Objects
 **/
 //==================================================================
 template <typename T>
@@ -36,15 +36,15 @@ class GOOSEBERRY_API Queue
 		Queue();
 
 		//	Functions
-		gbResult AddMember(T member);			
-		gbResult RemoveMemberById(int id);
-		gbResult GetMbrById(T * member, unsigned int id);
+		GB_Enum::gbResult AddMember(T member);			
+		GB_Enum::gbResult RemoveMemberById(int id);
+		GB_Enum::gbResult GetMbrById(T * member, unsigned int id);
 
 		/*
 		BOOL RemoveModelByName(std::string model_name);	
 		BOOL RemoveModelByFile(std::string file_name);	
-		gbResult GetMdlCyByID(gbMsh * mdl, unsigned int id);
-		gbResult GetMdlCyByName(gbMsh * mdl, std::string model_name);
+		GB_Enum::gbResult GetMdlCyByID(Mesh * mdl, unsigned int id);
+		GB_Enum::gbResult GetMdlCyByName(Mesh * mdl, std::string model_name);
 		*/
 		//	Get & Set
 		/**
@@ -80,11 +80,11 @@ Queue<T> :: Queue()
 	@fn		Queue :: AddMember(T member);		
 	@brief	Add a new member
 	@param	member		member to add
-	@return gbResult	GB_OK
+	@return GB_Enum::gbResult	GB_OK
 **/
 //==================================================================
 template <typename T>
-gbResult Queue<T> :: AddMember(T member)
+GB_Enum::gbResult Queue<T> :: AddMember(T member)
 {
 	queue_.push_back(member);
 	return GB_OK;
@@ -95,11 +95,11 @@ gbResult Queue<T> :: AddMember(T member)
 	@fn		Queue :: RemoveMemberById(int id);
 	@brief	remove member by id
 	@param	id	id of member to remove
-	@return gbResult	GB_OK or GB_NOTFOUND
+	@return GB_Enum::gbResult	GB_OK or GB_NOTFOUND
 **/
 //==================================================================
 template <typename T>
-gbResult Queue<T> :: RemoveMemberById(int id)
+GB_Enum::gbResult Queue<T> :: RemoveMemberById(int id)
 {
 	if(id > queue_.size())
 		return GB_NOTFOUND;
@@ -112,13 +112,13 @@ gbResult Queue<T> :: RemoveMemberById(int id)
 /**
 	@fn		Queue :: GetMbrById(T * member, unsigned int id);
 	@brief	Get member by id
-	@param	member		member object, call by reference
+	@param	member		member GB_Object, call by reference
 	@param	id			id of member to return
-	@return	gbResult	GB_OK or GB_NOTFOUND
+	@return	GB_Enum::gbResult	GB_OK or GB_NOTFOUND
 **/
 //==================================================================
 template <typename T>
-gbResult Queue<T> :: GetMbrById(T * member, unsigned int id)
+GB_Enum::gbResult Queue<T> :: GetMbrById(T * member, unsigned int id)
 {
 	if(id > queue_.size())
 		return GB_NOTFOUND;

@@ -1,27 +1,31 @@
 /**
-	@file	Matrix.cpp
-	@brief	Includes all Matrix class methods
+	@file	GB_Matrix.cpp
+	@brief	Includes all GB_Matrix class methods
 	@author	drubner
 	@date	2013-08-28
 **/
 //==================================================================
-//	Include
+//	INCLUDE
 //==================================================================
-#include "Matrix.h"
+#include "GB_Matrix.h"
 
 //==================================================================
-//	Functions
+//	NAMESPACE
+//==================================================================
+
+//==================================================================
+//	FUNCTIONS
 //==================================================================
 /**
 	@fn		MatrixRotationX (const float angle)
-	@brief	Matrix rotation along the x axis
-	@param  angle	rotation angle
-	@return Matrix
+	@brief	GB_Matrix rotation along the x axis
+	@param  angle  rotation angle
+	@return GB_Matrix 
 **/
 //==================================================================
-GOOSEBERRY_API Matrix MatrixRotationX (const float angle)
+GOOSEBERRY_API GB_Matrix MatrixRotationX (const float angle)
 {
-	return Matrix(	1.0f, 0.0f, 0.0f, 0.0f,
+	return GB_Matrix(	1.0f, 0.0f, 0.0f, 0.0f,
 						0.0f, cosf(angle), sinf(angle), 0.0f,
 						0.0f, -sinf(angle), cosf(angle), 0.0f,
 						0.0f, 0.0f, 0.0f, 1.0f						);
@@ -30,14 +34,14 @@ GOOSEBERRY_API Matrix MatrixRotationX (const float angle)
 //==================================================================
 /**
 	@fn		MatrixRotationY (const float angle)
-	@brief	Matrix rotation along the y axis
-	@param  angle	rotation angle
-	@return Matrix
+	@brief	GB_Matrix rotation along the y axis
+	@param  angle  rotation angle
+	@return GB_Matrix 
 **/
 //==================================================================
-GOOSEBERRY_API Matrix MatrixRotationY (const float angle)
+GOOSEBERRY_API GB_Matrix MatrixRotationY (const float angle)
 {
-	return Matrix(	cosf(angle), 0.0f, sinf(angle), 0.0f,
+	return GB_Matrix(cosf(angle), 0.0f, sinf(angle), 0.0f,
 						0.0f, 1.0f, 0.0f, 0.0f,
 						-sinf(angle), 0.0f, cosf(angle), 0.0f,
 						0.0f, 0.0f, 0.0f, 1.0f						);
@@ -46,14 +50,14 @@ GOOSEBERRY_API Matrix MatrixRotationY (const float angle)
 //==================================================================
 /**
 	@fn		MatrixRotationZ (const float angle)
-	@brief	Matrix rotation along the z axis
-	@param  angle	rotation angle
-	@return Matrix
+	@brief	GB_Matrix rotation along the z axis
+	@param  angle  rotation angle
+	@return GB_Matrix 
 **/
 //==================================================================
-GOOSEBERRY_API Matrix MatrixRotationZ (const float angle)
+GOOSEBERRY_API GB_Matrix MatrixRotationZ(const float angle)
 {
-	return Matrix(	cosf(angle), sinf(angle), 0.0f, 0.0f,
+	return GB_Matrix(	cosf(angle), sinf(angle), 0.0f, 0.0f,
 						-sinf(angle), cosf(angle), 0.0f, 0.0f,
 						0.0f, 0.0f, 1.0f, 0.0f,
 						0.0f, 0.0f, 0.0f, 1.0f						);
@@ -62,14 +66,14 @@ GOOSEBERRY_API Matrix MatrixRotationZ (const float angle)
 //==================================================================
 /**
 	@fn		MatrixRotation (const float angle_x, const float angle_y, const float angle_z)
-	@brief	Matrix rotation by float values
+	@brief	GB_Matrix rotation by float values
 	@param  x	rotation angle for x axis
 	@param  y	rotation angle for y axis
 	@param  z	rotation angle for z axis
-	@return Matrix
+	@return GB_Matrix 
 **/
 //==================================================================
-GOOSEBERRY_API Matrix MatrixRotation (const float angle_x, const float angle_y, const float angle_z)
+GOOSEBERRY_API GB_Matrix MatrixRotation(const float angle_x, const float angle_y, const float angle_z)
 {
 	return	MatrixRotationX(angle_x) *
 			MatrixRotationY(angle_y) *
@@ -79,12 +83,12 @@ GOOSEBERRY_API Matrix MatrixRotation (const float angle_x, const float angle_y, 
 //==================================================================
 /**
 	@fn		MatrixRotation (const float * rot_angle_3d)
-	@brief	Matrix rotation by tree dimension float angle array
-	@param  pRotation3D	rotation angle array for x, y and z axis
-	@return Matrix
+	@brief	GB_Matrix rotation by tree dimension float angle GB_Array
+	@param  pRotation3D	rotation angle GB_Array for x, y and z axis
+	@return GB_Matrix 
 **/
 //==================================================================
-GOOSEBERRY_API Matrix MatrixRotation (const float * rot_angle_3d)
+GOOSEBERRY_API GB_Matrix MatrixRotation(const float * rot_angle_3d)
 {
 	return	MatrixRotationX(rot_angle_3d[0]) *
 			MatrixRotationY(rot_angle_3d[1]) *
@@ -93,13 +97,13 @@ GOOSEBERRY_API Matrix MatrixRotation (const float * rot_angle_3d)
 
 //==================================================================
 /**
-	@fn		MatrixRotation (const Vector3d angle_vector)
-	@brief	Matrix rotation by angle vector
+	@fn		MatrixRotation (const GB_Vector3 angle_vector)
+	@brief	GB_Matrix rotation by angle vector
 	@param  vector	rotation angle vector for x, y and z axis
-	@return Matrix
+	@return GB_Matrix 
 **/
 //==================================================================
-GOOSEBERRY_API Matrix MatrixRotation (const Vector3d angle_vector)
+GOOSEBERRY_API GB_Matrix MatrixRotation(const GB_Vector3 angle_vector)
 {
 	return	MatrixRotationX(angle_vector.x_) *
 			MatrixRotationY(angle_vector.y_) *
@@ -108,18 +112,18 @@ GOOSEBERRY_API Matrix MatrixRotation (const Vector3d angle_vector)
 
 //==================================================================
 /**
-	@fn		MatrixAxis (const Vector3d axis_x, const Vector3d axis_y, const Vector3d axis_z);
-	@brief	Returns a axis matrix of all axis given by tree 
+	@fn		MatrixAxis (const GB_Vector3 axis_x, const GB_Vector3 axis_y, const GB_Vector3 axis_z);
+	@brief	Returns a axis GB_Matrix of all axis given by tree 
 			axis vectors
 	@param  axis_x	x axis vector
 	@param  axis_y	y axis vector
 	@param  axis_z	z axis vector
-	@return Matrix
+	@return GB_Matrix 
 **/
 //==================================================================
-GOOSEBERRY_API Matrix MatrixAxis (const Vector3d axis_x, const Vector3d axis_y, const Vector3d axis_z)
+GOOSEBERRY_API GB_Matrix MatrixAxis(const GB_Vector3 axis_x, const GB_Vector3 axis_y, const GB_Vector3 axis_z)
 {
-	return Matrix(	axis_x.x_, axis_x.y_, axis_x.z_, 0.0f,
+	return GB_Matrix (	axis_x.x_, axis_x.y_, axis_x.z_, 0.0f,
 						axis_y.x_, axis_y.y_, axis_y.z_, 0.0f,
 						axis_z.x_, axis_z.y_, axis_z.z_, 0.0f,
 						0.0f, 0.0f, 0.0f, 1.0f					);
@@ -128,32 +132,32 @@ GOOSEBERRY_API Matrix MatrixAxis (const Vector3d axis_x, const Vector3d axis_y, 
 //==================================================================
 /**
 	@fn		MatrixTranslation (const float x, const float y, const float z)	
-	@brief	Matrix translation by float values
+	@brief	GB_Matrix translation by float values
 	@param  x	translation value for x axis
 	@param  y	translation value for y axis
 	@param  z	translation value for z axis
-	@return Matrix
+	@return GB_Matrix 
 **/
 //==================================================================
-GOOSEBERRY_API Matrix MatrixTranslation (const float x, const float y, const float z)
+GOOSEBERRY_API GB_Matrix MatrixTranslation(const float x, const float y, const float z)
 {
-	return Matrix(	1.0f, 0.0f, 0.0f, 0.0f,
+	return GB_Matrix (	1.0f, 0.0f, 0.0f, 0.0f,
 						0.0f, 1.0f, 0.0f, 0.0f,
 						0.0f, 0.0f, 1.0f, 0.0f,
-						x, y, z, 1.0f		);
+						x, y, z, 1.0f			);
 }
 
 //==================================================================
 /**
 	@fn		MatrixTranslation (const float * translation_3d)
-	@brief	Matrix translation by tree dimension float array
-	@param  translation_3d	translation array for x, y and z axis
-	@return Matrix
+	@brief	GB_Matrix translation by tree dimension float GB_Array
+	@param  translation_3d	translation GB_Array for x, y and z axis
+	@return GB_Matrix 
 **/
 //==================================================================
-GOOSEBERRY_API Matrix MatrixTranslation (const float * translation_3d)
+GOOSEBERRY_API GB_Matrix MatrixTranslation(const float * translation_3d)
 {
-	return Matrix(	1.0f, 0.0f, 0.0f, 0.0f,
+	return GB_Matrix (	1.0f, 0.0f, 0.0f, 0.0f,
 						0.0f, 1.0f, 0.0f, 0.0f,
 						0.0f, 0.0f, 1.0f, 0.0f,
 						translation_3d[0], translation_3d[1], translation_3d[2], 1.0f );
@@ -161,15 +165,15 @@ GOOSEBERRY_API Matrix MatrixTranslation (const float * translation_3d)
 
 //==================================================================
 /**
-	@fn		MatrixTranslation (const Vector3d vector)
-	@brief	Matrix translation by vector
+	@fn		MatrixTranslation (const GB_Vector3 vector)
+	@brief	GB_Matrix translation by vector
 	@param  vector	translation vector for x, y and z axis
-	@return Matrix
+	@return GB_Matrix 
 **/
 //==================================================================
-GOOSEBERRY_API Matrix MatrixTranslation (const Vector3d vector)
+GOOSEBERRY_API GB_Matrix MatrixTranslation(const GB_Vector3 vector)
 {
-	return Matrix(	1.0f, 0.0f, 0.0f, 0.0f,
+	return GB_Matrix (	1.0f, 0.0f, 0.0f, 0.0f,
 						0.0f, 1.0f, 0.0f, 0.0f,
 						0.0f, 0.0f, 1.0f, 0.0f,
 						vector.x_, vector.y_, vector.z_, 1.0f );
@@ -178,16 +182,16 @@ GOOSEBERRY_API Matrix MatrixTranslation (const Vector3d vector)
 //==================================================================
 /**
 	@fn		MatrixScale (const float x, const float y, const float z)
-	@brief	Matrix scaling by float values
+	@brief	GB_Matrix scaling by float values
 	@param  x	scale value for x axis
 	@param  y	scale value for y axis
 	@param  z	scale value for z axis
-	@return Matrix
+	@return GB_Matrix 
 **/
 //==================================================================
-GOOSEBERRY_API Matrix MatrixScale (const float x, const float y, const float z)
+GOOSEBERRY_API GB_Matrix MatrixScale(const float x, const float y, const float z)
 {
-	return Matrix(	x  , 0.0f, 0.0f, 0.0f,
+	return GB_Matrix (	x  , 0.0f, 0.0f, 0.0f,
 						0.0f, y  , 0.0f, 0.0f,
 						0.0f, 0.0f, z  , 0.0f,
 						0.0f, 0.0f, 0.0f, 1.0f	);
@@ -196,14 +200,14 @@ GOOSEBERRY_API Matrix MatrixScale (const float x, const float y, const float z)
 //==================================================================
 /**
 	@fn		MatrixScale (const float * scale_3d)
-	@brief	Matrix scaling by tree dimension float array
-	@param  scale_3d	scale array for x, y and z axis
-	@return Matrix
+	@brief	GB_Matrix scaling by tree dimension float GB_Array
+	@param  scale_3d	scale GB_Array for x, y and z axis
+	@return GB_Matrix 
 **/
 //==================================================================
-GOOSEBERRY_API Matrix MatrixScale (const float * scale_3d)
+GOOSEBERRY_API GB_Matrix MatrixScale(const float * scale_3d)
 {
-	return Matrix(	scale_3d[0], 0.0f, 0.0f, 0.0f,
+	return GB_Matrix (	scale_3d[0], 0.0f, 0.0f, 0.0f,
 						0.0f, scale_3d[1], 0.0f, 0.0f,
 						0.0f, 0.0f, scale_3d[2], 0.0f,
 						0.0f, 0.0f, 0.0f, 1.0f			);
@@ -211,15 +215,15 @@ GOOSEBERRY_API Matrix MatrixScale (const float * scale_3d)
 
 //==================================================================
 /**
-	@fn		MatrixScale (const Vector3d vector)
-	@brief	Matrix scaling by vector
+	@fn		MatrixScale (const GB_Vector3 vector)
+	@brief	GB_Matrix scaling by vector
 	@param  vector	scale vector for x, y and z axis
-	@return Matrix
+	@return GB_Matrix 
 **/
 //==================================================================
-GOOSEBERRY_API Matrix MatrixScale (const Vector3d vector)
+GOOSEBERRY_API GB_Matrix MatrixScale(const GB_Vector3 vector)
 {
-	return Matrix(	vector.x_, 0.0f, 0.0f, 0.0f,
+	return GB_Matrix (	vector.x_, 0.0f, 0.0f, 0.0f,
 						0.0f, vector.y_, 0.0f, 0.0f,
 						0.0f, 0.0f, vector.z_, 0.0f,
 						0.0f, 0.0f, 0.0f, 1.0f			);
@@ -227,14 +231,14 @@ GOOSEBERRY_API Matrix MatrixScale (const Vector3d vector)
 
 //==================================================================
 /**
-	@fn		MatrixScale (const Vector3d vector)
-	@brief	Returns the indentity matrix
-	@return Matrix
+	@fn		MatrixIdentity()
+	@brief	Returns the indentity GB_Matrix 
+	@return GB_Matrix 
 **/
 //==================================================================
-GOOSEBERRY_API Matrix MatrixIdentity()
+GOOSEBERRY_API GB_Matrix MatrixIdentity()
 {
-	return Matrix(	1.0f, 0.0f, 0.0f, 0.0f,
+	return GB_Matrix (	1.0f, 0.0f, 0.0f, 0.0f,
 						0.0f, 1.0f, 0.0f, 0.0f,
 						0.0f, 0.0f, 1.0f, 0.0f,
 						0.0f, 0.0f, 0.0f, 1.0f	);
@@ -242,15 +246,15 @@ GOOSEBERRY_API Matrix MatrixIdentity()
 
 //==================================================================
 /**
-	@fn		MatrixTranspose (const Matrix & matrix)
-	@brief	Transpose a given matrix
-	@param	matrix	matrix to transpose
-	@return Matrix
+	@fn		MatrixTranspose (const GB_Matrix & GB_Matrix )
+	@brief	Transpose a given GB_Matrix 
+	@param	GB_Matrix 	GB_Matrix  to transpose
+	@return GB_Matrix 
 **/
 //==================================================================
-GOOSEBERRY_API Matrix MatrixTranspose (const Matrix & matrix)
+GOOSEBERRY_API GB_Matrix MatrixTranspose(const GB_Matrix & matrix )
 {
-	return Matrix(	matrix.m11_, matrix.m21_, matrix.m31_, matrix.m41_,
+	return GB_Matrix(	matrix.m11_, matrix.m21_, matrix.m31_, matrix.m41_,
 						matrix.m12_, matrix.m22_, matrix.m32_, matrix.m42_,
 						matrix.m13_, matrix.m23_, matrix.m33_, matrix.m43_,
 						matrix.m14_, matrix.m24_, matrix.m34_, matrix.m44_	);
@@ -258,48 +262,48 @@ GOOSEBERRY_API Matrix MatrixTranspose (const Matrix & matrix)
 
 //==================================================================
 /**
-	@fn		MatrixScale (const Vector3d vector)
-	@brief	Calculates the inverted matrix of a given matrix
-	@param	matrix	matrix to invert
-	@return Matrix
+	@fn		GB_Matrix Scale (const GB_Vector3 vector)
+	@brief	Calculates the inverted GB_Matrix  of a given GB_Matrix 
+	@param	GB_Matrix 	GB_Matrix  to invert
+	@return GB_Matrix 
 **/
 //==================================================================
-GOOSEBERRY_API Matrix MatrixInvert (const Matrix & matrix)
+GOOSEBERRY_API GB_Matrix MatrixInvert(const GB_Matrix & matrix )
 {
-	float tInvDet = MatrixDeterminant(matrix);
-	if(tInvDet == 0.0f)
+	float inv_det = MatrixDeterminant(matrix);
+	if(inv_det == 0.0f)
 		return MatrixIdentity();
-	tInvDet = 1.0f / tInvDet;
+	inv_det = 1.0f / inv_det;
 
-	Matrix tMatrix;
-	tMatrix.m11_		= tInvDet * (matrix.m22_ * matrix.m33_ - matrix.m23_ * matrix.m32_);
-	tMatrix.m12_		= -tInvDet * (matrix.m12_ * matrix.m33_ - matrix.m13_ * matrix.m32_);
-	tMatrix.m13_		= tInvDet * (matrix.m12_ * matrix.m23_ - matrix.m13_ * matrix.m22_);
-	tMatrix.m14_		= 0.0f;
-	tMatrix.m21_		= -tInvDet * (matrix.m21_ * matrix.m33_ - matrix.m23_ * matrix.m31_);
-	tMatrix.m22_		= tInvDet * (matrix.m11_ * matrix.m33_ - matrix.m13_ * matrix.m32_);
-	tMatrix.m23_		= -tInvDet * (matrix.m11_ * matrix.m23_ - matrix.m13_ * matrix.m21_);
-	tMatrix.m24_		= 0.0f;
-	tMatrix.m31_		= tInvDet * (matrix.m32_ * matrix.m32_ - matrix.m22_ * matrix.m31_);
-	tMatrix.m32_		= -tInvDet * (matrix.m11_ * matrix.m32_ - matrix.m12_ * matrix.m32_);
-	tMatrix.m33_		= tInvDet * (matrix.m11_ * matrix.m22_ - matrix.m12_ * matrix.m32_);
-	tMatrix.m34_		= 0.0f;
-	tMatrix.m41_		= -(matrix.m41_ * tMatrix.m11_ + matrix.m42_ * tMatrix.m21_ + matrix.m43_ * tMatrix.m31_);	
-	tMatrix.m42_		= -(matrix.m41_ * tMatrix.m12_ + matrix.m42_ * tMatrix.m22_ + matrix.m43_ * tMatrix.m32_);	
-	tMatrix.m43_		= -(matrix.m41_ * tMatrix.m13_ + matrix.m42_ * tMatrix.m23_ + matrix.m43_ * tMatrix.m33_);
-	tMatrix.m44_		= 1.0f;
-	return tMatrix;
+	GB_Matrix res_matrix;
+	res_matrix.m11_		= inv_det * (matrix.m22_ * matrix.m33_ - matrix.m23_ * matrix.m32_);
+	res_matrix.m12_		= -inv_det * (matrix.m12_ * matrix.m33_ - matrix.m13_ * matrix.m32_);
+	res_matrix.m13_		= inv_det * (matrix.m12_ * matrix.m23_ - matrix.m13_ * matrix.m22_);
+	res_matrix.m14_		= 0.0f;
+	res_matrix.m21_		= -inv_det * (matrix.m21_ * matrix.m33_ - matrix.m23_ * matrix.m31_);
+	res_matrix.m22_		= inv_det * (matrix.m11_ * matrix.m33_ - matrix.m13_ * matrix.m32_);
+	res_matrix.m23_		= -inv_det * (matrix.m11_ * matrix.m23_ - matrix.m13_ * matrix.m21_);
+	res_matrix.m24_		= 0.0f;
+	res_matrix.m31_		= inv_det * (matrix.m32_ * matrix.m32_ - matrix.m22_ * matrix.m31_);
+	res_matrix.m32_		= -inv_det * (matrix.m11_ * matrix.m32_ - matrix.m12_ * matrix.m32_);
+	res_matrix.m33_		= inv_det * (matrix.m11_ * matrix.m22_ - matrix.m12_ * matrix.m32_);
+	res_matrix.m34_		= 0.0f;
+	res_matrix.m41_		= -(matrix.m41_ * res_matrix.m11_ + matrix.m42_ * res_matrix.m21_ + matrix.m43_ * res_matrix.m31_);	
+	res_matrix.m42_		= -(matrix.m41_ * res_matrix.m12_ + matrix.m42_ * res_matrix.m22_ + matrix.m43_ * res_matrix.m32_);	
+	res_matrix.m43_		= -(matrix.m41_ * res_matrix.m13_ + matrix.m42_ * res_matrix.m23_ + matrix.m43_ * res_matrix.m33_);
+	res_matrix.m44_		= 1.0f;
+	return res_matrix ;
 }
 
 //==================================================================
 /**
-	@fn		MatrixDeterminant (const Matrix & matrix)
-	@brief	Calculates the top left determinant of a given matrix
-	@param	Matrix to build the determinant from
+	@fn		GB_Matrix Determinant (const GB_Matrix  & GB_Matrix )
+	@brief	Calculates the top left determinant of a given GB_Matrix 
+	@param	GB_Matrix  to build the determinant from
 	@return float
 **/
 //==================================================================
-GOOSEBERRY_API float MatrixDeterminant (const Matrix & matrix)
+GOOSEBERRY_API float MatrixDeterminant(const GB_Matrix & matrix)
 {
 	return	matrix.m11_ * (matrix.m22_ * matrix.m33_ - matrix.m23_ * matrix.m32_) -
 			matrix.m12_ * (matrix.m21_ * matrix.m33_ - matrix.m23_ * matrix.m31_) + 
@@ -310,11 +314,11 @@ GOOSEBERRY_API float MatrixDeterminant (const Matrix & matrix)
 //	Class Functions
 //==================================================================
 /**
-	@fn		Matrix :: Matrix()
+	@fn		GB_Matrix  :: GB_Matrix ()
 	@brief	Standardconstructor, sets all values to zero
 **/
 //==================================================================
-Matrix :: Matrix()
+GB_Matrix  :: GB_Matrix()
 {
 	for(int i = 0; i < sizeof(d1_); i++)
 		d1_[i]	= 0;
@@ -322,21 +326,21 @@ Matrix :: Matrix()
 
 //==================================================================
 /**
-	@fn		Matrix :: Matrix(float * p1DimArray)
+	@fn		GB_Matrix  :: GB_Matrix (float * p1DimGB_Array)
 	@brief	Extended constructor, sets all values to values of a
-			given array
-	@param	float * p1DimArray
+			given GB_Array
+	@param	float * p1DimGB_Array
 **/
 //==================================================================
-Matrix :: Matrix(float * p1DimArray)
+GB_Matrix  :: GB_Matrix(float * one_dim_arr)
 {
 	for(int i = 0; i < sizeof(d1_); i++)
-		d1_[i]	= p1DimArray[i];
+		d1_[i] = one_dim_arr[i];
 }
 
 //==================================================================
 /**
-	@fn		Matrix :: Matrix(float p11, float p12, float p13, float p14, float p21, float p22, float p23, float p24,
+	@fn		GB_Matrix  :: GB_Matrix (float p11, float p12, float p13, float p14, float p21, float p22, float p23, float p24,
 				float p31, float p32, float p33, float p34, float p41, float p42, float p43, float p44)
 	@brief	Extended constructor, sets all values to given values
 	@param	p11	member row 1 col 1
@@ -357,7 +361,7 @@ Matrix :: Matrix(float * p1DimArray)
 	@param	p44 member row 4 col 4
 **/
 //==================================================================
-Matrix :: Matrix(float p11, float p12, float p13, float p14, float p21, float p22, float p23, float p24,
+GB_Matrix :: GB_Matrix(float p11, float p12, float p13, float p14, float p21, float p22, float p23, float p24,
 		float p31, float p32, float p33, float p34, float p41, float p42, float p43, float p44)
 {
 	m11_ = p11; m12_ = p12; m13_ = p13; m14_ = p14;
@@ -368,13 +372,13 @@ Matrix :: Matrix(float p11, float p12, float p13, float p14, float p21, float p2
 
 //==================================================================
 /**
-	@fn		Matrix :: operator+(const Matrix & right)
+	@fn		GB_Matrix :: operator+(const GB_Matrix & right)
 	@brief	Overload operator +
-	@param	right	Matrix of right side
-	@return Matrix
+	@param	right	GB_Matrix  of right side
+	@return GB_Matrix 
 **/
 //==================================================================
-Matrix Matrix :: operator+(const Matrix & right)
+GB_Matrix GB_Matrix :: operator+(const GB_Matrix & right)
 {
 	for(int i = 0; i < sizeof(d1_); i++)
 		d1_[i]	+= right.d1_[i];
@@ -384,13 +388,13 @@ Matrix Matrix :: operator+(const Matrix & right)
 
 //==================================================================
 /**
-	@fn		Matrix :: operator-(const Matrix & right)
+	@fn		GB_Matrix :: operator-(const GB_Matrix & right)
 	@brief	Overload operator -
-	@param	right	Matrix of right side
-	@return Matrix
+	@param	right	GB_Matrix  of right side
+	@return GB_Matrix 
 **/
 //==================================================================
-Matrix Matrix :: operator-(const Matrix & right)
+GB_Matrix GB_Matrix :: operator-(const GB_Matrix  & right)
 {
 	for(int i = 0; i < sizeof(d1_); i++)
 		d1_[i]	-= right.d1_[i];
@@ -400,26 +404,26 @@ Matrix Matrix :: operator-(const Matrix & right)
 
 //==================================================================
 /**
-	@fn		Matrix :: operator*(const Matrix & right)
+	@fn		GB_Matrix :: operator*(const GB_Matrix & right)
 	@brief	Overload operator *
-	@param	right	Matrix of right side
-	@return Matrix
+	@param	right	GB_Matrix  of right side
+	@return GB_Matrix 
 **/
 //==================================================================
-Matrix Matrix :: operator*(const Matrix & right)
+GB_Matrix GB_Matrix :: operator*(const GB_Matrix & right)
 {
 	return *this *= right;
 }
 
 //==================================================================
 /**
-	@fn		Matrix :: operator*(const float value)
+	@fn		GB_Matrix :: operator*(const float value)
 	@brief	Overload operator *
 	@param	value	value to u_ltiply
-	@return Matrix
+	@return GB_Matrix 
 **/
 //==================================================================
-Matrix Matrix :: operator*(const float value)
+GB_Matrix GB_Matrix :: operator*(const float value)
 {
 	for(int i = 0; i < sizeof(d1_); i++)
 		d1_[i]	*= value;
@@ -429,26 +433,26 @@ Matrix Matrix :: operator*(const float value)
 
 //==================================================================
 /**
-	@fn		Matrix :: operator/(const Matrix & right)
+	@fn		GB_Matrix :: operator/(const GB_Matrix  & right)
 	@brief	Overload operator /
-	@param	right	Matrix of right side
-	@return Matrix
+	@param	right	GB_Matrix  of right side
+	@return GB_Matrix 
 **/
 //==================================================================
-Matrix Matrix :: operator/(const Matrix & right)
+GB_Matrix GB_Matrix :: operator/(const GB_Matrix & right)
 {
 	return *this *= MatrixInvert(right);
 }
 
 //==================================================================
 /**
-	@fn		Matrix :: operator/(const float value)
+	@fn		GB_Matrix :: operator/(const float value)
 	@brief	Overload operator /
 	@param	value	value to divide
-	@return Matrix
+	@return GB_Matrix 
 **/
 //==================================================================
-Matrix Matrix :: operator/(const float value)
+GB_Matrix GB_Matrix :: operator/(const float value)
 {
 	for(int i = 0; i < sizeof(d1_); i++)
 		d1_[i]	/= value;
@@ -458,13 +462,13 @@ Matrix Matrix :: operator/(const float value)
 
 //==================================================================
 /**
-	@fn		Matrix :: operator+=(const Matrix & right)
+	@fn		GB_Matrix :: operator+=(const GB_Matrix  & right)
 	@brief	Overload operator +=
-	@param	right	Matrix of right side
-	@return Matrix
+	@param	right	GB_Matrix  of right side
+	@return GB_Matrix 
 **/
 //==================================================================
-Matrix Matrix :: operator+=(const Matrix & right)
+GB_Matrix GB_Matrix :: operator+=(const GB_Matrix  & right)
 {
 	for(int i = 0; i < sizeof(d1_); i++)
 		d1_[i]	+= right.d1_[i];
@@ -474,13 +478,13 @@ Matrix Matrix :: operator+=(const Matrix & right)
 
 //==================================================================
 /**
-	@fn		Matrix :: operator-=(const Matrix & right)
+	@fn		GB_Matrix :: operator-=(const GB_Matrix  & right)
 	@brief	Overload operator -=
-	@param	right	Matrix of right side
-	@return Matrix
+	@param	right	GB_Matrix  of right side
+	@return GB_Matrix 
 **/
 //==================================================================
-Matrix Matrix :: operator-=(const Matrix & right)
+GB_Matrix GB_Matrix :: operator-=(const GB_Matrix  & right)
 {
 	for(int i = 0; i < sizeof(d1_); i++)
 		d1_[i]	-= right.d1_[i];
@@ -490,15 +494,15 @@ Matrix Matrix :: operator-=(const Matrix & right)
 
 //==================================================================
 /**
-	@fn		Matrix :: operator*=(const Matrix & right)
+	@fn		GB_Matrix :: operator*=(const GB_Matrix  & right)
 	@brief	Overload operator *=
-	@param	right	Matrix of right side
-	@return Matrix
+	@param	right	GB_Matrix  of right side
+	@return GB_Matrix 
 **/
 //==================================================================
-Matrix Matrix :: operator*=(const Matrix & right)
+GB_Matrix GB_Matrix :: operator*=(const GB_Matrix  & right)
 {
-	return *this = Matrix(	right.m11_ * m11_ + right.m21_ * m12_ + right.m31_ * m13_ + right.m41_ * m14_,
+	return *this = GB_Matrix (	right.m11_ * m11_ + right.m21_ * m12_ + right.m31_ * m13_ + right.m41_ * m14_,
 								right.m12_ * m11_ + right.m22_ * m12_ + right.m32_ * m13_ + right.m42_ * m14_,
 								right.m13_ * m11_ + right.m23_ * m12_ + right.m33_ * m13_ + right.m43_ * m14_,
 								right.m14_ * m11_ + right.m24_ * m12_ + right.m34_ * m13_ + right.m44_ * m14_,
@@ -518,13 +522,13 @@ Matrix Matrix :: operator*=(const Matrix & right)
 
 //==================================================================
 /**
-	@fn		Matrix :: operator*=(const float value)
+	@fn		GB_Matrix :: operator*=(const float value)
 	@brief	Overload operator *=
 	@param	value	value to u_ltiply
-	@return Matrix
+	@return GB_Matrix 
 **/
 //==================================================================
-Matrix Matrix :: operator*=(const float value)
+GB_Matrix GB_Matrix :: operator*=(const float value)
 {
 	for(int i = 0; i < sizeof(d1_); i++)
 		d1_[i]	*= value;
@@ -534,26 +538,26 @@ Matrix Matrix :: operator*=(const float value)
 
 //==================================================================
 /**
-	@fn		Matrix :: operator/=(const Matrix & right)
+	@fn		GB_Matrix :: operator/=(const GB_Matrix & right)
 	@brief	Overload operator /=
-	@param	right	Matrix of right side
-	@return Matrix
+	@param	right	GB_Matrix  of right side
+	@return GB_Matrix 
 **/
 //==================================================================
-Matrix Matrix :: operator/=(const Matrix & right)
+GB_Matrix GB_Matrix :: operator/=(const GB_Matrix & right)
 {
 	return *this *= MatrixInvert(right);
 }
 
 //==================================================================
 /**
-	@fn		Matrix :: operator/=(const float value)
+	@fn		GB_Matrix :: operator/=(const float value)
 	@brief	Overload operator /=
 	@param	value	value to divide
-	@return Matrix
+	@return GB_Matrix 
 **/
 //==================================================================
-Matrix Matrix :: operator/=(const float value)
+GB_Matrix GB_Matrix :: operator/=(const float value)
 {
 	for(int i = 0; i < sizeof(d1_); i++)
 		d1_[i]	/= value;
@@ -563,13 +567,13 @@ Matrix Matrix :: operator/=(const float value)
 
 //==================================================================
 /**
-	@fn		Matrix :: operator==(const Matrix & right)
+	@fn		GB_Matrix :: operator==(const GB_Matrix & right)
 	@brief	Overload operator ==
-	@param	right	Matrix of right side
+	@param	right	GB_Matrix  of right side
 	@return true or false
 **/
 //==================================================================
-bool Matrix :: operator==(const Matrix & right)
+bool GB_Matrix :: operator==(const GB_Matrix & right)
 {
 	for(int i = 0; i < sizeof(d1_); i++)
 		if(d1_[i] != right.d1_[i])
@@ -580,13 +584,13 @@ bool Matrix :: operator==(const Matrix & right)
 
 //==================================================================
 /**
-	@fn		Matrix :: operator!=(const Matrix & right)
+	@fn		GB_Matrix :: operator!=(const GB_Matrix & right)
 	@brief	Overload operator !=
-	@param	right	Matrix of right side
+	@param	right	GB_Matrix  of right side
 	@return true or false
 **/
 //==================================================================
-bool Matrix :: operator!=(const Matrix & right)
+bool GB_Matrix :: operator!=(const GB_Matrix & right)
 {
 	for(int i = 0; i < sizeof(d1_); i++)
 		if(d1_[i] == right.d1_[i])
@@ -597,13 +601,13 @@ bool Matrix :: operator!=(const Matrix & right)
 
 //==================================================================
 /**
-	@fn		Matrix :: operator=(const Matrix & right)
+	@fn		GB_Matrix :: operator=(const GB_Matrix & right)
 	@brief	Overload operator =
-	@param	right	Matrix of right side
-	@return Matrix
+	@param	right	GB_Matrix  of right side
+	@return GB_Matrix 
 **/
 //==================================================================
-Matrix Matrix :: operator=(const Matrix & right)
+GB_Matrix GB_Matrix :: operator=(const GB_Matrix & right)
 {
 	for(int i = 0; i < sizeof(d1_); i++)
 		d1_[i] = right.d1_[i];

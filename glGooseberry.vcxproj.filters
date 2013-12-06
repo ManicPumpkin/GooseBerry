@@ -45,100 +45,94 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\gbObj.cpp">
-      <Filter>Quelldateien\obj</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gbMsh.cpp">
-      <Filter>Quelldateien\msh</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gbMshLoader.cpp">
-      <Filter>Quelldateien\msh</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gbMshQueue.cpp">
-      <Filter>Quelldateien\msh</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gbTex.cpp">
-      <Filter>Quelldateien\msh</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Color.cpp">
-      <Filter>Quelldateien\help</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Log.cpp">
-      <Filter>Quelldateien\help</Filter>
-    </ClCompile>
-    <ClCompile Include="src\OpenGL.cpp">
-      <Filter>Quelldateien\base</Filter>
-    </ClCompile>
     <ClCompile Include="src\GooseBerry.cpp">
       <Filter>Quelldateien\base</Filter>
     </ClCompile>
-    <ClCompile Include="src\Matrix.cpp">
+    <ClCompile Include="src\GB_Log.cpp">
+      <Filter>Quelldateien\help</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GB_Matrix.cpp">
       <Filter>Quelldateien\math</Filter>
     </ClCompile>
-    <ClCompile Include="src\Vector2d.cpp">
+    <ClCompile Include="src\GB_Vector2.cpp">
       <Filter>Quelldateien\math</Filter>
     </ClCompile>
-    <ClCompile Include="src\Vector3d.cpp">
+    <ClCompile Include="src\GB_Vector3.cpp">
       <Filter>Quelldateien\math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GB_Mesh.cpp">
+      <Filter>Quelldateien\msh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GB_MeshLoader.cpp">
+      <Filter>Quelldateien\msh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GB_MeshQueue.cpp">
+      <Filter>Quelldateien\msh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GB_Tex.cpp">
+      <Filter>Quelldateien\msh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GB_OpenGL.cpp">
+      <Filter>Quelldateien\base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GB_Color.cpp">
+      <Filter>Quelldateien\help</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="inc\gbObj.h">
-      <Filter>Headerdateien\obj</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\gbMsh.h">
-      <Filter>Headerdateien\msh</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\gbMshLoader.h">
-      <Filter>Headerdateien\msh</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\gbMshQueue.h">
-      <Filter>Headerdateien\msh</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\gbTex.h">
-      <Filter>Headerdateien\msh</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\gbMat.h">
-      <Filter>Headerdateien\msh</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\Color.h">
-      <Filter>Headerdateien\help</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\Log.h">
-      <Filter>Headerdateien\help</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\OpenGL.h">
-      <Filter>Headerdateien\base</Filter>
-    </ClInclude>
     <ClInclude Include="inc\GooseBerry.h">
       <Filter>Headerdateien\base</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Array.h">
+    <ClInclude Include="inc\GB_Array.h">
       <Filter>Headerdateien\help</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Convert.h">
+    <ClInclude Include="inc\GB_Convert.h">
       <Filter>Headerdateien\help</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Defines.h">
+    <ClInclude Include="inc\GB_Defines.h">
       <Filter>Headerdateien\help</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Errors.h">
+    <ClInclude Include="inc\GB_Errors.h">
       <Filter>Headerdateien\help</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Exception.h">
+    <ClInclude Include="inc\GB_Exception.h">
       <Filter>Headerdateien\help</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Queue.h">
+    <ClInclude Include="inc\GB_Log.h">
       <Filter>Headerdateien\help</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Matrix.h">
+    <ClInclude Include="inc\GB_Queue.h">
+      <Filter>Headerdateien\help</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\GB_Matrix.h">
       <Filter>Headerdateien\math</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Vector2d.h">
+    <ClInclude Include="inc\GB_Vector2.h">
       <Filter>Headerdateien\math</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Vector3d.h">
+    <ClInclude Include="inc\GB_Vector3.h">
       <Filter>Headerdateien\math</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\GB_Material.h">
+      <Filter>Headerdateien\msh</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\GB_Mesh.h">
+      <Filter>Headerdateien\msh</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\GB_MeshLoader.h">
+      <Filter>Headerdateien\msh</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\GB_MeshQueue.h">
+      <Filter>Headerdateien\msh</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\GB_Tex.h">
+      <Filter>Headerdateien\msh</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\GB_Color.h">
+      <Filter>Headerdateien\help</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\GB_OpenGL.h">
+      <Filter>Headerdateien\base</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

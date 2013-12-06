@@ -50,81 +50,104 @@ using namespace std;
 //==================================================================
 #define DEBUG_MODE				TRUE
 #define ONLY_COMPILE			FALSE
-#define LOG_ONCE				FALSE
-#define LOG_FILE				"logfile.html"
-#define LOG_PATH				".\\log\\"
-#define LOG_FILEPATH			LOG_PATH LOG_FILE
-
-//==================================================================
-//	GLOBAL NAMESPACE START
-//==================================================================
-namespace gbGlobal
-{
+#define GB_Log_ONCE				FALSE
+#define GB_Log_FILE				"GB_Logfile.html"
+#define GB_Log_PATH				".\\GB_Log\\"
+#define GB_Log_FILEPATH			GB_Log_PATH GB_Log_FILE
 
 //==================================================================
 //	GLOBALS
 //==================================================================
-GOOSEBERRY_API extern HINSTANCE		g_hinstance;	//!< instance of program
-GOOSEBERRY_API extern HWND			g_HWND;			//!< handle to window
-GOOSEBERRY_API extern HDC			g_HDC;			//!< device context
-GOOSEBERRY_API extern HGLRC			g_HGLRC;		//!< render context
-GOOSEBERRY_API extern LPCSTR		g_wndTitle;		//!< title of window
-GOOSEBERRY_API extern LPCSTR		g_wndName;		//!< name of window
-GOOSEBERRY_API extern int			g_wndWidth;		//!< window width
-GOOSEBERRY_API extern int			g_wndHeight;	//!< window height
-GOOSEBERRY_API extern int			g_wndX;			//!< window x
-GOOSEBERRY_API extern int			g_wndY;			//!< window y
-GOOSEBERRY_API extern int			g_bitsColor;	//!< color bits
-GOOSEBERRY_API extern int			g_bitsDepth;	//!< color depth
-GOOSEBERRY_API extern int			g_bitsAlpha;	//!< color alpha
-GOOSEBERRY_API extern bool			g_fullscreen;	//!< window runs in fullscreen
-GOOSEBERRY_API extern bool			g_active;		//!< window is active
-GOOSEBERRY_API extern bool			g_init;			//!< gooseberry engine initialized
-GOOSEBERRY_API extern bool			g_keys[256];	//!< all keys
+namespace GB_Var
+{
+	GOOSEBERRY_API extern HINSTANCE		g_hinstance;	//!< instance of program
+	GOOSEBERRY_API extern HWND			g_HWND;			//!< handle to window
+	GOOSEBERRY_API extern HDC			g_HDC;			//!< device context
+	GOOSEBERRY_API extern HGLRC			g_HGLRC;		//!< render context
+	GOOSEBERRY_API extern LPCSTR		g_wnd_title;	//!< title of window
+	GOOSEBERRY_API extern LPCSTR		g_wnd_name;		//!< name of window
+	GOOSEBERRY_API extern int			g_wnd_width;	//!< window width
+	GOOSEBERRY_API extern int			g_wnd_height;	//!< window height
+	GOOSEBERRY_API extern int			g_wnd_x;		//!< window x
+	GOOSEBERRY_API extern int			g_wnd_y;		//!< window y
+	GOOSEBERRY_API extern int			g_bits_color;	//!< GB_Color bits
+	GOOSEBERRY_API extern int			g_bits_depth;	//!< GB_Color depth
+	GOOSEBERRY_API extern int			g_bits_alpha;	//!< GB_Color alpha
+	GOOSEBERRY_API extern bool			g_fullscreen;	//!< window runs in fullscreen
+	GOOSEBERRY_API extern bool			g_active;		//!< window is active
+	GOOSEBERRY_API extern bool			g_initialized;	//!< gooseberry engine initialized
+	GOOSEBERRY_API extern bool			g_keys[256];	//!< all keys
+}
 
 //==================================================================
 //	ENUM & STRUCTS
 //==================================================================
-enum gbResult
+namespace GB_Enum
 {
-	GB_OK			= 0,
-	GB_ERROR		= 1,
-	GB_STOP			= 2,
-	GB_NOTFOUND		= 3
-};
+	enum gbResult
+	{
+		GB_OK = 0,
+		GB_ERROR = 1,
+		GB_STOP = 2,
+		GB_NOTFOUND = 3
+	};
+}
+
+namespace GB_Struct
+{
+	struct Vertex						//! Vertex struct with coordinates
+	{
+		float	x,						//!< x-coordinate
+		y,								//!< y-coordinate
+		z;								//!< z-coordinate
+	};
+
+	typedef Vertex Normal;				//! Normal struct with coordiantes
+
+	struct TexCoord						//! Texture struct with coordinates
+	{
+		float	u,						//!< u-coordinate
+				v;						//!< v-coordinate
+	};
+
+	struct Face							//! Face struct
+	{
+		unsigned int	vertex[4],		//!< vertex indices of face
+						normal[4],		//!< normal indices of face
+						texcoord[4];	//!< texture indices of face
+	};
+}
 
 //==================================================================
 //	FUNCTION DECLARATION
 //==================================================================
-GOOSEBERRY_API gbResult Initialize();
-GOOSEBERRY_API gbResult MessageLoop(gbResult (*typ_render)(float));
-GOOSEBERRY_API gbResult Exit();
+namespace GB_Func
+{
+	GOOSEBERRY_API GB_Enum::gbResult Initialize();
+	GOOSEBERRY_API GB_Enum::gbResult MessageLoop(GB_Enum::gbResult(*typ_render)(float));
+	GOOSEBERRY_API GB_Enum::gbResult Exit();
 
-std::string ExtractName(std::string file);
-std::string ExtractPath(std::string file);
-std::string IntToStr(int value);
-VOID		SplitString(const string& str, vector<string>& token, const string& seperator);
-
-//==================================================================
-//	GLOBAL NAMESPACE END
-//==================================================================
+	std::string ExtractName(std::string file);
+	std::string ExtractPath(std::string file);
+	std::string IntToStr(int value);
+	VOID		SplitString(const string& str, vector<string>& token, const string& seperator);
 }
 
 //==================================================================
 //	INCLUDE HEADER OF ENGINE
 //==================================================================
-#include "Exception.h"
-#include "Errors.h"
-#include "Log.h"
-#include "Convert.h"
-#include "Array.h"
-#include "Matrix.h"
-#include "Vector3d.h"
-#include "Vector2d.h"
-#include "Color.h"
-#include "OpenGL.h"
-//#include "gbMat.h"
-//#include "gbTex.h"
-//#include "gbMsh.h"
-//#include "gbMshLoader.h"
-//#include "gbMshQueue.h"
+#include "GB_Exception.h"
+#include "GB_Errors.h"
+#include "GB_Log.h"
+#include "GB_Convert.h"
+#include "GB_Array.h"
+#include "GB_Matrix.h"
+#include "GB_Vector3.h"
+#include "GB_Vector2.h"
+#include "GB_Color.h"
+#include "GB_OpenGL.h"
+#include "GB_Material.h"
+#include "GB_Tex.h"
+#include "GB_Mesh.h"
+#include "GB_MeshLoader.h"
+#include "GB_MeshQueue.h"

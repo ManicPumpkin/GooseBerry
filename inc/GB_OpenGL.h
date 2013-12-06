@@ -1,6 +1,6 @@
 /**
-	@file	OpenGL.h
-	@brief	Includes OpenGL class
+	@file	GB_OpenGL.h
+	@brief	Includes GB_OpenGL class
 	@author	drubner
 	@date	2013-07-06
 **/
@@ -10,60 +10,60 @@
 #pragma once
 
 //==================================================================
-//	NAMESPACE
-//==================================================================
-using namespace gbGlobal;
-
-//==================================================================
 //	INCLUDE
 //==================================================================
 #include "GooseBerry.h"
 
 //==================================================================
+//	NAMESPACE
+//==================================================================
+using namespace GB_Enum;
+
+//==================================================================
 //	FORWARD DEFINITION
 //==================================================================
-class Vector3d;
-class Color;
+//class GB_Vector3;
+class GB_Color;
 
 //==================================================================
 //	CLASS
 //==================================================================
 /**
-		@class	OpenGL
+		@class	GB_OpenGL
 		@brief	Implements all rendering, initialization and resize
-				methods for OpenGL, also variables, getter and 
-				setter methods
+				methods for GB_OpenGL, also variables, geter and 
+				seter methods
 **/
 //==================================================================
-class GOOSEBERRY_API OpenGL 
+class GOOSEBERRY_API GB_OpenGL 
 {
 	public:
 		//  Variables
 
 		//	(De-)Constructor
-		OpenGL();
-		~OpenGL();
+		GB_OpenGL();
+		~GB_OpenGL();
 
 		//	Functions
-		VOID InitializeOpenGL();
+		VOID InitializeGB_OpenGL();
 		//VOID InitializeScene();
 		//VOID RenderScene();
 		gbResult StartWnd();
 		gbResult ExitWnd();
 		gbResult RegisterWndClass();
 		gbResult FullscreenWnd();
-		gbResult CreateOpenGLWnd();
-		gbResult EnableOpenGL();
-		gbResult ResizeOpenGLWnd(int wnd_width, int wnd_height);
+		gbResult CreateGB_OpenGLWnd();
+		gbResult EnableGB_OpenGL();
+		gbResult ResizeGB_OpenGLWnd(int wnd_width, int wnd_height);
 		//VOID DrawBitmapText(char *, float, float, float);
-		gbResult DrawSimpleLine(Vector3d start_vec, Vector3d end_vec);
-		gbResult DrawSimpleLine(Color color, Vector3d start_vec, Vector3d end_vec);
+		gbResult DrawSimpleLine(GB_Vector3 start_vec, GB_Vector3 end_vec);
+		gbResult DrawSimpleLine(GB_Color color, GB_Vector3 start_vec, GB_Vector3 end_vec);
 				
 	private:
 		//	Variables
 		DWORD	dw_ex_style_;		//!<	extended style of window
 		DWORD	dw_style_;			//!<	style of window
-		bool	initialize_;		//!<	if OpenGL is initialized
+		bool	initialize_;		//!<	if GB_OpenGL is initialized
 
 	protected:
 };

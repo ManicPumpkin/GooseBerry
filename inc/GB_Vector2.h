@@ -1,6 +1,6 @@
 /**
-	@file	Vector3d.h
-	@brief	Includes Vector3d class
+	@file	GB_Vector2.h
+	@brief	Includes GB_Vector2 class
 	@author	drubner
 	@date	2013-08-26
 **/
@@ -18,13 +18,13 @@
 //	CLASS
 //==================================================================
 /**
-		@class	Vector3d
+		@class	GB_Vector2
 		@brief	Implements all rendering, initialization and resize
-				methods for OpenGL, also variables, getter and 
-				setter methods
+				methods for GB_OpenGL, also variables, geter and 
+				seter methods
 **/
 //==================================================================
-class GOOSEBERRY_API Vector3d
+class GOOSEBERRY_API GB_Vector2
 {
 	public:
 		//  Variables
@@ -32,29 +32,29 @@ class GOOSEBERRY_API Vector3d
 		{
 			struct
 			{
-				float x_, y_, z_;
+				float x_, y_;
 			};
 
 			struct
 			{
-				float u_, v_, w_;
+				float u_, v_;
 			};
 
-			float coords_[3];
+			float coords_[2];
 		};
 
 		//	(De-)Constructor
-		Vector3d();
-		Vector3d(float coord);
-		Vector3d(float * coords);
-		Vector3d(float x, float y, float z);
-		~Vector3d();
+		GB_Vector2();
+		GB_Vector2(float coord);
+		GB_Vector2(float * coords);
+		GB_Vector2(float x, float y);
+		~GB_Vector2();
 
 		//	Operators
-		Vector3d operator+(const Vector3d& right);
-		Vector3d operator-(const Vector3d& right);
-		Vector3d operator*(const Vector3d& right);
-		Vector3d operator/(const Vector3d& right);
+		GB_Vector2 operator+(const GB_Vector2& right);
+		GB_Vector2 operator-(const GB_Vector2& right);
+		GB_Vector2 operator*(const GB_Vector2& right);
+		GB_Vector2 operator/(const GB_Vector2& right);
 				
 	private:
 	protected:
