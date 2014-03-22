@@ -11,6 +11,6 @@ Game Engine based on OpenGL
 Autors
 ======
 
--	RUBNER,		Danny
+RUBNER,		Danny
 
 Copyright 2013. All rights reserved by Rubner, Danny.
