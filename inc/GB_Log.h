@@ -3,7 +3,7 @@
 	@file	GB_Log.h
 	@brief	This file includes the GB_Log class
 
-	The GB_Log class writes GB_Errors, warnings and other messages into
+	The GB_Log class writes GB_LERRORs, warnings and other messages into
 	a file.
 
 	@author	drubner

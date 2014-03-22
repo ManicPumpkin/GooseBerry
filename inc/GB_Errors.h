@@ -1,16 +1,16 @@
 /**
-	@file	GB_Errors.h
+	@file	GB_LERRORs.h
 	@brief	Includes all error messages and ids for window and 
 			GB_OpenGL
 	@author	drubner
 	@date	2012-11-10
 **/
 //==================================================================
-#ifndef GB_Errors_H
-#define GB_Errors_H
+#ifndef GB_LERRORs_H
+#define GB_LERRORs_H
 
 //==================================================================
-//	Windows GB_Errors
+//	Windows GB_LERRORs
 //==================================================================
 #define ERR_WIN_UNKNOWN_STR	"Unknown error occoured."
 #define ERR_WIN_UNKNOWN_ID	"Error 0x0000000"
@@ -28,7 +28,7 @@
 #define ERR_WIN_WS_ID		"Error 0x0000006"
 
 //==================================================================
-//	GB_OpenGL GB_Errors
+//	GB_OpenGL GB_LERRORs
 //==================================================================
 #define ERR_GL_INIT_STR		"Failed to initialize GB_OpenGL."
 #define ERR_GL_INIT_ID		"Error 0x0000010"
@@ -54,7 +54,7 @@
 #define ERR_GL_FSEX_ID		"Error 0x0000020"
 
 //==================================================================
-//	Gooseberry GB_Errors
+//	Gooseberry GB_LERRORs
 //==================================================================
 #define ERR_GB_INIT_STR		"Failed to initialize gooseberry."
 #define ERR_GB_INIT_ID		"Error 0x0000050"
@@ -64,7 +64,7 @@
 #define ERR_GB_MSGL_ID		"Error 0x0000052"
 
 //==================================================================
-//	Game GB_Errors
+//	Game GB_LERRORs
 //==================================================================
 #define ERR_G_LOAD_STR		"Failed to load game."
 #define ERR_G_LOAD_ID		"Error 0x0000100"
@@ -72,5 +72,5 @@
 #define ERR_G_EXIT_ID		"Error 0x0000101"
 
 //==================================================================
-#endif GB_Errors_H
+#endif GB_LERRORs_H
 //==================================================================

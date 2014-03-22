@@ -18,6 +18,8 @@
 #pragma comment(lib, "opengl32.lib")
 #pragma comment(lib, "glut32.lib")
 #pragma comment(lib, "glu32.lib")
+#pragma comment(lib, "zlib.lib")
+#pragma comment(lib, "libpng16.lib")
 
 //==================================================================
 //	INCLUDE
@@ -34,7 +36,10 @@
 #include <gl/GLU.h>
 #include <gl/GL.h>
 
-#include "glut.h"
+//	EXTERN LIBRARIES
+#include "..\ext\glut-3.7.6\glut.h"
+//#include "..\ext\libpng-1.6.8\png.h"
+
 
 //==================================================================
 //	NAMESPACES
@@ -50,10 +55,10 @@ using namespace std;
 //==================================================================
 #define DEBUG_MODE				TRUE
 #define ONLY_COMPILE			FALSE
-#define GB_Log_ONCE				FALSE
-#define GB_Log_FILE				"GB_Logfile.html"
-#define GB_Log_PATH				".\\GB_Log\\"
-#define GB_Log_FILEPATH			GB_Log_PATH GB_Log_FILE
+#define LOG_ONCE				FALSE
+#define LOG_FILE				"gb_log.html"
+#define LOG_PATH				".\\log\\"
+#define LOG_FILEPATH			LOG_PATH LOG_FILE
 
 //==================================================================
 //	GLOBALS
@@ -61,9 +66,9 @@ using namespace std;
 namespace GB_Var
 {
 	GOOSEBERRY_API extern HINSTANCE		g_hinstance;	//!< instance of program
-	GOOSEBERRY_API extern HWND			g_HWND;			//!< handle to window
-	GOOSEBERRY_API extern HDC			g_HDC;			//!< device context
-	GOOSEBERRY_API extern HGLRC			g_HGLRC;		//!< render context
+	GOOSEBERRY_API extern HWND			g_hwnd;			//!< handle to window
+	GOOSEBERRY_API extern HDC			g_hdc;			//!< device context
+	GOOSEBERRY_API extern HGLRC			g_hglrc;		//!< render context
 	GOOSEBERRY_API extern LPCSTR		g_wnd_title;	//!< title of window
 	GOOSEBERRY_API extern LPCSTR		g_wnd_name;		//!< name of window
 	GOOSEBERRY_API extern int			g_wnd_width;	//!< window width
@@ -124,7 +129,7 @@ namespace GB_Struct
 namespace GB_Func
 {
 	GOOSEBERRY_API GB_Enum::gbResult Initialize();
-	GOOSEBERRY_API GB_Enum::gbResult MessageLoop(GB_Enum::gbResult(*typ_render)(float));
+	GOOSEBERRY_API GB_Enum::gbResult MessageLoop(GB_Enum::gbResult(*func_render)(float));
 	GOOSEBERRY_API GB_Enum::gbResult Exit();
 
 	std::string ExtractName(std::string file);
@@ -138,7 +143,7 @@ namespace GB_Func
 //==================================================================
 #include "GB_Exception.h"
 #include "GB_Errors.h"
-#include "GB_Log.h"
+#include "GB_Log.h"	
 #include "GB_Convert.h"
 #include "GB_Array.h"
 #include "GB_Matrix.h"
@@ -146,6 +151,7 @@ namespace GB_Func
 #include "GB_Vector2.h"
 #include "GB_Color.h"
 #include "GB_OpenGL.h"
+#include "GB_PngLoader.h"
 #include "GB_Material.h"
 #include "GB_Tex.h"
 #include "GB_Mesh.h"
