@@ -1,0 +1,71 @@
+/*****************************************************
+	FOR ALL ELEMENTS
+*****************************************************/
+* 
+{
+	font-size	: 8pt; 
+}
+
+/*****************************************************
+	CLASS
+*****************************************************/
+
+hr
+{	
+	margin-left : 0px;
+	margin-right: 0px;
+	text-align	: left;
+	width		: 600px;
+}
+
+hr.divide_simple
+{
+	border-style: dashed; 
+}
+
+hr.divide_double
+{
+	border-style: solid;
+}
+
+.log_warning
+{
+	background-color: #FF4;
+}
+
+.log_error
+{
+	color 			: #FFF;  
+	background-color: #909;
+}
+
+.log_debug
+{
+	padding-left	: 10px; 
+	color 			: #666;
+}
+
+/*****************************************************
+	ID
+*****************************************************/
+
+#header
+{
+ 	font-weight : bold;
+}
+
+#game_info th, #game_date th, #game_log th
+{
+	text-align 	: left;
+	width 		: 150px;
+}
+
+#game_log th
+{
+	font-weight : normal;
+}
+
+#game_log td
+{
+	width 		: 450px;
+}
