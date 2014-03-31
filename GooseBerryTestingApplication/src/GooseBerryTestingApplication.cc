@@ -131,7 +131,7 @@ GB_Enum::gbResult Load()
 	//	load some stuff starts here ...
 	GB_LDEBUG("Starting loading textures");
 	int width, height;
-	LoadPngImage(".\\dta\\pnglogo.png", &width, &height, &texture);
+	GB_Loader::LoadPngFile(".\\dta\\pnglogo.png", &width, &height, &texture);
 
 	return GB_Enum::GB_OK;
 }
