@@ -84,16 +84,10 @@
     <ClInclude Include="inc\GB_Log.h">
       <Filter>Headerdateien\help</Filter>
     </ClInclude>
-    <ClInclude Include="inc\GB_PngLoader.h">
-      <Filter>Headerdateien\graphic</Filter>
-    </ClInclude>
     <ClInclude Include="inc\GB_MeshQueue.h">
       <Filter>Headerdateien\mesh</Filter>
     </ClInclude>
     <ClInclude Include="inc\GB_Mesh.h">
-      <Filter>Headerdateien\mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\GB_MeshLoader.h">
       <Filter>Headerdateien\mesh</Filter>
     </ClInclude>
     <ClInclude Include="inc\GB_Material.h">
@@ -131,16 +125,10 @@
     <ClCompile Include="src\GB_Log.cc">
       <Filter>Quelldateien\help</Filter>
     </ClCompile>
-    <ClCompile Include="src\GB_PngLoader.cc">
-      <Filter>Quelldateien\graphic</Filter>
-    </ClCompile>
     <ClCompile Include="src\GB_MeshQueue.cc">
       <Filter>Quelldateien\mesh</Filter>
     </ClCompile>
     <ClCompile Include="src\GB_Mesh.cc">
-      <Filter>Quelldateien\mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GB_MeshLoader.cc">
       <Filter>Quelldateien\mesh</Filter>
     </ClCompile>
     <ClCompile Include="src\GB_Object.cc">

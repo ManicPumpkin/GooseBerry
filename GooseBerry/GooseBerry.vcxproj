@@ -93,11 +93,9 @@
     <ClInclude Include="inc\GB_Material.h" />
     <ClInclude Include="inc\GB_Matrix.h" />
     <ClInclude Include="inc\GB_Mesh.h" />
-    <ClInclude Include="inc\GB_MeshLoader.h" />
     <ClInclude Include="inc\GB_MeshQueue.h" />
     <ClInclude Include="inc\GB_Object.h" />
     <ClInclude Include="inc\GB_OpenGL.h" />
-    <ClInclude Include="inc\GB_PngLoader.h" />
     <ClInclude Include="inc\GB_Tex.h" />
     <ClInclude Include="inc\GB_Vector2.h" />
     <ClInclude Include="inc\GB_Vector3.h" />
@@ -109,11 +107,9 @@
     <ClCompile Include="src\GB_Log.cc" />
     <ClCompile Include="src\GB_Matrix.cc" />
     <ClCompile Include="src\GB_Mesh.cc" />
-    <ClCompile Include="src\GB_MeshLoader.cc" />
     <ClCompile Include="src\GB_MeshQueue.cc" />
     <ClCompile Include="src\GB_Object.cc" />
     <ClCompile Include="src\GB_OpenGL.cc" />
-    <ClCompile Include="src\GB_PngLoader.cc" />
     <ClCompile Include="src\GB_Tex.cc" />
     <ClCompile Include="src\GB_Vector2.cc" />
     <ClCompile Include="src\GB_Vector3.cc" />
