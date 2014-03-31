@@ -16,10 +16,15 @@
 #include "gooseberry.h"
 
 //==================================================================
+//	CLASS PREDEFINITION
+//==================================================================
+class GB_Mesh;
+
+//==================================================================
 //	FUNCTIONS
 //==================================================================
 namespace GB_Loader
 {
-	GOOSEBERRY_API GB_Enum::gbResult LoadPngImage(char * name, int * width, int * height, GLuint * texture);
+	GOOSEBERRY_API GB_Enum::gbResult LoadPngFile(char * name, int * width, int * height, GLuint * texture);
 	GOOSEBERRY_API GB_Mesh LoadMeshFile(std::string file, bool is_quad = FALSE);
 }

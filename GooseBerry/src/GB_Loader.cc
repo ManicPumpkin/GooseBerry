@@ -13,8 +13,8 @@
 //	Functions
 //==================================================================
 /**
-@fn		GB_Enum::gbResult GB_Loader::LoadPngImage(char * name, int * width, int * height, GLuint * texture)
-@brief	Fuction to load and *.obj file
+@fn		GB_Enum::gbResult GB_Loader::LoadPngFile(char * name, int * width, int * height, GLuint * texture)
+@brief	Fuction to load an *.png file
 
 Some helpful references:
 http://blog.nobel-joergensen.com/2010/11/07/loading-a-png-as-texture-in-opengl-using-libpng/
@@ -22,7 +22,7 @@ http://examples.oreilly.de/english_examples/gff/CDROM/SOFTWARE/SOURCE/LIBPNG/EXA
 
 **/
 //==================================================================
-GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadPngImage(char * name, int * width, int * height, GLuint * texture)
+GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadPngFile(char * name, int * width, int * height, GLuint * texture)
 {
 	GB_LINFO("Loading texture: " + (string)name);
 	png_byte		png_header[8];
