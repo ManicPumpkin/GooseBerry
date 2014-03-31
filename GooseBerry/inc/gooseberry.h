@@ -154,6 +154,6 @@ namespace GB_Func
 #include "GB_PngLoader.h"
 #include "GB_Material.h"
 #include "GB_Tex.h"
-#include "GB_Mesh.h"
 #include "GB_MeshLoader.h"
+#include "GB_Mesh.h"
 #include "GB_MeshQueue.h"

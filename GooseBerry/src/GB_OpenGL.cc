@@ -7,7 +7,7 @@
 //==================================================================
 //	INCLUDE
 //==================================================================
-#include "GooseBerry.h"
+#include "gooseberry.h"
 #include "GB_Exception.h"
 #include "GB_Errors.h"
 #include "GB_Log.h"

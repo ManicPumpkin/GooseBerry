@@ -25,7 +25,7 @@
 //==================================================================
 //	INCLUDE
 //==================================================================
-#include "GooseBerry.h"
+#include "gooseberry.h"
 
 //==================================================================
 //	NAMESPACE
@@ -66,6 +66,8 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Func::Initialize()
 		InitializeLog();
 		GB_LDEBUG("GooseBerry initialized");
 	}
+
+	GB_SimpleMeshes::gbCube = GB_MeshLoader::GetInstance()->LoadObj(".//dta//cube.obj");
 
 	GB_Var::g_initialized = TRUE;
 	return GB_OK;
