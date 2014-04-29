@@ -41,8 +41,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>.\ext\libpng-1.6.8\;.\ext\glut-3.7.6\;.\inc\;$(IncludePath)</IncludePath>
-    <LibraryPath>.\ext\libpng-1.6.8\;.\ext\glut-3.7.6\;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);</LibraryPath>
+    <IncludePath>.\ext\stb_image\;.\ext\libpng-1.6.8\;.\ext\glut-3.7.6\;.\inc\;$(IncludePath)</IncludePath>
+    <LibraryPath>.\ext\stb_image\;.\ext\libpng-1.6.8\;.\ext\glut-3.7.6\;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);</LibraryPath>
     <SourcePath>$(VC_SourcePath);</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
