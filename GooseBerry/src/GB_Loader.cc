@@ -128,50 +128,6 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadPngFile(char * name, int * width
 	free(image_data);
 	fclose(file_ptr);
 	return GB_Enum::GB_OK;
-
-	/*
-	png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
-	if (png_ptr == NULL)
-	{
-	fclose(file_ptr);
-	return GB_Enum::GB_ERROR;
-	}
-
-	info_ptr = png_create_info_struct(png_ptr);
-	if (info_ptr == NULL)
-	{
-	fclose(file_ptr);
-	return GB_Enum::GB_ERROR;
-	}
-
-	if (setjmp(png_jmpbuf(png_ptr)))
-	{
-	png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
-	fclose(file_ptr);
-	return GB_Enum::GB_ERROR;
-	}
-
-	png_init_io(png_ptr, file_ptr);
-	png_set_sig_bytes(png_ptr, sig_read);
-
-	png_read_png(png_ptr, info_ptr, PNG_TRANSFORM_STRIP_16 | PNG_TRANSFORM_PACKING | PNG_TRANSFORM_EXPAND, NULL);
-	png_uint_32 width, height;
-	int bit_depth;
-	png_get_IHDR(png_ptr, info_ptr, &width, &height, &bit_depth, &color_type, &interlace_type, NULL, NULL);
-	outer_width = width;
-	outer_height = height;
-	unsigned int row_bytes = png_get_rowbytes(png_ptr, info_ptr);
-	*out_data = (unsigned char*)malloc(row_bytes * outer_height);
-	png_bytepp row_ptrs = png_get_rows(png_ptr, info_ptr);
-
-	for (int i = 0; i < outer_height; i++)
-	memcpy(*out_data + (row_bytes * (outer_height - 1 - i)), row_ptrs[i], row_bytes);
-
-	png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
-	fclose(file_ptr);
-
-	return GB_Enum::GB_OK;
-	*/
 }
 
 //==================================================================
@@ -338,10 +294,43 @@ GOOSEBERRY_API GB_Mesh GB_Loader::LoadMeshFile(std::string file, bool is_quad)
 			*/
 		}
 		else // \todo include define error str and id
-			GB_LERROR("Error while counting properties of file: " + file, "GB_MeshLoader Error");
+			GB_LERROR("Error while counting properties of file: " + file, "GB_Loader Error");
 	}
 	else // \todo include define error str and id
-		GB_LERROR("Error while open file: " + file, "GB_MeshLoader Error");
+		GB_LERROR("Error while open file: " + file, "GB_Loader Error");
 
 	return model;
+}
+
+//==================================================================
+/**
+@fn		GB_Loader::LoadMaterialFile(std::string file)
+@brief	Fuction to load and *.mtl file
+**/
+//==================================================================
+GOOSEBERRY_API VOID GB_Loader::LoadMaterialFile(std::string file)
+{
+	std::ifstream file_stream;
+	file_stream.open(file);
+
+	if (file_stream.is_open())
+	{
+		std::string buffer, temp, texture_file;
+		while (!file_stream.eof())
+		{
+			ZeroMemory(&buffer, sizeof(std::string));
+			std::getline(file_stream, buffer);
+			std::istringstream line(buffer);
+
+			if (strncmp("map_Kd ", buffer.c_str(), 7) == 0)
+			{
+				line >> temp >> texture_file;
+				continue;
+			}
+		}
+
+		file_stream.close();
+	}
+	else // \todo include define error str and id
+		GB_LERROR("Error while open texture file: " + file, "GB_Loader Error");
 }
