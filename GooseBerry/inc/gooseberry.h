@@ -153,7 +153,7 @@ namespace GB_Func
 #include "GB_Color.h"
 #include "GB_OpenGL.h"
 //#include "GB_PngLoader.h"
-#include "GB_Material.h"
+#include "GB_Mat.h"
 #include "GB_Tex.h"
 //#include "GB_MeshLoader.h"
 #include "GB_Loader.h"

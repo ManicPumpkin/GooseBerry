@@ -1,6 +1,6 @@
 //==================================================================
 /**
-	@file	Material.h
+	@file	GB_Mat.h
 	@brief	This file includes the Material class
 	@author	drubner
 	@date	2012-12-02
@@ -17,11 +17,11 @@
 //	CLASS
 //==================================================================
 /**
-	@class	Material
+	@class	GB_Mat
 	@brief	Contains information about material files
 **/
 //==================================================================
-class Material
+class GB_Mat
 {
 	protected:
 
@@ -46,14 +46,14 @@ class Material
 		bool	has_emissive_;	//!< flag for emissive material
 
 		//	(De-)Constructor
-		Material():shininess_(-1),has_ambient_(false),has_diffuse_(false),has_specular_(false), has_emissive_(false){};
+		GB_Mat() :shininess_(-1), has_ambient_(false), has_diffuse_(false), has_specular_(false), has_emissive_(false){};
 		
 		/**
 			@fn		Material(string file)
 			@brief	Extended constructor
 			@param	file		file name and path
 		**/
-		Material(string file):shininess_(-1),has_ambient_(false),has_diffuse_(false),has_specular_(false), has_emissive_(false)
+		GB_Mat(string file) :shininess_(-1), has_ambient_(false), has_diffuse_(false), has_specular_(false), has_emissive_(false)
 		{
 			this->mat_name_	= GB_Func::ExtractName(file);
 			this->mat_path_ = GB_Func::ExtractPath(file);
