@@ -82,6 +82,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ext\stb_image\stb_image.h" />
     <ClInclude Include="inc\GB_Array.h" />
     <ClInclude Include="inc\GB_Color.h" />
     <ClInclude Include="inc\GB_Convert.h" />
@@ -94,23 +95,25 @@
     <ClInclude Include="inc\GB_Matrix.h" />
     <ClInclude Include="inc\GB_Mesh.h" />
     <ClInclude Include="inc\GB_MeshQueue.h" />
+    <ClInclude Include="inc\GB_Model.h" />
     <ClInclude Include="inc\GB_Object.h" />
     <ClInclude Include="inc\GB_OpenGL.h" />
-    <ClInclude Include="inc\GB_Tex.h" />
+    <ClInclude Include="inc\GB_Texture.h" />
     <ClInclude Include="inc\GB_Vector2.h" />
     <ClInclude Include="inc\GB_Vector3.h" />
     <ClInclude Include="inc\gooseberry.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ext\stb_image\stb_image.c" />
     <ClCompile Include="src\GB_Color.cc" />
     <ClCompile Include="src\GB_Loader.cc" />
     <ClCompile Include="src\GB_Log.cc" />
     <ClCompile Include="src\GB_Matrix.cc" />
     <ClCompile Include="src\GB_Mesh.cc" />
     <ClCompile Include="src\GB_MeshQueue.cc" />
+    <ClCompile Include="src\GB_Model.cc" />
     <ClCompile Include="src\GB_Object.cc" />
     <ClCompile Include="src\GB_OpenGL.cc" />
-    <ClCompile Include="src\GB_Tex.cc" />
     <ClCompile Include="src\GB_Vector2.cc" />
     <ClCompile Include="src\GB_Vector3.cc" />
     <ClCompile Include="src\gooseberry.cc" />

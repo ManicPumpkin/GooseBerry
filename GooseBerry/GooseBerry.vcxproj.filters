@@ -16,32 +16,26 @@
     <Filter Include="Headerdateien\math">
       <UniqueIdentifier>{be422cda-5dc7-4dad-b110-6446383e19fa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Headerdateien\graphic">
-      <UniqueIdentifier>{02f20da1-f2f2-4731-a08d-c89cffc5010f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Headerdateien\help">
       <UniqueIdentifier>{eeab074c-d960-4ac2-a1c0-53909806d144}</UniqueIdentifier>
     </Filter>
     <Filter Include="Quelldateien\math">
       <UniqueIdentifier>{9399b75d-de61-45bf-8a95-a33e79ba04e5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Quelldateien\graphic">
-      <UniqueIdentifier>{ad636cf2-67b6-4d51-906d-04a0a9eacf01}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Quelldateien\help">
       <UniqueIdentifier>{05c83875-e780-4f3b-9821-7fdb9363eca6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Headerdateien\mesh">
-      <UniqueIdentifier>{7d9fdcab-e49b-442b-9c63-76c6da3ce08c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Quelldateien\mesh">
-      <UniqueIdentifier>{f046fa30-5883-4538-8f31-48caf85b4b6b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Quelldateien\object">
       <UniqueIdentifier>{ab188727-e669-497f-a865-44a816bc9b3b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Headerdateien\object">
       <UniqueIdentifier>{1435f802-db7d-4bfe-9fc4-4a8d0640a3d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\render">
+      <UniqueIdentifier>{02f20da1-f2f2-4731-a08d-c89cffc5010f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\render">
+      <UniqueIdentifier>{ad636cf2-67b6-4d51-906d-04a0a9eacf01}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -75,29 +69,35 @@
     <ClInclude Include="inc\GB_Exception.h">
       <Filter>Headerdateien\help</Filter>
     </ClInclude>
-    <ClInclude Include="inc\GB_Tex.h">
-      <Filter>Headerdateien\graphic</Filter>
-    </ClInclude>
     <ClInclude Include="inc\GB_OpenGL.h">
-      <Filter>Headerdateien\graphic</Filter>
+      <Filter>Headerdateien\render</Filter>
     </ClInclude>
     <ClInclude Include="inc\GB_Log.h">
       <Filter>Headerdateien\help</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\GB_MeshQueue.h">
-      <Filter>Headerdateien\mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\GB_Mesh.h">
-      <Filter>Headerdateien\mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\GB_Material.h">
-      <Filter>Headerdateien\graphic</Filter>
     </ClInclude>
     <ClInclude Include="inc\GB_Object.h">
       <Filter>Headerdateien\object</Filter>
     </ClInclude>
     <ClInclude Include="inc\GB_Loader.h">
       <Filter>Headerdateien\help</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\GB_MeshQueue.h">
+      <Filter>Headerdateien\render</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\GB_Mesh.h">
+      <Filter>Headerdateien\render</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\GB_Model.h">
+      <Filter>Headerdateien\render</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\GB_Material.h">
+      <Filter>Headerdateien\render</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\GB_Texture.h">
+      <Filter>Headerdateien\render</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\stb_image\stb_image.h">
+      <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -116,26 +116,29 @@
     <ClCompile Include="src\GB_Vector3.cc">
       <Filter>Quelldateien\math</Filter>
     </ClCompile>
-    <ClCompile Include="src\GB_Tex.cc">
-      <Filter>Quelldateien\graphic</Filter>
-    </ClCompile>
     <ClCompile Include="src\GB_OpenGL.cc">
-      <Filter>Quelldateien\graphic</Filter>
+      <Filter>Quelldateien\render</Filter>
     </ClCompile>
     <ClCompile Include="src\GB_Log.cc">
       <Filter>Quelldateien\help</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GB_MeshQueue.cc">
-      <Filter>Quelldateien\mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GB_Mesh.cc">
-      <Filter>Quelldateien\mesh</Filter>
     </ClCompile>
     <ClCompile Include="src\GB_Object.cc">
       <Filter>Quelldateien\object</Filter>
     </ClCompile>
     <ClCompile Include="src\GB_Loader.cc">
       <Filter>Quelldateien\help</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GB_Mesh.cc">
+      <Filter>Quelldateien\render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GB_MeshQueue.cc">
+      <Filter>Quelldateien\render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GB_Model.cc">
+      <Filter>Quelldateien\render</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\stb_image\stb_image.c">
+      <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
