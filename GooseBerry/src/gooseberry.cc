@@ -185,7 +185,7 @@ std::string GB_Func::ExtractFile(std::string file)
 	if (strncmp("./", file.c_str(), 2) == 0 || strncmp("/", file.c_str(), 1) == 0)
 		start_sub_str = file.find_last_of("/") + 1;
 
-	if (strncmp(".\\", file.c_str(), 3) == 0 || strncmp("\\", file.c_str(), 2) == 0)
+	if (strncmp(".\\", file.c_str(), 2) == 0 || strncmp("\\", file.c_str(), 1) == 0)
 		start_sub_str = file.find_last_of("\\") + 1;
 
 	end_sub_str = file.find_last_of(".");
@@ -208,7 +208,7 @@ std::string GB_Func::ExtractName(std::string file)
 	if(	strncmp("./", file.c_str(), 2) == 0 || strncmp("/", file.c_str(), 1) == 0)
 		start_sub_str	= file.find_last_of("/") + 1;
 
-	if (strncmp(".\\", file.c_str(), 3) == 0 || strncmp("\\", file.c_str(), 2) == 0)
+	if (strncmp(".\\", file.c_str(), 2) == 0 || strncmp("\\", file.c_str(), 1) == 0)
 		start_sub_str	= file.find_last_of("\\") + 1;
 
 	end_sub_str			= file.find_last_of(".");
@@ -230,7 +230,7 @@ std::string GB_Func::ExtractPath(std::string file)
 	if(	strncmp("./", file.c_str(), 2) == 0 || strncmp("/", file.c_str(), 1) == 0)
 		end_sub_str = file.find_last_of("/") + 1;
 
-	if (strncmp(".\\", file.c_str(), 3) == 0 || strncmp("\\", file.c_str(), 2) == 0)
+	if (strncmp(".\\", file.c_str(), 2) == 0 || strncmp("\\", file.c_str(), 1) == 0)
 		end_sub_str = file.find_last_of("\\") + 1;
 
 	return file.substr(0, end_sub_str);
