@@ -130,6 +130,7 @@ namespace GB_Func
 	GOOSEBERRY_API GB_Enum::gbResult MessageLoop(GB_Enum::gbResult(*func_render)(float));
 	GOOSEBERRY_API GB_Enum::gbResult Exit();
 
+	std::string ExtractFile(std::string file);
 	std::string ExtractName(std::string file);
 	std::string ExtractPath(std::string file);
 	std::string IntToStr(int value);

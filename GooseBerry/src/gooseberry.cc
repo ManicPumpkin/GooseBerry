@@ -171,6 +171,29 @@ std::string IntToStr(int value)
 
 //==================================================================
 /**
+@fn		ExtractFile(std::string file)
+@param	file	name of file to extract
+@brief	Extracts GB_Object name from file name
+@return std::string tName
+**/
+//==================================================================
+std::string GB_Func::ExtractFile(std::string file)
+{
+	int start_sub_str = 0;
+	int end_sub_str = 0;
+
+	if (strncmp("./", file.c_str(), 2) == 0 || strncmp("/", file.c_str(), 1) == 0)
+		start_sub_str = file.find_last_of("/") + 1;
+
+	if (strncmp(".\\", file.c_str(), 3) == 0 || strncmp("\\", file.c_str(), 2) == 0)
+		start_sub_str = file.find_last_of("\\") + 1;
+
+	end_sub_str = file.find_last_of(".");
+	return file.substr(start_sub_str, end_sub_str);
+}
+
+//==================================================================
+/**
 		@fn		ExtractName(std::string file)
 		@param	file	name of file to extract
 		@brief	Extracts GB_Object name from file name
@@ -184,6 +207,9 @@ std::string GB_Func::ExtractName(std::string file)
 
 	if(	strncmp("./", file.c_str(), 2) == 0 || strncmp("/", file.c_str(), 1) == 0)
 		start_sub_str	= file.find_last_of("/") + 1;
+
+	if (strncmp(".\\", file.c_str(), 3) == 0 || strncmp("\\", file.c_str(), 2) == 0)
+		start_sub_str	= file.find_last_of("\\") + 1;
 
 	end_sub_str			= file.find_last_of(".");
 	return file.substr(start_sub_str, end_sub_str - start_sub_str);
@@ -202,7 +228,10 @@ std::string GB_Func::ExtractPath(std::string file)
 	int end_sub_str		= 0;
 
 	if(	strncmp("./", file.c_str(), 2) == 0 || strncmp("/", file.c_str(), 1) == 0)
-		end_sub_str		= file.find_last_of("/") + 1;
+		end_sub_str = file.find_last_of("/") + 1;
+
+	if (strncmp(".\\", file.c_str(), 3) == 0 || strncmp("\\", file.c_str(), 2) == 0)
+		end_sub_str = file.find_last_of("\\") + 1;
 
 	return file.substr(0, end_sub_str);
 }
