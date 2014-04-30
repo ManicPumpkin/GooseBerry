@@ -38,9 +38,6 @@
 
 //	EXTERN LIBRARIES
 #include "..\ext\glut-3.7.6\glut.h"
-//#include "..\ext\stb_image\stb_image.h"
-//#include "..\ext\libpng-1.6.8\png.h"
-
 
 //==================================================================
 //	NAMESPACES

@@ -13,8 +13,8 @@
 //	INCLUDE
 //==================================================================
 #include "..\ext\libpng-1.6.8\png.h"
-//#include "..\ext\stb_image\stb_image.h"
-#include "stb_image.h"
+#include "..\ext\stb_image\stb_image.h"
+//#include "stb_image.h"
 #include "gooseberry.h"
 
 //==================================================================
