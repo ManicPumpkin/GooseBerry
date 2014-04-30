@@ -45,6 +45,7 @@ class GB_Texture
 		**/
 		GB_Texture(string file) : has_texture_(false)
 		{
+			this->tex_file_ = GB_Func::ExtractFile(file);
 			this->tex_name_ = GB_Func::ExtractName(file);
 			this->tex_path_ = GB_Func::ExtractPath(file);
 		}
