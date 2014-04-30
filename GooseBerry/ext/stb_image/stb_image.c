@@ -61,6 +61,8 @@
 
 */
 
+#include "stb_image.h"
+
 #ifndef STBI_HEADER_FILE_ONLY
 
 #ifndef STBI_NO_HDR
