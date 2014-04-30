@@ -68,7 +68,7 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Func::Initialize()
 	}
 
 	//GB_SimpleMeshes::gbCube = GB_MeshLoader::GetInstance()->LoadObj(".//dta//cube.obj");
-	GB_SimpleMeshes::gbCube = GB_Loader::LoadMeshFile(".//dta//cube.obj");
+	GB_Loader::LoadMeshFile(".//dta//cube.obj", &GB_SimpleMeshes::gbCube);
 
 	GB_Var::g_initialized = TRUE;
 	return GB_OK;
