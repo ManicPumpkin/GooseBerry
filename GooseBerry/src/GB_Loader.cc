@@ -343,7 +343,7 @@ GOOSEBERRY_API VOID GB_Loader::LoadMaterialFile(std::string file)
 //==================================================================
 GOOSEBERRY_API GB_Texture GB_Loader::LoadTextureFile(std::string file, GLuint * texture_nr)
 {
-	GB_Texture * texture;
+	GB_Texture * texture = NULL;
 	int tex_width, tex_height, tex_n;
 	unsigned char * pixel_data = stbi_load(file.c_str(), &tex_width, &tex_height, &tex_n, 0);
 
