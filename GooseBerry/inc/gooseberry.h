@@ -38,7 +38,7 @@
 
 //	EXTERN LIBRARIES
 #include "..\ext\glut-3.7.6\glut.h"
-#include "..\ext\stb_image\stb_image.h"
+//#include "..\ext\stb_image\stb_image.h"
 //#include "..\ext\libpng-1.6.8\png.h"
 
 
@@ -153,9 +153,10 @@ namespace GB_Func
 #include "GB_Color.h"
 #include "GB_OpenGL.h"
 //#include "GB_PngLoader.h"
-#include "GB_Mat.h"
-#include "GB_Tex.h"
+#include "GB_Material.h"
+#include "GB_Texture.h"
 //#include "GB_MeshLoader.h"
 #include "GB_Loader.h"
 #include "GB_Mesh.h"
 #include "GB_MeshQueue.h"
+#include "GB_Model.h"
