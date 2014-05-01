@@ -34,9 +34,9 @@ class GOOSEBERRY_API GB_Model
 
 		GLuint		texture_nr_;	//!< number of texture
 
-		bool	has_texture_;	//!< flag for texture 
-		bool	has_mesh_;		//!< flag of mesh
-		bool	has_material_;	//!< flag of meterial
+		bool	has_texture_;		//!< flag for texture 
+		bool	has_mesh_;			//!< flag of mesh
+		bool	has_material_;		//!< flag of meterial
 
 		//	(De-)Constructor
 		GB_Model();

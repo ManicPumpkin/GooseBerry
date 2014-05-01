@@ -40,6 +40,6 @@ GB_Model :: GB_Model(std::string mesh_file, GLuint texture_nr)
 	texture_nr_		= texture_nr;
 
 	GB_Loader::LoadMeshFile(mesh_file, mesh_);
-	GB_Loader::LoadMaterialFile(mesh_->mtl_lib_, material_);
-	GB_Loader::LoadTextureFile(material_->map_kd_, texture_, &texture_nr_);
+	GB_Loader::LoadMaterialFile(mesh_->msh_path_ + mesh_->mtl_lib_, material_);
+ 	GB_Loader::LoadTextureFile(material_->mat_path_ + material_->map_kd_, texture_, &texture_nr_);
 }

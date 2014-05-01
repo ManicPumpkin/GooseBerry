@@ -38,9 +38,9 @@ class GOOSEBERRY_API GB_Mesh
 	private:
 	public:
 		//	Variables
-		std::string		obj_name_;				//!< GB_Object name
-		std::string		obj_file_;				//!< GB_Object file
-		std::string		mat_path_;				//!< material file path
+		std::string		msh_name_;				//!< GB_Object name
+		std::string		msh_file_;				//!< GB_Object file
+		std::string		msh_path_;				//!< material file path
 		std::string		mtl_lib_;				//!< material lib to use
 		std::string		mtl_use_;				//!< material to use
 		//Material 		material_;				//!< material

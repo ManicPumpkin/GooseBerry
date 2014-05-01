@@ -30,6 +30,7 @@ class GB_Material
 	public:
 		string	mat_file_;		//!< full material file name
 		string	mat_name_;		//!< material name
+		string  mat_path_;		//!< path of file
 		string	map_kd_;		//!< texture file
 
 		float	ambient_[4];	//!< ambient material properties
@@ -55,6 +56,7 @@ class GB_Material
 		{
 			this->mat_name_	= GB_Func::ExtractName(file);
 			this->mat_file_ = GB_Func::ExtractFile(file);
+			this->mat_path_ = GB_Func::ExtractPath(file);
 		}
 
 		/**
@@ -67,6 +69,7 @@ class GB_Material
 		{
 			this->mat_file_		= right.mat_file_;
 			this->mat_name_		= right.mat_name_;
+			this->mat_path_		= right.mat_path_;
 			this->map_kd_		= right.map_kd_;
 			this->shininess_	= right.shininess_;
 

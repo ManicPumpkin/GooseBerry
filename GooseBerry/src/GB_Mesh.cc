@@ -41,8 +41,9 @@ GB_Mesh :: GB_Mesh()
 //==================================================================
 GB_Mesh :: GB_Mesh(const GB_Mesh & right)
 {
-	this->obj_name_			= right.obj_name_;
-	this->obj_file_			= right.obj_file_;
+	this->msh_name_			= right.msh_name_;
+	this->msh_file_			= right.msh_file_;
+	this->msh_path_			= right.msh_path_;
 	this->mtl_lib_			= right.mtl_lib_;
 	this->mtl_use_			= right.mtl_use_;
 	this->is_triangle_		= right.is_triangle_;
@@ -98,20 +99,21 @@ Copy values of right to current object
 //==================================================================
 GB_Mesh GB_Mesh::operator= (GB_Mesh const& right)
 {
-	this->obj_name_ = right.obj_name_;
-	this->obj_file_ = right.obj_file_;
-	this->mtl_lib_ = right.mtl_lib_;
-	this->mtl_use_ = right.mtl_use_;
-	this->is_triangle_ = right.is_triangle_;
-	this->num_faces_ = right.num_faces_;
-	this->num_vertices_ = right.num_vertices_;
-	this->num_normals_ = right.num_normals_;
-	this->num_tex_coords_ = right.num_tex_coords_;
+	this->msh_name_			= right.msh_name_;
+	this->msh_file_			= right.msh_file_;
+	this->msh_path_			= right.msh_path_;
+	this->mtl_lib_			= right.mtl_lib_;
+	this->mtl_use_			= right.mtl_use_;
+	this->is_triangle_		= right.is_triangle_;
+	this->num_faces_		= right.num_faces_;
+	this->num_vertices_		= right.num_vertices_;
+	this->num_normals_		= right.num_normals_;
+	this->num_tex_coords_	= right.num_tex_coords_;
 	//this->material_		= right.material_;
 
-	faces_ = new GB_Struct::Face[num_faces_];
-	vertices_ = new GB_Struct::Vertex[num_vertices_];
-	normals_ = new GB_Struct::Normal[num_normals_];
+	faces_		= new GB_Struct::Face[num_faces_];
+	vertices_	= new GB_Struct::Vertex[num_vertices_];
+	normals_	= new GB_Struct::Normal[num_normals_];
 	tex_coords_ = new GB_Struct::TexCoord[num_tex_coords_];
 
 	for (unsigned int tI = 0; tI < num_faces_; tI++)

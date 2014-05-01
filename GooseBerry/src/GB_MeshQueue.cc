@@ -33,7 +33,7 @@ GB_MeshQueue :: GB_MeshQueue()
 //==================================================================
 VOID GB_MeshQueue::AddModel(GB_Mesh model)
 {
-	GB_LINFO("Model \"" + model.obj_name_ + "\" added to queue");
+	GB_LINFO("Model \"" + model.msh_name_ + "\" added to queue");
 	model_queue_.push_back(model);
 }
 //==================================================================				
@@ -48,7 +48,7 @@ BOOL GB_MeshQueue :: RemoveModelByName(std::string model_name)
 {
 	for(int i = 0; i < this->GetSize(); i++)
 	{
-		if(model_queue_[i].obj_name_ == model_name)
+		if(model_queue_[i].msh_name_ == model_name)
 		{
 			model_queue_.erase(model_queue_.begin() + (i - 1));
 			GB_LINFO("Model removed by name: " + model_name);
@@ -71,7 +71,7 @@ BOOL GB_MeshQueue :: RemoveModelByFile(std::string file_name)
 {
 	for(int i = 0; i < this->GetSize(); i++)
 	{
-		if(model_queue_[i].obj_file_ == file_name)
+		if(model_queue_[i].msh_file_ == file_name)
 		{
 			model_queue_.erase(model_queue_.begin() + (i - 1));
 			GB_LINFO("Model removed by file name: " + file_name);
@@ -114,7 +114,7 @@ GB_Enum::gbResult GB_MeshQueue::GetMdlCyByName(GB_Mesh * mdl, std::string model_
 {
 	for(unsigned int i = 0; i < model_queue_.size(); i++)
 	{
-		if(model_queue_[i].obj_name_ == model_name)
+		if(model_queue_[i].msh_name_ == model_name)
 		{
 			*mdl = model_queue_[i];
 			return GB_Enum::GB_OK;
