@@ -57,6 +57,39 @@ class GB_Material
 			this->mat_file_ = GB_Func::ExtractFile(file);
 		}
 
+		/**
+		@fn		operator= (GB_Material const& right)
+		@brief	Overload operator=
+		@param	right	right term of equation
+		@param  this	GB_Material object with copied values
+		**/
+		GB_Material operator= (GB_Material const& right)
+		{
+			this->mat_file_		= right.mat_file_;
+			this->mat_name_		= right.mat_name_;
+			this->map_kd_		= right.map_kd_;
+			this->shininess_	= right.shininess_;
+
+			for (int i = 0; i < sizeof(right.ambient_); i++)
+				ambient_[i] = right.ambient_[i];
+
+			for (int i = 0; i < sizeof(right.diffuse_); i++)
+				diffuse_[i] = right.diffuse_[i];
+
+			for (int i = 0; i < sizeof(right.specular_); i++)
+				specular_[i] = right.specular_[i];
+
+			for (int i = 0; i < sizeof(right.emissive_); i++)
+				emissive_[i] = right.emissive_[i];
+
+			this->has_ambient_	= right.has_ambient_;
+			this->has_diffuse_	= right.has_diffuse_;
+			this->has_emissive_	= right.has_emissive_;
+			this->has_specular_	= right.has_specular_;
+
+			return *this;
+		}
+
 		//	Set&Get
 		void SetMatName(string mat_name)
 		{
