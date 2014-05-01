@@ -338,6 +338,13 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadMaterialFile(std::string file, G
 				continue;
 			}
 
+			if (strncmp("illum ", buffer.c_str(), 6) == 0)
+			{
+				line >> temp >> array[0];
+				temp_mat.illum_ = (float)atof(array[0].c_str());
+				continue;
+			}
+
 			if (strncmp("Ka ", buffer.c_str(), 3) == 0)
 			{
 				line >> temp >> array[0] >> array[1] >> array[2];
