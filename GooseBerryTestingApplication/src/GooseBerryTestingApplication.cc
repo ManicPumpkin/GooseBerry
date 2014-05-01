@@ -133,7 +133,7 @@ GB_Enum::gbResult Load()
 	GB_LDEBUG("Starting loading textures");
 
 	GB_LDEBUG("Starting loading models");
-	test_model = new GB_Model(".\\dta\\cube_pumpkin_80.obj", texture_nr);
+	test_model = new GB_Model(".\\dta\\cube_pumpkin_80.obj", texture_nr); 
 
 	return GB_Enum::GB_OK;
 }
