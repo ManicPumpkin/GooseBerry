@@ -57,5 +57,44 @@ class GB_Material
 		{
 			this->mat_name_	= GB_Func::ExtractName(file);
 			this->mat_path_ = GB_Func::ExtractPath(file);
+			this->mat_file_ = GB_Func::ExtractFile(file);
 		}
+
+		//	Set&Get
+		void SetMatName(string mat_name)
+		{
+			if (strncmp("./", mat_name.c_str(), 2) == 0	||
+				strncmp(".\\", mat_name.c_str(), 2) == 0	||
+				strncmp("/", mat_name.c_str(), 1) == 0		||
+				strncmp("\\", mat_name.c_str(), 1) == 0	)
+				this->mat_name_ = GB_Func::ExtractName(mat_name);
+			else
+				this->mat_name_ = mat_name;
+		}
+
+		void SetMatPath(string mat_path)
+		{
+			if (strncmp("./", mat_path.c_str(), 2) == 0		||
+				strncmp(".\\", mat_path.c_str(), 2) == 0	||
+				strncmp("/", mat_path.c_str(), 1) == 0		||
+				strncmp("\\", mat_path.c_str(), 1) == 0		)
+				this->mat_path_ = GB_Func::ExtractPath(mat_path);
+			else
+				this->mat_path_ = mat_path;
+		}
+
+		void SetMatFile(string mat_file)
+		{
+			if (strncmp("./", mat_file.c_str(), 2) == 0		||
+				strncmp(".\\", mat_file.c_str(), 2) == 0	||
+				strncmp("/", mat_file.c_str(), 1) == 0		||
+				strncmp("\\", mat_file.c_str(), 1) == 0		)
+				this->mat_file_ = GB_Func::ExtractFile(mat_file);
+			else
+				this->mat_file_ = mat_file;
+		}
+
+		string GetMatName()		{ return this->mat_name_;  }
+		string GetMatPath()		{ return this->mat_path_; }
+		string GetMatFile()		{ return this->mat_file_; }
 };
