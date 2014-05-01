@@ -31,22 +31,39 @@ class GB_Texture
 		string	tex_file_;			//!< texture file
 		string	tex_name_;			//!< name of texture
 		string  tex_path_;			//!< path to texture
-		unsigned char * texture_;	//!< textures not implemented yet
-
-		bool	has_texture_;		//!< flag for texture 
+		int		tex_number_;		//!< number of texture (GL)
+		//unsigned char * texture_;	//!< textures not implemented yet
 
 		//	(De-)Constructor
-		GB_Texture() : has_texture_(false), texture_(NULL) {};
+		GB_Texture(){};
 
 		/**
-		@fn		Material(string file)
+		@fn		GB_Texture(string file, int number)
 		@brief	Extended constructor
 		@param	file		file name and path
+		@param  number		number of texture
 		**/
-		GB_Texture(string file) : has_texture_(false), texture_(NULL)
+		GB_Texture(string file, int number)
 		{
 			this->tex_file_ = GB_Func::ExtractFile(file);
 			this->tex_name_ = GB_Func::ExtractName(file);
 			this->tex_path_ = GB_Func::ExtractPath(file);
+			tex_number_		= number;
+		}
+
+		/**
+		@fn		operator= (GB_Texture const& right)
+		@brief	Overloader operator=
+		@param	right	right term of equation
+		@param  this	GB_Texture object with copied values
+		**/
+		GB_Texture operator= (GB_Texture const& right)
+		{
+			this->tex_file_		= right.tex_file_;
+			this->tex_name_		= right.tex_name_;
+			this->tex_path_		= right.tex_path_;
+			this->tex_number_	= right.tex_number_;
+
+			return *this;
 		}
 };

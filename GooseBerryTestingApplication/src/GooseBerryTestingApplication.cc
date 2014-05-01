@@ -133,8 +133,6 @@ GB_Enum::gbResult Load()
 	//int width, height;
 	GLuint texture_nr;
 	GB_Texture texture;
-	//GB_Loader::LoadPngFile(".\\dta\\pnglogo.png", &width, &height, &texture);
-	//GB_Loader::LoadTextureFile(".\\dta\\pnglogo.gif", &texture, &texture_nr);
 	GB_Loader::LoadTextureFile(".\\dta\\unknown.jpg", &texture, &texture_nr);
 
 	return GB_Enum::GB_OK;
