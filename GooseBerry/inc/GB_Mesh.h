@@ -52,9 +52,9 @@ class GOOSEBERRY_API GB_Mesh
 						num_normals_,			//!< number of normals
 						num_tex_coords_;		//!< number of texture coordinates
 		
-		GB_Struct::Face *	faces_;				//!< list of faces
-		GB_Struct::Vertex *	vertices_;			//!< list of vetices
-		GB_Struct::Normal *	normals_;			//!< list of normals
+		GB_Struct::Face *		faces_;			//!< list of faces
+		GB_Struct::Vertex *		vertices_;		//!< list of vetices
+		GB_Struct::Normal *		normals_;		//!< list of normals
 		GB_Struct::TexCoord *	tex_coords_;	//!< list of texture coordiantes
 
 		//	(De-)Constructor
