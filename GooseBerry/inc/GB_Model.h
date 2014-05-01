@@ -32,11 +32,13 @@ class GOOSEBERRY_API GB_Model
 		GB_Material	* material_;	//!< material of model
 		GB_Texture  * texture_;		//!< texture of model
 
+		GLuint		texture_nr_;	//!< number of texture
+
 		bool	has_texture_;	//!< flag for texture 
 		bool	has_mesh_;		//!< flag of mesh
 		bool	has_material_;	//!< flag of meterial
 
 		//	(De-)Constructor
 		GB_Model();
-		GB_Model(std::string mesh_file, std::string material_file, std::string texture_file);
+		GB_Model(std::string mesh_file, GLuint texture_nr);
 };

@@ -131,9 +131,12 @@ GB_Enum::gbResult Load()
 	//	load some stuff starts here ...
 	GB_LDEBUG("Starting loading textures");
 	//int width, height;
-	GLuint texture_nr;
+	GLuint texture_nr = 1;
 	GB_Texture texture;
 	GB_Loader::LoadTextureFile(".\\dta\\unknown.jpg", &texture, &texture_nr);
+
+	GB_LDEBUG("Starting loading models");
+	GB_Model test_model(".\\dta\\cube_pumpkin.obj", ++texture_nr);
 
 	return GB_Enum::GB_OK;
 }

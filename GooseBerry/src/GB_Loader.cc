@@ -138,10 +138,8 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadPngFile(char * name, int * width
 //==================================================================
 GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadMeshFile(std::string file, GB_Mesh * mesh, bool is_quad)
 {
-	GB_Mesh mesh_temp;
-
 	if (is_quad)
-		mesh_temp.is_triangle_ = FALSE;
+		mesh->is_triangle_ = FALSE;
 
 	GB_LINFO("Load object file: " + file);
 	std::ifstream file_stream;
@@ -151,9 +149,9 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadMeshFile(std::string file, GB_Me
 	{
 		GB_LDEBUG("Count properties of GB_Object file: " + file);
 
-		mesh_temp.obj_file_ = file;
-		mesh_temp.obj_name_ = GB_Func::ExtractName(file);
-		mesh_temp.mat_path_ = GB_Func::ExtractName(file);
+		mesh->obj_file_ = file;
+		mesh->obj_name_ = GB_Func::ExtractName(file);
+		mesh->mat_path_ = GB_Func::ExtractName(file);
 
 		std::string buffer, temp, GB_Array[4];
 		while (!file_stream.eof())
@@ -163,21 +161,21 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadMeshFile(std::string file, GB_Me
 			std::istringstream line(buffer);
 
 			if (strncmp("v ", buffer.c_str(), 2) == 0)
-				mesh_temp.num_vertices_++;
+				mesh->num_vertices_++;
 			else if (strncmp("vt ", buffer.c_str(), 3) == 0)
-				mesh_temp.num_tex_coords_++;
+				mesh->num_tex_coords_++;
 			else if (strncmp("n ", buffer.c_str(), 3) == 0)
-				mesh_temp.num_normals_++;
+				mesh->num_normals_++;
 			else if (strncmp("f ", buffer.c_str(), 2) == 0)
-				mesh_temp.num_faces_++;
+				mesh->num_faces_++;
 		}
 
 		file_stream.close();
 
-		mesh_temp.faces_ = new GB_Struct::Face[mesh_temp.num_faces_];
-		mesh_temp.vertices_ = new GB_Struct::Vertex[mesh_temp.num_vertices_];
-		mesh_temp.normals_ = new GB_Struct::Normal[mesh_temp.num_normals_];
-		mesh_temp.tex_coords_ = new GB_Struct::TexCoord[mesh_temp.num_tex_coords_];
+		mesh->faces_ = new GB_Struct::Face[mesh->num_faces_];
+		mesh->vertices_ = new GB_Struct::Vertex[mesh->num_vertices_];
+		mesh->normals_ = new GB_Struct::Normal[mesh->num_normals_];
+		mesh->tex_coords_ = new GB_Struct::TexCoord[mesh->num_tex_coords_];
 
 		file_stream.open(file);
 		file_stream.clear();
@@ -197,78 +195,78 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadMeshFile(std::string file, GB_Me
 				if (strncmp("mtllib ", buffer.c_str(), 7) == 0)
 				{
 					line >> temp >> GB_Array[0];
-					mesh_temp.mtl_lib_ = GB_Array[0];
+					mesh->mtl_lib_ = GB_Array[0];
 					has_mat = true;
 					continue;
 				}
 				else if (strncmp("usemtl ", buffer.c_str(), 7) == 0)
 				{
 					line >> temp >> GB_Array[0];
-					mesh_temp.mtl_use_ = GB_Array[0];
+					mesh->mtl_use_ = GB_Array[0];
 					continue;
 				}
 				else if (strncmp("v ", buffer.c_str(), 2) == 0)
 				{
 					line >> temp >> GB_Array[0] >> GB_Array[1] >> GB_Array[2];
-					mesh_temp.vertices_[v].x = (float)atof(GB_Array[0].c_str());
-					mesh_temp.vertices_[v].y = (float)atof(GB_Array[1].c_str());
-					mesh_temp.vertices_[v].z = (float)atof(GB_Array[2].c_str());
+					mesh->vertices_[v].x = (float)atof(GB_Array[0].c_str());
+					mesh->vertices_[v].y = (float)atof(GB_Array[1].c_str());
+					mesh->vertices_[v].z = (float)atof(GB_Array[2].c_str());
 					v++;
 					continue;
 				}
 				else if (strncmp("vt ", buffer.c_str(), 3) == 0)
 				{
 					line >> temp >> GB_Array[0] >> GB_Array[1];
-					mesh_temp.tex_coords_[t].u = (float)atof(GB_Array[0].c_str());
-					mesh_temp.tex_coords_[t].v = (float)atof(GB_Array[1].c_str());
+					mesh->tex_coords_[t].u = (float)atof(GB_Array[0].c_str());
+					mesh->tex_coords_[t].v = (float)atof(GB_Array[1].c_str());
 					t++;
 					continue;
 				}
 				else if (strncmp("n ", buffer.c_str(), 3) == 0)
 				{
 					line >> temp >> GB_Array[0] >> GB_Array[1] >> GB_Array[2];
-					mesh_temp.normals_[n].x = (float)atof(GB_Array[0].c_str());
-					mesh_temp.normals_[n].y = (float)atof(GB_Array[1].c_str());
-					mesh_temp.normals_[n].z = (float)atof(GB_Array[2].c_str());
+					mesh->normals_[n].x = (float)atof(GB_Array[0].c_str());
+					mesh->normals_[n].y = (float)atof(GB_Array[1].c_str());
+					mesh->normals_[n].z = (float)atof(GB_Array[2].c_str());
 					n++;
 					continue;
 				}
 				else if (strncmp("f ", buffer.c_str(), 2) == 0)
 				{
-					if (mesh_temp.num_tex_coords_ == 0)
+					if (mesh->num_tex_coords_ == 0)
 						token = "//";
 
 					line >> temp >> GB_Array[0] >> GB_Array[1] >> GB_Array[2] >> GB_Array[3];
 					std::vector<std::string> strings;
 					GB_Func::SplitString(GB_Array[0], strings, token);
 
-					mesh_temp.faces_[f].vertex[0] = atoi(strings[0].c_str());
-					mesh_temp.faces_[f].texcoord[0] = atoi(strings[1].c_str());
-					mesh_temp.faces_[f].normal[0] = atoi(strings[2].c_str());
+					mesh->faces_[f].vertex[0] = atoi(strings[0].c_str());
+					mesh->faces_[f].texcoord[0] = atoi(strings[1].c_str());
+					mesh->faces_[f].normal[0] = atoi(strings[2].c_str());
 
 					strings.clear();
 					GB_Func::SplitString(GB_Array[1], strings, token);
-					mesh_temp.faces_[f].vertex[1] = atoi(strings[0].c_str());
-					mesh_temp.faces_[f].texcoord[1] = atoi(strings[1].c_str());
-					mesh_temp.faces_[f].normal[1] = atoi(strings[2].c_str());
+					mesh->faces_[f].vertex[1] = atoi(strings[0].c_str());
+					mesh->faces_[f].texcoord[1] = atoi(strings[1].c_str());
+					mesh->faces_[f].normal[1] = atoi(strings[2].c_str());
 
 					strings.clear();
 					GB_Func::SplitString(GB_Array[2], strings, token);
-					mesh_temp.faces_[f].vertex[2] = atoi(strings[0].c_str());
-					mesh_temp.faces_[f].texcoord[2] = atoi(strings[1].c_str());
-					mesh_temp.faces_[f].normal[2] = atoi(strings[2].c_str());
+					mesh->faces_[f].vertex[2] = atoi(strings[0].c_str());
+					mesh->faces_[f].texcoord[2] = atoi(strings[1].c_str());
+					mesh->faces_[f].normal[2] = atoi(strings[2].c_str());
 
 					if (strcmp("NULL", GB_Array[3].c_str()) == 0)
-						mesh_temp.is_triangle_ = TRUE;
+						mesh->is_triangle_ = TRUE;
 					else
 					{
-						mesh_temp.is_triangle_ = FALSE;
+						mesh->is_triangle_ = FALSE;
 
 						strings.clear();
 						GB_Func::SplitString(GB_Array[3], strings, token);
-						mesh_temp.faces_[f].vertex[3] = atoi(strings[0].c_str());
-						mesh_temp.faces_[f].texcoord[3] = atoi(strings[1].c_str());
-						mesh_temp.faces_[f].normal[3] = atoi(strings[2].c_str());
+						mesh->faces_[f].vertex[3] = atoi(strings[0].c_str());
+						mesh->faces_[f].texcoord[3] = atoi(strings[1].c_str());
+						mesh->faces_[f].normal[3] = atoi(strings[2].c_str());
 					}
 
 					f++;
@@ -276,8 +274,6 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadMeshFile(std::string file, GB_Me
 			}
 
 			file_stream.close();
-
-			mesh = &mesh_temp;
 			return GB_OK;
 
 			/*
@@ -337,7 +333,7 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadMaterialFile(std::string file, G
 				line >> temp >> texture_file;
 				material_temp.SetMatFile(texture_file);
 				material_temp.SetMatName(texture_file);
-				material_temp.SetMatPath(texture_file);
+				material_temp.map_kd_	= texture_file;
 				continue;
 			}
 		}

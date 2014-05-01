@@ -23,17 +23,23 @@ GB_Model::GB_Model()
 	mesh_		= NULL;
 	material_	= NULL;
 	texture_	= NULL;
+	texture_nr_ = -1;
 }
 
 //==================================================================
 /**
-@fn		GB_Model::GB_Model()
-@brief	Standardconstructor
+@fn		GB_Model::GB_Model(std::string mesh_file, GLuint texture_nr)
+@brief	Enhanced constructor
 **/
 //==================================================================
-GB_Model :: GB_Model(std::string mesh_file, std::string material_file, std::string texture_file)
+GB_Model :: GB_Model(std::string mesh_file, GLuint texture_nr)
 {
-	mesh_ = &GB_Loader::LoadMeshFile(mesh_file);
-	/*material_ =*/ GB_Loader::LoadMaterialFile(material_file);
-	/*texture_ = GB_Loader::LoadTextureFile(texture_File);*/
+	mesh_			= new GB_Mesh();
+	material_		= new GB_Material();
+	texture_		= new GB_Texture();
+	texture_nr_		= texture_nr;
+
+	GB_Loader::LoadMeshFile(mesh_file, mesh_);
+	GB_Loader::LoadMaterialFile(mesh_->mtl_lib_, material_);
+	GB_Loader::LoadTextureFile(material_->map_kd_, texture_, &texture_nr_);
 }
