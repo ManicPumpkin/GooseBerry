@@ -33,11 +33,13 @@ class GB_Material
 		string  mat_path_;		//!< path of file
 		string	map_kd_;		//!< texture file
 
-		float	ambient_[4];	//!< ambient material properties
-		float	diffuse_[4];	//!< diffuse material properties
-		float	specular_[4];	//!< specular material properties
-		float 	emissive_[4];	//!< emissive material properties
-		float	shininess_;		//!< shniness of material
+		float	ambient_[3];	//!< ambient material properties
+		float	diffuse_[3];	//!< diffuse material properties
+		float	specular_[3];	//!< specular material properties
+		float 	emissive_[3];	//!< emissive material properties
+		float	shininess_;		//!< shininess of material (specular exponent)
+		float   illum_;			//!< illumination of material
+		float   index_reflect_; //!< index of reflection
 
 		bool	has_ambient_;	//!< flag for ambient material
 		bool	has_diffuse_;	//!< flag for diffuse material
@@ -67,11 +69,13 @@ class GB_Material
 		**/
 		GB_Material operator= (GB_Material const& right)
 		{
-			this->mat_file_		= right.mat_file_;
-			this->mat_name_		= right.mat_name_;
-			this->mat_path_		= right.mat_path_;
-			this->map_kd_		= right.map_kd_;
-			this->shininess_	= right.shininess_;
+			this->mat_file_			= right.mat_file_;
+			this->mat_name_			= right.mat_name_;
+			this->mat_path_			= right.mat_path_;
+			this->map_kd_			= right.map_kd_;
+			this->shininess_		= right.shininess_;
+			this->illum_			= right.illum_;
+			this->index_reflect_	= right.index_reflect_;
 
 			for (int i = 0; i < sizeof(right.ambient_); i++)
 				ambient_[i] = right.ambient_[i];
