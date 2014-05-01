@@ -324,7 +324,7 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadMaterialFile(std::string file, G
 
 	if (file_stream.is_open())
 	{
-		std::string buffer, temp, texture_file;
+		std::string buffer, temp, texture_file, array[3];
 		while (!file_stream.eof())
 		{
 			ZeroMemory(&buffer, sizeof(std::string));
@@ -335,6 +335,70 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadMaterialFile(std::string file, G
 			{
 				line >> temp >> texture_file;
 				temp_mat.map_kd_ = texture_file;
+				continue;
+			}
+
+			if (strncmp("Ka ", buffer.c_str(), 3) == 0)
+			{
+				line >> temp >> array[0] >> array[1] >> array[2];
+				temp_mat.ambient_[0]	= (float)atof(array[0].c_str());
+				temp_mat.ambient_[1]	= (float)atof(array[1].c_str());
+				temp_mat.ambient_[2]	= (float)atof(array[2].c_str());
+				temp_mat.has_ambient_	= true;
+				continue;
+			}
+
+			if (strncmp("Kd ", buffer.c_str(), 3) == 0)
+			{
+				line >> temp >> array[0] >> array[1] >> array[2];
+				temp_mat.diffuse_[0]	= (float)atof(array[0].c_str());
+				temp_mat.diffuse_[1]	= (float)atof(array[1].c_str());
+				temp_mat.diffuse_[2]	= (float)atof(array[2].c_str());
+				temp_mat.has_diffuse_	= true;
+				continue;
+			}
+
+			if (strncmp("Ks ", buffer.c_str(), 3) == 0)
+			{
+				line >> temp >> array[0] >> array[1] >> array[2];
+				temp_mat.specular_[0]	= (float)atof(array[0].c_str());
+				temp_mat.specular_[1]	= (float)atof(array[1].c_str());
+				temp_mat.specular_[2]	= (float)atof(array[2].c_str());
+				temp_mat.has_specular_	= true;
+				continue;
+			}
+
+			if (strncmp("Ke ", buffer.c_str(), 3) == 0)
+			{
+				line >> temp >> array[0] >> array[1] >> array[2];
+				temp_mat.emissive_[0]	= (float)atof(array[0].c_str());
+				temp_mat.emissive_[1]	= (float)atof(array[1].c_str());
+				temp_mat.emissive_[2]	= (float)atof(array[2].c_str());
+				temp_mat.has_emissive_	= true;
+				continue;
+			}
+
+			if (strncmp("Tf ", buffer.c_str(), 3) == 0)
+			{
+				line >> temp >> array[0] >> array[1] >> array[2];
+				temp_mat.transmission_[0]	= (float)atof(array[0].c_str());
+				temp_mat.transmission_[1]	= (float)atof(array[1].c_str());
+				temp_mat.transmission_[2]	= (float)atof(array[2].c_str());
+				temp_mat.has_transmission_	= true;
+				continue;
+			}
+
+			if (strncmp("Ns ", buffer.c_str(), 3) == 0)
+			{
+				line >> temp >> array[0];
+				temp_mat.shininess_		= (float)atof(array[0].c_str());
+				continue;
+			}
+
+			if (strncmp("Ni ", buffer.c_str(), 3) == 0)
+			{
+				line >> temp >> array[0];
+				temp_mat.index_reflect_ = (float)atof(array[0].c_str());
 				continue;
 			}
 		}
@@ -369,8 +433,6 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadTextureFile(std::string file, GB
 	}
 	else
 	{
-		
-
 		if (pixel_data == '\0')
 		{
 			GB_LERROR("Error while loading texture file: " + file, "GB_Loader Error");

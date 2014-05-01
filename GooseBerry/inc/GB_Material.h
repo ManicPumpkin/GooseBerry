@@ -28,33 +28,35 @@ class GB_Material
 	private:
 
 	public:
-		string	mat_file_;		//!< full material file name
-		string	mat_name_;		//!< material name
-		string  mat_path_;		//!< path of file
-		string	map_kd_;		//!< texture file
+		string	mat_file_;			//!< full material file name
+		string	mat_name_;			//!< material name
+		string  mat_path_;			//!< path of file
+		string	map_kd_;			//!< texture file
 
-		float	ambient_[3];	//!< ambient material properties
-		float	diffuse_[3];	//!< diffuse material properties
-		float	specular_[3];	//!< specular material properties
-		float 	emissive_[3];	//!< emissive material properties
-		float	shininess_;		//!< shininess of material (specular exponent)
-		float   illum_;			//!< illumination of material
-		float   index_reflect_; //!< index of reflection
+		float	ambient_[3];		//!< ambient material properties
+		float	diffuse_[3];		//!< diffuse material properties
+		float	specular_[3];		//!< specular material properties
+		float 	emissive_[3];		//!< emissive material properties
+		float	transmission_[3];	//!< transmission color (only specified color is able to pass through the object)
+		float	shininess_;			//!< shininess of material (specular exponent)
+		float   illum_;				//!< illumination of material
+		float   index_reflect_;		//!< index of reflection
 
-		bool	has_ambient_;	//!< flag for ambient material
-		bool	has_diffuse_;	//!< flag for diffuse material
-		bool	has_specular_;	//!< flag for specular material
-		bool	has_emissive_;	//!< flag for emissive material
+		bool	has_ambient_;		//!< flag for ambient material
+		bool	has_diffuse_;		//!< flag for diffuse material
+		bool	has_specular_;		//!< flag for specular material
+		bool	has_emissive_;		//!< flag for emissive material
+		bool	has_transmission_;	//!< flag for transmission material
 
 		//	(De-)Constructor
-		GB_Material() :shininess_(-1), has_ambient_(false), has_diffuse_(false), has_specular_(false), has_emissive_(false){};
+		GB_Material() :shininess_(-1), has_ambient_(false), has_diffuse_(false), has_specular_(false), has_emissive_(false), has_transmission_(false) {};
 		
 		/**
 			@fn		Material(string file)
 			@brief	Extended constructor
 			@param	file		file name and path
 		**/
-		GB_Material(string file) :shininess_(-1), has_ambient_(false), has_diffuse_(false), has_specular_(false), has_emissive_(false)
+		GB_Material(string file) :shininess_(-1), has_ambient_(false), has_diffuse_(false), has_specular_(false), has_emissive_(false), has_transmission_(false)
 		{
 			this->mat_name_	= GB_Func::ExtractName(file);
 			this->mat_file_ = GB_Func::ExtractFile(file);
@@ -89,10 +91,14 @@ class GB_Material
 			for (int i = 0; i < sizeof(right.emissive_); i++)
 				emissive_[i] = right.emissive_[i];
 
-			this->has_ambient_	= right.has_ambient_;
-			this->has_diffuse_	= right.has_diffuse_;
-			this->has_emissive_	= right.has_emissive_;
-			this->has_specular_	= right.has_specular_;
+			for (int i = 0; i < sizeof(right.transmission_); i++)
+				transmission_[i] = right.transmission_[i];
+
+			this->has_ambient_		= right.has_ambient_;
+			this->has_diffuse_		= right.has_diffuse_;
+			this->has_emissive_		= right.has_emissive_;
+			this->has_specular_		= right.has_specular_;
+			this->has_transmission_	= right.has_transmission_;
 
 			return *this;
 		}
