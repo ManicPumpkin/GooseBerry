@@ -28,22 +28,22 @@ class GB_Texture
 	private:
 
 	public:
-		string	tex_file_;		//!< texture file
-		string	tex_name_;		//!< name of texture
-		string  tex_path_;		//!< path to texture
-		void *	texture_;		//!< textures not implemented yet
+		string	tex_file_;			//!< texture file
+		string	tex_name_;			//!< name of texture
+		string  tex_path_;			//!< path to texture
+		unsigned char * texture_;	//!< textures not implemented yet
 
-		bool	has_texture_;	//!< flag for texture 
+		bool	has_texture_;		//!< flag for texture 
 
 		//	(De-)Constructor
-		GB_Texture() : has_texture_(false) {};
+		GB_Texture() : has_texture_(false), texture_(NULL) {};
 
 		/**
 		@fn		Material(string file)
 		@brief	Extended constructor
 		@param	file		file name and path
 		**/
-		GB_Texture(string file) : has_texture_(false)
+		GB_Texture(string file) : has_texture_(false), texture_(NULL)
 		{
 			this->tex_file_ = GB_Func::ExtractFile(file);
 			this->tex_name_ = GB_Func::ExtractName(file);
