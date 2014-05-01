@@ -383,11 +383,7 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadTextureFile(std::string file, GB
 		GLuint temp_texture;
 		glGenTextures(1, &temp_texture);
 		glBindTexture(GL_TEXTURE_2D, temp_texture);
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, tex_width, tex_height, 0, GL_RGB, GL_UNSIGNED_BYTE, pixel_data); // texture->texture_);
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, tex_width, tex_height, 0, GL_RGB, GL_UNSIGNED_BYTE, pixel_data); 
 
 		GB_Texture texture(file, (int)texture_nr);
 		*texture_nr		= temp_texture;
