@@ -316,8 +316,10 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadMeshFile(std::string file, GB_Me
 @brief	Fuction to load and *.mtl file
 **/
 //==================================================================
-GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadMaterialFile(std::string file)
+GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadMaterialFile(std::string file, GB_Material * material)
 {
+	GB_Material material_temp;
+
 	std::ifstream file_stream;
 	file_stream.open(file);
 
@@ -333,6 +335,9 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadMaterialFile(std::string file)
 			if (strncmp("map_Kd ", buffer.c_str(), 7) == 0)
 			{
 				line >> temp >> texture_file;
+				material_temp.SetMatFile(texture_file);
+				material_temp.SetMatName(texture_file);
+				material_temp.SetMatPath(texture_file);
 				continue;
 			}
 		}

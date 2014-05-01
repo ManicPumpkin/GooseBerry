@@ -29,6 +29,6 @@ namespace GB_Loader
 {
 	GOOSEBERRY_API GB_Enum::gbResult LoadPngFile(char * name, int * width, int * height, GLuint * texture);
 	GOOSEBERRY_API GB_Enum::gbResult LoadMeshFile(std::string file, GB_Mesh * mesh, bool is_quad = FALSE);
-	GOOSEBERRY_API GB_Enum::gbResult LoadMaterialFile(std::string file);
+	GOOSEBERRY_API GB_Enum::gbResult LoadMaterialFile(std::string file, GB_Material * material);
 	GOOSEBERRY_API GB_Enum::gbResult LoadTextureFile(std::string file, GB_Texture * texture_para, GLuint * texture_nr);
 }
