@@ -232,8 +232,9 @@ VOID GB_Mesh :: Draw()
 				);
 				glTexCoord2f
 				(	
-					this->tex_coords_[this->faces_[i].texcoord[j] - 1].u,
-					this->tex_coords_[this->faces_[i].texcoord[j] - 1].v		
+					//	invert direction for texture loading from file (*.obj)
+					1-this->tex_coords_[this->faces_[i].texcoord[j] - 1].u,
+					1-this->tex_coords_[this->faces_[i].texcoord[j] - 1].v		
 				);
 				glVertex3f
 				(
