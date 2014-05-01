@@ -122,7 +122,8 @@ GB_Enum::gbResult Exit()
 	return GB_Enum::GB_OK;
 }
 
-GLuint texture;
+GLuint texture_nr = 1;
+GB_Model * test_model;
 
 GB_Enum::gbResult Load()
 {
@@ -130,13 +131,9 @@ GB_Enum::gbResult Load()
 
 	//	load some stuff starts here ...
 	GB_LDEBUG("Starting loading textures");
-	//int width, height;
-	GLuint texture_nr = 1;
-	GB_Texture texture;
-	GB_Loader::LoadTextureFile(".\\dta\\unknown.jpg", &texture, &texture_nr);
 
 	GB_LDEBUG("Starting loading models");
-	GB_Model test_model(".\\dta\\cube_pumpkin.obj", ++texture_nr);
+	test_model = new GB_Model(".\\dta\\cube_pumpkin.obj", ++texture_nr);
 
 	return GB_Enum::GB_OK;
 }
@@ -195,12 +192,16 @@ GB_Enum::gbResult Render(float time)
 
 	glTranslatef(-0.5f, -0.5f, 0.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	/*
 	glBegin(GL_QUADS);
 	glTexCoord2d(0, 0); glVertex3f(1.0, 0.0, 0.0);
 	glTexCoord2d(0, 1); glVertex3f(1.0, 1.0, 0.0);
 	glTexCoord2d(1, 1); glVertex3f(0.0, 1.0, 0.0);	
 	glTexCoord2d(1, 0); glVertex3f(0.0, 0.0, 0.0);
 	glEnd();
+	*/
+
+
 
 	glDisable(GL_TEXTURE_2D);
 	glFlush();

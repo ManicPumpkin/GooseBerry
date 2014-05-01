@@ -51,7 +51,6 @@ GB_Mesh :: GB_Mesh(const GB_Mesh & right)
 	this->num_vertices_		= right.num_vertices_;
 	this->num_normals_		= right.num_normals_;
 	this->num_tex_coords_	= right.num_tex_coords_;
-	//this->material_		= right.material_;
 
 	faces_		= new GB_Struct::Face[num_faces_];
 	vertices_	= new GB_Struct::Vertex[num_vertices_];
@@ -109,7 +108,6 @@ GB_Mesh GB_Mesh::operator= (GB_Mesh const& right)
 	this->num_vertices_		= right.num_vertices_;
 	this->num_normals_		= right.num_normals_;
 	this->num_tex_coords_	= right.num_tex_coords_;
-	//this->material_		= right.material_;
 
 	faces_		= new GB_Struct::Face[num_faces_];
 	vertices_	= new GB_Struct::Vertex[num_vertices_];
@@ -191,50 +189,63 @@ VOID GB_Mesh :: FreeMdl()
 //==================================================================
 VOID GB_Mesh :: Draw()
 {
-	/*
-	\todo Enable Material
-	glDisable(GL_Color_MATERIAL);
-	if(material_.has_ambient_)
-		glMaterialfv(GL_FRONT, GL_AMBIENT, material_.ambient_);
-	
-	if(material_.has_diffuse_)
-		glMaterialfv(GL_FRONT, GL_DIFFUSE, material_.diffuse_);
-
-	if(material_.has_specular_)
-		glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, material_.specular_);
-
-	if(material_.has_emissive_)
-		glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, material_.emissive_);
-
-	if(material_.shininess_ >= 0)
-		glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, material_.shininess_);
-	*/
-
-	glBegin(GL_TRIANGLES);
-	for(unsigned int i = 0; i < this->num_faces_; i++)
+	if (this->is_triangle_)
 	{
-		for(int j = 0; j < 3; j++)
+		glBegin(GL_TRIANGLES);
+		for(unsigned int i = 0; i < this->num_faces_; i++)
 		{
-			glNormal3f
-			(
-				this->normals_[this->faces_[i].normal[j] - 1].x, 
-				this->normals_[this->faces_[i].normal[j] - 1].y, 
-				this->normals_[this->faces_[i].normal[j] - 1].z
-			);
-			glVertex3f
-			(
-				this->vertices_[this->faces_[i].vertex[j] - 1].x, 
-				this->vertices_[this->faces_[i].vertex[j] - 1].y, 
-				this->vertices_[this->faces_[i].vertex[j] - 1].z
-			);
-			/*
-			\todo Enable Texture
-			glTexCoord2f(	this->tex_coords_[this->faces_[i].texcoord[j] - 1].u,
-							this->tex_coords_[this->faces_[i].texcoord[j] - 1].v		);
-			*/
+			for(int j = 0; j < 3; j++)
+			{
+				glNormal3f
+				(
+					this->normals_[this->faces_[i].normal[j] - 1].x, 
+					this->normals_[this->faces_[i].normal[j] - 1].y, 
+					this->normals_[this->faces_[i].normal[j] - 1].z
+				);
+				glTexCoord2f
+				(	
+					this->tex_coords_[this->faces_[i].texcoord[j] - 1].u,
+					this->tex_coords_[this->faces_[i].texcoord[j] - 1].v		
+				);
+				glVertex3f
+				(
+					this->vertices_[this->faces_[i].vertex[j] - 1].x, 
+					this->vertices_[this->faces_[i].vertex[j] - 1].y, 
+					this->vertices_[this->faces_[i].vertex[j] - 1].z
+				);
+			}
 		}
+		glEnd();
 	}
-	glEnd();
+	else
+	{
+		glBegin(GL_QUADS);
+		for (unsigned int i = 0; i < this->num_faces_; i++)
+		{
+			for (int j = 0; j < 4; j++)
+			{
+				glNormal3f
+				(
+					this->normals_[this->faces_[i].normal[j] - 1].x,
+					this->normals_[this->faces_[i].normal[j] - 1].y,
+					this->normals_[this->faces_[i].normal[j] - 1].z
+				);
+				glTexCoord2f
+				(	
+					this->tex_coords_[this->faces_[i].texcoord[j] - 1].u,
+					this->tex_coords_[this->faces_[i].texcoord[j] - 1].v		
+				);
+				glVertex3f
+				(
+					this->vertices_[this->faces_[i].vertex[j] - 1].x,
+					this->vertices_[this->faces_[i].vertex[j] - 1].y,
+					this->vertices_[this->faces_[i].vertex[j] - 1].z
+				);
+			}
+		}
+		glEnd();
+	}
+
 	glEnable(GL_COLOR_MATERIAL);
 }
 //==================================================================
