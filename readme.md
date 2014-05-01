@@ -13,4 +13,4 @@ Autors
 
 RUBNER,		Danny
 
-Copyright 2013. All rights reserved by Rubner, Danny.
+Copyright 2014. All rights reserved by Rubner, Danny.
