@@ -166,7 +166,7 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadMeshFile(std::string file, GB_Me
 				temp_mesh.num_vertices_++;
 			else if (strncmp("vt ", buffer.c_str(), 3) == 0)
 				temp_mesh.num_tex_coords_++;
-			else if (strncmp("n ", buffer.c_str(), 3) == 0)
+			else if (strncmp("vn ", buffer.c_str(), 3) == 0)
 				temp_mesh.num_normals_++;
 			else if (strncmp("f ", buffer.c_str(), 2) == 0)
 				temp_mesh.num_faces_++;
@@ -224,7 +224,7 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadMeshFile(std::string file, GB_Me
 					t++;
 					continue;
 				}
-				else if (strncmp("n ", buffer.c_str(), 3) == 0)
+				else if (strncmp("vn ", buffer.c_str(), 3) == 0)
 				{
 					line >> temp >> GB_Array[0] >> GB_Array[1] >> GB_Array[2];
 					temp_mesh.normals_[n].x = (float)atof(GB_Array[0].c_str());
@@ -242,21 +242,21 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadMeshFile(std::string file, GB_Me
 					std::vector<std::string> strings;
 					GB_Func::SplitString(GB_Array[0], strings, token);
 
-					temp_mesh.faces_[f].vertex[0] = atoi(strings[0].c_str());
+					temp_mesh.faces_[f].vertex[0]	= atoi(strings[0].c_str());
 					temp_mesh.faces_[f].texcoord[0] = atoi(strings[1].c_str());
-					temp_mesh.faces_[f].normal[0] = atoi(strings[2].c_str());
+					temp_mesh.faces_[f].normal[0]	= atoi(strings[2].c_str());
 
 					strings.clear();
 					GB_Func::SplitString(GB_Array[1], strings, token);
-					temp_mesh.faces_[f].vertex[1] = atoi(strings[0].c_str());
+					temp_mesh.faces_[f].vertex[1]	= atoi(strings[0].c_str());
 					temp_mesh.faces_[f].texcoord[1] = atoi(strings[1].c_str());
-					temp_mesh.faces_[f].normal[1] = atoi(strings[2].c_str());
+					temp_mesh.faces_[f].normal[1]	= atoi(strings[2].c_str());
 
 					strings.clear();
 					GB_Func::SplitString(GB_Array[2], strings, token);
-					temp_mesh.faces_[f].vertex[2] = atoi(strings[0].c_str());
+					temp_mesh.faces_[f].vertex[2]	= atoi(strings[0].c_str());
 					temp_mesh.faces_[f].texcoord[2] = atoi(strings[1].c_str());
-					temp_mesh.faces_[f].normal[2] = atoi(strings[2].c_str());
+					temp_mesh.faces_[f].normal[2]	= atoi(strings[2].c_str());
 
 					if (strcmp("NULL", GB_Array[3].c_str()) == 0)
 						temp_mesh.is_triangle_ = TRUE;
@@ -266,9 +266,9 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadMeshFile(std::string file, GB_Me
 
 						strings.clear();
 						GB_Func::SplitString(GB_Array[3], strings, token);
-						temp_mesh.faces_[f].vertex[3] = atoi(strings[0].c_str());
+						temp_mesh.faces_[f].vertex[3]	= atoi(strings[0].c_str());
 						temp_mesh.faces_[f].texcoord[3] = atoi(strings[1].c_str());
-						temp_mesh.faces_[f].normal[3] = atoi(strings[2].c_str());
+						temp_mesh.faces_[f].normal[3]	= atoi(strings[2].c_str());
 					}
 
 					f++;
