@@ -30,9 +30,7 @@ class GB_Material
 	public:
 		string	mat_file_;		//!< full material file name
 		string	mat_name_;		//!< material name
-		string	mat_path_;		//!< material file path
-		string	tex_file_;		//!< texture file
-		GLuint	texture_;		//!< textures not implemented yet
+		string	map_kd_;		//!< texture file
 
 		float	ambient_[4];	//!< ambient material properties
 		float	diffuse_[4];	//!< diffuse material properties
@@ -56,7 +54,6 @@ class GB_Material
 		GB_Material(string file) :shininess_(-1), has_ambient_(false), has_diffuse_(false), has_specular_(false), has_emissive_(false)
 		{
 			this->mat_name_	= GB_Func::ExtractName(file);
-			this->mat_path_ = GB_Func::ExtractPath(file);
 			this->mat_file_ = GB_Func::ExtractFile(file);
 		}
 
@@ -72,17 +69,6 @@ class GB_Material
 				this->mat_name_ = mat_name;
 		}
 
-		void SetMatPath(string mat_path)
-		{
-			if (strncmp("./", mat_path.c_str(), 2) == 0		||
-				strncmp(".\\", mat_path.c_str(), 2) == 0	||
-				strncmp("/", mat_path.c_str(), 1) == 0		||
-				strncmp("\\", mat_path.c_str(), 1) == 0		)
-				this->mat_path_ = GB_Func::ExtractPath(mat_path);
-			else
-				this->mat_path_ = mat_path;
-		}
-
 		void SetMatFile(string mat_file)
 		{
 			if (strncmp("./", mat_file.c_str(), 2) == 0		||
@@ -95,6 +81,5 @@ class GB_Material
 		}
 
 		string GetMatName()		{ return this->mat_name_;  }
-		string GetMatPath()		{ return this->mat_path_; }
 		string GetMatFile()		{ return this->mat_file_; }
 };
