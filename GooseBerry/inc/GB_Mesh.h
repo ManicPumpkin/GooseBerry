@@ -43,7 +43,6 @@ class GOOSEBERRY_API GB_Mesh
 		std::string		msh_path_;				//!< material file path
 		std::string		mtl_lib_;				//!< material lib to use
 		std::string		mtl_use_;				//!< material to use
-		//Material 		material_;				//!< material
 
 		bool			is_triangle_;			//!< if object is made of triangles, else quads 
 
