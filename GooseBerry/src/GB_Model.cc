@@ -43,3 +43,15 @@ GB_Model :: GB_Model(std::string mesh_file, GLuint texture_nr)
 	GB_Loader::LoadMaterialFile(mesh_->msh_path_ + mesh_->mtl_lib_, material_);
  	GB_Loader::LoadTextureFile(material_->mat_path_ + material_->map_kd_, texture_, &texture_nr_);
 }
+
+//==================================================================
+/**
+@fn		GB_Model::Draw()
+@brief	Draw model with mesh, textures and material
+**/
+//==================================================================
+void GB_Model :: Draw()
+{
+	glBindTexture(GL_TEXTURE_2D, texture_nr_);
+	mesh_->Draw();
+}

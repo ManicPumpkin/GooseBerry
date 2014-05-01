@@ -38,6 +38,9 @@ class GOOSEBERRY_API GB_Model
 		bool	has_mesh_;			//!< flag of mesh
 		bool	has_material_;		//!< flag of meterial
 
+		//	Functions
+		void	Draw();
+
 		//	(De-)Constructor
 		GB_Model();
 		GB_Model(std::string mesh_file, GLuint texture_nr);
