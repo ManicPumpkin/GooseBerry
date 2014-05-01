@@ -192,6 +192,7 @@ GB_Enum::gbResult Render(float time)
 
 	glTranslatef(-0.5f, -0.5f, 0.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 	/*
 	glBegin(GL_QUADS);
 	glTexCoord2d(0, 0); glVertex3f(1.0, 0.0, 0.0);
@@ -201,7 +202,7 @@ GB_Enum::gbResult Render(float time)
 	glEnd();
 	*/
 
-
+	test_model->Draw();
 
 	glDisable(GL_TEXTURE_2D);
 	glFlush();
