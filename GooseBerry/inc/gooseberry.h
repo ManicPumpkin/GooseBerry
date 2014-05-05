@@ -59,7 +59,7 @@ using namespace std;
 #define LOG_FILEPATH			LOG_PATH LOG_FILE
 
 #define BB3D_SHOW				TRUE
-#define BB3D_LINE_WIDTH			2.5
+#define BB3D_LINE_WIDTH			2.5f
 #define BB3D_LINE_COLOR			1.0f, 1.0f, 1.0f
 
 //==================================================================
@@ -154,6 +154,7 @@ namespace GB_Func
 #include "GB_Vector2.h"
 #include "GB_Color.h"
 #include "GB_OpenGL.h"
+#include "GB_BB3D.h"
 #include "GB_Material.h"
 #include "GB_Texture.h"
 #include "GB_Loader.h"
