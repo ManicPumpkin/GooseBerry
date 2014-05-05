@@ -106,7 +106,7 @@ class GB_Material
 		//	Set&Get
 		void SetMatName(string mat_name)
 		{
-			if (strncmp("./", mat_name.c_str(), 2) == 0	||
+			if (strncmp("./", mat_name.c_str(), 2) == 0		||
 				strncmp(".\\", mat_name.c_str(), 2) == 0	||
 				strncmp("/", mat_name.c_str(), 1) == 0		||
 				strncmp("\\", mat_name.c_str(), 1) == 0	)
