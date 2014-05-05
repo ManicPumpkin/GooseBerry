@@ -18,7 +18,6 @@
 //	INCLUDE
 //==================================================================
 #include "gooseberry.h"
-//#include "Material.h"
 
 //==================================================================
 //	CLASS
@@ -38,23 +37,23 @@ class GOOSEBERRY_API GB_Mesh
 	private:
 	public:
 		//	Variables
-		std::string		msh_name_;				//!< GB_Object name
-		std::string		msh_file_;				//!< GB_Object file
-		std::string		msh_path_;				//!< material file path
-		std::string		mtl_lib_;				//!< material lib to use
-		std::string		mtl_use_;				//!< material to use
+		std::string				msh_name_;			//!< GB_Object name
+		std::string				msh_file_;			//!< GB_Object file
+		std::string				msh_path_;			//!< material file path
+		std::string				mtl_lib_;			//!< material lib to use
+		std::string				mtl_use_;			//!< material to use
 
-		bool			is_triangle_;			//!< if object is made of triangles, else quads 
+		bool					is_triangle_;		//!< if object is made of triangles, else quads 
 
-		unsigned int	num_faces_,				//!< number of faces
-						num_vertices_,			//!< number of vertices
-						num_normals_,			//!< number of normals
-						num_tex_coords_;		//!< number of texture coordinates
+		unsigned int			num_faces_,			//!< number of faces
+								num_vertices_,		//!< number of vertices
+								num_normals_,		//!< number of normals
+								num_tex_coords_;	//!< number of texture coordinates
 		
-		GB_Struct::Face *		faces_;			//!< list of faces
-		GB_Struct::Vertex *		vertices_;		//!< list of vetices
-		GB_Struct::Normal *		normals_;		//!< list of normals
-		GB_Struct::TexCoord *	tex_coords_;	//!< list of texture coordiantes
+		GB_Struct::Face *		faces_;				//!< list of faces
+		GB_Struct::Vertex *		vertices_;			//!< list of vetices
+		GB_Struct::Normal *		normals_;			//!< list of normals
+		GB_Struct::TexCoord *	tex_coords_;		//!< list of texture coordiantes
 
 		//	(De-)Constructor
 		~GB_Mesh();
