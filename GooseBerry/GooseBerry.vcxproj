@@ -106,7 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ext\stb_image\stb_image.c" />
-    <ClCompile Include="src\GB_BB3D.cpp" />
+    <ClCompile Include="src\GB_BB3D.cc" />
     <ClCompile Include="src\GB_Color.cc" />
     <ClCompile Include="src\GB_Loader.cc" />
     <ClCompile Include="src\GB_Log.cc" />

@@ -143,7 +143,7 @@
     <ClCompile Include="ext\stb_image\stb_image.c">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="src\GB_BB3D.cpp">
+    <ClCompile Include="src\GB_BB3D.cc">
       <Filter>Quelldateien\render</Filter>
     </ClCompile>
   </ItemGroup>

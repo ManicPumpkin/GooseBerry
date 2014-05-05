@@ -190,7 +190,7 @@ GB_Enum::gbResult Render(float time)
 	glLoadIdentity();
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glEnable(GL_TEXTURE_2D);
+	//glEnable(GL_TEXTURE_2D);
 	
 	if (rotatef > 360.0f)
 		rotatef = 0.0f;
@@ -199,7 +199,7 @@ GB_Enum::gbResult Render(float time)
 	glRotatef(rotatef, 0.0f, 1.0f, 0.0f);
 	test_model->Draw();
 
-	glDisable(GL_TEXTURE_2D);
+	//glDisable(GL_TEXTURE_2D);
 	glFlush();
 	//glutSwapBuffers();
 
