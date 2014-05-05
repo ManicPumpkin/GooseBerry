@@ -32,6 +32,7 @@ class GB_Texture
 		string	tex_name_;			//!< name of texture
 		string  tex_path_;			//!< path to texture
 		int		tex_number_;		//!< number of texture (GL)
+		// \todo saving texture in memory
 		//unsigned char * texture_;	//!< textures not implemented yet
 
 		//	(De-)Constructor
