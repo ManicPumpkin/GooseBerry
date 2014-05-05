@@ -26,7 +26,12 @@ class GB_BB3D
 	protected:
 
 	private:
-		GB_Struct::Vertex cornerstones_[8];
+		union
+		{
+			GB_Vector3 *		corner_max_;
+			GB_Vector3 *		corner_min_;
+			GB_Struct::Vertex	centre_;
+		};
 
 	public:
 		//	Functions

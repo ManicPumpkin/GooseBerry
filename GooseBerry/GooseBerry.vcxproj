@@ -84,6 +84,7 @@
   <ItemGroup>
     <ClInclude Include="ext\stb_image\stb_image.h" />
     <ClInclude Include="inc\GB_Array.h" />
+    <ClInclude Include="inc\GB_BB3D.h" />
     <ClInclude Include="inc\GB_Color.h" />
     <ClInclude Include="inc\GB_Convert.h" />
     <ClInclude Include="inc\GB_Defines.h" />
@@ -105,6 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ext\stb_image\stb_image.c" />
+    <ClCompile Include="src\GB_BB3D.cpp" />
     <ClCompile Include="src\GB_Color.cc" />
     <ClCompile Include="src\GB_Loader.cc" />
     <ClCompile Include="src\GB_Log.cc" />
