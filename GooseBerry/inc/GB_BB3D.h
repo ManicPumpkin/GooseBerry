@@ -26,19 +26,18 @@ class GB_BB3D
 	protected:
 
 	private:
-		union
-		{
-			GB_Vector3 *		corner_max_;
-			GB_Vector3 *		corner_min_;
-			GB_Struct::Vertex	centre_;
-		};
+		GB_Vector3 *		corner_max_;
+		GB_Vector3 *		corner_min_;
+		GB_Struct::Vertex	centre_;
 
 	public:
 		//	Functions
 		void InitializeBB(GB_Struct::Vertex * list_vertices);
+		void InitializeBB(GB_Struct::Vertex * list_vertices, int num_vertices);
 		void Draw();
 
 		//	(De-)Constructor
 		GB_BB3D();
 		GB_BB3D(GB_Struct::Vertex * list_vertices);
+		GB_BB3D(GB_Struct::Vertex * list_vertices, int num_vertices);
 };

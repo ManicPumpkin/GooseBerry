@@ -41,24 +41,66 @@ GB_BB3D::GB_BB3D(GB_Struct::Vertex * list_vertices)
 
 //==================================================================
 /**
+@fn		GB_BB3D::GB_BB3D(GB_Struct::Vertex * list_vertices, int num_vertices)
+@brief	Enhanced contructor
+**/
+//==================================================================
+GB_BB3D::GB_BB3D(GB_Struct::Vertex * list_vertices, int num_vertices)
+{
+	InitializeBB(list_vertices, num_vertices);
+}
+
+//==================================================================
+/**
 @fn		GB_BB3D::InitializeBB(GB_Struct::Vertex * list_vertices)
 @brief	Initialize bounding box
 **/
 //==================================================================
+// \todo test function and add function without pointer
 void GB_BB3D::InitializeBB(GB_Struct::Vertex * list_vertices)
 {
 	float	x_min = 0.0f, x_max = 0.0f,
 			y_min = 0.0f, y_max = 0.0f,
 			z_min = 0.0f, z_max = 0.0f;
 
-	for (int i = 0; i < sizeof(list_vertices); i++)
+	for (int i = 0; i < (sizeof(list_vertices) / sizeof(list_vertices[0])); i++)
 	{
 		if (x_min > list_vertices[i].x) x_min = list_vertices[i].x;
-		if (x_max > list_vertices[i].x) x_max = list_vertices[i].x;
+		if (x_max < list_vertices[i].x) x_max = list_vertices[i].x;
 		if (y_min > list_vertices[i].y) y_min = list_vertices[i].y;
-		if (y_max > list_vertices[i].y) y_max = list_vertices[i].y;
+		if (y_max < list_vertices[i].y) y_max = list_vertices[i].y;
 		if (z_min > list_vertices[i].z) z_min = list_vertices[i].z;
-		if (z_max > list_vertices[i].z) z_max = list_vertices[i].z;
+		if (z_max < list_vertices[i].z) z_max = list_vertices[i].z;
+	}
+
+	centre_.x = x_max - x_min;
+	centre_.y = y_max - y_min;
+	centre_.z = z_max - z_min;
+
+	corner_min_ = new GB_Vector3(x_min, y_min, z_min);
+	corner_max_ = new GB_Vector3(x_max, y_max, z_max);
+}
+
+//==================================================================
+/**
+@fn		void InitializeBB(GB_Struct::Vertex * list_vertices, int num_vertices)
+@brief	Initialize bounding box
+**/
+//==================================================================
+void GB_BB3D::InitializeBB(GB_Struct::Vertex * list_vertices, int num_vertices)
+{
+	float	x_min = 0.0f, x_max = 0.0f,
+			y_min = 0.0f, y_max = 0.0f,
+			z_min = 0.0f, z_max = 0.0f;
+
+	for (int i = 0; i < num_vertices; i++)
+	{
+		if (x_min > list_vertices[i].x) x_min = list_vertices[i].x;
+		if (x_max < list_vertices[i].x) x_max = list_vertices[i].x;
+		if (y_min > list_vertices[i].y) y_min = list_vertices[i].y;
+		if (y_max < list_vertices[i].y) y_max = list_vertices[i].y;
+		if (z_min > list_vertices[i].z) z_min = list_vertices[i].z;
+		if (z_max < list_vertices[i].z) z_max = list_vertices[i].z;
 	}
 
 	centre_.x	= x_max - x_min;
@@ -79,6 +121,7 @@ void GB_BB3D::Draw()
 {
 	if (BB3D_SHOW)
 	{
+		glEnable(GL_LINE_SMOOTH);
 		glLineWidth(BB3D_LINE_WIDTH);
 		glColor3f(BB3D_LINE_COLOR);
 		glBegin(GL_LINE_LOOP);
