@@ -67,6 +67,11 @@ class GOOSEBERRY_API GB_Mesh
 		VOID Draw();
 
 		//	Get
+		GB_Struct::Face *		GetFaces()		{ return faces_; }
+		GB_Struct::Vertex *		GetVertices()	{ return vertices_; }
+		GB_Struct::Normal *		GetNormals()	{ return normals_; }
+		GB_Struct::TexCoord *	GetTexCoords()	{ return tex_coords_; }
+
 		//	Set
 };
 
