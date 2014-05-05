@@ -23,6 +23,7 @@ GB_Model::GB_Model()
 	mesh_		= NULL;
 	material_	= NULL;
 	texture_	= NULL;
+	bb3d_		= NULL;
 	texture_nr_ = -1;
 }
 
@@ -42,6 +43,9 @@ GB_Model :: GB_Model(std::string mesh_file, GLuint texture_nr)
 	GB_Loader::LoadMeshFile(mesh_file, mesh_);
 	GB_Loader::LoadMaterialFile(mesh_->msh_path_ + mesh_->mtl_lib_, material_);
  	GB_Loader::LoadTextureFile(material_->mat_path_ + material_->map_kd_, texture_, &texture_nr_);
+
+	// \todo add getter&setter for meshes
+	bb3d_			= new GB_BB3D(mesh_->GetVertices(), (int)mesh_->num_vertices_);
 }
 
 //==================================================================
@@ -52,10 +56,15 @@ GB_Model :: GB_Model(std::string mesh_file, GLuint texture_nr)
 //==================================================================
 void GB_Model :: Draw()
 {
+	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texture_nr_);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	mesh_->Draw();
+	glDisable(GL_TEXTURE_2D);
+
+	if (BB3D_SHOW)
+		bb3d_->Draw();
 }

@@ -12,7 +12,7 @@
 //	INCLUDE
 //==================================================================
 #include "gooseberry.h"
-
+class GB_BB3D;
 //==================================================================
 //	CLASS
 //==================================================================
@@ -31,12 +31,13 @@ class GOOSEBERRY_API GB_Model
 		GB_Mesh		* mesh_;		//!< mesh of model
 		GB_Material	* material_;	//!< material of model
 		GB_Texture  * texture_;		//!< texture of model
+		GB_BB3D     * bb3d_;
 
 		GLuint		texture_nr_;	//!< number of texture
 
-		bool	has_texture_;		//!< flag for texture 
-		bool	has_mesh_;			//!< flag of mesh
-		bool	has_material_;		//!< flag of meterial
+		bool		has_texture_;	//!< flag for texture 
+		bool		has_mesh_;		//!< flag of mesh
+		bool		has_material_;	//!< flag of meterial
 
 		//	Functions
 		void	Draw();
