@@ -106,6 +106,9 @@ GB_Enum::gbResult Initialize()
 	glEnable(GL_DEPTH_TEST);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+	//	GB Settings
+	GB_Settings::BoundingBox::g_show	= false;
+
 	if (Load())
 		throw GB_Exception(ERR_G_LOAD_STR, ERR_G_LOAD_ID);
 
