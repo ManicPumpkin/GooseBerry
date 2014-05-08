@@ -101,8 +101,8 @@ GB_Enum::gbResult Initialize()
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	//glEnable(GL_BLEND);
 	glShadeModel(GL_SMOOTH);
-	//glEnable(GL_LIGHTING);
-	//glEnable(GL_LIGHT1);
+	glEnable(GL_LIGHTING);
+	//glEnable(GL_LIGHT0);
 	glEnable(GL_DEPTH_TEST);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 

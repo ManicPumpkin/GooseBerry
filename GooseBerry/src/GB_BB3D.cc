@@ -89,9 +89,9 @@ void GB_BB3D::InitializeBB(GB_Struct::Vertex * list_vertices)
 //==================================================================
 void GB_BB3D::InitializeBB(GB_Struct::Vertex * list_vertices, int num_vertices)
 {
-	float	x_min = 0.0f, x_max = 0.0f,
-			y_min = 0.0f, y_max = 0.0f,
-			z_min = 0.0f, z_max = 0.0f;
+	float	x_min = list_vertices[0].x, x_max = list_vertices[0].x,
+			y_min = list_vertices[0].y, y_max = list_vertices[0].y,
+			z_min = list_vertices[0].z, z_max = list_vertices[0].z;
 
 	for (int i = 0; i < num_vertices; i++)
 	{
