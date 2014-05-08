@@ -47,14 +47,14 @@ GB_Enum::gbResult Render(float time);
 //==================================================================
 int WINAPI WinMain(HINSTANCE hinstance, HINSTANCE h_prev_instance, PSTR cmd_line, int cmd_show)
 {
-	GB_Settings::OpenGL::g_hinstance				= hinstance;
-	GB_Settings::OpenGL::g_hwnd					= NULL;
-	GB_Settings::Window::g_wnd_title				= "GooseBerryTestApplication";
-	GB_Settings::Window::g_wnd_name				= "GooseBerryTestApplication";
-	GB_Settings::Window::g_wnd_width				= 800;
-	GB_Settings::Window::g_wnd_height			= 600;
-	GB_Settings::Window::g_wnd_x					= 0;
-	GB_Settings::Window::g_wnd_y					= 0;
+	GB_Settings::OpenGL::g_hinstance		= hinstance;
+	GB_Settings::OpenGL::g_hwnd				= NULL;
+	GB_Settings::Window::g_wnd_title		= "GooseBerryTestApplication";
+	GB_Settings::Window::g_wnd_name			= "GooseBerryTestApplication";
+	GB_Settings::Window::g_wnd_width		= 800;
+	GB_Settings::Window::g_wnd_height		= 600;
+	GB_Settings::Window::g_wnd_x			= 0;
+	GB_Settings::Window::g_wnd_y			= 0;
 	GB_Settings::App::g_bits_color			= 32;
 	GB_Settings::App::g_bits_depth			= 32;
 	GB_Settings::App::g_bits_alpha			= 32;
@@ -101,13 +101,13 @@ GB_Enum::gbResult Initialize()
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	//glEnable(GL_BLEND);
 	glShadeModel(GL_SMOOTH);
-	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0);
+	//glEnable(GL_LIGHTING);
+	//glEnable(GL_LIGHT1);
 	glEnable(GL_DEPTH_TEST);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	//	GB Settings
-	GB_Settings::BoundingBox::g_show	= false;
+	//GB_Settings::BoundingBox::g_show	= false;
 
 	if (Load())
 		throw GB_Exception(ERR_G_LOAD_STR, ERR_G_LOAD_ID);
