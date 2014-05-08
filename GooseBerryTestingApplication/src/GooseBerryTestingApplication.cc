@@ -47,19 +47,19 @@ GB_Enum::gbResult Render(float time);
 //==================================================================
 int WINAPI WinMain(HINSTANCE hinstance, HINSTANCE h_prev_instance, PSTR cmd_line, int cmd_show)
 {
-	GB_Var::g_hinstance				= hinstance;
-	GB_Var::g_hwnd					= NULL;
-	GB_Var::g_wnd_title				= "GooseBerryTestApplication";
-	GB_Var::g_wnd_name				= "GooseBerryTestApplication";
-	GB_Var::g_wnd_width				= 800;
-	GB_Var::g_wnd_height			= 600;
-	GB_Var::g_wnd_x					= 0;
-	GB_Var::g_wnd_y					= 0;
-	GB_Var::g_bits_color			= 32;
-	GB_Var::g_bits_depth			= 32;
-	GB_Var::g_bits_alpha			= 32;
-	GB_Var::g_fullscreen			= FALSE;
-	GB_Var::g_active				= TRUE;
+	GB_Settings::OpenGL::g_hinstance				= hinstance;
+	GB_Settings::OpenGL::g_hwnd					= NULL;
+	GB_Settings::Window::g_wnd_title				= "GooseBerryTestApplication";
+	GB_Settings::Window::g_wnd_name				= "GooseBerryTestApplication";
+	GB_Settings::Window::g_wnd_width				= 800;
+	GB_Settings::Window::g_wnd_height			= 600;
+	GB_Settings::Window::g_wnd_x					= 0;
+	GB_Settings::Window::g_wnd_y					= 0;
+	GB_Settings::App::g_bits_color			= 32;
+	GB_Settings::App::g_bits_depth			= 32;
+	GB_Settings::App::g_bits_alpha			= 32;
+	GB_Settings::App::g_fullscreen			= FALSE;
+	GB_Settings::App::g_active				= TRUE;
 
 	//Log::getInstance()->set_file_path_and_name(string("log"), string("log.html"));
 	//Log::getInstance()->debug_mode_ = true;
@@ -73,7 +73,7 @@ int WINAPI WinMain(HINSTANCE hinstance, HINSTANCE h_prev_instance, PSTR cmd_line
 
 		//	initialize, show, run, exit
 		Initialize();
-		Show(GB_Var::g_hwnd);
+		Show(GB_Settings::OpenGL::g_hwnd);
 		Run();
 		Exit();
 

@@ -58,10 +58,6 @@ using namespace std;
 #define LOG_PATH				".\\log\\"
 #define LOG_FILEPATH			LOG_PATH LOG_FILE
 
-#define BB3D_SHOW				TRUE
-#define BB3D_LINE_WIDTH			2.5f
-#define BB3D_LINE_COLOR			1.0f, 1.0f, 1.0f
-
 //==================================================================
 //	GLOBALS
 //==================================================================

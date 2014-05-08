@@ -65,6 +65,6 @@ void GB_Model :: Draw()
 	mesh_->Draw();
 	glDisable(GL_TEXTURE_2D);
 
-	if (BB3D_SHOW)
+	if (GB_Settings::BoundingBox::g_show)
 		bb3d_->Draw();
 }

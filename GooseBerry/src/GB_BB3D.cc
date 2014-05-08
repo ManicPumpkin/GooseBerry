@@ -119,11 +119,13 @@ void GB_BB3D::InitializeBB(GB_Struct::Vertex * list_vertices, int num_vertices)
 //==================================================================
 void GB_BB3D::Draw()
 {
-	if (BB3D_SHOW)
+	if (GB_Settings::BoundingBox::g_show)
 	{
 		glEnable(GL_LINE_SMOOTH);
-		glLineWidth(BB3D_LINE_WIDTH);
-		glColor3f(BB3D_LINE_COLOR);
+		glLineWidth(GB_Settings::BoundingBox::g_line_width);
+		glColor3f(	GB_Settings::BoundingBox::g_line_color[0],
+					GB_Settings::BoundingBox::g_line_color[1],
+					GB_Settings::BoundingBox::g_line_color[2]	);
 		glBegin(GL_LINE_LOOP);
 		glVertex3f(corner_min_->x_, corner_min_->y_, corner_min_->z_);
 		glVertex3f(corner_max_->x_, corner_min_->y_, corner_min_->z_);
