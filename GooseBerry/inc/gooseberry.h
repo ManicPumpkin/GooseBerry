@@ -65,25 +65,47 @@ using namespace std;
 //==================================================================
 //	GLOBALS
 //==================================================================
-namespace GB_Var
+namespace GB_Settings
 {
-	GOOSEBERRY_API extern HINSTANCE		g_hinstance;	//!< instance of program
-	GOOSEBERRY_API extern HWND			g_hwnd;			//!< handle to window
-	GOOSEBERRY_API extern HDC			g_hdc;			//!< device context
-	GOOSEBERRY_API extern HGLRC			g_hglrc;		//!< render context
-	GOOSEBERRY_API extern LPCSTR		g_wnd_title;	//!< title of window
-	GOOSEBERRY_API extern LPCSTR		g_wnd_name;		//!< name of window
-	GOOSEBERRY_API extern int			g_wnd_width;	//!< window width
-	GOOSEBERRY_API extern int			g_wnd_height;	//!< window height
-	GOOSEBERRY_API extern int			g_wnd_x;		//!< window x
-	GOOSEBERRY_API extern int			g_wnd_y;		//!< window y
-	GOOSEBERRY_API extern int			g_bits_color;	//!< GB_Color bits
-	GOOSEBERRY_API extern int			g_bits_depth;	//!< GB_Color depth
-	GOOSEBERRY_API extern int			g_bits_alpha;	//!< GB_Color alpha
-	GOOSEBERRY_API extern bool			g_fullscreen;	//!< window runs in fullscreen
-	GOOSEBERRY_API extern bool			g_active;		//!< window is active
-	GOOSEBERRY_API extern bool			g_initialized;	//!< gooseberry engine initialized
-	GOOSEBERRY_API extern bool			g_keys[256];	//!< all keys
+	namespace Engine
+	{
+		GOOSEBERRY_API extern bool			g_initialized;		//!< gooseberry engine initialized
+		GOOSEBERRY_API extern bool			g_keys[256];		//!< all keys
+	}
+
+	namespace OpenGL
+	{
+		GOOSEBERRY_API extern HINSTANCE		g_hinstance;		//!< instance of program
+		GOOSEBERRY_API extern HWND			g_hwnd;				//!< handle to window
+		GOOSEBERRY_API extern HDC			g_hdc;				//!< device context
+		GOOSEBERRY_API extern HGLRC			g_hglrc;			//!< render context
+	}
+
+	namespace Window
+	{
+		GOOSEBERRY_API extern LPCSTR		g_wnd_title;		//!< title of window
+		GOOSEBERRY_API extern LPCSTR		g_wnd_name;			//!< name of window
+		GOOSEBERRY_API extern int			g_wnd_width;		//!< window width
+		GOOSEBERRY_API extern int			g_wnd_height;		//!< window height
+		GOOSEBERRY_API extern int			g_wnd_x;			//!< window x
+		GOOSEBERRY_API extern int			g_wnd_y;			//!< window y
+	}
+
+	namespace App
+	{
+		GOOSEBERRY_API extern int			g_bits_color;		//!< GB_Color bits
+		GOOSEBERRY_API extern int			g_bits_depth;		//!< GB_Color depth
+		GOOSEBERRY_API extern int			g_bits_alpha;		//!< GB_Color alpha
+		GOOSEBERRY_API extern bool			g_fullscreen;		//!< window runs in fullscreen
+		GOOSEBERRY_API extern bool			g_active;			//!< window is active
+	}
+
+	namespace BoundingBox
+	{
+		GOOSEBERRY_API extern bool			g_show;				//!< show bounding box
+		GOOSEBERRY_API extern float			g_line_width;		//!< line width of bounding box
+		GOOSEBERRY_API extern float			g_line_color[3];	//!< line color of bounding box
+	}
 }
 
 //==================================================================

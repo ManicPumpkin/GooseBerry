@@ -74,18 +74,18 @@ GOOSEBERRY_API GB_Enum::gbResult InitializeLog()
 	if(file_stream.is_open())
 	{
 		file_stream << "<html><head>\n";
-		file_stream << "<title>" << GB_Var::g_wnd_title << "-Logfile</title>\n";
+		file_stream << "<title>" << GB_Settings::Window::g_wnd_title << "-Logfile</title>\n";
 		file_stream << "<link rel=\"stylesheet\" href=\"logfile.css\">\n";
 		file_stream << "</head><body>\n";
 		file_stream << "<hr class=\"divide_double\" />\n";
-		file_stream << "<p id=\"header\">"<< GB_Var::g_wnd_title <<" - GB_Logfile</p>\n";
+		file_stream << "<p id=\"header\">"<< GB_Settings::Window::g_wnd_title <<" - GB_Logfile</p>\n";
 		file_stream << "<hr class=\"divide_simple\" />\n\n";
 		file_stream << "<table id=\"game_info\">\n";
-		file_stream << "<tr><th>window class name</th><td>:</td><td>"<< GB_Var::g_wnd_name <<"</td></tr>\n";
-		file_stream << "<tr><th>window name</th><td>:</td><td>"<< GB_Var::g_wnd_title <<"</td></tr>\n";
-		file_stream << "<tr><th>color</th><td>:</td><td>"<< GB_Var::g_bits_color <<"</td></tr>\n";
-		file_stream << "<tr><th>depth</th><td>:</td><td>"<< GB_Var::g_bits_depth <<"</td></tr>\n";
-		file_stream << "<tr><th>alpha</th><td>:</td><td>"<< GB_Var::g_bits_alpha <<"</td></tr>\n";
+		file_stream << "<tr><th>window class name</th><td>:</td><td>"<< GB_Settings::Window::g_wnd_name <<"</td></tr>\n";
+		file_stream << "<tr><th>window name</th><td>:</td><td>"<< GB_Settings::Window::g_wnd_title <<"</td></tr>\n";
+		file_stream << "<tr><th>color</th><td>:</td><td>"<< GB_Settings::App::g_bits_color <<"</td></tr>\n";
+		file_stream << "<tr><th>depth</th><td>:</td><td>"<< GB_Settings::App::g_bits_depth <<"</td></tr>\n";
+		file_stream << "<tr><th>alpha</th><td>:</td><td>"<< GB_Settings::App::g_bits_alpha <<"</td></tr>\n";
 		file_stream << "</table>\n";
 		file_stream << "<hr class=\"divide_simple\" />\n\n";
 		file_stream << "<table id=\"game_date\">\n";

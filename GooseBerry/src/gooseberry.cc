@@ -35,23 +35,30 @@ using namespace GB_Enum;
 //==================================================================
 //	VARIABLES
 //==================================================================
-HINSTANCE	GB_Var::g_hinstance = NULL;
-HWND		GB_Var::g_hwnd = NULL;
-HDC			GB_Var::g_hdc = NULL;
-HGLRC		GB_Var::g_hglrc = NULL;
-LPCSTR		GB_Var::g_wnd_title = "";
-LPCSTR		GB_Var::g_wnd_name = "";
-int			GB_Var::g_wnd_width = -1;
-int			GB_Var::g_wnd_height = -1;
-int			GB_Var::g_wnd_x = -1;
-int			GB_Var::g_wnd_y = -1;
-int			GB_Var::g_bits_color = -1;
-int			GB_Var::g_bits_depth = -1;
-int			GB_Var::g_bits_alpha = -1;
-bool		GB_Var::g_fullscreen = FALSE;
-bool		GB_Var::g_initialized = FALSE;
-bool		GB_Var::g_active = TRUE;
-bool		GB_Var::g_keys[256];
+HINSTANCE	GB_Settings::OpenGL::g_hinstance			= NULL;
+HWND		GB_Settings::OpenGL::g_hwnd					= NULL;
+HDC			GB_Settings::OpenGL::g_hdc					= NULL;
+HGLRC		GB_Settings::OpenGL::g_hglrc				= NULL;
+
+LPCSTR		GB_Settings::Window::g_wnd_title			= "";
+LPCSTR		GB_Settings::Window::g_wnd_name				= "";
+int			GB_Settings::Window::g_wnd_width			= -1;
+int			GB_Settings::Window::g_wnd_height			= -1;
+int			GB_Settings::Window::g_wnd_x				= -1;
+int			GB_Settings::Window::g_wnd_y				= -1;
+
+int			GB_Settings::App::g_bits_color				= -1;
+int			GB_Settings::App::g_bits_depth				= -1;
+int			GB_Settings::App::g_bits_alpha				= -1;
+bool		GB_Settings::App::g_fullscreen				= FALSE;
+bool		GB_Settings::App::g_active					= TRUE;
+
+bool		GB_Settings::Engine::g_initialized			= FALSE;
+bool		GB_Settings::Engine::g_keys[256];
+
+bool		GB_Settings::BoundingBox::g_show			= TRUE;			
+float		GB_Settings::BoundingBox::g_line_width		= 1.0f;		
+float		GB_Settings::BoundingBox::g_line_color[]	= {1.0f, 1.0f, 1.0f};
 
 //==================================================================
 /**
@@ -61,7 +68,7 @@ bool		GB_Var::g_keys[256];
 //==================================================================
 GOOSEBERRY_API GB_Enum::gbResult GB_Func::Initialize()
 {
-	if(!GB_Var::g_initialized)
+	if(!GB_Settings::Engine::g_initialized)
 	{
 		InitializeLog();
 		GB_LDEBUG("GooseBerry initialized");
@@ -70,7 +77,7 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Func::Initialize()
 	//GB_SimpleMeshes::gbCube = GB_MeshLoader::GetInstance()->LoadObj(".//dta//cube.obj");
 	GB_Loader::LoadMeshFile(".//dta//cube.obj", &GB_SimpleMeshes::gbCube);
 
-	GB_Var::g_initialized = TRUE;
+	GB_Settings::Engine::g_initialized = TRUE;
 	return GB_OK;
 }
 
@@ -106,21 +113,21 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Func::MessageLoop(GB_Enum::gbResult(*Render)
 				quit = TRUE;
 		}
 
-		if(GB_Var::g_active)	
+		if(GB_Settings::App::g_active)	
 		{
-			if(GB_Var::g_keys[VK_ESCAPE])
+			if(GB_Settings::Engine::g_keys[VK_ESCAPE])
 				quit	= TRUE;
 			else
 			{
 				Render((float)time);
-				SwapBuffers(GB_Var::g_hdc);
+				SwapBuffers(GB_Settings::OpenGL::g_hdc);
 			}
 		}
 
-		if(GB_Var::g_keys[VK_F1])
+		if(GB_Settings::Engine::g_keys[VK_F1])
 		{
-			GB_Var::g_keys[VK_F1]	= FALSE;
-			GB_Var::g_fullscreen	= !GB_Var::g_fullscreen;
+			GB_Settings::Engine::g_keys[VK_F1]	= FALSE;
+			GB_Settings::App::g_fullscreen	= !GB_Settings::App::g_fullscreen;
 			GB_Func::Exit();
 
 			if (GB_Func::Initialize() != GB_OK)
