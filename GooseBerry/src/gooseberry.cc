@@ -190,6 +190,10 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Func::Exit()
 {
 	GB_LDEBUG("Gooseberry stopped");
 	StopLog();
+
+	if (GB_Settings::Debug::g_debug_mode)
+		FreeConsole();
+
 	return GB_OK;
 }
 
