@@ -40,6 +40,9 @@ HWND		GB_Settings::OpenGL::g_hwnd					= NULL;
 HDC			GB_Settings::OpenGL::g_hdc					= NULL;
 HGLRC		GB_Settings::OpenGL::g_hglrc				= NULL;
 
+bool		GB_Settings::Debug::g_debug_mode			= true;
+bool		GB_Settings::Debug::g_only_compile			= false;
+
 LPCSTR		GB_Settings::Window::g_wnd_title			= "";
 LPCSTR		GB_Settings::Window::g_wnd_name				= "";
 int			GB_Settings::Window::g_wnd_width			= -1;
@@ -74,10 +77,39 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Func::Initialize()
 		GB_LDEBUG("GooseBerry initialized");
 	}
 
+	if (GB_Settings::Debug::g_debug_mode)
+		InitializeDebugConsole();
+
 	//GB_SimpleMeshes::gbCube = GB_MeshLoader::GetInstance()->LoadObj(".//dta//cube.obj");
 	GB_Loader::LoadMeshFile(".//dta//cube.obj", &GB_SimpleMeshes::gbCube);
 
 	GB_Settings::Engine::g_initialized = TRUE;
+	return GB_OK;
+}
+
+//==================================================================
+/**
+@fn		InitializeDebugConsole();
+@brief	Initialize the debug console
+**/
+//==================================================================
+GOOSEBERRY_API GB_Enum::gbResult GB_Func::InitializeDebugConsole()
+{
+	AllocConsole();
+	AttachConsole(ATTACH_PARENT_PROCESS);
+
+	HANDLE	handle_out = GetStdHandle(STD_OUTPUT_HANDLE);
+	int hCrt = _open_osfhandle((long)handle_out, _O_TEXT);
+	FILE* hf_out = _fdopen(hCrt, "w");
+	setvbuf(hf_out, NULL, _IONBF, 1);
+	*stdout = *hf_out;
+
+	HANDLE handle_in = GetStdHandle(STD_INPUT_HANDLE);
+	hCrt = _open_osfhandle((long)handle_in, _O_TEXT);
+	FILE* hf_in = _fdopen(hCrt, "r");
+	setvbuf(hf_in, NULL, _IONBF, 128);
+	*stdin = *hf_in;
+
 	return GB_OK;
 }
 
@@ -134,7 +166,7 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Func::MessageLoop(GB_Enum::gbResult(*Render)
 				throw GB_Exception(ERR_WIN_FS_STR, ERR_WIN_FS_ID);
 		}
 
-		if(ONLY_COMPILE)
+		if(GB_Settings::Debug::g_only_compile)
 			quit = TRUE;
 
 		QueryPerformanceCounter((LARGE_INTEGER*)(&end_time));

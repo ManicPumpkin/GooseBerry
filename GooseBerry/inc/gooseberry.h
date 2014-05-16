@@ -33,8 +33,11 @@
 #include <stdio.h>
 #include <string>
 #include <vector>
+#include <io.h>
+#include <fcntl.h>
 #include <gl/GLU.h>
 #include <gl/GL.h>
+
 
 //	EXTERN LIBRARIES
 #include "..\ext\glut-3.7.6\glut.h"
@@ -51,8 +54,6 @@ using namespace std;
 //==================================================================
 //	DEFINES
 //==================================================================
-#define DEBUG_MODE				TRUE
-#define ONLY_COMPILE			FALSE
 #define LOG_ONCE				FALSE
 #define LOG_FILE				"gb_log.html"
 #define LOG_PATH				".\\log\\"
@@ -67,6 +68,12 @@ namespace GB_Settings
 	{
 		GOOSEBERRY_API extern bool			g_initialized;		//!< gooseberry engine initialized
 		GOOSEBERRY_API extern bool			g_keys[256];		//!< all keys
+	}
+
+	namespace Debug
+	{
+		GOOSEBERRY_API extern bool			g_debug_mode;		//!< debug mode active
+		GOOSEBERRY_API extern bool			g_only_compile;		//!< only compile app
 	}
 
 	namespace OpenGL
@@ -149,6 +156,7 @@ namespace GB_Struct
 namespace GB_Func
 {
 	GOOSEBERRY_API GB_Enum::gbResult Initialize();
+	GOOSEBERRY_API GB_Enum::gbResult InitializeDebugConsole();
 	GOOSEBERRY_API GB_Enum::gbResult MessageLoop(GB_Enum::gbResult(*func_render)(float));
 	GOOSEBERRY_API GB_Enum::gbResult Exit();
 

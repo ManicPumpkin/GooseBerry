@@ -33,8 +33,9 @@ GOOSEBERRY_API std::string			CurrentDate();
 //==================================================================
 //	INLINE
 //==================================================================
-inline GOOSEBERRY_API VOID GB_LDEBUG(string msg)				{ if (DEBUG_MODE) Log("<td class=\"log_debug\">" + msg + "</td>\n"); }
-inline GOOSEBERRY_API VOID GB_LINFO(string msg)					{ Log("<td class=\"log_info\">" + msg + "</td>\n"); }
-inline GOOSEBERRY_API VOID GB_LWARNING(string msg)				{ Log("<td class=\"log_warning\">" + msg + "</td>\n"); }
-inline GOOSEBERRY_API VOID GB_LERROR(string msg, string id)		{ Log("<td class=\"log_error\">" + msg + "<" + id + "></td>\n"); }
+inline GOOSEBERRY_API VOID GB_LCONSOLE(string msg)				{ if (GB_Settings::Debug::g_debug_mode) printf((msg + "\n").c_str()); }
+inline GOOSEBERRY_API VOID GB_LDEBUG(string msg)				{ GB_LCONSOLE(msg); if (GB_Settings::Debug::g_debug_mode) Log("<td class=\"log_debug\">" + msg + "</td>\n"); }
+inline GOOSEBERRY_API VOID GB_LINFO(string msg)					{ GB_LCONSOLE(msg); Log("<td class=\"log_info\">" + msg + "</td>\n"); }
+inline GOOSEBERRY_API VOID GB_LWARNING(string msg)				{ GB_LCONSOLE(msg); Log("<td class=\"log_warning\">" + msg + "</td>\n"); }
+inline GOOSEBERRY_API VOID GB_LERROR(string msg, string id)		{ GB_LCONSOLE(msg); Log("<td class=\"log_error\">" + msg + "<" + id + "></td>\n"); }
 inline GOOSEBERRY_API VOID GB_MSGBOXERR(LPCSTR msg, LPCSTR id)	{ MessageBox(NULL, msg, id, MB_OK | MB_ICONERROR); }

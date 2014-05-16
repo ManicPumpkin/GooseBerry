@@ -23,7 +23,7 @@
 //==================================================================
 #define LOG_FILE			"GB_Log.txt"						//!< GB_Log file name
 #define LOG_PATH			".\\out\\"						//!< GB_Log file path
-#define DEBUG_MODE			TRUE							//!< debug mode option (not used)
+#define GB_Settings::Debug::g_debug_mode			TRUE							//!< debug mode option (not used)
 //==================================================================
 #define ERR_BTN_STYLE		MB_OK | MB_ICONERROR
 

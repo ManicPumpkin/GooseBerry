@@ -85,8 +85,6 @@ int WINAPI WinMain(HINSTANCE hinstance, HINSTANCE h_prev_instance, PSTR cmd_line
 	}
 
 	GB_LDEBUG("GooseBerryTestingApplication finished");
-	getchar();
-
 	if (GB_Func::Exit())
 		throw GB_Exception(ERR_GB_EXIT_STR, ERR_GB_EXIT_ID);
 
