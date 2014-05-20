@@ -143,14 +143,12 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadMeshFile(std::string file, GB_Me
 	if (is_quad)
 		temp_mesh.is_triangle_ = FALSE;
 
-	GB_LINFO("Load object file: " + file);
+	GB_LDEBUG("\t--> " + file);
 	std::ifstream file_stream;
 	file_stream.open(file);
 
 	if (file_stream.is_open())
 	{
-		GB_LDEBUG("Count properties of GB_Object file: " + file);
-
 		temp_mesh.msh_file_ = file;
 		temp_mesh.msh_name_ = GB_Func::ExtractName(file);
 		temp_mesh.msh_path_ = GB_Func::ExtractPath(file);
@@ -183,8 +181,6 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadMeshFile(std::string file, GB_Me
 		file_stream.clear();
 		if (file_stream.is_open())
 		{
-			GB_LDEBUG("Parse GB_Object file: " + file);
-
 			char * token = "/";
 			bool has_mat = false;
 			for (int v = 0, n = 0, t = 0, f = 0; !file_stream.eof();)
@@ -279,23 +275,6 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadMeshFile(std::string file, GB_Me
 
 			file_stream.close();
 			return GB_OK;
-
-			/*
-			if(has_mat)
-			{
-			MaterialLoader tMatLoader;
-			mesh_temp.material_ = tMatLoader.fLoadMat(mesh_temp.msh_path_ + mesh_temp.mtl_lib_);
-			}
-			*/
-			/*
-			glGenBuffers(1, &mesh_temp.v_ertexID);
-			glBindBuffer(GL_GB_Array_BUFFER, mesh_temp.v_ertexID);
-			glBufferData(GL_GB_Array_BUFFER, mesh_temp.num_vertices_ * sizeof(grVertex), mesh_temp.vertices_, GL_STATIC_DRAW);
-
-			glGenBuffers(1, &mesh_temp.mIndexID);
-			glBindBuffer(GL_ELEMENT_GB_Array_BUFFER, mesh_temp.mIndexID);
-			glBufferData(GL_ELEMENT_GB_Array_BUFFER, mesh_temp.num_faces_ * sizeof(grFace), mesh_temp.faces_, GL_STATIC_DRAW);
-			*/
 		}
 		else // \todo include define error str and id
 		{

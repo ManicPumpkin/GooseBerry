@@ -82,8 +82,7 @@ class GOOSEBERRY_API GB_Mesh
 namespace GB_SimpleMeshes
 {
 	GB_Mesh static gbCube; 
-	//GOOSEBERRY_API extern GB_MeshSimple gbPyramid;
-	//GOOSEBERRY_API extern GB_MeshSimple gbRamp;
-	//GOOSEBERRY_API extern GB_MeshSimple gbThreeVert;
-	//GOOSEBERRY_API extern GB_MeshSimple gbOneVert;
+	GB_Mesh static gbRamp;
+	GB_Mesh static gbInnerEdge;
+	GB_Mesh static gbOuterEdge;
 }

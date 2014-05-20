@@ -86,8 +86,11 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Func::Initialize()
 		GB_LDEBUG("GooseBerry initialized");
 	}
 
-	//GB_SimpleMeshes::gbCube = GB_MeshLoader::GetInstance()->LoadObj(".//dta//cube.obj");
+	GB_LINFO("Load simple object files");
 	GB_Loader::LoadMeshFile(".//dta//cube.obj", &GB_SimpleMeshes::gbCube);
+	GB_Loader::LoadMeshFile(".//dta//ramp.obj", &GB_SimpleMeshes::gbRamp);
+	GB_Loader::LoadMeshFile(".//dta//inner_edge.obj", &GB_SimpleMeshes::gbInnerEdge);
+	GB_Loader::LoadMeshFile(".//dta//outer_edge.obj", &GB_SimpleMeshes::gbOuterEdge);
 
 	GB_Settings::Engine::g_initialized = TRUE;
 	timer.Stop();
