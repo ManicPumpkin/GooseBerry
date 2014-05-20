@@ -71,19 +71,27 @@ float		GB_Settings::BoundingBox::g_line_color[]	= {1.0f, 1.0f, 1.0f};
 //==================================================================
 GOOSEBERRY_API GB_Enum::gbResult GB_Func::Initialize()
 {
+	GB_Timer timer;
+	timer.Start();
+
+	if (GB_Settings::Debug::g_debug_mode)
+	{
+		InitializeDebugConsole();
+		GB_LDEBUG("DebugConsole initialized");
+	}
+
 	if(!GB_Settings::Engine::g_initialized)
 	{
 		InitializeLog();
 		GB_LDEBUG("GooseBerry initialized");
 	}
 
-	if (GB_Settings::Debug::g_debug_mode)
-		InitializeDebugConsole();
-
 	//GB_SimpleMeshes::gbCube = GB_MeshLoader::GetInstance()->LoadObj(".//dta//cube.obj");
 	GB_Loader::LoadMeshFile(".//dta//cube.obj", &GB_SimpleMeshes::gbCube);
 
 	GB_Settings::Engine::g_initialized = TRUE;
+	timer.Stop();
+	timer.Result();
 	return GB_OK;
 }
 
@@ -205,7 +213,7 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Func::Exit()
 		@return std::string tString
 **/
 //==================================================================
-std::string IntToStr(int value)
+std::string GB_Func::IntToStr(int value)
 {
 	ostringstream GB_Convert;
 	GB_Convert << value;

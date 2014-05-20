@@ -13,11 +13,24 @@
 //	Functions
 //==================================================================
 /**
+@fn		GB_Timer::~GB_Timer()
+@brief	Standarddeconstructor
+**/
+//==================================================================
+GOOSEBERRY_API GB_Timer::~GB_Timer()
+{
+	ticks_ = -1;
+	calls_ = -1;
+	clock_ = -1;
+}
+
+//==================================================================
+/**
 @fn		GB_Timer::GB_Timer()
 @brief	Standardconstructor
 **/
 //==================================================================
-GB_Timer::GB_Timer()
+GOOSEBERRY_API GB_Timer::GB_Timer()
 {
 	ticks_	= 0;
 	calls_	= 0;
@@ -30,7 +43,7 @@ GB_Timer::GB_Timer()
 @brief	Start timer
 **/
 //==================================================================
-VOID GOOSEBERRY_API GB_Timer::Start()
+GOOSEBERRY_API VOID GB_Timer::Start()
 {
 	clock_	= clock();
 	GB_LDEBUG("Timer started.");
@@ -42,10 +55,11 @@ VOID GOOSEBERRY_API GB_Timer::Start()
 @brief	Stop timer
 **/
 //==================================================================
-VOID GOOSEBERRY_API GB_Timer::Stop()
+GOOSEBERRY_API VOID GB_Timer::Stop()
 {
 	ticks_	+= clock() - clock_;
 	calls_++;
+	Result();
 }
 
 //==================================================================
@@ -54,12 +68,12 @@ VOID GOOSEBERRY_API GB_Timer::Stop()
 @brief	Result of timer
 **/
 //==================================================================
-int GOOSEBERRY_API GB_Timer::Result()
+GOOSEBERRY_API int GB_Timer::Result()
 {
 	int milli_sec;
 	milli_sec = ticks_ * 100 / CLOCKS_PER_SEC;
 
-	GB_LDEBUG("Timer stopped. MS passed: " + milli_sec); 
+	GB_LDEBUG("Timer stopped. (" + GB_Func::IntToStr(milli_sec) + " ms)"); 
 
 	return milli_sec;
 }
