@@ -102,6 +102,9 @@
     <ClInclude Include="inc\GB_BB3D.h">
       <Filter>Headerdateien\render</Filter>
     </ClInclude>
+    <ClInclude Include="inc\GB_Timer.h">
+      <Filter>Headerdateien\help</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\gooseberry.cc">
@@ -145,6 +148,9 @@
     </ClCompile>
     <ClCompile Include="src\GB_BB3D.cc">
       <Filter>Quelldateien\render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GB_Timer.cc">
+      <Filter>Quelldateien\help</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

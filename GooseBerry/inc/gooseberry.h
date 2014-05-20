@@ -173,6 +173,7 @@ namespace GB_Func
 #include "GB_Exception.h"
 #include "GB_Errors.h"
 #include "GB_Log.h"	
+#include "GB_Timer.h"
 #include "GB_Convert.h"
 #include "GB_Array.h"
 #include "GB_Matrix.h"
