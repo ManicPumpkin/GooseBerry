@@ -63,7 +63,7 @@ GB_Model :: GB_Model(std::string mesh_file, GLuint texture_nr)
 	if (has_mesh_)
 		has_material_	= (GB_OK != GB_Loader::LoadMaterialFile(mesh_->msh_path_ + mesh_->mtl_lib_, material_)) ? false : true;
 	
-	//if (has_texture_)
+	//if (has_material_)
 		//has_texture_	= (GB_OK != GB_Loader::LoadTextureFile(material_->mat_path_ + material_->map_kd_, texture_, &texture_nr_)) ? false : true;
 
 	// \todo add getter&setter for meshes
