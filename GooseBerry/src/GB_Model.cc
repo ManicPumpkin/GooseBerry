@@ -59,10 +59,10 @@ GB_Model :: GB_Model(std::string mesh_file, GLuint texture_nr)
 	texture_nr_		= texture_nr;
 
 	has_mesh_		= (GB_OK != GB_Loader::LoadMeshFile(mesh_file, mesh_)) ? false : true;
+	if (!has_mesh_)
+		return;
 
-	if (has_mesh_)
-		has_material_	= (GB_OK != GB_Loader::LoadMaterialFile(mesh_->msh_path_ + mesh_->mtl_lib_, material_)) ? false : true;
-	
+	has_material_	= (GB_OK != GB_Loader::LoadMaterialFile(mesh_->msh_path_ + mesh_->mtl_lib_, material_)) ? false : true;
 	//if (has_material_)
 		//has_texture_	= (GB_OK != GB_Loader::LoadTextureFile(material_->mat_path_ + material_->map_kd_, texture_, &texture_nr_)) ? false : true;
 
@@ -77,8 +77,11 @@ GB_Model :: GB_Model(std::string mesh_file, GLuint texture_nr)
 @brief	Draw model with mesh, textures and material
 **/
 //==================================================================
-void GB_Model :: Draw()
+GB_Enum::gbResult GB_Model :: Draw()
 {
+	if (!has_mesh_)
+		return GB_ERROR;
+
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texture_nr_);
 	mesh_->Draw();
