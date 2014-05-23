@@ -29,6 +29,24 @@ GB_Model::GB_Model()
 
 //==================================================================
 /**
+@fn		GB_Model(std::string mat_file, GB_Mesh target_mesh)
+@brief	Enhanced constructor
+**/
+//==================================================================
+GB_Model :: GB_Model(std::string mat_file, GB_Mesh target_mesh)
+{
+	/*al_	= new GB_Material();
+	texture_	= new GB_Texture();
+	texture_nr_ = texture_nr;
+
+	GB_Loader::LoadMeshFile(mesh_file, mesh_);
+	GB_Loader::LoadMaterialFile(mesh_->msh_path_ + mesh_->mtl_lib_, material_);
+	GB_Loader::LoadTextureFile(material_->mat_path_ + material_->map_kd_, texture_, &texture_nr_);
+	*/
+}
+
+//==================================================================
+/**
 @fn		GB_Model::GB_Model(std::string mesh_file, GLuint texture_nr)
 @brief	Enhanced constructor
 **/
@@ -42,7 +60,7 @@ GB_Model :: GB_Model(std::string mesh_file, GLuint texture_nr)
 
 	GB_Loader::LoadMeshFile(mesh_file, mesh_);
 	GB_Loader::LoadMaterialFile(mesh_->msh_path_ + mesh_->mtl_lib_, material_);
- 	GB_Loader::LoadTextureFile(material_->mat_path_ + material_->map_kd_, texture_, &texture_nr_);
+ 	//GB_Loader::LoadTextureFile(material_->mat_path_ + material_->map_kd_, texture_, &texture_nr_);
 
 	// \todo add getter&setter for meshes
 	bb3d_			= new GB_BB3D(mesh_->GetVertices(), (int)mesh_->num_vertices_);

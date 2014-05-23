@@ -184,6 +184,7 @@ namespace GB_Func
 #include "GB_BB3D.h"
 #include "GB_Material.h"
 #include "GB_Texture.h"
+#include "GB_TextureManager.h"
 #include "GB_Loader.h"
 #include "GB_Mesh.h"
 #include "GB_MeshQueue.h"

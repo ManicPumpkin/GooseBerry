@@ -65,7 +65,8 @@ class GOOSEBERRY_API GB_Mesh
 		GB_Mesh operator= (GB_Mesh const& right);
 
 		//	Functions
-		VOID Draw();
+		VOID	Draw();
+		GB_Mesh GetCopy();
 
 		//	Get
 		GB_Struct::Face *		GetFaces()		{ return faces_; }
@@ -81,8 +82,8 @@ class GOOSEBERRY_API GB_Mesh
 //==================================================================
 namespace GB_SimpleMeshes
 {
-	GB_Mesh static gbCube; 
-	GB_Mesh static gbRamp;
-	GB_Mesh static gbInnerEdge;
-	GB_Mesh static gbOuterEdge;
+	GB_Mesh static Cube; 
+	GB_Mesh static Ramp;
+	GB_Mesh static InnerEdge;
+	GB_Mesh static OuterEdge;
 }

@@ -249,4 +249,63 @@ VOID GB_Mesh :: Draw()
 
 	glEnable(GL_COLOR_MATERIAL);
 }
+
 //==================================================================
+/**
+@fn		GB_Mesh::GetCopy()
+@brief	Return copy of current object
+@return	this
+**/
+//==================================================================
+GB_Mesh GB_Mesh::GetCopy()
+{
+	GB_Mesh mesh;
+
+	mesh.msh_name_			= this->msh_name_;
+	mesh.msh_file_			= this->msh_file_;
+	mesh.msh_path_			= this->msh_path_;
+	mesh.mtl_lib_			= this->mtl_lib_;
+	mesh.mtl_use_			= this->mtl_use_;
+	mesh.is_triangle_		= this->is_triangle_;
+	mesh.num_faces_			= this->num_faces_;
+	mesh.num_vertices_		= this->num_vertices_;
+	mesh.num_normals_		= this->num_normals_;
+	mesh.num_tex_coords_	= this->num_tex_coords_;
+
+	mesh.faces_				= new GB_Struct::Face[this->num_faces_];
+	mesh.vertices_			= new GB_Struct::Vertex[this->num_vertices_];
+	mesh.normals_			= new GB_Struct::Normal[this->num_normals_];
+	mesh.tex_coords_		= new GB_Struct::TexCoord[this->num_tex_coords_];
+
+	for (unsigned int tI = 0; tI < num_faces_; tI++)
+	{
+		for (int tJ = 0; tJ < 4; tJ++)
+		{
+			mesh.faces_[tI].vertex[tJ]		= this->faces_[tI].vertex[tJ];
+			mesh.faces_[tI].normal[tJ]		= this->faces_[tI].normal[tJ];
+			mesh.faces_[tI].texcoord[tJ]	= this->faces_[tI].texcoord[tJ];
+		}
+	}
+
+	for (unsigned int tI = 0; tI < num_vertices_; tI++)
+	{
+		mesh.vertices_[tI].x = this->vertices_[tI].x;
+		mesh.vertices_[tI].y = this->vertices_[tI].y;
+		mesh.vertices_[tI].z = this->vertices_[tI].z;
+	}
+
+	for (unsigned int tI = 0; tI < num_normals_; tI++)
+	{
+		mesh.normals_[tI].x = this->normals_[tI].x;
+		mesh.normals_[tI].y = this->normals_[tI].y;
+		mesh.normals_[tI].z = this->normals_[tI].z;
+	}
+
+	for (unsigned int tI = 0; tI < num_tex_coords_; tI++)
+	{
+		mesh.tex_coords_[tI].u = this->tex_coords_[tI].u;
+		mesh.tex_coords_[tI].v = this->tex_coords_[tI].v;
+	}
+
+	return mesh;
+}

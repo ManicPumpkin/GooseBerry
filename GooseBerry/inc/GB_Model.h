@@ -44,5 +44,6 @@ class GOOSEBERRY_API GB_Model
 
 		//	(De-)Constructor
 		GB_Model();
+		GB_Model(std::string mat_file, GB_Mesh target_mesh);
 		GB_Model(std::string mesh_file, GLuint texture_nr);
 };
