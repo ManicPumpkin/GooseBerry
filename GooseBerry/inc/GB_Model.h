@@ -28,12 +28,11 @@ class GOOSEBERRY_API GB_Model
 	private:
 
 	public:
-		GB_Mesh		*		mesh_;		//!< mesh of model
-		GB_Material	*		material_;	//!< material of model
-		GB_Texture  *		texture_;		//!< texture of model
+		GB_Mesh		*		mesh_;			//!< mesh of model
+		GB_Material	*		material_;		//!< material of model
 		GB_BB3D     *		bb3d_;
 
-		GLuint				texture_nr_;	//!< number of texture
+		int					texture_nr_;	//!< number of texture to use
 
 		bool				has_texture_;	//!< flag for texture 
 		bool				has_mesh_;		//!< flag of mesh
@@ -45,5 +44,7 @@ class GOOSEBERRY_API GB_Model
 		//	(De-)Constructor
 		GB_Model();
 		GB_Model(std::string mat_file, GB_Mesh target_mesh);
-		GB_Model(std::string mesh_file, GLuint texture_nr);
+		GB_Model(std::string mesh_file, int texture_nr = -1);
+		GB_Model(GB_Mesh * mesh, int texture_nr);
+		GB_Model(int texture_nr, const char * mesh_name = "cube");
 };

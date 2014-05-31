@@ -100,6 +100,7 @@
     <ClInclude Include="inc\GB_Object.h" />
     <ClInclude Include="inc\GB_OpenGL.h" />
     <ClInclude Include="inc\GB_Texture.h" />
+    <ClInclude Include="inc\GB_TextureManager.h" />
     <ClInclude Include="inc\GB_Timer.h" />
     <ClInclude Include="inc\GB_Vector2.h" />
     <ClInclude Include="inc\GB_Vector3.h" />
@@ -117,6 +118,7 @@
     <ClCompile Include="src\GB_Model.cc" />
     <ClCompile Include="src\GB_Object.cc" />
     <ClCompile Include="src\GB_OpenGL.cc" />
+    <ClCompile Include="src\GB_TextureManager.cc" />
     <ClCompile Include="src\GB_Timer.cc" />
     <ClCompile Include="src\GB_Vector2.cc" />
     <ClCompile Include="src\GB_Vector3.cc" />

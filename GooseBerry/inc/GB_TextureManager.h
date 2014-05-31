@@ -52,10 +52,10 @@ class GOOSEBERRY_API GB_TextureManager
 
 	public:
 		//	Funtctions
-		int		LoadTexture(const char *filename, int id = -1);
-		int		LoadTextureFromMemory(/*UBYTE *data, int width, int height, int bpp, int id = -1*/);
-		void	FreeTexture(int id);
-		void	FreeAllTextures();
+		GB_Enum::gbResult	LoadTexture(const char *filename, int * texture_nr);
+		int					LoadTextureFromMemory(/*UBYTE *data, int width, int height, int bpp, int id = -1*/);
+		void				FreeTexture(int id);
+		void				FreeAllTextures();
 
 		//	Get&Set
 		static GB_TextureManager* GetInstance()

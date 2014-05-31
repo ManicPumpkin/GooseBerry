@@ -123,18 +123,27 @@ GB_Enum::gbResult Exit()
 	return GB_Enum::GB_OK;
 }
 
-GLuint texture_nr = 1;
-GB_Model * test_model;
+GLuint texture_nr = 0;
+GB_Model * test_model_1;
+GB_Model * test_model_2;
+GB_Model * test_model_3;
+GB_Model * test_model_4;
 
 GB_Enum::gbResult Load()
 {
 	GB_LDEBUG("Load application");
 
 	//	load some stuff starts here ...
-	GB_LDEBUG("Starting loading textures");
+	int t1, t2, t3;
+	TEXMANAGER->LoadTexture(".\\dta\\pumpkin_64x64_black.jpg", &t1);
+	TEXMANAGER->LoadTexture(".\\dta\\pumpkin_64x64_white.jpg", &t2);
+	TEXMANAGER->LoadTexture(".\\dta\\pumpkin_64x64_grey.jpg", &t3);
 
-	GB_LDEBUG("Starting loading models");
-	test_model = new GB_Model(".\\dta\\cube_pumpkin.obj", texture_nr); 
+	GB_LDEBUG("Loading models");
+	test_model_1	= new GB_Model(".\\dta\\cube_pumpkin_black.obj", t1);
+	test_model_2	= new GB_Model(".\\dta\\cube_pumpkin_white.obj", t1);
+	test_model_3	= new GB_Model(".\\dta\\cube_pumpkin_white.obj");
+	test_model_4	= new GB_Model(test_model_3->mesh_, t3);
 
 	return GB_Enum::GB_OK;
 }
@@ -185,22 +194,35 @@ GB_Enum::gbResult Render(float time)
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluPerspective(60, 1, 1, 10);
-	gluLookAt(0, 2, -4, 0, 0, 0, 0, 1, 0);
+	gluLookAt(0, 4, 4, 0, 0, 0, 0, 1, 0);
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	//glEnable(GL_TEXTURE_2D);
 	
 	if (rotatef > 360.0f)
 		rotatef = 0.0f;
 
 	rotatef += 0.5f;
 	glRotatef(rotatef, 0.0f, 1.0f, 0.0f);
-	test_model->Draw();
+	glPushMatrix();
+	glTranslatef(0.75f, 0.0f, 0.75f);
+	test_model_1->Draw();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslatef(-0.75f, 0.0f, 0.75f);
+	test_model_2->Draw();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslatef(0.75f, 0.0f, -0.75f);
+	test_model_3->Draw();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslatef(-0.75f, 0.0f, -0.75f);
+	test_model_4->Draw();
+	glPopMatrix();
 
-	//glDisable(GL_TEXTURE_2D);
 	glFlush();
 	//glutSwapBuffers();
 

@@ -70,23 +70,22 @@ void GB_TextureManager::Destroy()
 
 //==================================================================
 /**
-@fn		GB_TextureManager::LoadTexture(const char *filename, int id = -1);
+@fn		GB_TextureManager::LoadTexture(const char *filename, int texture_id);
 @brief	Load new texture
 @return int		id of texture
 **/
 //==================================================================
-int GB_TextureManager::LoadTexture(const char *filename, int id)
+GB_Enum::gbResult GB_TextureManager::LoadTexture(const char *filename, int * texture_nr)
 {
-	unsigned char * pixel_data	= NULL;
-	int tex_width, tex_height, tex_n;
-	GB_Loader::LoadTextureFile(filename, pixel_data, &tex_width, &tex_height, &tex_n);
-
-	int texture_id = GetNewTextureId();
-	glBindTexture(GL_TEXTURE_2D, texture_id);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, tex_width, tex_height, 0, GL_RGB, GL_UNSIGNED_BYTE, pixel_data);
+	if (texture_nr	== NULL)
+		texture_nr	= new int(GetNewTextureId());
+	else
+		*texture_nr = GetNewTextureId();
 	
-	stbi_image_free(pixel_data);
-	return texture_id;
+	if (GB_OK != GB_Loader::LoadTextureFile(filename, *texture_nr)) 
+		return GB_ERROR;
+
+	return GB_OK;
 }
 
 //==================================================================

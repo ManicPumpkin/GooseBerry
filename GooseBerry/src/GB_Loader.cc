@@ -406,15 +406,14 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadMaterialFile(std::string file, G
 @brief	Fuction to load a texture file
 **/
 //==================================================================
-GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadTextureFile(std::string file, unsigned char * pixel_dta, int * width, int * height, int * n)
+GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadTextureFile(std::string file, int texture_id)
 {
-	//int tex_width, tex_height, tex_n;
-	unsigned char * pixel_data = stbi_load(file.c_str(), width, height, n, 0);
+	int tex_width, tex_height, tex_n;
+	unsigned char * pixel_data	= stbi_load(file.c_str(), &tex_width, &tex_height, &tex_n, 0);
 
 	if (pixel_data == NULL)
 	{
 		GB_LERROR("Error while open texture file: " + file, "GB_Loader Error");
-		//texture_para = NULL;
 		return GB_ERROR;
 	}
 	else
@@ -422,25 +421,15 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadTextureFile(std::string file, un
 		if (pixel_data == '\0')
 		{
 			GB_LERROR("Error while loading texture file: " + file, "GB_Loader Error");
-			//texture_para = NULL;
 			return GB_ERROR;
 		}
-		else
-			GB_LDEBUG("\t--> " + file);
 
-		/*
-		GLuint temp_texture;
-		glGenTextures(1, &temp_texture);
-		glBindTexture(GL_TEXTURE_2D, temp_texture);
-
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, tex_width, tex_height, 0, GL_RGB, GL_UNSIGNED_BYTE, pixel_data); 
-
-		GB_Texture texture(file, (int)texture_nr);
-		*texture_nr		= temp_texture;
-		*texture_para	= texture;
+		unsigned int tex_id = static_cast<unsigned int>(texture_id);
+		glBindTexture(GL_TEXTURE_2D, tex_id);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, tex_width, tex_height, 0, GL_RGB, GL_UNSIGNED_BYTE, pixel_data);
+		//int error = gluBuild2DMipmaps(GL_TEXTURE_2D, GL_RGB, tex_width, tex_height, GL_RGB, GL_UNSIGNED_BYTE, &pixel_data);
+		GB_LDEBUG("\t--> " + file + "; tex_id: " + NumToStr(texture_id)); 
 		stbi_image_free(pixel_data);
-		*/
+		return GB_OK;
 	}
-
-	return GB_OK;
 }

@@ -105,6 +105,9 @@
     <ClInclude Include="inc\GB_Timer.h">
       <Filter>Headerdateien\help</Filter>
     </ClInclude>
+    <ClInclude Include="inc\GB_TextureManager.h">
+      <Filter>Headerdateien\render</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\gooseberry.cc">
@@ -151,6 +154,9 @@
     </ClCompile>
     <ClCompile Include="src\GB_Timer.cc">
       <Filter>Quelldateien\help</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GB_TextureManager.cc">
+      <Filter>Quelldateien\render</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
