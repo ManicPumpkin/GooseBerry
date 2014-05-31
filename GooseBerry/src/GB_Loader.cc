@@ -427,6 +427,7 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadTextureFile(std::string file, in
 		unsigned int tex_id = static_cast<unsigned int>(texture_id);
 		glBindTexture(GL_TEXTURE_2D, tex_id);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, tex_width, tex_height, 0, GL_RGB, GL_UNSIGNED_BYTE, pixel_data);
+		// \todo replace glTexImage2D with gluBuild2DMipmaps
 		//int error = gluBuild2DMipmaps(GL_TEXTURE_2D, GL_RGB, tex_width, tex_height, GL_RGB, GL_UNSIGNED_BYTE, &pixel_data);
 		GB_LDEBUG("\t--> " + file + "; tex_id: " + NumToStr(texture_id)); 
 		stbi_image_free(pixel_data);
