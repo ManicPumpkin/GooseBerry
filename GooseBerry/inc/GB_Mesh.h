@@ -76,14 +76,3 @@ class GOOSEBERRY_API GB_Mesh
 
 		//	Set
 };
-
-//==================================================================
-//	STATIC SIMPLE MESHES
-//==================================================================
-namespace GB_SimpleMeshes
-{
-	GB_Mesh static Cube; 
-	GB_Mesh static Ramp;
-	GB_Mesh static InnerEdge;
-	GB_Mesh static OuterEdge;
-}
