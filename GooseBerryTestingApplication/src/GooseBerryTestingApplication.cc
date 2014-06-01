@@ -17,8 +17,7 @@
 #include <tchar.h>
 #include <Windows.h>
 
-//#include "..\..\Log\inc\Log.h"
-#include ".\..\..\GooseBerry\inc\gooseberry.h"
+#include "gooseberry.h"
 
 //==================================================================
 //	NAMESPACE
