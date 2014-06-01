@@ -59,7 +59,6 @@ GOOSEBERRY_API VOID GB_Timer::Stop()
 {
 	ticks_	+= clock() - clock_;
 	calls_++;
-	Result();
 }
 
 //==================================================================
