@@ -41,7 +41,7 @@ void GB_TextureManager::Initialize()
 	GB_LDEBUG("Texture manager initialized");
 
 	instance_->num_textures_		= 0;
-	instance_->available_space_		= 0;
+	instance_->available_space_		= TEXMANAGER_INIT_SIZE;
 	instance_->textures_			= new int[TEXMANAGER_INIT_SIZE];
 
 	for (int i = 0; i < instance_->available_space_; i++)

@@ -108,6 +108,9 @@
     <ClInclude Include="inc\GB_TextureManager.h">
       <Filter>Headerdateien\render</Filter>
     </ClInclude>
+    <ClInclude Include="inc\GB_MeshManager.h">
+      <Filter>Headerdateien\render</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\gooseberry.cc">
@@ -156,6 +159,9 @@
       <Filter>Quelldateien\help</Filter>
     </ClCompile>
     <ClCompile Include="src\GB_TextureManager.cc">
+      <Filter>Quelldateien\render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GB_MeshManager.cpp">
       <Filter>Quelldateien\render</Filter>
     </ClCompile>
   </ItemGroup>
