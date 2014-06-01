@@ -115,7 +115,7 @@
     <ClCompile Include="src\GB_Log.cc" />
     <ClCompile Include="src\GB_Matrix.cc" />
     <ClCompile Include="src\GB_Mesh.cc" />
-    <ClCompile Include="src\GB_MeshManager.cpp" />
+    <ClCompile Include="src\GB_MeshManager.cc" />
     <ClCompile Include="src\GB_MeshQueue.cc" />
     <ClCompile Include="src\GB_Model.cc" />
     <ClCompile Include="src\GB_Object.cc" />

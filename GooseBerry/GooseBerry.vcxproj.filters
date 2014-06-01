@@ -161,7 +161,7 @@
     <ClCompile Include="src\GB_TextureManager.cc">
       <Filter>Quelldateien\render</Filter>
     </ClCompile>
-    <ClCompile Include="src\GB_MeshManager.cpp">
+    <ClCompile Include="src\GB_MeshManager.cc">
       <Filter>Quelldateien\render</Filter>
     </ClCompile>
   </ItemGroup>
