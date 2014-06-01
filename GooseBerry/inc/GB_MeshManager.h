@@ -9,11 +9,6 @@
 #pragma once
 
 //==================================================================
-//	INCLUDE
-//==================================================================
-#include "gooseberry.h"
-
-//==================================================================
 //	DEFINE
 //==================================================================
 #define MSHMANAGER				GB_MeshManager::GetInstance()
@@ -23,9 +18,9 @@
 //==================================================================
 //	STRUCT
 //==================================================================
-struct MeMaProperty		//!< stands for mesh manager property
+struct GOOSEBERRY_API MeMaProperty		//!< stands for mesh manager property
 {
-	GB_Mesh 	mesh;	//!< mesh object
+	GB_Mesh *	mesh;	//!< mesh object
 	int			id;		//!< unique id of mesh
 	std::string name;	//!< name of mesh
 };

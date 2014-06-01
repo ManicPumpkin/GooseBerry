@@ -32,6 +32,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string>
+#include <time.h>
 #include <vector>
 #include <io.h>
 #include <fcntl.h>
@@ -41,6 +42,8 @@
 
 //	EXTERN LIBRARIES
 #include "..\ext\glut-3.7.6\glut.h"
+#include "..\ext\libpng-1.6.8\png.h"
+#include "..\ext\stb_image\stb_image.h"
 
 //==================================================================
 //	NAMESPACES
@@ -48,8 +51,10 @@
 using namespace std;
 
 //==================================================================
-//	FORWARD DECLARATIONS
+//	PRAGMA
 //==================================================================
+#pragma warning(disable: 4251)
+#pragma warning(disable: 4996)
 
 //==================================================================
 //	DEFINES
@@ -187,5 +192,7 @@ namespace GB_Func
 #include "GB_TextureManager.h"
 #include "GB_Loader.h"
 #include "GB_Mesh.h"
+#include "GB_MeshManager.h"
 #include "GB_MeshQueue.h"
 #include "GB_Model.h"
+#include "GB_Object.h"

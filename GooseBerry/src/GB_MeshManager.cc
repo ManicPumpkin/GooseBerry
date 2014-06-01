@@ -8,7 +8,7 @@
 //==================================================================
 //	INCLUDE
 //==================================================================
-#include "GB_MeshManager.h"
+#include "gooseberry.h"
 
 //==================================================================
 //	INITIALIZE
@@ -154,7 +154,7 @@ int GB_MeshManager::AddMesh(GB_Mesh mesh)
 	int id							= GetNewId();
 	instance_->meshes_[index].id	= id;
 	instance_->meshes_[index].name	= mesh.msh_name_;
-	instance_->meshes_[index].mesh	= mesh;
+	instance_->meshes_[index].mesh	= &mesh;
 	instance_->num_meshes_++;
 
 	return id;
@@ -171,10 +171,9 @@ GB_Enum::gbResult GB_MeshManager::RemoveMeshByIndex(int index)
 	if (index >= instance_->available_space_ || index <= -1)
 		return GB_ERROR;
 
-	GB_Mesh	override_mesh;
-	instance_->meshes_[index].mesh = override_mesh;
-	instance_->meshes_[index].id = -1;
-	instance_->meshes_[index].name = "";
+	instance_->meshes_[index].mesh	= new GB_Mesh();
+	instance_->meshes_[index].id	= -1;
+	instance_->meshes_[index].name	= "";
 	instance_->num_meshes_--;
 	Resort();
 	return GB_OK;
@@ -192,10 +191,9 @@ GB_Enum::gbResult GB_MeshManager::RemoveMeshById(int id)
 	{
 		if (instance_->meshes_[i].id == id)
 		{
-			GB_Mesh	override_mesh;
 			instance_->meshes_[i].id	= -1;
 			instance_->meshes_[i].name	= "";
-			instance_->meshes_[i].mesh	= override_mesh;
+			instance_->meshes_[i].mesh	= new GB_Mesh();
 			instance_->num_meshes_--;
 			Resort();
 			return GB_OK;
@@ -218,10 +216,9 @@ GB_Enum::gbResult GB_MeshManager::RemoveMeshByName(std::string name)
 	{
 		if (instance_->meshes_[i].name == name)
 		{
-			GB_Mesh	override_mesh;
-			instance_->meshes_[i].id = -1;
-			instance_->meshes_[i].name = "";
-			instance_->meshes_[i].mesh = override_mesh;
+			instance_->meshes_[i].id	= -1;
+			instance_->meshes_[i].name	= "";
+			instance_->meshes_[i].mesh	= new GB_Mesh();
 			instance_->num_meshes_--;
 			Resort();
 			return GB_OK;
