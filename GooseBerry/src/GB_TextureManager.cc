@@ -102,11 +102,11 @@ int GB_TextureManager::LoadTextureFromMemory()
 
 //==================================================================
 /**
-@fn		GB_TextureManager::FreeTexture(int id)
-@brief	Delete texture of id
+@fn		GB_TextureManager::RemoveTextureById(int id)
+@brief	Delete texture by id
 **/
 //==================================================================
-void GB_TextureManager::FreeTexture(int id)
+void GB_TextureManager::RemoveTextureById(int id)
 {
 	int index	= -1;
 	for (int i = 0; i < instance_->available_space_; i++)
@@ -122,17 +122,35 @@ void GB_TextureManager::FreeTexture(int id)
 	if (index != -1)
 	{
 		unsigned int u_id = (unsigned int) id;
-		glDeleteTextures(1, &u_id);
+		glDeleteTextures(1, &u_id); 
+		instance_->num_textures_--;
 	}
 }
 
 //==================================================================
 /**
-@fn		GB_TextureManager::FreeAllTextures()
+@fn		GB_TextureManager::RemoveTextureByIndex(int index)
+@brief	Delete texture by index
+**/
+//==================================================================
+void GB_TextureManager::RemoveTextureByIndex(int index)
+{
+	if (index > 0 && index < instance_->available_space_)
+	{
+		unsigned int u_id = (unsigned int)instance_->textures_[index];
+		glDeleteTextures(1, &u_id);
+		instance_->num_textures_--;
+		instance_->textures_[index]		= -1;
+	}
+}
+
+//==================================================================
+/**
+@fn		GB_TextureManager::RemoveAllTextures()
 @brief	Delete all textures
 **/
 //==================================================================
-void GB_TextureManager::FreeAllTextures()
+void GB_TextureManager::RemoveAllTextures()
 {
 	unsigned int *u_ids = new unsigned int[instance_->num_textures_];
 	for (int i = 0, j = 0; i < instance_->num_textures_; i++)
