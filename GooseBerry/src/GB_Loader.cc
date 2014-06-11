@@ -22,6 +22,7 @@ http://examples.oreilly.de/english_examples/gff/CDROM/SOFTWARE/SOURCE/LIBPNG/EXA
 
 **/
 //==================================================================
+/*
 GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadPngFile(char * name, int * width, int * height, GLuint * texture)
 {
 	GB_LINFO("Loading texture: " + (string)name);
@@ -129,7 +130,7 @@ GOOSEBERRY_API GB_Enum::gbResult GB_Loader::LoadPngFile(char * name, int * width
 	fclose(file_ptr);
 	return GB_Enum::GB_OK;
 }
-
+*/
 //==================================================================
 /**
 @fn		GB_Loader::LoadMeshFile(std::string file)
