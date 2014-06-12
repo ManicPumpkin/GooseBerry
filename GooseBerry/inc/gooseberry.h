@@ -19,7 +19,7 @@
 #pragma comment(lib, "glut32.lib")
 #pragma comment(lib, "glu32.lib")
 #pragma comment(lib, "zlib.lib")
-#pragma comment(lib, "libpng16.lib")
+//#pragma comment(lib, "libpng16.lib")
 
 //==================================================================
 //	INCLUDE
@@ -42,7 +42,7 @@
 
 //	EXTERN LIBRARIES
 #include "..\ext\glut-3.7.6\glut.h"
-#include "..\ext\libpng-1.6.8\png.h"
+//#include "..\ext\libpng-1.6.8\png.h"
 #include "..\ext\stb_image\stb_image.h"
 
 //==================================================================
