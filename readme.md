@@ -8,6 +8,17 @@ Description
 
 Game Engine based on OpenGL
 
+Structure
+=========
+
++
+|
+|-- bb-core 
+|-- bb-test
+'-- bb-unit
+
+bb-core is for the core of the engine itself, while bb-test is an test area to test given engine features and bb-unit is an environment for unit-tests.
+
 Autors
 ======
 
