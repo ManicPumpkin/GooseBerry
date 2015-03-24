@@ -1,6 +1,6 @@
 /**
-	@file	GooseBerry.h
-	@brief	Includes gooseberry class
+	@file	Blueberry.h
+	@brief	Includes Blueberry class
 	@author	drubner
 	@date	2013-07-16
 **/
@@ -9,10 +9,10 @@
 //==================================================================
 #pragma once
 
-#ifdef GOOSEBERRY_EXPORTS
-	#define GOOSEBERRY_API __declspec(dllexport)
+#ifdef Blueberry_EXPORTS
+	#define Blueberry_API __declspec(dllexport)
 #else
-	#define GOOSEBERRY_API __declspec(dllimport)
+	#define Blueberry_API __declspec(dllimport)
 #endif
 
 #pragma comment(lib, "opengl32.lib")
@@ -24,26 +24,36 @@
 //==================================================================
 //	INCLUDE
 //==================================================================
-#include <Windows.h>
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <stdarg.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string>
-#include <time.h>
-#include <vector>
-#include <io.h>
-#include <fcntl.h>
-#include <gl/GLU.h>
-#include <gl/GL.h>
+#ifdef _WIN32 || _WIN64
+	#include <Windows.h>
+	#include <iostream>
+	#include <fstream>
+	#include <sstream>
+	#include <stdarg.h>
+	#include <stdlib.h>
+	#include <stdio.h>
+	#include <string>
+	#include <time.h>
+	#include <vector>
+	#include <io.h>
+	#include <fcntl.h>
+	#include <gl/GLU.h>
+	#include <gl/GL.h>
 
+	//	EXTERN LIBRARIES
+	#include "..\ext\glut-3.7.6\glut.h"
+	//#include "..\ext\libpng-1.6.8\png.h"
+	#include "..\ext\stb_image\stb_image.h"
 
-//	EXTERN LIBRARIES
-#include "..\ext\glut-3.7.6\glut.h"
-//#include "..\ext\libpng-1.6.8\png.h"
-#include "..\ext\stb_image\stb_image.h"
+#error Can not compile on Windows yet
+#endif
+
+#ifdef __linux__
+	#include <iostream>
+	#include <fstream>
+	#include <sstream>
+#error Can not compile on Linux yet
+#endif
 
 //==================================================================
 //	NAMESPACES
@@ -60,77 +70,77 @@ using namespace std;
 //	DEFINES
 //==================================================================
 #define LOG_ONCE				FALSE
-#define LOG_FILE				"gb_log.html"
+#define LOG_FILE				"BB_log.html"
 #define LOG_PATH				".\\log\\"
 #define LOG_FILEPATH			LOG_PATH LOG_FILE
 
 //==================================================================
 //	GLOBALS
 //==================================================================
-namespace GB_Settings
+namespace BB_Settings
 {
 	namespace Engine
 	{
-		GOOSEBERRY_API extern bool			g_initialized;		//!< gooseberry engine initialized
-		GOOSEBERRY_API extern bool			g_keys[256];		//!< all keys
+		Blueberry_API extern bool			g_initialized;		//!< Blueberry engine initialized
+		Blueberry_API extern bool			g_keys[256];		//!< all keys
 	}
 
 	namespace Debug
 	{
-		GOOSEBERRY_API extern bool			g_debug_mode;		//!< debug mode active
-		GOOSEBERRY_API extern bool			g_only_compile;		//!< only compile app
+		Blueberry_API extern bool			g_debug_mode;		//!< debug mode active
+		Blueberry_API extern bool			g_only_compile;		//!< only compile app
 	}
 
 	namespace OpenGL
 	{
-		GOOSEBERRY_API extern HINSTANCE		g_hinstance;		//!< instance of program
-		GOOSEBERRY_API extern HWND			g_hwnd;				//!< handle to window
-		GOOSEBERRY_API extern HDC			g_hdc;				//!< device context
-		GOOSEBERRY_API extern HGLRC			g_hglrc;			//!< render context
+		Blueberry_API extern HINSTANCE		g_hinstance;		//!< instance of program
+		Blueberry_API extern HWND			g_hwnd;				//!< handle to window
+		Blueberry_API extern HDC			g_hdc;				//!< device context
+		Blueberry_API extern HGLRC			g_hglrc;			//!< render context
 	}
 
 	namespace Window
 	{
-		GOOSEBERRY_API extern LPCSTR		g_wnd_title;		//!< title of window
-		GOOSEBERRY_API extern LPCSTR		g_wnd_name;			//!< name of window
-		GOOSEBERRY_API extern int			g_wnd_width;		//!< window width
-		GOOSEBERRY_API extern int			g_wnd_height;		//!< window height
-		GOOSEBERRY_API extern int			g_wnd_x;			//!< window x
-		GOOSEBERRY_API extern int			g_wnd_y;			//!< window y
+		Blueberry_API extern LPCSTR			g_wnd_title;		//!< title of window
+		Blueberry_API extern LPCSTR			g_wnd_name;			//!< name of window
+		Blueberry_API extern int			g_wnd_width;		//!< window width
+		Blueberry_API extern int			g_wnd_height;		//!< window height
+		Blueberry_API extern int			g_wnd_x;			//!< window x
+		Blueberry_API extern int			g_wnd_y;			//!< window y
 	}
 
 	namespace App
 	{
-		GOOSEBERRY_API extern int			g_bits_color;		//!< GB_Color bits
-		GOOSEBERRY_API extern int			g_bits_depth;		//!< GB_Color depth
-		GOOSEBERRY_API extern int			g_bits_alpha;		//!< GB_Color alpha
-		GOOSEBERRY_API extern bool			g_fullscreen;		//!< window runs in fullscreen
-		GOOSEBERRY_API extern bool			g_active;			//!< window is active
+		Blueberry_API extern int			g_bits_color;		//!< BB_Color bits
+		Blueberry_API extern int			g_bits_depth;		//!< BB_Color depth
+		Blueberry_API extern int			g_bits_alpha;		//!< BB_Color alpha
+		Blueberry_API extern bool			g_fullscreen;		//!< window runs in fullscreen
+		Blueberry_API extern bool			g_active;			//!< window is active
 	}
 
 	namespace BoundingBox
 	{
-		GOOSEBERRY_API extern bool			g_show;				//!< show bounding box
-		GOOSEBERRY_API extern float			g_line_width;		//!< line width of bounding box
-		GOOSEBERRY_API extern float			g_line_color[3];	//!< line color of bounding box
+		Blueberry_API extern bool			g_show;				//!< show bounding box
+		Blueberry_API extern float			g_line_width;		//!< line width of bounding box
+		Blueberry_API extern float			g_line_color[3];	//!< line color of bounding box
 	}
 }
 
 //==================================================================
 //	ENUM & STRUCTS
 //==================================================================
-namespace GB_Enum
+namespace BB_Enum
 {
 	enum gbResult
 	{
-		GB_OK = 0,
-		GB_ERROR = 1,
-		GB_STOP = 2,
-		GB_NOTFOUND = 3
+		BB_OK = 0,
+		BB_ERROR = 1,
+		BB_STOP = 2,
+		BB_NOTFOUND = 3
 	};
 }
 
-namespace GB_Struct
+namespace BB_Struct
 {
 	struct Vertex						//! Vertex struct with coordinates
 	{
@@ -158,12 +168,12 @@ namespace GB_Struct
 //==================================================================
 //	FUNCTION DECLARATION
 //==================================================================
-namespace GB_Func
+namespace BB_Func
 {
-	GOOSEBERRY_API GB_Enum::gbResult Initialize();
-	GOOSEBERRY_API GB_Enum::gbResult InitializeDebugConsole();
-	GOOSEBERRY_API GB_Enum::gbResult MessageLoop(GB_Enum::gbResult(*func_render)(float));
-	GOOSEBERRY_API GB_Enum::gbResult Exit();
+	Blueberry_API BB_Enum::gbResult Initialize();
+	Blueberry_API BB_Enum::gbResult InitializeDebugConsole();
+	Blueberry_API BB_Enum::gbResult MessageLoop(BB_Enum::gbResult(*func_render)(float));
+	Blueberry_API BB_Enum::gbResult Exit();
 
 	std::string ExtractFile(std::string file);
 	std::string ExtractName(std::string file);
@@ -175,24 +185,26 @@ namespace GB_Func
 //==================================================================
 //	INCLUDE HEADER OF ENGINE
 //==================================================================
-#include "GB_Exception.h"
-#include "GB_Errors.h"
-#include "GB_Log.h"	
-#include "GB_Timer.h"
-#include "GB_Convert.h"
-#include "GB_Array.h"
-#include "GB_Matrix.h"
-#include "GB_Vector3.h"
-#include "GB_Vector2.h"
-#include "GB_Color.h"
-#include "GB_OpenGL.h"
-#include "GB_BB3D.h"
-#include "GB_Material.h"
-#include "GB_Texture.h"
-#include "GB_TextureManager.h"
-#include "GB_Loader.h"
-#include "GB_Mesh.h"
-#include "GB_MeshManager.h"
-#include "GB_MeshQueue.h"
-#include "GB_Model.h"
-#include "GB_Object.h"
+/*
+#include "BB_Exception.h"
+#include "BB_Errors.h"
+#include "BB_Log.h"
+#include "BB_Timer.h"
+#include "BB_Convert.h"
+#include "BB_Array.h"
+#include "BB_Matrix.h"
+#include "BB_Vector3.h"
+#include "BB_Vector2.h"
+#include "BB_Color.h"
+#include "BB_OpenGL.h"
+#include "BB_BB3D.h"
+#include "BB_Material.h"
+#include "BB_Texture.h"
+#include "BB_TextureManager.h"
+#include "BB_Loader.h"
+#include "BB_Mesh.h"
+#include "BB_MeshManager.h"
+#include "BB_MeshQueue.h"
+#include "BB_Model.h"
+#include "BB_Object.h"
+*/
